@@ -1,0 +1,5 @@
+{
+  "name": "@pylonbot/runtime",
+  "version": "1.0.0",
+  "types": "pylon-runtime.d.ts"
+}

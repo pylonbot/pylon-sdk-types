@@ -1,0 +1,8 @@
+{
+  "name": "@pylonbot/runtime-discord",
+  "version": "1.0.0",
+  "types": "./pylon-runtime-discord.d.ts",
+  "dependencies": {
+    "@pylonbot/runtime": "1.0.0"
+  }
+}
