@@ -13,7 +13,7 @@
  * - [[discord.User]]
  *
  * ### Events
- * Events are executed as they are recieved from the [Discord Gateway](https://discordapp.com/developers/docs/topics/gateway#commands-and-events).
+ * Events are executed as they are received from the [Discord Gateway](https://discordapp.com/developers/docs/topics/gateway#commands-and-events).
  * You can register event handlers within the Pylon runtime.
  * See [[discord.registerEventHandler]] for a list of events and their respective payloads.
  *
