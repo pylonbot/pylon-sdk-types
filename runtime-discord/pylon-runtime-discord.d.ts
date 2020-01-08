@@ -35,7 +35,6 @@
  * })
  *
  */
-
 declare module discord {
   type Snowflake = string;
 
@@ -56,7 +55,7 @@ declare module discord {
     toMention(): string;
   }
 
-  enum ImageType {
+  const enum ImageType {
     PNG = "png",
     JPEG = "jpeg",
     WEBP = "webp",
@@ -101,7 +100,7 @@ declare module discord {
       reason?: string;
     }
 
-    enum Feature {
+    const enum Feature {
       INVITE_SPLASH = "INVITE_SPLASH",
       VIP_REGIONS = "VIP_REGIONS",
       VANITY_URL = "VANITY_URL",
@@ -116,28 +115,28 @@ declare module discord {
       BANNER = "BANNER"
     }
 
-    enum Region {
+    const enum Region {
       US_EAST = "us-east"
       // todo: fill in rest.
     }
 
-    enum NotificationsLevel {
+    const enum NotificationsLevel {
       ALL_MESSAGES = 0,
       ONLY_MENTIONS = 1
     }
 
-    enum ExplicitContentFilterLevel {
+    const enum ExplicitContentFilterLevel {
       DISABLED = 0,
       MEMBERS_WITHOUT_ROLES = 1,
       ALL_MENTIONS = 2
     }
 
-    enum MFALevel {
+    const enum MFALevel {
       NONE = 0,
       ELEVATED = 1
     }
 
-    enum VerificationLevel {
+    const enum VerificationLevel {
       NONE = 0,
       LOW = 1,
       MEDIUM = 2,
@@ -145,7 +144,7 @@ declare module discord {
       VERY_HIGH = 4
     }
 
-    enum PremiumTier {
+    const enum PremiumTier {
       NONE = 0,
       TIER_1 = 1,
       TIER_2 = 2,
@@ -184,9 +183,14 @@ declare module discord {
     edit(updateData: Guild.IGuildOptions): Promise<Guild>;
 
     getChannel(channelId: Snowflake): Promise<Channel.AnyGuildChannel>;
-    createChannel(options: Guild.CreateChannelOptions): Promise<Channel.AnyGuildChannel>;
+    createChannel(
+      options: Guild.CreateChannelOptions
+    ): Promise<Channel.AnyGuildChannel>;
 
-    createBan(userId: Snowflake, options?: discord.Guild.IGuildBanOptions): Promise<void>;
+    createBan(
+      userId: Snowflake,
+      options?: discord.Guild.IGuildBanOptions
+    ): Promise<void>;
 
     getRoles(): Promise<Role[]>;
     getRole(roleId: Snowflake): Promise<Role>;
@@ -195,11 +199,19 @@ declare module discord {
 
     getIconUrl(type?: discord.ImageType): string | null;
     getSplashUrl(
-      type?: discord.ImageType.PNG | discord.ImageType.JPEG | discord.ImageType.WEBP
+      type?:
+        | discord.ImageType.PNG
+        | discord.ImageType.JPEG
+        | discord.ImageType.WEBP
     ): string | null;
     getBannerUrl(
-      type?: discord.ImageType.PNG | discord.ImageType.JPEG | discord.ImageType.WEBP
+      type?:
+        | discord.ImageType.PNG
+        | discord.ImageType.JPEG
+        | discord.ImageType.WEBP
     ): string | null;
+
+    voiceDisconnect(): Promise<void>;
   }
 
   namespace GuildMember {
@@ -362,7 +374,9 @@ declare module discord {
       | Channel.Type.GUILD_STORE
       | Channel.Type.GUILD_VOICE;
 
-    edit(updateData: GuildChannel.IGuildChannelOptions): Promise<Channel.AnyGuildChannel>;
+    edit(
+      updateData: GuildChannel.IGuildChannelOptions
+    ): Promise<Channel.AnyGuildChannel>;
     delete(): Promise<void>;
 
     toMention(): string;
@@ -371,7 +385,8 @@ declare module discord {
   /* GuildTextChannel */
 
   namespace GuildTextChannel {
-    interface IGuildTextChannelOptions extends GuildChannel.IGuildChannelOptions {
+    interface IGuildTextChannelOptions
+      extends GuildChannel.IGuildChannelOptions {
       topic?: string;
       nsfw?: boolean;
       rateLimitPerUser?: number | null;
@@ -384,7 +399,9 @@ declare module discord {
     readonly rateLimitPerUser: number | null;
     readonly type: Channel.Type.GUILD_TEXT;
 
-    edit(updateData: GuildTextChannel.IGuildTextChannelOptions): Promise<GuildTextChannel>;
+    edit(
+      updateData: GuildTextChannel.IGuildTextChannelOptions
+    ): Promise<GuildTextChannel>;
     delete(): Promise<void>;
 
     getMessage(messageId: string): Promise<Message | null>;
@@ -400,7 +417,8 @@ declare module discord {
   /* GuildVoiceChannel */
 
   namespace GuildVoiceChannel {
-    interface IGuildVoiceChannelOptions extends GuildChannel.IGuildChannelOptions {
+    interface IGuildVoiceChannelOptions
+      extends GuildChannel.IGuildChannelOptions {
       bitrate?: number;
       userLimit?: number;
     }
@@ -411,8 +429,12 @@ declare module discord {
     readonly userLimit: number;
     readonly type: Channel.Type.GUILD_VOICE;
 
-    edit(updateData: GuildVoiceChannel.IGuildVoiceChannelOptions): Promise<GuildVoiceChannel>;
+    edit(
+      updateData: GuildVoiceChannel.IGuildVoiceChannelOptions
+    ): Promise<GuildVoiceChannel>;
     delete(): Promise<void>;
+
+    voiceConnect(): Promise<void>;
   }
 
   /* GuildCateogry */
@@ -426,14 +448,17 @@ declare module discord {
   class GuildCategory extends GuildChannel {
     readonly type: Channel.Type.GUILD_CATEGORY;
 
-    edit(updateData: GuildCategory.IGuildCategoryOptions): Promise<GuildCategory>;
+    edit(
+      updateData: GuildCategory.IGuildCategoryOptions
+    ): Promise<GuildCategory>;
     delete(): Promise<void>;
   }
 
   /* GuildNewsChannel */
 
   namespace GuildNewsChannel {
-    interface IGuildNewsChannelOptions extends GuildChannel.IGuildChannelOptions {
+    interface IGuildNewsChannelOptions
+      extends GuildChannel.IGuildChannelOptions {
       topic?: string | null;
       nsfw?: boolean;
     }
@@ -444,7 +469,9 @@ declare module discord {
     readonly nsfw: boolean;
     readonly type: Channel.Type.GUILD_NEWS;
 
-    edit(updateData: GuildNewsChannel.IGuildNewsChannelOptions): Promise<GuildNewsChannel>;
+    edit(
+      updateData: GuildNewsChannel.IGuildNewsChannelOptions
+    ): Promise<GuildNewsChannel>;
     delete(): Promise<void>;
 
     getMessage(messageId: string): Promise<Message | null>;
@@ -460,13 +487,16 @@ declare module discord {
   /* GuildStoreChannel */
 
   namespace GuildStoreChannel {
-    interface IGuildStoreChannelOptions extends GuildChannel.IGuildChannelOptions {}
+    interface IGuildStoreChannelOptions
+      extends GuildChannel.IGuildChannelOptions {}
   }
 
   class GuildStoreChannel extends GuildChannel {
     readonly type: Channel.Type.GUILD_STORE;
 
-    edit(updateData: GuildStoreChannel.IGuildStoreChannelOptions): Promise<GuildStoreChannel>;
+    edit(
+      updateData: GuildStoreChannel.IGuildStoreChannelOptions
+    ): Promise<GuildStoreChannel>;
     delete(): Promise<void>;
   }
 
@@ -609,7 +639,7 @@ declare module discord {
       name: string;
     }
 
-    enum Type {
+    const enum Type {
       GUILD = "GUILD",
       UNICODE = "UNICODE"
     }
@@ -735,7 +765,9 @@ declare module discord {
 
     getGuild(): Promise<Guild | null>;
     getChannel(): Promise<
-      discord.DmChannel | (discord.GuildTextChannel | discord.GuildNewsChannel) | null
+      | discord.DmChannel
+      | (discord.GuildTextChannel | discord.GuildNewsChannel)
+      | null
     >;
 
     reply(
@@ -757,7 +789,7 @@ declare module discord {
 
   class VoiceState {
     guildId: Snowflake;
-    channelId: Snowflake;
+    channelId: Snowflake | null;
     userId: Snowflake;
     member: GuildMember;
     sessionId?: string;
@@ -769,7 +801,7 @@ declare module discord {
   }
 
   namespace Event {
-    type EventListener<T> = (evt: T) => unknown;
+    type EventListener<T> = (evt: T) => Promise<unknown>;
 
     interface IMessageDelete {
       id: Snowflake;
@@ -788,6 +820,7 @@ declare module discord {
       channelId: Snowflake;
       messageId: Snowflake;
       guildId?: Snowflake;
+      member?: GuildMember;
       emoji: Partial<Emoji>;
     }
 
@@ -796,6 +829,7 @@ declare module discord {
       channelId: Snowflake;
       messageId: Snowflake;
       guildId?: Snowflake;
+      member?: GuildMember;
       emoji: Partial<Emoji>;
     }
 
@@ -1010,6 +1044,38 @@ declare module discord {
   ): void;
 
   function getUser(userId: discord.Snowflake): Promise<discord.User | null>;
+  function getBotId(): discord.Snowflake;
+  function getBotUser(): Promise<discord.User>;
   function getGuild(guildId: discord.Snowflake): Promise<discord.Guild | null>;
-  function getChannel(channelId: discord.Snowflake): Promise<discord.Channel.AnyChannel | null>;
+  function getChannel(
+    channelId: discord.Snowflake
+  ): Promise<discord.Channel.AnyChannel | null>;
+
+  // namespace command {
+  //   interface IArgOptions<T> {
+  //     help?: string;
+  //     default?: T;
+  //   }
+
+  //   interface IUserArgOptions extends IArgOptions<discord.User> {}
+
+  //   interface ICommandContext {
+  //     stringArg(name: string, options?: IArgOptions<string>): string;
+  //     intArg(name: string, options?: IArgOptions<number>): number;
+  //     floatArg(name: string, options?: IArgOptions<number>): number;
+  //   }
+
+  //   type ArgumentParser<T> = (ctx: ICommandContext) => Promise<T> | T;
+  //   type CommandHandler<T> = (message: discord.Message, args: T) => Promise<void>;
+
+  //   class CommandParser {
+  //     constructor();
+
+  //     registerCommand<T>(
+  //       commandName: string,
+  //       argumentParser: ArgumentParser<T>,
+  //       commandHandler: CommandHandler<T>
+  //     ): this;
+  //   }
+  // }
 }

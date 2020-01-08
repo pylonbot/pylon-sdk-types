@@ -214,6 +214,14 @@ declare class TextEncoder {
 /* Pylon-specific */
 
 declare module pylon {
+  interface JsonObject {
+    [property: string]: Json;
+  }
+
+  interface JsonArray extends Array<Json> {}
+
+  type Json = string | number | boolean | null | JsonObject | JsonArray;
+
   interface IKVPutOptions {
     ttl?: number;
     ttlEpoch?: Date;
@@ -225,21 +233,24 @@ declare module pylon {
     limit?: number;
   }
 
+
   class KVNamespace {
     namespace: string;
     constructor(namespace: string);
 
-    put(key: string, value: string, options?: IKVPutOptions): Promise<void>;
-    putJson(key: string, value: any, options?: IKVPutOptions): Promise<void>;
+    put(key: string, value: Json, options?: IKVPutOptions): Promise<void>;
     putArrayBuffer(key: string, value: ArrayBuffer, options?: IKVPutOptions): Promise<void>;
 
-    get(key: string): Promise<string | null>;
-    getJson(key: string): Promise<any | null>;
-    getArrayBuffer(key: string): Promise<ArrayBuffer | null>;
+    get(key: string): Promise<Json | undefined>;
+    get<T extends Json>(key: string): Promise<T | undefined>;
+    getArrayBuffer(key: string): Promise<ArrayBuffer | undefined>;
 
     list(options?: IKVListOptions): Promise<string[]>;
 
     delete(key: string): Promise<void>;
+    
+    cas(key: string, compare: Json, set: Json): Promise<boolean>;
+    casMulti(ops: Array<[string, Json, Json]>): Promise<boolean>;
   }
 
   const kv: KVNamespace;
