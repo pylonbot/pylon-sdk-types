@@ -35,8 +35,17 @@
  * })
  *
  */
+
 declare module discord {
   type Snowflake = string;
+
+  class ApiError extends Error {
+    httpStatus: number;
+    httpStatusText: string;
+    code: number;
+    endpoint: string;
+    httpMethod: string;
+  }
 
   interface IMentionable {
     toMention(): string;
@@ -116,8 +125,28 @@ declare module discord {
     }
 
     const enum Region {
-      US_EAST = "us-east"
-      // todo: fill in rest.
+      AMSTERDAM = "amsterdam",
+      BRAZIL = "brazil",
+      DUBAI = "dubai",
+      EU_CENTRAL = "eu-central",
+      EU_WEST = "eu-west",
+      EUROPE = "europe",
+      FRANKFURT = "frankfurt",
+      HONGKONG = "hongkong",
+      INDIA = "india",
+      JAPAN = "japan",
+      LONDON = "london",
+      RUSSIA = "russia",
+      SINGAPORE = "singapore",
+      SOUTHAFRICA = "southafrica",
+      SYDNEY = "sydney",
+      US_CENTRAL = "us-central",
+      US_EAST = "us-east",
+      US_SOUTH = "us-south",
+      US_WEST = "us-west",
+      VIP_AMSTERDAM = "vip-amsterdam",
+      VIP_US_EAST = "vip-us-east",
+      VIP_US_WEST = "vip-us-west"
     }
 
     const enum NotificationsLevel {
@@ -182,33 +211,24 @@ declare module discord {
 
     edit(updateData: Guild.IGuildOptions): Promise<Guild>;
 
-    getChannel(channelId: Snowflake): Promise<Channel.AnyGuildChannel>;
-    createChannel(
-      options: Guild.CreateChannelOptions
-    ): Promise<Channel.AnyGuildChannel>;
+    //getAuditLogs(): Array<AuditLogEntry>;
 
-    createBan(
-      userId: Snowflake,
-      options?: discord.Guild.IGuildBanOptions
-    ): Promise<void>;
+    getChannel(channelId: Snowflake): Promise<Channel.AnyGuildChannel | null>;
+    createChannel(options: Guild.CreateChannelOptions): Promise<Channel.AnyGuildChannel>;
+
+    createBan(userId: Snowflake, options?: discord.Guild.IGuildBanOptions): Promise<void>;
 
     getRoles(): Promise<Role[]>;
-    getRole(roleId: Snowflake): Promise<Role>;
+    getRole(roleId: Snowflake): Promise<Role | null>;
 
-    getMember(userId: Snowflake): Promise<GuildMember>;
+    getMember(userId: Snowflake): Promise<GuildMember | null>;
 
     getIconUrl(type?: discord.ImageType): string | null;
     getSplashUrl(
-      type?:
-        | discord.ImageType.PNG
-        | discord.ImageType.JPEG
-        | discord.ImageType.WEBP
+      type?: discord.ImageType.PNG | discord.ImageType.JPEG | discord.ImageType.WEBP
     ): string | null;
     getBannerUrl(
-      type?:
-        | discord.ImageType.PNG
-        | discord.ImageType.JPEG
-        | discord.ImageType.WEBP
+      type?: discord.ImageType.PNG | discord.ImageType.JPEG | discord.ImageType.WEBP
     ): string | null;
 
     voiceDisconnect(): Promise<void>;
@@ -298,7 +318,6 @@ declare module discord {
 
     const enum PermissionOverwriteType {
       ROLE = "role",
-      // todo: is this right?
       MEMBER = "member"
     }
 
@@ -374,9 +393,7 @@ declare module discord {
       | Channel.Type.GUILD_STORE
       | Channel.Type.GUILD_VOICE;
 
-    edit(
-      updateData: GuildChannel.IGuildChannelOptions
-    ): Promise<Channel.AnyGuildChannel>;
+    edit(updateData: GuildChannel.IGuildChannelOptions): Promise<Channel.AnyGuildChannel>;
     delete(): Promise<void>;
 
     toMention(): string;
@@ -385,8 +402,7 @@ declare module discord {
   /* GuildTextChannel */
 
   namespace GuildTextChannel {
-    interface IGuildTextChannelOptions
-      extends GuildChannel.IGuildChannelOptions {
+    interface IGuildTextChannelOptions extends GuildChannel.IGuildChannelOptions {
       topic?: string;
       nsfw?: boolean;
       rateLimitPerUser?: number | null;
@@ -399,9 +415,7 @@ declare module discord {
     readonly rateLimitPerUser: number | null;
     readonly type: Channel.Type.GUILD_TEXT;
 
-    edit(
-      updateData: GuildTextChannel.IGuildTextChannelOptions
-    ): Promise<GuildTextChannel>;
+    edit(updateData: GuildTextChannel.IGuildTextChannelOptions): Promise<GuildTextChannel>;
     delete(): Promise<void>;
 
     getMessage(messageId: string): Promise<Message | null>;
@@ -417,8 +431,7 @@ declare module discord {
   /* GuildVoiceChannel */
 
   namespace GuildVoiceChannel {
-    interface IGuildVoiceChannelOptions
-      extends GuildChannel.IGuildChannelOptions {
+    interface IGuildVoiceChannelOptions extends GuildChannel.IGuildChannelOptions {
       bitrate?: number;
       userLimit?: number;
     }
@@ -429,15 +442,13 @@ declare module discord {
     readonly userLimit: number;
     readonly type: Channel.Type.GUILD_VOICE;
 
-    edit(
-      updateData: GuildVoiceChannel.IGuildVoiceChannelOptions
-    ): Promise<GuildVoiceChannel>;
+    edit(updateData: GuildVoiceChannel.IGuildVoiceChannelOptions): Promise<GuildVoiceChannel>;
     delete(): Promise<void>;
 
     voiceConnect(): Promise<void>;
   }
 
-  /* GuildCateogry */
+  /* GuildCategory */
 
   namespace GuildCategory {
     interface IGuildCategoryOptions extends GuildChannel.IGuildChannelOptions {
@@ -448,17 +459,14 @@ declare module discord {
   class GuildCategory extends GuildChannel {
     readonly type: Channel.Type.GUILD_CATEGORY;
 
-    edit(
-      updateData: GuildCategory.IGuildCategoryOptions
-    ): Promise<GuildCategory>;
+    edit(updateData: GuildCategory.IGuildCategoryOptions): Promise<GuildCategory>;
     delete(): Promise<void>;
   }
 
   /* GuildNewsChannel */
 
   namespace GuildNewsChannel {
-    interface IGuildNewsChannelOptions
-      extends GuildChannel.IGuildChannelOptions {
+    interface IGuildNewsChannelOptions extends GuildChannel.IGuildChannelOptions {
       topic?: string | null;
       nsfw?: boolean;
     }
@@ -469,9 +477,7 @@ declare module discord {
     readonly nsfw: boolean;
     readonly type: Channel.Type.GUILD_NEWS;
 
-    edit(
-      updateData: GuildNewsChannel.IGuildNewsChannelOptions
-    ): Promise<GuildNewsChannel>;
+    edit(updateData: GuildNewsChannel.IGuildNewsChannelOptions): Promise<GuildNewsChannel>;
     delete(): Promise<void>;
 
     getMessage(messageId: string): Promise<Message | null>;
@@ -487,16 +493,13 @@ declare module discord {
   /* GuildStoreChannel */
 
   namespace GuildStoreChannel {
-    interface IGuildStoreChannelOptions
-      extends GuildChannel.IGuildChannelOptions {}
+    interface IGuildStoreChannelOptions extends GuildChannel.IGuildChannelOptions {}
   }
 
   class GuildStoreChannel extends GuildChannel {
     readonly type: Channel.Type.GUILD_STORE;
 
-    edit(
-      updateData: GuildStoreChannel.IGuildStoreChannelOptions
-    ): Promise<GuildStoreChannel>;
+    edit(updateData: GuildStoreChannel.IGuildStoreChannelOptions): Promise<GuildStoreChannel>;
     delete(): Promise<void>;
   }
 
@@ -732,19 +735,25 @@ declare module discord {
     }
 
     interface IOutgoingMessageOptions {
-      content: string;
+      content?: string;
       tts?: boolean;
       embed?: Embed | Embed.IEmbed;
     }
 
-    type OutgoingMessage = string | IOutgoingMessageOptions;
+    type OutgoingMessageOptions = IOutgoingMessageOptions &
+      (
+        | { content: string; embed?: Embed | Embed.IEmbed }
+        | { content?: string; embed: Embed | Embed.IEmbed }
+      );
+
+    type OutgoingMessage = string | OutgoingMessageOptions | Embed;
   }
 
   class Message {
     readonly id: Snowflake;
     readonly channelId: Snowflake;
     readonly guildId: Snowflake | null;
-    readonly content: string | null;
+    readonly content: string;
     readonly author: User | null;
     readonly member: GuildMember | null;
     readonly timestamp: string;
@@ -763,12 +772,10 @@ declare module discord {
     readonly messageReference: Message.IMessageReference | null;
     readonly flags: Message.Flags | null;
 
-    getGuild(): Promise<Guild | null>;
     getChannel(): Promise<
-      | discord.DmChannel
-      | (discord.GuildTextChannel | discord.GuildNewsChannel)
-      | null
+      discord.DmChannel | (discord.GuildTextChannel | discord.GuildNewsChannel)
     >;
+    getGuild(): Promise<Guild | null>;
 
     reply(
       messageData:
@@ -785,6 +792,23 @@ declare module discord {
     edit(messageData: Message.OutgoingMessage): Promise<Message>;
 
     setPinned(pinned: boolean): Promise<void>;
+  }
+
+  class GuildMemberMessage extends Message {
+    // non-null when we get a message from a user in a guild channel
+    readonly guildId: Snowflake;
+    readonly author: User;
+    readonly member: GuildMember;
+    readonly webhookId: null;
+
+    // no special message type for these
+    readonly type: Message.Type.DEFAULT;
+
+    // this will always be null
+    readonly messageReference: null;
+
+    getGuild(): Promise<discord.Guild>;
+    getChannel(): Promise<discord.GuildTextChannel | discord.GuildNewsChannel>;
   }
 
   class VoiceState {
@@ -937,18 +961,18 @@ declare module discord {
     // PRESENCE_UPDATE = "PRESENCE_UPDATE",
     TYPING_START = "TYPING_START",
     // USER_UPDATE = "USER_UPDATE",
-    // VOICE_STATE_UPDATE = "VOICE_STATE_UPDATE",
-    // VOICE_SERVER_UPDATE = "VOICE_SERVER_UPDATE",
+    VOICE_STATE_UPDATE = "VOICE_STATE_UPDATE",
+    VOICE_SERVER_UPDATE = "VOICE_SERVER_UPDATE",
     WEBHOOKS_UPDATE = "WEBHOOKS_UPDATE"
   }
 
   function registerEventHandler(
     event: "MESSAGE_CREATE",
-    handler: Event.EventListener<Message>
+    handler: Event.EventListener<Message | GuildMemberMessage>
   ): void;
   function registerEventHandler(
     event: "MESSAGE_UPDATE",
-    handler: Event.EventListener<Partial<Message>>
+    handler: Event.EventListener<Partial<Message | GuildMemberMessage>>
   ): void;
   function registerEventHandler(
     event: "MESSAGE_DELETE",
@@ -1043,39 +1067,218 @@ declare module discord {
     handler: Event.EventListener<Event.IWebhooksUpdate>
   ): void;
 
+  // alias for registerEventHandler
+  const on: typeof registerEventHandler;
+
   function getUser(userId: discord.Snowflake): Promise<discord.User | null>;
   function getBotId(): discord.Snowflake;
   function getBotUser(): Promise<discord.User>;
   function getGuild(guildId: discord.Snowflake): Promise<discord.Guild | null>;
-  function getChannel(
-    channelId: discord.Snowflake
-  ): Promise<discord.Channel.AnyChannel | null>;
+  function getChannel(channelId: discord.Snowflake): Promise<discord.Channel.AnyChannel | null>;
 
-  // namespace command {
-  //   interface IArgOptions<T> {
-  //     help?: string;
-  //     default?: T;
-  //   }
+  namespace command {
+    enum ValidationErrorType {
+      REQUIRES_GUILD,
+      MISSING_ROLE,
+      WRONG_CHANNEL
+    }
 
-  //   interface IUserArgOptions extends IArgOptions<discord.User> {}
+    class ValidationError extends Error {
+      public type: ValidationErrorType;
 
-  //   interface ICommandContext {
-  //     stringArg(name: string, options?: IArgOptions<string>): string;
-  //     intArg(name: string, options?: IArgOptions<number>): number;
-  //     floatArg(name: string, options?: IArgOptions<number>): number;
-  //   }
+      constructor(type: ValidationErrorType, message?: string);
+    }
 
-  //   type ArgumentParser<T> = (ctx: ICommandContext) => Promise<T> | T;
-  //   type CommandHandler<T> = (message: discord.Message, args: T) => Promise<void>;
+    class ArgumentError extends Error {
+      public argumentName: string;
 
-  //   class CommandParser {
-  //     constructor();
+      constructor(message: string);
+    }
 
-  //     registerCommand<T>(
-  //       commandName: string,
-  //       argumentParser: ArgumentParser<T>,
-  //       commandHandler: CommandHandler<T>
-  //     ): this;
-  //   }
-  // }
+    class Command {
+      getHelpString(): string;
+      getCommandPrefix(): string;
+    }
+
+    interface IArgOptions<T> {
+      name?: string;
+      description?: string;
+    }
+
+    interface IOptionalArgOptions<T> extends IArgOptions<T> {
+      /**
+       * Optional arguments allow you to specify a default.
+       * Otherwise, a missing optional argument will resolve as null.
+       */
+      default?: T;
+    }
+
+    interface IUserArgOptions extends IArgOptions<discord.User> {}
+
+    interface ICommandArgs {
+      /**
+       * Parses a single space-delimited argument as a string.
+       * @param options argument config
+       */
+      string(options?: IArgOptions<string>): string;
+
+      /**
+       * Optionally parses a single space-delimited argument as a string.
+       * @param options argument config
+       */
+      stringOptional(options?: IOptionalArgOptions<string>): string | null;
+
+      /**
+       * Parses a single space-delimited argument with parseInt()
+       * Non-numeric inputs will cause the command to error. Floating point inputs are truncated.
+       * @param options argument config
+       */
+      integer(options?: IArgOptions<number>): number;
+      /**
+       * Optionally parses a single space-delimited argument with parseInt()
+       * Non-numeric inputs will cause the command to error. Floating point inputs are truncated.
+       * @param options argument config
+       */
+      integerOptional(options?: IOptionalArgOptions<number>): number | null;
+
+      /**
+       * Parses a single space-delimited argument with parseFloat()
+       * Non-numeric inputs will cause the command to error.
+       * @param options argument config
+       */
+      number(options?: IArgOptions<number>): number;
+      /**
+       * Optionally parses a single space-delimited argument with parseFloat()
+       * Non-numeric inputs will cause the command to error.
+       * @param options argument config
+       */
+      numberOptional(options?: IOptionalArgOptions<number>): number | null;
+
+      /**
+       * Parses the rest of the command's input as a string, leaving no more content for any future arguments.
+       * If used, this argument must appear as the last argument in your command handler.
+       * @param options argument config
+       */
+      text(options?: IArgOptions<string>): string;
+      /**
+       * Optionally parses the rest of the command's input as a string, leaving no more content for any future arguments.
+       * If used, this argument must appear as the last argument in your command handler.
+       * @param options argument config
+       */
+      textOptional(options?: IOptionalArgOptions<string>): string | null;
+
+      /**
+       * Parses the rest of the command's input as space-delimited string values.
+       * If used, this argument must appear as the last argument in your command handler.
+       * @param options argument config
+       */
+      stringList(options?: IArgOptions<string[]>): string[];
+      /**
+       * Optionally parses the rest of the command's input as space-delimited string values.
+       * If used, this argument must appear as the last argument in your command handler.
+       * @param options argument config
+       */
+      stringListOptional(options?: IOptionalArgOptions<string[]>): string[] | null;
+
+      /**
+       * Parses a mention string or user id and resolves a [[discord.User]] object reference.
+       * If the user was not found, the command will error.
+       * @param options argument config
+       */
+      user(options?: IArgOptions<discord.User>): Promise<discord.User>;
+
+      /**
+       * Optionally parses a mention string or user id and resolves a [[discord.User]] object reference.
+       * If the argument is present but the user was not found, the command will error.
+       * Like all optional arguments, if the argument is not present the value will be resolved as null.
+       * @param options argument config
+       */
+      userOptional(
+        options?: IOptionalArgOptions<discord.User | null>
+      ): Promise<discord.User | null>;
+
+      /**
+       * Parses a mention string or user id and resolves a [[discord.GuildMember]] object reference.
+       * If the member was not found, the command will error.
+       * The command will error if it was not used in a guild.
+       * @param options argument config
+       */
+      guildMember(options?: IArgOptions<discord.GuildMember>): Promise<discord.GuildMember>;
+      /**
+       * Optionally parses a mention string or user id and resolves a [[discord.GuildMember]] object reference.
+       * If the argument is present but the member was not found, the command will error.
+       * Like all optional arguments, if the argument is not present the value will be resolved as null.
+       * @param options argument config
+       */
+      guildMemberOptional(
+        options?: IOptionalArgOptions<discord.GuildMember | null>
+      ): Promise<discord.GuildMember | null>;
+    }
+
+    interface ICommandOptions {
+      name: string;
+      description?: string;
+      commandPrefix?: string;
+      onError?: (ctx: ICommandContext, e: Error) => void | Promise<void>;
+    }
+
+    interface ICommandContext {
+      /**
+       * The command being run.
+       */
+      command: Command;
+
+      /**
+       * The message sent that triggered this command.
+       */
+      message: discord.GuildMemberMessage;
+
+      /**
+       * The command being run.
+       * @deprecated Use the "command" property instead!
+       */
+      cmd: Command;
+
+      /**
+       * The message sent that triggered this command.
+       * @deprecated Use the "message" property instead!
+       */
+      msg: discord.GuildMemberMessage;
+    }
+
+    type CommandArgumentTypes =
+      | string
+      | string[]
+      | number
+      | Promise<discord.User>
+      | Promise<discord.User | null>
+      | Promise<discord.GuildMember>
+      | Promise<discord.GuildMember | null>
+      | null;
+
+    type CommandArgumentsContainer = { [key: string]: CommandArgumentTypes } | null;
+    type ArgumentsParser<T extends CommandArgumentsContainer> = (args: ICommandArgs) => T;
+    type CommandHandler<T> = (ctx: ICommandContext, args: T) => Promise<void>;
+
+    interface ICommandGroupOptions {
+      defaultPrefix?: string;
+    }
+
+    type ResolvedArgs<T extends CommandArgumentsContainer> = {
+      [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P];
+    };
+
+    class CommandGroup {
+      constructor(options?: ICommandGroupOptions);
+
+      registerCommand<T extends CommandArgumentsContainer>(
+        options: string | ICommandOptions,
+        parser: ArgumentsParser<T>,
+        handler: CommandHandler<ResolvedArgs<T>>
+      ): this;
+      registerCommand(options: string | ICommandOptions, handler: CommandHandler<null>): this;
+
+      getCommandPrefix(): string;
+    }
+  }
 }
