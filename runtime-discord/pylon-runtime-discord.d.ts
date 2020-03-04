@@ -738,6 +738,7 @@ declare module discord {
       content?: string;
       tts?: boolean;
       embed?: Embed | Embed.IEmbed;
+      allowedMentions?: IAllowedMentions;
     }
 
     type OutgoingMessageOptions = IOutgoingMessageOptions &
@@ -745,6 +746,12 @@ declare module discord {
         | { content: string; embed?: Embed | Embed.IEmbed }
         | { content?: string; embed: Embed | Embed.IEmbed }
       );
+
+    interface IAllowedMentions {
+      everyone?: boolean;
+      roles?: true | Array<Snowflake | Role>;
+      users?: true | Array<Snowflake | User | GuildMember>;
+    }
 
     type OutgoingMessage = string | OutgoingMessageOptions | Embed;
   }
