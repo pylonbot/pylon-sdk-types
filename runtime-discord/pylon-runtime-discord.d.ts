@@ -87,6 +87,19 @@ declare module discord {
       systemChannelId?: Snowflake | null;
     }
 
+    interface IGetAuditLogsOptions {
+      limit?: number;
+      before?: Snowflake;
+      actionType?: AuditLogEntry.ActionType;
+      user?: Snowflake | discord.User | discord.GuildMember;
+    }
+
+    type GetAuditLogsOptionsWithActionType<
+      T extends discord.AuditLogEntry.ActionType
+    > = Guild.IGetAuditLogsOptions & {
+      actionType: T;
+    };
+
     type CreateChannelOptions =
       | (GuildCategory.IGuildCategoryOptions & {
           type: Channel.Type.GUILD_CATEGORY;
@@ -209,9 +222,132 @@ declare module discord {
     readonly premiumSubscriptionCount: number;
     readonly preferredLocale: string;
 
-    edit(updateData: Guild.IGuildOptions): Promise<Guild>;
+    /* 
+      start audit-log bonanza 
+    */
 
-    //getAuditLogs(): Array<AuditLogEntry>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.GUILD_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.GuildUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_CREATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.ChannelCreate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.ChannelUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_DELETE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.ChannelDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<
+        AuditLogEntry.ActionType.CHANNEL_OVERWRITE_CREATE
+      >
+    ): AsyncIterableIterator<discord.AuditLogEntry.ChannelPermissionOverwriteCreate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<
+        AuditLogEntry.ActionType.CHANNEL_OVERWRITE_UPDATE
+      >
+    ): AsyncIterableIterator<discord.AuditLogEntry.ChannelPermissionOverwritesUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<
+        AuditLogEntry.ActionType.CHANNEL_OVERWRITE_DELETE
+      >
+    ): AsyncIterableIterator<discord.AuditLogEntry.ChannelPermissionOverwriteDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_KICK>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberKick>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_PRUNE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberPrune>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_BAN_ADD>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberBanAdd>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_BAN_REMOVE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberBanRemove>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_ROLE_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberRoleUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_MOVE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberMove>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_DISCONNECT>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MemberDisconnect>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.BOT_ADD>
+    ): AsyncIterableIterator<discord.AuditLogEntry.BotAdd>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_CREATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.RoleCreate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.RoleUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_DELETE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.RoleDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_CREATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.InviteCreate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.InviteUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_DELETE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.InviteDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_CREATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.WebhookCreate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.WebhookUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_DELETE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.WebhookDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_CREATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.EmojiCreate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.EmojiUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_DELETE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.EmojiDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_DELETE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MessageDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<
+        AuditLogEntry.ActionType.MESSAGE_BULK_DELETE
+      >
+    ): AsyncIterableIterator<discord.AuditLogEntry.MessageBulkDelete>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_PIN>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MessagePin>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_UNPIN>
+    ): AsyncIterableIterator<discord.AuditLogEntry.MessageUnpin>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_CREATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.IntegrationCreate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_UPDATE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.IntegrationUpdate>;
+    getAuditLogs(
+      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_DELETE>
+    ): AsyncIterableIterator<discord.AuditLogEntry.IntegrationDelete>;
+    getAuditLogs(
+      options?: Guild.IGetAuditLogsOptions
+    ): AsyncIterableIterator<discord.AuditLogEntry.AnyAction>;
+
+    /* 
+      end audit-log bonanza 
+    */
+
+    edit(updateData: Guild.IGuildOptions): Promise<Guild>;
 
     getChannel(channelId: Snowflake): Promise<Channel.AnyGuildChannel | null>;
     createChannel(options: Guild.CreateChannelOptions): Promise<Channel.AnyGuildChannel>;
@@ -232,6 +368,496 @@ declare module discord {
     ): string | null;
 
     voiceDisconnect(): Promise<void>;
+  }
+
+  class AuditLogEntry {
+    readonly id: Snowflake;
+    readonly userId: Snowflake;
+    readonly user: discord.User;
+    readonly actionType: AuditLogEntry.ActionType;
+    readonly reason: string;
+    readonly targetId: Snowflake | null;
+  }
+
+  namespace AuditLogEntry {
+    const enum ActionType {
+      GUILD_UPDATE = 1,
+      CHANNEL_CREATE = 10,
+      CHANNEL_UPDATE = 11,
+      CHANNEL_DELETE = 12,
+      CHANNEL_OVERWRITE_CREATE = 13,
+      CHANNEL_OVERWRITE_UPDATE = 14,
+      CHANNEL_OVERWRITE_DELETE = 15,
+      MEMBER_KICK = 20,
+      MEMBER_PRUNE = 21,
+      MEMBER_BAN_ADD = 22,
+      MEMBER_BAN_REMOVE = 23,
+      MEMBER_UPDATE = 24,
+      MEMBER_ROLE_UPDATE = 25,
+      MEMBER_MOVE = 26,
+      MEMBER_DISCONNECT = 27,
+      BOT_ADD = 28,
+      ROLE_CREATE = 30,
+      ROLE_UPDATE = 31,
+      ROLE_DELETE = 32,
+      INVITE_CREATE = 40,
+      INVITE_UPDATE = 41,
+      INVITE_DELETE = 42,
+      WEBHOOK_CREATE = 50,
+      WEBHOOK_UPDATE = 51,
+      WEBHOOK_DELETE = 52,
+      EMOJI_CREATE = 60,
+      EMOJI_UPDATE = 61,
+      EMOJI_DELETE = 62,
+      MESSAGE_DELETE = 72,
+      MESSAGE_BULK_DELETE = 73,
+      MESSAGE_PIN = 74,
+      MESSAGE_UNPIN = 75,
+      INTEGRATION_CREATE = 80,
+      INTEGRATION_UPDATE = 81,
+      INTEGRATION_DELETE = 82
+    }
+
+    type AnyAction =
+      | AuditLogEntry.GuildUpdate
+      | AuditLogEntry.ChannelCreate
+      | AuditLogEntry.ChannelUpdate
+      | AuditLogEntry.ChannelDelete
+      | AuditLogEntry.ChannelPermissionOverwriteCreate
+      | AuditLogEntry.ChannelPermissionOverwritesUpdate
+      | AuditLogEntry.ChannelPermissionOverwriteDelete
+      | AuditLogEntry.MemberKick
+      | AuditLogEntry.MemberPrune
+      | AuditLogEntry.MemberBanAdd
+      | AuditLogEntry.MemberBanRemove
+      | AuditLogEntry.MemberUpdate
+      | AuditLogEntry.MemberRoleUpdate
+      | AuditLogEntry.MemberMove
+      | AuditLogEntry.MemberDisconnect
+      | AuditLogEntry.BotAdd
+      | AuditLogEntry.RoleCreate
+      | AuditLogEntry.RoleUpdate
+      | AuditLogEntry.RoleDelete
+      | AuditLogEntry.InviteCreate
+      | AuditLogEntry.InviteUpdate
+      | AuditLogEntry.InviteDelete
+      | AuditLogEntry.WebhookCreate
+      | AuditLogEntry.WebhookUpdate
+      | AuditLogEntry.WebhookDelete
+      | AuditLogEntry.EmojiCreate
+      | AuditLogEntry.EmojiUpdate
+      | AuditLogEntry.EmojiDelete
+      | AuditLogEntry.MessageDelete
+      | AuditLogEntry.MessageBulkDelete
+      | AuditLogEntry.MessagePin
+      | AuditLogEntry.MessageUnpin
+      | AuditLogEntry.IntegrationCreate
+      | AuditLogEntry.IntegrationUpdate
+      | AuditLogEntry.IntegrationDelete;
+
+    interface IActionChange<T> {
+      oldValue?: T;
+      newValue: T;
+    }
+
+    interface IActionChangeNewValue<T> {
+      newValue: T;
+    }
+
+    interface IActionChangeOldValue<T> {
+      oldValue: T;
+    }
+
+    class GuildUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.GUILD_UPDATE;
+      readonly changes: {
+        readonly name?: IActionChange<string>;
+        readonly iconHash?: IActionChange<string>;
+        readonly splashHash?: IActionChange<string>;
+        readonly ownerId?: IActionChange<Snowflake>;
+        readonly region?: IActionChange<Guild.Region>;
+        readonly afkChannelId?: IActionChange<Snowflake>;
+        readonly afkTimeout?: IActionChange<number>;
+        readonly mfaLevel?: IActionChange<Guild.MFALevel>;
+        readonly verificationLevel?: IActionChange<Guild.VerificationLevel>;
+        readonly explicitContentFilter?: IActionChange<Guild.ExplicitContentFilterLevel>;
+        readonly defaultMessageNotification?: IActionChange<Guild.NotificationsLevel>;
+        readonly vanityUrlCode?: IActionChange<string>;
+        readonly widgetEnabled?: IActionChange<boolean>;
+        readonly widgetChannelId?: IActionChange<Snowflake>;
+        readonly systemChannelId?: IActionChange<Snowflake>;
+      };
+    }
+
+    class ChannelCreate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.CHANNEL_CREATE;
+      readonly changes: {
+        readonly name: IActionChangeNewValue<string>;
+        readonly type: IActionChangeNewValue<Channel.Type>;
+        readonly topic?: IActionChangeNewValue<string>;
+        readonly rateLimitPerUser?: IActionChangeNewValue<number>;
+        readonly nsfw?: IActionChangeNewValue<boolean>;
+        readonly bitrate?: IActionChangeNewValue<number>;
+      };
+    }
+
+    class ChannelUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.CHANNEL_UPDATE;
+      readonly changes: {
+        readonly name?: IActionChange<string>;
+        readonly topic?: IActionChange<string>;
+        readonly rateLimitPerUser?: IActionChange<number>;
+        readonly nsfw?: IActionChange<boolean>;
+        readonly bitrate?: IActionChange<number>;
+      };
+    }
+
+    class ChannelDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.CHANNEL_DELETE;
+      readonly changes: {
+        readonly name: IActionChangeOldValue<string>;
+        readonly type: IActionChangeOldValue<Channel.Type>;
+        readonly topic?: IActionChangeOldValue<string>;
+        readonly rateLimitPerUser?: IActionChangeOldValue<number>;
+        readonly nsfw?: IActionChangeOldValue<boolean>;
+        readonly bitrate?: IActionChangeOldValue<number>;
+      };
+    }
+
+    type ActionChannelPermissionOverwriteUpdateOptions =
+      | {
+          readonly id: Snowflake;
+          readonly type: Channel.PermissionOverwriteType.MEMBER;
+        }
+      | {
+          readonly id: Snowflake;
+          readonly type: Channel.PermissionOverwriteType.ROLE;
+          readonly roleName: string;
+        };
+
+    class ChannelPermissionOverwriteCreate extends AuditLogEntry {
+      readonly actionType: ActionType.CHANNEL_OVERWRITE_CREATE;
+      readonly changes: {
+        readonly id: IActionChangeNewValue<Snowflake>;
+        readonly type: IActionChangeNewValue<Channel.PermissionOverwriteType>;
+        readonly allow: IActionChangeNewValue<number>;
+        readonly deny: IActionChangeNewValue<number>;
+      };
+      readonly options: ActionChannelPermissionOverwriteUpdateOptions;
+    }
+
+    class ChannelPermissionOverwritesUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.CHANNEL_OVERWRITE_UPDATE;
+      readonly changes: {
+        readonly allow?: IActionChange<number>;
+        readonly deny?: IActionChange<number>;
+      };
+      readonly options: ActionChannelPermissionOverwriteUpdateOptions;
+    }
+
+    class ChannelPermissionOverwriteDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.CHANNEL_OVERWRITE_DELETE;
+      readonly changes: {
+        readonly id: IActionChangeOldValue<Snowflake>;
+        readonly type: IActionChangeOldValue<Channel.PermissionOverwriteType>;
+        readonly allow: IActionChangeOldValue<number>;
+        readonly deny: IActionChangeOldValue<number>;
+      };
+      readonly options: ActionChannelPermissionOverwriteUpdateOptions;
+    }
+
+    class MemberKick extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MEMBER_KICK;
+      readonly changes: {};
+    }
+
+    class MemberPrune extends AuditLogEntry {
+      readonly actionType: ActionType.MEMBER_PRUNE;
+      readonly changes: {};
+      readonly options: {
+        readonly deleteMemberDays: string;
+        readonly membersRemoved: string;
+      };
+    }
+
+    class MemberBanAdd extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MEMBER_BAN_ADD;
+      readonly changes: {};
+    }
+
+    class MemberBanRemove extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MEMBER_BAN_REMOVE;
+      readonly changes: {};
+    }
+
+    class MemberUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MEMBER_UPDATE;
+      readonly changes: {
+        readonly deaf?: IActionChange<boolean>;
+        readonly mute?: IActionChange<boolean>;
+        readonly nick?: IActionChange<string>;
+      };
+    }
+
+    class MemberRoleUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MEMBER_ROLE_UPDATE;
+      readonly changes: {
+        readonly $add?: IActionChangeNewValue<{
+          readonly name: string;
+          readonly id: Snowflake;
+        }>;
+        readonly $remove?: IActionChangeNewValue<{
+          readonly name: string;
+          readonly id: Snowflake;
+        }>;
+      };
+    }
+
+    class MemberMove extends AuditLogEntry {
+      readonly targetId: null;
+      readonly actionType: ActionType.MEMBER_MOVE;
+      readonly changes: {};
+      readonly options: {
+        readonly channelId: Snowflake;
+        readonly count: string;
+      };
+    }
+
+    class MemberDisconnect extends AuditLogEntry {
+      readonly targetId: null;
+      readonly actionType: ActionType.MEMBER_DISCONNECT;
+      readonly changes: {};
+      readonly options: {
+        readonly count: string;
+      };
+    }
+
+    class BotAdd extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.BOT_ADD;
+      readonly changes: {};
+    }
+
+    class RoleCreate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.ROLE_CREATE;
+      readonly changes: {
+        readonly name: IActionChangeNewValue<string>;
+        readonly color: IActionChangeNewValue<number>;
+        readonly hoist: IActionChangeNewValue<boolean>;
+        readonly mentionable: IActionChangeNewValue<boolean>;
+        readonly permissions: IActionChangeNewValue<number>;
+      };
+    }
+
+    class RoleUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.ROLE_UPDATE;
+      readonly changes: {
+        readonly name?: IActionChange<string>;
+        readonly color?: IActionChange<number>;
+        readonly hoist?: IActionChange<boolean>;
+        readonly mentionable?: IActionChange<boolean>;
+        readonly permissions?: IActionChange<number>;
+      };
+    }
+
+    class RoleDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.ROLE_DELETE;
+      readonly changes: {
+        readonly name: IActionChangeOldValue<string>;
+        readonly color: IActionChangeOldValue<number>;
+        readonly hoist: IActionChangeOldValue<boolean>;
+        readonly mentionable: IActionChangeOldValue<boolean>;
+        readonly permissions: IActionChangeOldValue<number>;
+      };
+    }
+
+    class InviteCreate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.INVITE_CREATE;
+      readonly changes: {
+        readonly code: IActionChangeNewValue<string>;
+        readonly channelId: IActionChangeNewValue<Snowflake>;
+        readonly inviterId: IActionChangeNewValue<Snowflake>;
+        readonly uses: IActionChangeNewValue<number>;
+        readonly maxUses: IActionChangeNewValue<number>;
+        readonly maxAge: IActionChangeNewValue<number>;
+        readonly temporary: IActionChangeNewValue<boolean>;
+      };
+    }
+
+    class InviteUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.INVITE_UPDATE;
+      readonly changes: {
+        readonly code?: IActionChange<string>;
+        readonly channelId?: IActionChange<Snowflake>;
+        readonly inviterId?: IActionChange<Snowflake>;
+        readonly uses?: IActionChange<number>;
+        readonly maxUses?: IActionChange<number>;
+        readonly maxAge?: IActionChange<number>;
+        readonly temporary?: IActionChange<boolean>;
+      };
+    }
+
+    class InviteDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.INVITE_DELETE;
+      readonly changes: {
+        readonly code: IActionChangeOldValue<string>;
+        readonly channelId: IActionChangeOldValue<Snowflake>;
+        readonly inviterId: IActionChangeOldValue<Snowflake>;
+        readonly uses: IActionChangeOldValue<number>;
+        readonly maxUses: IActionChangeOldValue<number>;
+        readonly maxAge: IActionChangeOldValue<number>;
+        readonly temporary: IActionChangeOldValue<boolean>;
+      };
+    }
+
+    class WebhookCreate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.WEBHOOK_CREATE;
+      readonly changes: {
+        readonly channelId: IActionChangeNewValue<Snowflake>;
+        readonly name: IActionChangeNewValue<string>;
+        readonly type: IActionChangeNewValue<number>;
+        readonly avatarHash?: IActionChangeNewValue<string>;
+      };
+    }
+
+    class WebhookUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.WEBHOOK_UPDATE;
+      readonly changes: {
+        readonly channelId?: IActionChange<Snowflake>;
+        readonly name?: IActionChange<string>;
+        readonly type?: IActionChange<number>;
+        readonly avatarHash?: IActionChange<string>;
+      };
+    }
+
+    class WebhookDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.WEBHOOK_DELETE;
+      readonly changes: {
+        readonly channelId: IActionChangeOldValue<Snowflake>;
+        readonly name: IActionChangeOldValue<string>;
+        readonly type: IActionChangeOldValue<number>;
+        readonly avatarHash?: IActionChangeOldValue<string>;
+      };
+    }
+
+    class EmojiCreate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.EMOJI_CREATE;
+      readonly changes: {
+        readonly name: IActionChangeNewValue<string>;
+      };
+    }
+
+    class EmojiUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.EMOJI_UPDATE;
+      readonly changes: {
+        readonly name?: IActionChange<string>;
+      };
+    }
+
+    class EmojiDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.EMOJI_DELETE;
+      readonly changes: {
+        readonly name?: IActionChangeOldValue<string>;
+      };
+    }
+
+    class MessageDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MESSAGE_DELETE;
+      readonly changes: {};
+      readonly options: {
+        readonly channelId: string;
+        readonly count: string;
+      };
+    }
+
+    class MessageBulkDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MESSAGE_BULK_DELETE;
+      readonly changes: {};
+      readonly options: {
+        readonly count: string;
+      };
+    }
+
+    class MessagePin extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MESSAGE_PIN;
+      readonly changes: {};
+      readonly options: {
+        readonly channelId: Snowflake;
+        readonly messageId: Snowflake;
+      };
+    }
+
+    class MessageUnpin extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.MESSAGE_UNPIN;
+      readonly changes: {};
+      readonly options: {
+        readonly channelId: Snowflake;
+        readonly messageId: Snowflake;
+      };
+    }
+
+    class IntegrationCreate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.INTEGRATION_CREATE;
+      readonly changes: {
+        readonly name: IActionChangeNewValue<string>;
+        readonly type: IActionChangeNewValue<"twitch" | "youtube">;
+        readonly expireBehavior: IActionChangeNewValue<number>;
+        readonly expireGracePeriod: IActionChangeNewValue<number>;
+        readonly enableEmoticons?: IActionChangeNewValue<boolean>;
+      };
+    }
+
+    class IntegrationUpdate extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.INTEGRATION_UPDATE;
+      readonly changes: {
+        readonly name?: IActionChange<string>;
+        readonly type?: IActionChange<"twitch" | "youtube">;
+        readonly expireBehavior?: IActionChange<number>;
+        readonly expireGracePeriod?: IActionChange<number>;
+        readonly enableEmoticons?: IActionChange<boolean>;
+      };
+    }
+
+    class IntegrationDelete extends AuditLogEntry {
+      readonly targetId: Snowflake;
+      readonly actionType: ActionType.INTEGRATION_DELETE;
+      readonly changes: {
+        readonly name: IActionChangeOldValue<string>;
+        readonly type: IActionChangeOldValue<"twitch" | "youtube">;
+        readonly expireBehavior: IActionChangeOldValue<number>;
+        readonly expireGracePeriod: IActionChangeOldValue<number>;
+        readonly enableEmoticons?: IActionChangeOldValue<boolean>;
+      };
+    }
   }
 
   namespace GuildMember {
