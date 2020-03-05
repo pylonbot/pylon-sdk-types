@@ -95,7 +95,7 @@ declare module discord {
     }
 
     type GetAuditLogsOptionsWithActionType<
-      T extends discord.AuditLogEntry.ActionType
+      T extends discord.AuditLogEntry.ActionType | undefined
     > = Guild.IGetAuditLogsOptions & {
       actionType: T;
     };
@@ -227,117 +227,115 @@ declare module discord {
     */
 
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.GUILD_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.GUILD_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.GuildUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_CREATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_CREATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.ChannelCreate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.ChannelUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_DELETE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.CHANNEL_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.ChannelDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<
+      options: Guild.GetAuditLogsOptionsWithActionType<
         AuditLogEntry.ActionType.CHANNEL_OVERWRITE_CREATE
       >
     ): AsyncIterableIterator<discord.AuditLogEntry.ChannelPermissionOverwriteCreate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<
+      options: Guild.GetAuditLogsOptionsWithActionType<
         AuditLogEntry.ActionType.CHANNEL_OVERWRITE_UPDATE
       >
     ): AsyncIterableIterator<discord.AuditLogEntry.ChannelPermissionOverwritesUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<
+      options: Guild.GetAuditLogsOptionsWithActionType<
         AuditLogEntry.ActionType.CHANNEL_OVERWRITE_DELETE
       >
     ): AsyncIterableIterator<discord.AuditLogEntry.ChannelPermissionOverwriteDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_KICK>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_KICK>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberKick>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_PRUNE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_PRUNE>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberPrune>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_BAN_ADD>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_BAN_ADD>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberBanAdd>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_BAN_REMOVE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_BAN_REMOVE>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberBanRemove>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_ROLE_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_ROLE_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberRoleUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_MOVE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_MOVE>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberMove>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_DISCONNECT>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MEMBER_DISCONNECT>
     ): AsyncIterableIterator<discord.AuditLogEntry.MemberDisconnect>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.BOT_ADD>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.BOT_ADD>
     ): AsyncIterableIterator<discord.AuditLogEntry.BotAdd>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_CREATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_CREATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.RoleCreate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.RoleUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_DELETE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.ROLE_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.RoleDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_CREATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_CREATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.InviteCreate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.InviteUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_DELETE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INVITE_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.InviteDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_CREATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_CREATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.WebhookCreate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.WebhookUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_DELETE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.WEBHOOK_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.WebhookDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_CREATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_CREATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.EmojiCreate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.EmojiUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_DELETE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.EMOJI_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.EmojiDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_DELETE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.MessageDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<
-        AuditLogEntry.ActionType.MESSAGE_BULK_DELETE
-      >
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_BULK_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.MessageBulkDelete>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_PIN>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_PIN>
     ): AsyncIterableIterator<discord.AuditLogEntry.MessagePin>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_UNPIN>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.MESSAGE_UNPIN>
     ): AsyncIterableIterator<discord.AuditLogEntry.MessageUnpin>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_CREATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_CREATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.IntegrationCreate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_UPDATE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_UPDATE>
     ): AsyncIterableIterator<discord.AuditLogEntry.IntegrationUpdate>;
     getAuditLogs(
-      options?: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_DELETE>
+      options: Guild.GetAuditLogsOptionsWithActionType<AuditLogEntry.ActionType.INTEGRATION_DELETE>
     ): AsyncIterableIterator<discord.AuditLogEntry.IntegrationDelete>;
     getAuditLogs(
       options?: Guild.IGetAuditLogsOptions
