@@ -927,16 +927,40 @@ declare module discord {
     voiceDisconnect(): Promise<void>;
   }
 
+  /**
+   * A class that wraps information on a guild's individual audit log entry.
+   */
   class AuditLogEntry {
+    /**
+     * The unique identifier for this audit log entry. Encodes the timestamp this event occured at.
+     */
     readonly id: Snowflake;
+    /**
+     * The id of the [[discord.User]] that performed this action.
+     */
     readonly userId: Snowflake;
+    /**
+     * An instance of the [[discord.User]] that performed this action.
+     */
     readonly user: discord.User;
+    /**
+     * The type of action the user performed.
+     */
     readonly actionType: AuditLogEntry.ActionType;
+    /**
+     * An optional reason the user or bot provided when performing this action.
+     */
     readonly reason: string;
+    /**
+     * If applicable, the id of the user, channel, or other Discord entity that this action applied to.
+     */
     readonly targetId: Snowflake | null;
   }
 
   namespace AuditLogEntry {
+    /**
+     * An enumeration of all possible audit log entry types.
+     */
     const enum ActionType {
       GUILD_UPDATE = 1,
       CHANNEL_CREATE = 10,
@@ -975,6 +999,9 @@ declare module discord {
       INTEGRATION_DELETE = 82,
     }
 
+    /**
+     * A type alias representing a union of all possible audit log entry types.
+     */
     type AnyAction =
       | AuditLogEntry.GuildUpdate
       | AuditLogEntry.ChannelCreate
@@ -1012,16 +1039,43 @@ declare module discord {
       | AuditLogEntry.IntegrationUpdate
       | AuditLogEntry.IntegrationDelete;
 
+    /**
+     * Actions that have a new value and a potentially old value.
+     *
+     * These change types are typically included in actions that update objects.
+     */
     interface IActionChange<T> {
+      /**
+       * The state of the value before the audit log action occurred. May be undefined.
+       */
       oldValue?: T;
+      /**
+       * The state of the value after the audit log action occurred.
+       */
       newValue: T;
     }
 
+    /**
+     * Actions that have a new value.
+     *
+     * These change types are typically included in actions that create entities.
+     */
     interface IActionChangeNewValue<T> {
+      /**
+       * The state of the value after the audit log action occurred.
+       */
       newValue: T;
     }
 
+    /**
+     * Actions that have an old value.
+     *
+     * These change types are typically included in actions that remove or delete entities.
+     */
     interface IActionChangeOldValue<T> {
+      /**
+       * The state of the value before the audit log action occurred.
+       */
       oldValue: T;
     }
 
@@ -3384,50 +3438,170 @@ declare module discord {
     getChannel(): Promise<discord.GuildTextChannel | discord.GuildNewsChannel>;
   }
 
+  /**
+   * An object representing an invite on Discord.
+   *
+   * Invites typically appear as links (ex: discord.gg/hC6Bbtj) where the code is a unique and random string of alpha-numeric characters.
+   *
+   * Since Group DMs may create invites, some properties on the invite object are nullable.
+   */
   class Invite {
+    /**
+     * The unique identifier for this invite. May be used by user accounts to join a guild or group dm.
+     */
     code: Snowflake;
+    /**
+     * Partial guild data for this invite, if relevant.
+     */
     guild: Invite.GuildData | null;
+    /**
+     * Partial channel data for this invite.
+     *
+     * Users who use this invite will be redirected to the channel id.
+     */
     channel: Invite.ChannelData;
+    /**
+     * The user object who created this invite, if relevant.
+     */
     inviter: discord.User | null;
+    /**
+     * If the invite is for a guild, this includes an approximate count of members online in the guild.
+     *
+     * Requires that the invite was retrieved with [[discord.Invite.IGetGuildOptions.withCounts]] set to `true`.
+     */
     approximatePresenceCount: number | null;
+    /**
+     * If the invite is for a guild channel, this number is the approximate total member count for the guild.
+     *
+     * Requires that the invite was retrieved with [[discord.Invite.IGetGuildOptions.withCounts]] set to `true`.
+     */
     approximateMemberCount: number | null;
   }
 
   namespace Invite {
+    /**
+     * Possible options for [[discord.getInvite]].
+     */
     interface IGetInviteOptions {
+      /**
+       * If `true`, the invite will be returned with additional information on the number of members total and online.
+       */
       withCounts?: boolean;
     }
 
+    /**
+     * Partial guild data present on some invite data.
+     */
     type GuildData = {
+      /**
+       * The id of the [[discord.Guild]].
+       */
       id: Snowflake;
+      /**
+       * The name of the guild.
+       */
       name: string;
+      /**
+       * The splash image hash of the guild, if set.
+       */
       splash: string | null;
+      /**
+       * The icon of the guild, if set. See [[discord.Guild.icon]] for more info.
+       */
       icon: string | null;
+      /**
+       * A list of features available for this guild. See [[discord.Guild.features]] for more info.
+       */
       features: Array<discord.Guild.Feature>;
+      /**
+       * The level of user account verification required to send messages in this guild without a role.
+       */
       verificationLevel: discord.Guild.MFALevel;
+      /**
+       * The vanity url invite code for this guild, if set.
+       */
       vanityUrlCode: string | null;
     };
 
+    /**
+     * Partial channel data present on channel data.
+     */
     type ChannelData = {
+      /**
+       * The id of the [[discord.Channel]] this data represents.
+       */
       id: Snowflake;
+      /**
+       * The name of the channel.
+       */
       name: string;
+      /**
+       * The type of channel the invite resolves to.
+       */
       type: Channel.Type;
     };
   }
 
+  /**
+   * A class representing a user's voice state.
+   */
   class VoiceState {
+    /**
+     * The guild id this voice state is targetting.
+     */
     guildId: Snowflake;
+    /**
+     * The id of the [[discord.GuildVoiceChannel]]. If `null`, it indicates the user has disconnected from voice.
+     */
     channelId: Snowflake | null;
+    /**
+     * The id of the [[discord.User]] this voice state applies to.
+     */
     userId: Snowflake;
+    /**
+     * A reference to the [[discord.GuildMember]] this voice state applies to.
+     */
     member: GuildMember;
+    /**
+     * The session id associated with this user's voice connection.
+     */
     sessionId?: string;
+    /**
+     * `true` if the user has been server-deafened.
+     *
+     * They will not be sent any voice data from other users if deafened.
+     */
     deaf: boolean;
+    /**
+     * `true` if the user has been server-muted.
+     *
+     * They will not transmit voice data if muted.
+     */
     mute: boolean;
+    /**
+     * `true if the user has opted to deafen themselves via the client.
+     *
+     * They will not receive or be sent any voice data from other users if deafened.
+     */
     selfDeaf: boolean;
+    /**
+     * `true` if the user has opted to mute their microphone via the client.
+     *
+     * They will not transmit voice audio if they are self-muted.
+     */
     selfMute: boolean;
+    /**
+     * `true` if the user is currently streaming to the channel using Go Live.
+     */
     selfStream: boolean;
 
+    /**
+     * Fetches data for the guild associated with this voice state.
+     */
     getGuild(): Promise<discord.Guild>;
+    /**
+     * If `channelId` is not null, will fetch the channel data associated with this voice state.
+     */
     getChannel(): Promise<discord.GuildVoiceChannel | null>;
   }
 
@@ -4762,6 +4936,9 @@ declare module discord {
       // getCommandPrefix(): string;
     }
 
+    /**
+     * A type union of the string representations available as an argument type.
+     */
     type ArgumentType =
       | "string"
       | "stringOptional"
@@ -4778,20 +4955,38 @@ declare module discord {
       | "guildMember"
       | "guildMemberOptional";
 
+    /**
+     * A type union containing possible resolved argument types.
+     */
     type ArgumentTypeTypes = string | number | string[] | discord.User | discord.GuildMember;
 
+    /**
+     * A type union containing possible options passed to an argument.
+     */
     type ArgumentOptions<T> =
       | discord.command.IArgumentOptions
       | discord.command.IOptionalArgumentOptions<T>
       | undefined;
 
     interface IArgumentConfig<T> {
+      /**
+       * The type definition of the JS value this argument will represent.
+       */
       type: ArgumentType;
+      /**
+       * Options for this argument.
+       */
       options: ArgumentOptions<T>;
     }
 
     interface IArgumentOptions {
+      /**
+       * A human-readable custom name for this argument.
+       */
       name?: string;
+      /**
+       * A human-readable description for this argument.
+       */
       description?: string;
     }
 
@@ -4904,10 +5099,27 @@ declare module discord {
       guildMemberOptional(options?: IArgumentOptions): Promise<discord.GuildMember | null>;
     }
 
+    /**
+     * Options specified when registering commands.
+     */
     interface ICommandOptions {
+      /**
+       * The name of the command. Users will use this name to execute the command.
+       */
       name: string;
+      /**
+       * A human-readable description for this command.
+       */
       description?: string;
+      /**
+       * A composition of filters that determine if the command can be executed.
+       *
+       * For a complete list of filters and their descriptions, see [[discord.command.filters]].
+       */
       filters?: Array<filters.ICommandFilter> | filters.ICommandFilter;
+      /**
+       * Fired when an error occurs during the execution or validation of this command.
+       */
       onError?: (ctx: ICommandContextDeprecated, e: Error) => void | Promise<void>;
     }
 
@@ -4947,6 +5159,9 @@ declare module discord {
       msg: discord.GuildMemberMessage;
     }
 
+    /**
+     * A type alias containing a union of possible command argument types.
+     */
     type CommandArgumentTypes =
       | string
       | string[]
@@ -4957,62 +5172,184 @@ declare module discord {
       | Promise<discord.GuildMember | null>
       | null;
 
+    /**
+     * A type alias describing the way to define arguments for a command. To be returned by [[discord.command.ArgumentsParser]].
+     */
     type CommandArgumentsContainer = { [key: string]: CommandArgumentTypes } | null;
+
+    /**
+     * A type alias for a function called by the command handler to construct the argument requirements for a command.
+     *
+     * @param T A user-defined type (object) matching argument names (property names) to value types.
+     * @param args A class containing possible command arguments, use return value from functions in this class as values for properties of T.
+     */
     type ArgumentsParser<T extends CommandArgumentsContainer> = (args: ICommandArgs) => T;
     type CommandHandlerDeprecated<T> = (
       ctx: ICommandContextDeprecated,
       args: T
     ) => Promise<unknown>;
+
+    /**
+     * A function called when a command is executed.
+     *
+     * @param message A reference to the [[discord.GuildMemberMessage]] that triggered this command.
+     * @param args An object containing entries for the command arguments parsed for this command.
+     * @param ctx An object containing additional command context information.
+     */
     type CommandHandler<T> = (
       message: discord.GuildMemberMessage,
       args: T,
       ctx: ICommandContext
     ) => Promise<unknown>;
 
+    /**
+     * Options used when creating a new [[discord.command.CommandGroup]].
+     */
     interface ICommandGroupOptions {
+      /**
+       * A human-readable label for this command group.
+       */
       label?: string;
+      /**
+       * A human-readable description for this command group.
+       */
       description?: string;
+      /**
+       * The default prefix used to execute commands within this command group.
+       *
+       * If not specified, the default prefix is `!`.
+       */
       defaultPrefix?: string;
+      /**
+       * An array of additional prefixes that may be used to trigger commands within this group.
+       */
       additionalPrefixes?: string[];
+      /**
+       * If `true`, users will be able to run this command via a mention/ping, followed by a space, and the command name/arguments.
+       */
       mentionPrefix?: boolean;
+      /**
+       * If `false`, the command group will not auto-register MESSAGE_CREATE events upon creation.
+       */
       register?: false;
+      /**
+       * A composition of filters that determine if the command can be executed.
+       *
+       * For a complete list of filters and their descriptions, see [[discord.command.filters]].
+       */
       filters?: Array<filters.ICommandFilter> | filters.ICommandFilter;
     }
 
+    /**
+     * An object containing parsed arguments for a command.
+     */
     type ResolvedArgs<T extends CommandArgumentsContainer> = {
       [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P];
     };
 
+    /**
+     * Command groups contain categories of logically separated groups of commands.
+     *
+     * Command Groups may specify filters that apply to all commands added to the group.
+     *
+     * Commands must be added to command groups via one of the registration methods available.
+     */
     class CommandGroup {
+      /**
+       * Constructs a new command group. By default, this constructor will register message events and listen for messages that match commands added to the command group.
+       *
+       * @param options The options for this command group.
+       */
       constructor(options?: ICommandGroupOptions);
 
+      /**
+       * Sets the filter(s) to be used for this command group. All child commands will use these filters.
+       *
+       * Note: Replaces any filters set previously.
+       *
+       * @param filter The filter composition to use for this command group.
+       */
       setFilter(filter?: filters.ICommandFilter | null): this;
+
+      /**
+       * Registers a command that expects arguments.
+       *
+       * If argument parsing/validation fails, an error will be returned to the user and the handler will not run.
+       *
+       * @param options A string containing the name of the command, or an object with more options (including filters, description, etc).
+       * @param parser A function that collects the argument types this command expects.
+       * @param handler A function to be ran when command validation succeeds and the command should be executed.
+       */
       on<T extends CommandArgumentsContainer>(
         options: string | ICommandOptions,
         parser: ArgumentsParser<T>,
         handler: CommandHandler<ResolvedArgs<T>>
       ): this;
 
+      /**
+       * Registers a command that accepts any or no arguments.
+       *
+       * All text proceeding the command name is passed to the handler in the "args" parameter as a string.
+       *
+       * @param options A string containing the name of the command, or an object with more options (including filters, description, etc).
+       * @param handler A function to be ran when command validation succeeds and the command should be executed.
+       */
       raw(options: string | ICommandOptions, handler: CommandHandler<string>): this;
 
+      /**
+       * Registers a command that may be followed by additional nested command groups.
+       *
+       * This is useful to further organize and group commands within a single parent command group.
+       *
+       * Sub-command groups are just like Command Groups, and will require filters of all parent sub-commands to be passed before executing any sub-commands.
+       *
+       * @param options A string containing the name of the command, or an object with more options.
+       * @param commandGroup A CommandGroup instance (must not be previously registered) or a function which passes a nested CommandGroup as the first parameter.
+       */
       subcommand(
         options: string | Exclude<ICommandOptions, "filters">,
         commandGroup: CommandGroup | ((subCommandGroup: CommandGroup) => void)
       ): this;
 
+      /**
+       * Registers a command that will run for any un-matched commands that match the command group's prefix(es) and the arguments specified.
+       *
+       * @param parser A function that collects the argument types this command expects.
+       * @param handler A function to be ran when command validation succeeds and the command should be executed.
+       * @param options Options for this default handler.
+       */
       default<T extends CommandArgumentsContainer>(
         parser: ArgumentsParser<T>,
         handler: CommandHandler<ResolvedArgs<T>>,
         options?: Omit<ICommandOptions, "name">
       ): this;
 
+      /**
+       * Registers a command that will run for any un-matched commands that match the command group's prefix(es).
+       *
+       * All text proceeding the command name is passed to the handler in the "args" parameter as a string.
+       *
+       * @param handler A function to be ran when command validation succeeds and the command should be executed.
+       * @param options Options for this default handler.
+       */
       defaultRaw(handler: CommandHandler<string>, options?: Omit<ICommandOptions, "name">): this;
 
+      /**
+       * Registers a command that expects arguments.
+       *
+       * @deprecated Replaced by [[discord.command.on]].
+       */
       registerCommand<T extends CommandArgumentsContainer>(
         options: string | ICommandOptions,
         parser: ArgumentsParser<T>,
         handler: CommandHandlerDeprecated<ResolvedArgs<T>>
       ): this;
+
+      /**
+       * Registers a command that expects no arguments.
+       *
+       * @deprecated Replaced by [[discord.command.raw]].
+       */
       registerCommand(
         options: string | ICommandOptions,
         handler: CommandHandlerDeprecated<null>
