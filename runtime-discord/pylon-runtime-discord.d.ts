@@ -1503,7 +1503,7 @@ declare module discord {
     /**
      * Updates the guild member.
      *
-     * All values on `options` are optional, but you must send at least one modification.
+     * All properties of the `options` parameter are optional, but you must send at least one modification.
      *
      * If an error occurs, a [[discord.ApiError]] is thrown.
      *
@@ -1561,35 +1561,126 @@ declare module discord {
   }
 
   namespace Role {
+    /**
+     * Options to use when calling [[discord.Role.edit]], all properties are optional.
+     */
     interface IRoleOptions {
+      /**
+       * The name of the role.
+       */
       name?: string;
+      /**
+       * The permission bits users extend when this role is assigned.
+       */
       permissions?: number;
+      /**
+       * The color of this role. An integer representation of a hexadecimal color code.
+       *
+       * The default color for roles (no color) is `0`.
+       *
+       * Note: You can set this to a hex color code using an integer represented in hex format.
+       *
+       * Example: `0xFF0000` (or `16711680`) is red.
+       */
       color?: number;
+      /**
+       * `true` if this role should be hoisted in the member list (displayed separately).
+       */
       hoist?: boolean;
+      /**
+       * `true` if users should be able to mention and ping this role.
+       */
       mentionable?: boolean;
     }
   }
 
+  /**
+   * A role belongs to a [[discord.Guild]] and can be assigned to groups of [[discord.GuildMember]]s to change the color of their name and apply permission changes.
+   *
+   * Multiple roles can be assigned to a single user.
+   *
+   * Roles can be hoisted in the member list (displayed separately), and ordered.
+   */
   class Role implements IMentionable {
+    /**
+     * The role's unique Discord id. This field never changes.
+     */
     readonly id: Snowflake;
+    /**
+     * The display name for the role.
+     */
     readonly name: string;
+    /**
+     * The color for this role. It is a hexadecimal color code represented in integer format.
+     *
+     * The default color for roles (no color) is `0`.
+     */
     readonly color: number;
+    /**
+     * `true` if this role is hoisted in the member list (displayed separately).
+     *
+     * Members are grouped into their highest positioned role in the member list if a role is hoisted.
+     */
     readonly hoist: boolean;
+    /**
+     * The position of this role.
+     *
+     * Hoisted roles are displayed in this order.
+     *
+     * Role permissions are applied to members in the order of the permission set on roles.
+     */
     readonly position: number;
+    /**
+     * The permission bit set assigned to this role. Members receive permissions in the order roles are positioned.
+     */
     readonly permissions: number;
+    /**
+     * `true` if this role was created by an integration or bot application.
+     *
+     * Managed roles have restrictions around what can be edited, depending on the application.
+     */
     readonly managed: boolean;
+    /**
+     * `true` if this role can be mentioned in messages by members of the guild.
+     *
+     * When a role is mentioned, they receive a ping/notification if they have notifications enabled for mentions on the guild.
+     */
     readonly mentionable: boolean;
+    /**
+     * The id of the [[discord.Guild]] this role belongs to.
+     */
     readonly guildId: Snowflake;
 
+    /**
+     * Updates the guild role.
+     *
+     * All properties of the `options` parameter are optional, but you must send at least one modification.
+     *
+     * If an error occurs, a [[discord.ApiError]] is thrown.
+     *
+     * @param options Properties to modify on this role.
+     */
     edit(options: Role.IRoleOptions): Promise<Role>;
+
+    /**
+     * Deletes the role and removes it from all the members who had it assigned.
+     *
+     * If an error occurs, a [[discord.ApiError]] is thrown.
+     */
     delete(): Promise<void>;
 
+    /**
+     * Returns a mention string in the format of `<@!id>` where id is the id of this user.
+     *
+     * Can be used in a message to mention/ping the role.
+     */
     toMention(): string;
   }
 
-  /* Channel (Base Channel) */
-
   namespace Channel {
+    /**
+     * Represents any channel type on Discord that exists within a [[discord.Guild]].
+     */
     type AnyGuildChannel =
       | GuildTextChannel
       | GuildVoiceChannel
@@ -1597,85 +1688,267 @@ declare module discord {
       | GuildNewsChannel
       | GuildStoreChannel;
 
+    /**
+     * Represents any channel type on Discord.
+     */
     type AnyChannel = DmChannel | AnyGuildChannel;
 
+    /**
+     * Describes what permissions are allowed and denied per role or user.
+     */
     interface IPermissionOverwrite {
+      /**
+       * The unique identifier of this permission overwrite.
+       *
+       * If the type is "member", it is a user id from [[discord.User.id]].
+       * If the type is "role", it is a role id from [[discord.Role.id]].
+       */
       id: Snowflake;
+      /**
+       * Either "role" or "member" depending on the entity this permission overwrite applies to.
+       *
+       * "member" overwrites take precedent over role overwrites.
+       */
       type: Channel.PermissionOverwriteType;
+      /**
+       * The permission bit set allowed.
+       */
       allow: number;
+      /**
+       * The permission bit set denied.
+       */
       deny: number;
     }
 
+    /**
+     * Used in [[discord.Channel.IPermissionOverwrite]] to describe what entity the overwrite applies to.
+     */
     const enum PermissionOverwriteType {
       ROLE = "role",
       MEMBER = "member",
     }
 
+    /**
+     * An enumeration of channel types.
+     *
+     * This is used on the [[discord.Channel.type]] property.
+     */
     const enum Type {
+      /**
+       * A text chat channel within a [[discord.Guild]].
+       *
+       * Note: See [[discord.GuildTextChannel]].
+       */
       GUILD_TEXT = 0,
+      /**
+       * A private 1-1 channel between the bot user and another [[discord.User]].
+       *
+       * Note: See [[discord.DMChannel]].
+       */
       DM = 1,
+      /**
+       * A voice channel within a [[discord.Guild]].
+       *
+       * Note: See [[discord.GuildVoiceChannel]].
+       */
       GUILD_VOICE = 2,
+      /**
+       * A text channel containing up to 10 unrelated [[discord.Users]].
+       *
+       * Note: Bots may not interact/view these channel types. This entry exists for reference purposes.
+       */
       GROUP_DM = 3,
+      /**
+       * A category within a guild. Can be used to separate groups of channels under a single parent.
+       *
+       * Guild Channels within categories will have a channel id specified on [[discord.GuildChannel.parentId]].
+       *
+       * Note: See [[discord.GuildCategory]].
+       */
       GUILD_CATEGORY = 4,
+      /**
+       * A special text channel that enables the use of the announcements system on Discord.
+       *
+       * Note: See [[discord.GuildNewsChannel]].
+       */
       GUILD_NEWS = 5,
+      /**
+       * A special guild channel that enables commerce features. Typically used by studios utilizing Discord to distribute their game.
+       *
+       * Note: See [[discord.GuildStoreChannel]].
+       */
       GUILD_STORE = 6,
     }
   }
 
+  /**
+   * Base channel class.
+   *
+   * All channels have an `id` and `type`.
+   *
+   * Note: Pylon should never provide an instance of [[discord.Channel]] directly. You will always be given a more specific child class.
+   *
+   * A channel can be type-refined by checking it's [[discord.Channel.type]] type against [[discord.Channel.Type]].
+   */
   class Channel {
+    /**
+     * Discord's unique identifier for this channel. This value never changes.
+     */
     readonly id: Snowflake;
+    /**
+     * The type of channel this is. See [[discord.Channel.AnyChannel]] for a complete list of channel types.
+     */
     readonly type: Channel.Type;
 
+    /**
+     * Attempts to delete the channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception is thrown.
+     */
     delete(): Promise<void>;
   }
 
-  /* TextChannel (Channel that has text messaging) */
-
-  class TextChannel extends Channel {
+  /**
+   * A text channel represents any channel on Discord that store messages.
+   *
+   * The base methods available on this class are also available for all child classes.
+   */
+  interface ITextChannel {
     readonly type: Channel.Type;
 
+    /**
+     * Attempts to fetch a single [[discord.Message]] (by id) from this channel.
+     *
+     * If no message is found, the Promise resolves as `null`.
+     *
+     * @param messageId The id of the message you wish to fetch data for.
+     */
     getMessage(messageId: string): Promise<Message | null>;
+
+    /**
+     * Attempts to send a message to this channel.
+     *
+     * See [[discord.Message.OutgoingMessage]] for possible options.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param messageData Outgoing message data.
+     */
     sendMessage(
       messageData:
         | discord.Message.OutgoingMessage
         | Promise<discord.Message.OutgoingMessage>
         | (() => Promise<discord.Message.OutgoingMessage>)
     ): Promise<Message>;
+
+    /**
+     * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
+     *
+     * The typing indicator will last up to 15 seconds, or until the bot user sends a message in the channel. Whatever comes first.
+     *
+     * Typically unused by bots, but can be used to indicate a command response is "loading" or "processing."
+     */
     triggerTypingIndicator(): Promise<void>;
   }
 
-  /* DmChannel */
-
-  class DmChannel extends Channel implements TextChannel {
+  /**
+   * A private 1-1 channel between the bot user and another [[discord.User]].
+   */
+  class DmChannel extends Channel implements ITextChannel {
+    /**
+     * The type of this channel. Always [[discord.Channel.Type.DM]].
+     */
     readonly type: Channel.Type.DM;
 
+    /**
+     * Attempts to fetch a single [[discord.Message]] (by id) from this channel.
+     *
+     * If no message is found, the Promise resolves as `null`.
+     *
+     * @param messageId The id of the message you wish to fetch data for.
+     */
     getMessage(messageId: string): Promise<Message | null>;
+
+    /**
+     * Attempts to send a message to this channel.
+     *
+     * See [[discord.Message.OutgoingMessage]] for possible options.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param messageData Outgoing message data.
+     */
     sendMessage(
       messageData:
         | discord.Message.OutgoingMessage
         | Promise<discord.Message.OutgoingMessage>
         | (() => Promise<discord.Message.OutgoingMessage>)
     ): Promise<Message>;
+
+    /**
+     * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
+     *
+     * The typing indicator will last up to 15 seconds, or until the bot user sends a message in the channel. Whatever comes first.
+     *
+     * Typically unused by bots, but can be used to indicate a command response is "loading" or "processing."
+     */
     triggerTypingIndicator(): Promise<void>;
   }
-
-  /* GuildChannel */
 
   namespace GuildChannel {
     interface IGuildChannelOptions {
-      position?: number;
-      permissionOverwrites?: Array<Channel.IPermissionOverwrite>;
-      parentId?: Snowflake | null;
+      /**
+       * The name of this channel.
+       */
       name?: string;
+      /**
+       * The position in the channel list this channel should be displayed at.
+       */
+      position?: number;
+      /**
+       * An array of permission overwrites to apply to this channel.
+       *
+       * Note: If set, this will overwrite existing permission overwrites.
+       */
+      permissionOverwrites?: Array<Channel.IPermissionOverwrite>;
+      /**
+       * The id of a [[discord.GuildCategory]] that this channel should be displayed under.
+       */
+      parentId?: Snowflake | null;
     }
   }
 
+  /**
+   * A base class containing properties and methods available for all channels that reside in a guild.
+   *
+   * You should never create/receive an instance of this class directly.
+   */
   class GuildChannel extends Channel implements IMentionable {
+    /**
+     * The id of the [[discord.Guild]] this channel resides in.
+     */
     readonly guildId: Snowflake;
+    /**
+     * The position in the channel list this channel should be displayed at.
+     */
     readonly position: number;
+    /**
+     * Any member or role-specific permission overwrite settings for this channel.
+     *
+     * Note: You should use [[discord.GuildChannel.getMemberPermissions]] or the easier [[discord.GuildChannel.canMember]] function to test member permissions for a given channel.
+     */
     readonly permissionOverwrites: Channel.IPermissionOverwrite[];
+    /**
+     * If the channel resides within a [[discord.GuildCategory]], it's id is set on this property.
+     */
     readonly parentId: Snowflake | null;
+    /**
+     * The name of this channel.
+     */
     readonly name: string;
+    /**
+     * The type of this channel. See [[discord.Channel.AnyGuildChannel]] for a complete list of channel types.
+     */
     readonly type:
       | Channel.Type.GUILD_CATEGORY
       | Channel.Type.GUILD_TEXT
@@ -1683,127 +1956,371 @@ declare module discord {
       | Channel.Type.GUILD_STORE
       | Channel.Type.GUILD_VOICE;
 
+    /**
+     * Attempts to update the given options for this channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @param updateData The settings to update for this channel.
+     */
     edit(updateData: GuildChannel.IGuildChannelOptions): Promise<Channel.AnyGuildChannel>;
-    delete(): Promise<void>;
 
+    /**
+     * Attempts to fetch an instance of the [[discord.GuildCategory]] this channel resides in.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @returns If the channel does not reside in a cateogry, the Promise resolves as `null`.
+     */
     getParent(): Promise<GuildCategory | null>;
+
+    /**
+     * Returns the calculated member permissions for this channel.
+     *
+     * It is built off the base member permissions via [[discord.GuildMember.permissions]] and the member and role-specific permission overwrites from [[discord.GuildChannel.permissionOverwrites]].
+     *
+     * Note: If you just want to see if a member has a permission, use [[discord.GuildChannel.canMember]].
+     *
+     * @param member The GuildMember you want to calculate channel-specific permissions for.
+     * @returns The permission bit set calculated for the given member.
+     */
     getMemberPermissions(member: GuildMember): number;
+
+    /**
+     * Determines if a member can perform actions that require the permission specified in this channel.
+     *
+     * Permissions are built off the base member permissions via [[discord.GuildMember.permissions]] and the member and role-specific permission overwrites from [[discord.GuildChannel.permissionOverwrites]].
+     *
+     * @param member The GuildMember you want to calculate channel-specific permissions for.
+     * @param permission The permission you are checking for. Check [[discord.Permissions]] for an exhaustive list of all permissions.
+     * @returns `true` if the permission is granted, otherwise `false`.
+     */
     canMember(member: GuildMember, permission: Permissions): boolean;
 
+    /**
+     * Returns a mention string in the format of `<#id>` where id is the id of this channel.
+     *
+     * Can be used in a message to render a link to this channel.
+     */
     toMention(): string;
-  }
-
-  /* GuildTextChannel */
-
-  namespace GuildTextChannel {
-    interface IGuildTextChannelOptions extends GuildChannel.IGuildChannelOptions {
-      topic?: string;
-      nsfw?: boolean;
-      rateLimitPerUser?: number | null;
-    }
-  }
-
-  class GuildTextChannel extends GuildChannel implements TextChannel {
-    readonly topic: string | null;
-    readonly nsfw: boolean;
-    readonly rateLimitPerUser: number | null;
-    readonly type: Channel.Type.GUILD_TEXT;
-
-    edit(updateData: GuildTextChannel.IGuildTextChannelOptions): Promise<GuildTextChannel>;
-    delete(): Promise<void>;
-
-    getMessage(messageId: string): Promise<Message | null>;
-    sendMessage(
-      messageData:
-        | discord.Message.OutgoingMessage
-        | Promise<discord.Message.OutgoingMessage>
-        | (() => Promise<discord.Message.OutgoingMessage>)
-    ): Promise<Message>;
-    triggerTypingIndicator(): Promise<void>;
-  }
-
-  /* GuildVoiceChannel */
-
-  namespace GuildVoiceChannel {
-    interface IGuildVoiceChannelOptions extends GuildChannel.IGuildChannelOptions {
-      bitrate?: number;
-      userLimit?: number;
-    }
-  }
-
-  class GuildVoiceChannel extends GuildChannel {
-    readonly bitrate: number;
-    readonly userLimit: number;
-    readonly type: Channel.Type.GUILD_VOICE;
-
-    edit(updateData: GuildVoiceChannel.IGuildVoiceChannelOptions): Promise<GuildVoiceChannel>;
-    delete(): Promise<void>;
-
-    voiceConnect(): Promise<void>;
   }
 
   /* GuildCategory */
 
   namespace GuildCategory {
     interface IGuildCategoryOptions extends GuildChannel.IGuildChannelOptions {
+      /**
+       * Must not be modified for GuildCategory, it is always null.
+       */
       parent?: null;
     }
   }
 
+  /**
+   * A category within a guild. Can be used to separate groups of channels under a single parent.
+   *
+   * Guild channels within categories will have a channel id specified on [[discord.GuildChannel.parentId]].
+   */
   class GuildCategory extends GuildChannel {
+    /**
+     * The type of this channel. Always [[Channel.Type.GUILD_CATEGORY]].
+     */
     readonly type: Channel.Type.GUILD_CATEGORY;
 
+    /**
+     * Categories may not be nested, they will always have a null parentId.
+     */
+    readonly parentId: null;
+
+    /**
+     * Attempts to update the given options for this channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @param updateData The settings to update for this channel.
+     */
     edit(updateData: GuildCategory.IGuildCategoryOptions): Promise<GuildCategory>;
+
+    /**
+     * Attempts to delete the channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception is thrown.
+     */
     delete(): Promise<void>;
   }
 
-  /* GuildNewsChannel */
+  namespace GuildVoiceChannel {
+    interface IGuildVoiceChannelOptions extends GuildChannel.IGuildChannelOptions {
+      /**
+       * The bitrate for this voice channel. Voice quality increases as this value is raised at the expense of bandwidth usage.
+       *
+       * The default is `64000`. Servers without boosts may raise this up to `96000`. Servers with boosts may raise higher depending on the [[discord.Guild.PremiumTier]].
+       */
+      bitrate?: number;
 
-  namespace GuildNewsChannel {
-    interface IGuildNewsChannelOptions extends GuildChannel.IGuildChannelOptions {
-      topic?: string | null;
-      nsfw?: boolean;
+      /**
+       * Limits the number of users that can connect to the voice channel.
+       *
+       * Members with the [[discord.Permissions.VOICE_MOVE_MEMBERS]] may override this limit.
+       */
+      userLimit?: number;
     }
   }
 
-  class GuildNewsChannel extends GuildChannel implements TextChannel {
-    readonly topic: string | null;
-    readonly nsfw: boolean;
-    readonly type: Channel.Type.GUILD_NEWS;
+  /**
+   * A voice channel within a [[discord.Guild]].
+   */
+  class GuildVoiceChannel extends GuildChannel {
+    /**
+     * The bitrate for this voice channel. Voice quality increases as this value is raised at the expense of bandwidth usage.
+     *
+     * The default is `64000`. Servers without boosts may raise this up to `96000`. Servers with boosts may raise higher depending on the [[discord.Guild.PremiumTier]].
+     */
+    readonly bitrate: number;
 
-    edit(updateData: GuildNewsChannel.IGuildNewsChannelOptions): Promise<GuildNewsChannel>;
+    /**
+     * Limits the number of users that can connect to the voice channel.
+     *
+     * Members with the [[discord.Permissions.VOICE_MOVE_MEMBERS]] may override this limit.
+     */
+    readonly userLimit: number;
+
+    /**
+     * The type of this channel. Always [[Channel.Type.GUILD_VOICE]].
+     */
+    readonly type: Channel.Type.GUILD_VOICE;
+
+    /**
+     * Attempts to update the given options for this channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @param updateData The settings to update for this channel.
+     */
+    edit(updateData: GuildVoiceChannel.IGuildVoiceChannelOptions): Promise<GuildVoiceChannel>;
+
+    /**
+     * Attempts to delete the channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception is thrown.
+     */
     delete(): Promise<void>;
 
+    /**
+     * Requests a voice session for this channel. Listen for [[discord.Event.VOICE_SERVER_UPDATE]] events for voice server connection information.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception is thrown.
+     */
+    voiceConnect(): Promise<void>;
+  }
+
+  namespace GuildTextChannel {
+    interface IGuildTextChannelOptions extends GuildChannel.IGuildChannelOptions {
+      /**
+       * The topic displayed above this channel.
+       */
+      topic?: string;
+      /**
+       * If `true`, sets the NSFW setting to enabled for this channel.
+       */
+      nsfw?: boolean;
+      /**
+       * How often (in seconds) users are able to send messages.
+       *
+       * Note: Discord calls this "slow-mode".
+       *
+       * Setting to `null` or `0` will disable slow-mode.
+       */
+      rateLimitPerUser?: number | null;
+    }
+  }
+
+  /**
+   * A text chat channel within a [[discord.Guild]].
+   */
+  class GuildTextChannel extends GuildChannel implements ITextChannel {
+    /**
+     * The topic displayed above this channel.
+     */
+    readonly topic: string | null;
+    /**
+     * If `true`, sets the NSFW setting to enabled for this channel.
+     */
+    readonly nsfw: boolean;
+    /**
+     * How often (in seconds) users are able to send messages.
+     *
+     * Note: Discord calls this "slow-mode".
+     */
+    readonly rateLimitPerUser: number | null;
+    /**
+     * The type of this channel. Always [[Channel.Type.GUILD_TEXT]].
+     */
+    readonly type: Channel.Type.GUILD_TEXT;
+
+    /**
+     * Attempts to update the given options for this channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @param updateData The settings to update for this channel.
+     */
+    edit(updateData: GuildTextChannel.IGuildTextChannelOptions): Promise<GuildTextChannel>;
+
+    /**
+     * Attempts to delete the channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception is thrown.
+     */
+    delete(): Promise<void>;
+
+    /**
+     * Attempts to fetch a single [[discord.Message]] (by id) from this channel.
+     *
+     * If no message is found, the Promise resolves as `null`.
+     *
+     * @param messageId The id of the message you wish to fetch data for.
+     */
     getMessage(messageId: string): Promise<Message | null>;
+
+    /**
+     * Attempts to send a message to this channel.
+     *
+     * See [[discord.Message.OutgoingMessage]] for possible options.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param messageData Outgoing message data.
+     */
     sendMessage(
       messageData:
         | discord.Message.OutgoingMessage
         | Promise<discord.Message.OutgoingMessage>
         | (() => Promise<discord.Message.OutgoingMessage>)
     ): Promise<Message>;
+
+    /**
+     * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
+     *
+     * The typing indicator will last up to 15 seconds, or until the bot user sends a message in the channel. Whatever comes first.
+     *
+     * Typically unused by bots, but can be used to indicate a command response is "loading" or "processing."
+     */
     triggerTypingIndicator(): Promise<void>;
   }
 
-  /* GuildStoreChannel */
+  namespace GuildNewsChannel {
+    interface IGuildNewsChannelOptions extends GuildChannel.IGuildChannelOptions {
+      /**
+       * The topic displayed above this channel.
+       */
+      readonly topic: string | null;
+      /**
+       * If `true`, sets the NSFW setting to enabled for this channel.
+       */
+      readonly nsfw: boolean;
+    }
+  }
+
+  /**
+   * A special text channel that enables the use of the announcements system on Discord.
+   */
+  class GuildNewsChannel extends GuildChannel implements ITextChannel {
+    /**
+     * The topic displayed above this channel.
+     */
+    readonly topic: string | null;
+    /**
+     * If `true`, sets the NSFW setting to enabled for this channel.
+     */
+    readonly nsfw: boolean;
+    /**
+     * The type of this channel. Always [[Channel.Type.GUILD_NEWS]].
+     */
+    readonly type: Channel.Type.GUILD_NEWS;
+
+    /**
+     * Attempts to update the given options for this channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @param updateData The settings to update for this channel.
+     */
+    edit(updateData: GuildNewsChannel.IGuildNewsChannelOptions): Promise<GuildNewsChannel>;
+
+    /**
+     * Attempts to delete the channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception is thrown.
+     */
+    delete(): Promise<void>;
+
+    /**
+     * Attempts to fetch a single [[discord.Message]] (by id) from this channel.
+     *
+     * If no message is found, the Promise resolves as `null`.
+     *
+     * @param messageId The id of the message you wish to fetch data for.
+     */
+    getMessage(messageId: string): Promise<Message | null>;
+
+    /**
+     * Attempts to send a message to this channel.
+     *
+     * See [[discord.Message.OutgoingMessage]] for possible options.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param messageData Outgoing message data.
+     */
+    sendMessage(
+      messageData:
+        | discord.Message.OutgoingMessage
+        | Promise<discord.Message.OutgoingMessage>
+        | (() => Promise<discord.Message.OutgoingMessage>)
+    ): Promise<Message>;
+
+    /**
+     * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
+     *
+     * The typing indicator will last up to 15 seconds, or until the bot user sends a message in the channel. Whatever comes first.
+     *
+     * Typically unused by bots, but can be used to indicate a command response is "loading" or "processing."
+     */
+    triggerTypingIndicator(): Promise<void>;
+  }
 
   namespace GuildStoreChannel {
     interface IGuildStoreChannelOptions extends GuildChannel.IGuildChannelOptions {}
   }
 
+  /**
+   * A special guild channel that enables commerce features. Typically used by studios utilizing Discord to distribute their game.
+   */
   class GuildStoreChannel extends GuildChannel {
+    /**
+     * The type of this channel. Always [[Channel.Type.GUILD_STORE]].
+     */
     readonly type: Channel.Type.GUILD_STORE;
 
+    /**
+     * Attempts to update the given options for this channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @param updateData The settings to update for this channel.
+     */
     edit(updateData: GuildStoreChannel.IGuildStoreChannelOptions): Promise<GuildStoreChannel>;
+
+    /**
+     * Attempts to delete the channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception is thrown.
+     */
     delete(): Promise<void>;
   }
 
   namespace Embed {
-    interface IEmbedFooter {
-      text: string;
-      iconUrl?: string;
-      proxyIconUrl?: string;
-    }
-
     // interface IDimensions {
     //   height?: number;
     //   width?: number;
@@ -1818,167 +2335,619 @@ declare module discord {
     // }
 
     interface IEmbedImage {
+      /**
+       * The external url of the embed image.
+       *
+       * Note: This property should only be set for outgoing embeds created by the bot.
+       */
       url?: string;
-      proxyUrl?: string;
-      height?: number;
-      width?: number;
-    }
-
-    interface IEmbedImage {
-      url?: string;
-      proxyUrl?: string;
-      height?: number;
-      width?: number;
+      /**
+       * The proxied embed image url.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly proxyUrl?: string;
+      /**
+       * The height of the embed image.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly height?: number;
+      /**
+       * The width of the embed image.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly width?: number;
     }
 
     interface IEmbedThumbnail {
+      /**
+       * The external url of the embed thumbnail image.
+       *
+       * Note: This property should only be set for outgoing embeds created by the bot.
+       */
       url?: string;
-      proxyUrl?: string;
-      height?: number;
-      width?: number;
+      /**
+       * The proxied thumbnail url.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly proxyUrl?: string;
+      /**
+       * The height of the thumbnail image.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly height?: number;
+      /**
+       * The width of the thumbnail image.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly width?: number;
     }
 
     interface IEmbedVideo {
+      /**
+       * The external source url pointing to the embed video.
+       *
+       * Note: This property should only be set for outgoing embeds created by the bot.
+       */
       url?: string;
-      height?: number;
-      width?: number;
+      /**
+       * The height of the video.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly height?: number;
+      /**
+       * The width of the video.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly width?: number;
     }
 
     interface IEmbedProvider {
+      /**
+       * An external url that links from the provider's name.
+       *
+       */
       url?: string;
+      /**
+       * The name of the embed provider.
+       */
       name?: string;
     }
 
     interface IEmbedAuthor {
+      /**
+       * An external url that links from the author's name.
+       */
       url?: string;
+      /**
+       * The name of the author.
+       */
       name?: string;
+      /**
+       * An external url that points to an image icon for the author. Renders next to the name.
+       */
       iconUrl?: string;
-      proxyIconUrl?: string;
+      /**
+       * Contains the Discord-proxied icon url.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly proxyIconUrl?: string;
+    }
+
+    interface IEmbedFooter {
+      /**
+       * Footer text for this embed.
+       */
+      text: string;
+      /**
+       * An external url that points to an image icon for the footer. Renders next to the text.
+       *
+       * Note: This property should only be set for outgoing embeds created by the bot.
+       */
+      iconUrl?: string;
+      /**
+       * Contains the Discord-proxied footer icon url.
+       *
+       * Note: Only appears on embeds returned from Discord's API
+       */
+      readonly proxyIconUrl?: string;
     }
 
     interface IEmbedField {
+      /**
+       * The name or heading of this field. Up to 256 characters.
+       */
       name: string;
+      /**
+       * The value or body of this field. Up to 1024 characters.
+       *
+       * Supports partial markdown.
+       */
       value: string;
-      inline: boolean;
+      /**
+       * `true` if this field should be rendered in-line.
+       *
+       * `false` (default) will always render fields on new lines.
+       */
+      inline?: boolean;
     }
 
     interface IEmbed {
+      /**
+       * The title of the embed.
+       */
       title?: string;
+      /**
+       * The type of the embed.
+       */
       type?: string;
+      /**
+       * The description text for the embed. Up to 2048 characters.
+       */
       description?: string;
+      /**
+       * The url of the embed. It renders as a link on the name, if provided.
+       */
       url?: string;
+      /**
+       * The ISO-8601 UTC timestamp for this embed.
+       */
       timestamp?: string;
+      /**
+       * The numerically encoded RGB color code for this embed.
+       */
       color?: number;
+      /**
+       * The footer for this embed. The text may be up to 2048 characters.
+       */
       footer?: Embed.IEmbedFooter;
+      /**
+       * The image data for this embed.
+       */
       image?: Embed.IEmbedImage;
+      /**
+       * The thumbnail data for this embed.
+       */
       thumbnail?: Embed.IEmbedThumbnail;
+      /**
+       * The video data for this embed.
+       */
       video?: Embed.IEmbedVideo;
+      /**
+       * The provider data for this embed.
+       */
       provider?: Embed.IEmbedProvider;
+      /**
+       * The author data for this embed. The name field may be up to 256 characters.
+       */
       author?: Embed.IEmbedAuthor;
+      /**
+       * An array of fields to be rendered on this embed.
+       *
+       * Field names may be up to 256 characters. Field values may be up to 1024 characters, and support markdown.
+       */
       fields?: Array<Embed.IEmbedField>;
     }
   }
 
+  /**
+   * Discord allows us to send Rich Embed objects attached to messages that render as nice info boxes in chat.
+   *
+   * #### Example: Send an embed with some customization in response to an !info command.
+   * ```ts
+   * const commands = new discord.command.CommandGroup({
+   *  defaultPrefix: '!'
+   * });
+   *
+   * commands.registerCommand(
+   *  "info",
+   *  args => ({
+   *    user: args.user()
+   *  }),
+   *  async ({ message }, { user }) => {
+   *    // build the rich embed
+   *    const richEmbed = new discord.Embed();
+   *    richEmbed.setTitle(user.getTag()).setColor(0x00ff00);
+   *    richEmbed.setDescription("User Information Example");
+   *    richEmbed.setThumbnail({ url: user.getAvatarUrl() });
+   *    richEmbed.addField({
+   *      name: "User ID",
+   *      value: user.id,
+   *      inline: false
+   *    });
+   *    richEmbed.setTimestamp(new Date().toISOString());
+   *    // reply to the command with our embed
+   *    await message.reply({ content: "", embed: richEmbed });
+   *  }
+   *);
+   *```
+   */
   class Embed {
+    /**
+     * The title of the embed.
+     */
     readonly title: string | null;
+    /**
+     * The type of the embed.
+     */
     readonly type: string | null;
+    /**
+     * The description text for the embed. Up to 2048 characters.
+     */
     readonly description: string | null;
+    /**
+     * The url of the embed. It renders as a link on the name, if provided.
+     */
     readonly url: string | null;
+    /**
+     * The ISO-8601 UTC timestamp for this embed.
+     */
     readonly timestamp: string | null;
+    /**
+     * The numerically encoded RGB color code for this embed.
+     */
     readonly color: number | null;
+    /**
+     * The footer for this embed. The text may be up to 2048 characters.
+     */
     readonly footer: Embed.IEmbedFooter | null;
+    /**
+     * The image data for this embed.
+     */
     readonly image: Embed.IEmbedImage | null;
-    readonly thumbnail: Embed.IEmbedImage | null;
+    /**
+     * The thumbnail data for this embed.
+     */
+    readonly thumbnail: Embed.IEmbedThumbnail | null;
+    /**
+     * The video data for this embed.
+     */
     readonly video: Embed.IEmbedVideo | null;
+    /**
+     * The provider data for this embed.
+     */
     readonly provider: Embed.IEmbedProvider | null;
+    /**
+     * The author data for this embed. The name field may be up to 256 characters.
+     */
     readonly author: Embed.IEmbedAuthor | null;
-    readonly fields: Embed.IEmbedField[];
+    /**
+     * An array of fields to be rendered on this embed.
+     *
+     * Field names may be up to 256 characters. Field values may be up to 1024 characters, and support markdown.
+     */
+    readonly fields: Array<Embed.IEmbedField>;
 
+    /**
+     * Constructs an Embed instance with the data provided.
+     *
+     * @param init The options for this embed.
+     */
     constructor(init?: Embed.IEmbed);
 
+    /**
+     * Sets the title of this embed.
+     * @param title A new title for the embed. Must be no more than 256 characters.
+     */
     setTitle(title: string | null): Embed;
+    /**
+     * Sets the type of this embed. Always `rich` for webhook embeds.
+     * @param type The type of this embed.
+     */
     setType(type: string | null): Embed;
+    /**
+     * Sets the description for this embed.
+     *
+     * May contain markdown-formatted text, including links.
+     *
+     * @param description The description for this embed. Up to 2048 characters.
+     */
     setDescription(description: string | null): Embed;
+    /**
+     * Adds a link to the specified URL to the title of this embed.
+     *
+     * Note: Requires a title to be set.
+     * @param url The url of this embed.
+     * */
     setUrl(url: string | null): Embed;
+    /**
+     * A localized timestamp to render at the bottom of the embed.
+     *
+     * Should be set to a UTC time string in ISO 8601 format (`YYYY-MM-DDTHH:mm:ss`)
+     *
+     * For example, `new Date().toISOString()` returns the current date and time in this format.
+     * @param timestamp The ISO-8601 formatted timestamp string to set the embed timestamp to.
+     */
     setTimestamp(timestamp: string | null): Embed;
+    /**
+     * Sets the color for this embed. An integer representation of a hexadecimal color code.
+     *
+     * The default color for roles (no color) is `0`.
+     *
+     * Note: You can set this to a hex color code using an integer represented in hex format.
+     *
+     * Example: `0xFF0000` (or `16711680`) is red.
+     * @param color The integer representation of a color.
+     */
     setColor(color: number | null): Embed;
+    /**
+     * Sets the footer for this embed. Rendered at the bottom of an embed.
+     *
+     * @param footer The footer for this embed. The text property may be up to 2048 characters.
+     */
     setFooter(footer: Embed.IEmbedFooter | null): Embed;
+    /**
+     * Sets an image for this embed. If set, the image is typically rendered below the description and fields.
+     *
+     * You must only set the `url` property of the options sent to this function.
+     *
+     * @param image Embed image options.
+     */
     setImage(image: Embed.IEmbedImage | null): Embed;
+    /**
+     * Sets a thumbnail for this embed. If set, the thumbnail is typically rendered to the right of the description and fields.
+     *
+     * You must only set the `url` property of the options sent to this function.
+     * @param thumbnail Embed thumbnail options.
+     */
     setThumbnail(thumbnail: Embed.IEmbedThumbnail | null): Embed;
+    /**
+     * Sets an video for this embed. If set, the video is typically rendered below the description and fields.
+     *
+     * You must only set the `url` property of the options sent to this function.
+     * @param video Embed thumbnail options.
+     */
     setVideo(video: Embed.IEmbedVideo | null): Embed;
+    /**
+     * Sets a provider for this embed. Contains a name and url.
+     *
+     * @param provider Embed provider options.
+     */
     setProvider(provider: Embed.IEmbedProvider | null): Embed;
+    /**
+     * Sets the author options for this embed.
+     *
+     * You may set an author name, url and icon image url.
+     *
+     * @param author Embed author options.
+     */
     setAuthor(author: Embed.IEmbedAuthor | null): Embed;
+    /**
+     * Replaces the array of [[discord.Embed.IEmbedField]] objects with the one provided.
+     *
+     * Note: You can add individual fields easily using [[discord.Embed.addField]].
+     *
+     * @param fields Array of field objects. Provide an empty array to clear the fields.
+     */
     setFields(fields: Array<Embed.IEmbedField>): Embed;
 
+    /**
+     * Adds a field to the embed.
+     *
+     * Fields appear under the description. Inline fields may be rendered side-by-side depending on the screen width.
+     *
+     * @param field A field object.
+     */
     addField(field: Embed.IEmbedField): Embed;
   }
 
   namespace Emoji {
+    /**
+     * A basic emoji discriptor.
+     *
+     * Guild emojis contain an id and custom name.
+     *
+     * Standard unicode emojis will have a null id with the name being the literal emoji characters.
+     */
     interface IEmoji {
+      /**
+       * The id of the emoji, if set.
+       */
       id: Snowflake | null;
+      /**
+       * The custom name of the emoji, or a literal unicode emoji.
+       */
       name: string;
     }
 
+    /**
+     * Represents a custom emoji added to the guild.
+     *
+     * Custom emojis can be animated.
+     *
+     * Some rare custom emoji may be global, or may not require the use of colons if linked from twitch.
+     */
     interface IGuildEmoji extends IEmoji {
-      readonlytype: Emoji.Type.GUILD;
+      /**
+       * The type of emoji this is. Always [[discord.Emoji.Type.GUILD]].
+       */
+      type: Emoji.Type.GUILD;
+      /**
+       * Discord's unique identifier for this emoji.
+       */
       id: Snowflake;
+      /**
+       * The custom name of this emoji, example: `:name:`.
+       */
       name: string;
+      /**
+       * If not empty, the roles in this array have access to the emoji.
+       */
       roles?: Array<Snowflake>;
+      /**
+       * The user who uploaded the emoji.
+       */
       user?: User;
+      /**
+       * If `true` (default), the emoji requires colons. You cannot change this field.
+       */
       requireColons?: boolean;
+      /**
+       * If `true`, this emoji is managed by an integration and you amy not modify it.
+       */
       managed?: boolean;
+      /**
+       * If `true`, this emoji is animated.
+       */
       animated?: boolean;
     }
 
+    /**
+     * Represents a standard unicode emoji included with Discord.
+     */
     interface IUnicodeEmoji extends IEmoji {
+      /**
+       * The type of this emoji. Always [[discord.Emoji.Type.UNICODE]].
+       */
       type: Emoji.Type.UNICODE;
+      /**
+       * The unique identifier for this emoji. Always `null` for unicode emojis.
+       */
       id: null;
+      /**
+       * The unicode representation of this emoji. Example: `🎉`
+       */
       name: string;
     }
 
+    /**
+     * An enumeration of the possible types of emojis seen on Discord.
+     */
     const enum Type {
+      /**
+       * See [[discord.Emoji.IGuildEmoji]].
+       */
       GUILD = "GUILD",
+      /**
+       * See [[discord.Emoji.IUnicodeEmoji]].
+       */
       UNICODE = "UNICODE",
     }
 
+    /**
+     * A type union of all possible emoji types.
+     */
     type AnyEmoji = Emoji.IGuildEmoji | Emoji.IUnicodeEmoji;
   }
 
+  /**
+   * A class wrapper around emoji data. Can represent a unicode or custom emoji.
+   */
   class Emoji implements Emoji.IEmoji, IMentionable {
+    /**
+     * Discord's unique identifier for this emoji.
+     *
+     * If null, the emoji is a unicode emoji and will only have the `name` and `type` property set.
+     */
     readonly id: Snowflake | null;
+    /**
+     * The custom name for this emoji, if it's a guild emoji.
+     *
+     * Otherwise, the name is the literal emoji character(s). Example: `🎉`
+     */
     readonly name: string;
+    /**
+     * The type of emoji this is.
+     */
     readonly type: Emoji.Type;
+    /**
+     * If not empty, the roles in this array have access to the emoji.
+     */
     readonly roles: Snowflake[];
+    /**
+     * The user who uploaded the emoji.
+     */
     readonly user: User | null;
+    /**
+     * If `true` (default), the emoji requires colons. You cannot change this field.
+     */
     readonly requireColons: boolean;
+    /**
+     * If `true`, this emoji is managed by an integration and you amy not modify it.
+     */
+
     readonly managed: boolean;
+    /**
+     * If `true`, this emoji is animated.
+     */
     readonly animated: boolean;
 
-    toString(): string;
-
+    /**
+     * @returns A message-ready string representation of the emoji.
+     */
     toMention(): string;
   }
 
   /* Message */
 
   namespace Message {
+    /**
+     * An enumeration of possible message types.
+     */
     const enum Type {
+      /**
+       * A default message. Contains text and/or embeds sent by a user, bot, or webhook.
+       */
       DEFAULT = 0,
+      /**
+       * A message in a channel that denotes a message was pinned.
+       */
       CHANNEL_PINNED_MESSAGE = 4,
+      /**
+       * A special message that appears in the system channel that a guild member has joined the server.
+       */
       GUILD_MEMBER_JOIN = 7,
+      /**
+       * A special message that appears in the system channel when a member boosts a server.
+       */
       USER_PREMIUM_GUILD_SUBSCRIPTION = 8,
+      /**
+       * A special message that appears in the system channel when a guild is boosted to tier 1.
+       */
       USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1 = 9,
+      /**
+       * A special message that appears in the system channel when a guild is boosted to tier 2.
+       */
       USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2 = 10,
+      /**
+       * A special message that appears in the system channel when a guild is boosted to tier 3.
+       */
       USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_3 = 11,
+      /**
+       * A special message that appears in a channel when it begins following an announcements channel.
+       */
       CHANNEL_FOLLOW_ADD = 12,
     }
 
+    /**
+     * A bit flag set for messages, defines special properties or behavior.
+     */
     const enum Flags {
+      /**
+       * Set if the message was published. Only valid for messages sent in [[discord.GuildNewsChannel]] channels.
+       */
       CROSSPOSTED = 1 << 0,
+      /**
+       * Set if the message is a news message cross-posted from another server's [[discord.GuildNewsChannel]] channel.
+       */
       IS_CROSSPOST = 1 << 1,
+      /**
+       * Set if the embed has been suppressed.
+       */
       SUPPRESS_EMBEDS = 1 << 2,
     }
 
+    /**
+     * An enumeration of possible activity types associated with a [[discord.Message]].
+     */
     const enum ActivityType {
       JOIN = 1,
       SPECTATE = 2,
@@ -1986,131 +2955,432 @@ declare module discord {
       JOIN_REQUEST = 5,
     }
 
+    /**
+     * An object that represents a unique emoji reaction on a [[discord.Message]].
+     */
     interface IMessageReaction {
+      /**
+       * The number of times this emoji has been reacted with.
+       */
       count: number;
+      /**
+       * `true` if the count includes a reaction from the current bot user.
+       */
       me: boolean;
+      /**
+       * A reference to an emoji object used for this reaction.
+       */
       emoji: Emoji;
     }
 
+    /**
+     * An object that represents channel data for a channel mentioned in a message.
+     */
     interface IMessageChannelMention {
+      /**
+       * The id of the channel mentioned.
+       */
       id: Snowflake;
+      /**
+       * The id of the guild this mentioned channel belongs to.
+       */
       guildId: Snowflake;
+      /**
+       * The type of channel mentioned.
+       */
       type: Channel.Type;
+      /**
+       * The name of the channel mentinoed.
+       */
       name: string;
     }
 
+    /**
+     * An object that represents an attachment included with a message.
+     */
     interface IMessageAttachment {
+      /**
+       * The unique identifier for this attachment.
+       */
       id: Snowflake;
+      /**
+       * The attachment's file name.
+       */
       filename: string;
+      /**
+       * The size of the attachment in bytes.
+       */
       size: number;
+      /**
+       * The url where this attachment can be retrieved from.
+       */
       url: string;
-      proxyUrl: string;
-      height?: number;
-      width?: number;
+      /**
+       * The proxied url for this attachment.
+       */
+      readonly proxyUrl: string;
+      /**
+       * If the attachment is a media file, the width of the image or video.
+       */
+      readonly height?: number;
+      /**
+       * If the attachment is a media file, the height of the image or video.
+       */
+      readonly width?: number;
     }
 
+    /**
+     * An object that represents an activity included with a message.
+     */
     interface IMessageActivity {
+      /**
+       * The type of activity.
+       */
       type: Message.ActivityType;
+      /**
+       * The party id others may use to join this activity, if provided.
+       */
       partyId?: string;
     }
 
+    /**
+     * An object that represents an application included a message.
+     */
     interface IMessageApplication {
+      /**
+       * The application's unique identifier.
+       */
       id: Snowflake;
+      /**
+       * A cover image for activity embeds.
+       */
       coverImage?: string;
+      /**
+       * The description for this application.
+       */
       description: string;
+      /**
+       * The icon hash for this application.
+       */
       icon: string | null;
+      /**
+       * The name of this application.
+       */
       name: string;
     }
 
+    /**
+     * An object that represents a cross-link message reference. Used for announcement messages.
+     */
     interface IMessageReference {
+      /**
+       * The message id of the cross-posted message.
+       */
       messageId?: Snowflake;
+      /**
+       * The channel id of the cross-posted message.
+       */
       channelId?: Snowflake;
+      /**
+       * The id of the guild where this cross-posted message originated.
+       */
       guildId?: Snowflake;
     }
 
+    /**
+     * Options available for outgoing messages.
+     *
+     * Note: If an embed is not included, `content` must be included and greater than 0 characters long.
+     *
+     * See [[discord.Message.IAllowedMentions]] for more information on the `allowedMentions` property.
+     */
     interface IOutgoingMessageOptions {
+      /**
+       * The message's text content.
+       */
       content?: string;
+      /**
+       * If `true`, clients with tts enabled and are focused on the channel will hear the message via text-to-speech.
+       */
       tts?: boolean;
+      /**
+       * An optional [[discord.Embed]] to include with this message.
+       */
       embed?: Embed | Embed.IEmbed;
+      /**
+       * If set, will restrict the notifications sent with this message if mention strings are included.
+       *
+       * By default (undefined), the message will be allowed to ping all mentioned entities.
+       *
+       * It is highly recommended you specify this property when sending messages that include user input.
+       *
+       * Setting this property to an empty object (ex: `{}`) will prevent any messages from being sent. See [[discord.Message.IAllowedMentions]] for more details on the possible configurations for this property.
+       */
       allowedMentions?: IAllowedMentions;
     }
 
+    /**
+     * A type-alias used to describe the possible options for message content. See [[discord.Message.IOutgoingMessageOptions]] for a full list of options.
+     */
     type OutgoingMessageOptions = IOutgoingMessageOptions &
       (
         | { content: string; embed?: Embed | Embed.IEmbed }
         | { content?: string; embed: Embed | Embed.IEmbed }
       );
 
+    /**
+     * Allowed mentions lets you fine-tune what mentions are notified in outgoing messages. It is highly recommended you include this option when sending message content containing user input.
+     *
+     * Setting this option to `{}` will block all mentions from notifying their targets.
+     */
     interface IAllowedMentions {
+      /**
+       * If set to true, this message will be allowed to ping at-everyone.
+       */
       everyone?: boolean;
+      /**
+       * If set to true, this message will be allowed to ping all role mentions.
+       *
+       * You may pass an array of role ids or role objects to whitelist a set of roles you'd like to restrict notifications to.
+       */
       roles?: true | Array<Snowflake | Role>;
+      /**
+       * If set to true, this message will be allowed to ping all users mentioned.
+       *
+       * You may pass an array of user ids or user/guildMember objects to whitelist a set of users you'd like to restrict notifications to.
+       */
       users?: true | Array<Snowflake | User | GuildMember>;
     }
 
+    /**
+     * A type alias to describe any message class type.
+     */
     type AnyMessage = discord.Message | discord.GuildMemberMessage;
+
+    /**
+     * A type alias to describe possible outgoing message types.
+     */
     type OutgoingMessage = string | OutgoingMessageOptions | Embed;
   }
 
   class Message {
+    /**
+     * The unique id for this message. The id can be used to find the time the message was created.
+     */
     readonly id: Snowflake;
+    /**
+     * The id of the text channel this message was sent in.
+     *
+     * Note: You can fetch the full channel data with [[discord.Message.getChannel]].
+     */
     readonly channelId: Snowflake;
+    /**
+     * The id of the guild this message was sent in. Will be `null` for messages sent in [[discord.DMChannel]] DM channels.
+     *
+     * Note: You can fetch the full guild data with [[discord.Message.getGuild]].
+     */
     readonly guildId: Snowflake | null;
+    /**
+     * The text content of this message.
+     *
+     * May contain up to 2000 characters.
+     */
     readonly content: string;
+    /**
+     * An array of embeds included with this message.
+     */
     readonly embeds: Array<discord.Embed>;
+    /**
+     * The author of this message, if any.
+     */
     readonly author: User | null;
+    /**
+     * If the message was sent in a guild, the [[discord.GuildMember]] who sent this message.
+     */
     readonly member: GuildMember | null;
+    /**
+     * The timestamp at which this message was sent at, in ISO-8601 format.
+     */
     readonly timestamp: string;
+    /**
+     * The timestamp at which the message was last edited at, in ISO-8601 format.
+     */
     readonly editedTimestamp: string | null;
+    /**
+     * `true` if this message mentions everyone.
+     */
     readonly mentionEveryone: boolean;
+    /**
+     * An array of user objects, containing partial member objects, of users mentioned in this message.
+     */
     readonly mentions: Array<User & { member: Omit<GuildMember, "user"> }>;
+    /**
+     * An array of role ids mentioned in this channel.
+     */
     readonly mentionRoles: Array<Snowflake>;
+    /**
+     * An array of partial channel objects mentioned in this channel.
+     */
     readonly mentionChannels: Array<Message.IMessageChannelMention>;
+    /**
+     * An array of attachments sent with this message.
+     */
     readonly attachments: Array<Message.IMessageAttachment>;
+    /**
+     * An array of emoji reactions added to this message.
+     */
     readonly reactions: Array<Message.IMessageReaction>;
+    /**
+     * `true` if this message is pinned to the channel.
+     */
     readonly pinned: boolean;
+    /**
+     * The id of the webhook that sent this message. `null` if this message was not sent by a webhook.
+     */
     readonly webhookId: Snowflake | null;
+    /**
+     * The type of message this is. See [[discord.Message.Type]] for a list of possible values.
+     */
     readonly type: Message.Type;
+    /**
+     * The activity object included with this message, if set.
+     */
     readonly activity: Message.IMessageActivity | null;
+    /**
+     * The application metadata used to render activity data for a message, if set.
+     */
     readonly application: Message.IMessageApplication | null;
+    /**
+     * The original message reference for cross-posted announcement messages.
+     */
     readonly messageReference: Message.IMessageReference | null;
+    /**
+     * A bit set of flags containing more information for this message.
+     */
     readonly flags: Message.Flags | null;
 
+    /**
+     * Fetches data for the channel this message was sent in.
+     */
     getChannel(): Promise<
       discord.DmChannel | (discord.GuildTextChannel | discord.GuildNewsChannel)
     >;
+
+    /**
+     * Fetches the data for the guild this message was sent in.
+     *
+     * If the message was not sent in a guild, the Promise resolves as `null`.
+     */
     getGuild(): Promise<Guild | null>;
 
+    /**
+     * Attempts to send a message in the channel this message was sent in.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param messageData The outgoing message data you'd like to send. May be a simple string, a [[discord.Embed]] object, or an object containing a combination of the two plus additional options. See [[discord.Message.IOutgoingMessageOptions]] for a full list of options.
+     * @returns The newly created message object.
+     */
     reply(
       messageData:
         | discord.Message.OutgoingMessage
         | Promise<discord.Message.OutgoingMessage>
         | (() => Promise<discord.Message.OutgoingMessage>)
     ): Promise<Message>;
+
+    /**
+     * Attempts to permanently delete this message.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     */
     delete(): Promise<void>;
 
+    /**
+     * Reacts to this message with the specified emoji.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     */
     addReaction(emoji: string): Promise<void>;
+
+    /**
+     * Deletes the bot user's own reaction to this message of the specified emoji.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     */
     deleteOwnReaction(emoji: string): Promise<void>;
+
+    /**
+     * Deletes a user's reaction to the message.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     * @param user A user id or reference to a user object.
+     */
     deleteReaction(emoji: string, user: Snowflake | User): Promise<void>;
 
+    /**
+     * Attempts to edit a message. Messages can only be edited by their author.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param messageData New outgoing message data for this message.
+     * @returns On success, the Promise resolves as the new message object.
+     */
     edit(messageData: Message.OutgoingMessage): Promise<Message>;
 
+    /**
+     * Changes the pinned status of this message.
+     *
+     * @param pinned `true` if the message should be pinned, otherwise `false`.
+     */
     setPinned(pinned: boolean): Promise<void>;
   }
 
   class GuildMemberMessage extends Message {
-    // non-null when we get a message from a user in a guild channel
+    /**
+     * The id of the guild this message was sent in. Always set for messages of this type.
+     *
+     * Note: You can fetch the full guild data with [[discord.Message.getGuild]].
+     */
     readonly guildId: Snowflake;
+    /**
+     * The author of this message. Always set for messages of this type.
+     */
     readonly author: User;
+    /**
+     * The guild member who authored this message. Always set for messages of this type.
+     */
     readonly member: GuildMember;
+    /**
+     * The webhook id that created this message. Always `null` for messages of this type.
+     */
     readonly webhookId: null;
 
-    // no special message type for these
+    /**
+     * Messages of this type are always [[Message.Type.DEFAULT]].
+     */
     readonly type: Message.Type.DEFAULT;
 
-    // this will always be null
+    /**
+     * Messages of this type may never reference another object.
+     */
     readonly messageReference: null;
 
+    /**
+     * Fetches the data for the guild this message was sent in.
+     *
+     * If the message was not sent in a guild, the Promise resolves as `null`.
+     */
     getGuild(): Promise<discord.Guild>;
+
+    /**
+     * Fetches data for the channel this message was sent in.
+     */
     getChannel(): Promise<discord.GuildTextChannel | discord.GuildNewsChannel>;
   }
 
