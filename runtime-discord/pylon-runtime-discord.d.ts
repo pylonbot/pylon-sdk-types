@@ -57,7 +57,7 @@
  * ```
  *
  * ### Making Discord API requests
- * Pylon abstracts API requests into simple functions on data objects, you can not make Discord API requests directly.
+ * Pylon abstracts API requests into simple functions on data objects, you cannot make Discord API requests directly.
  * If a request is rate-limited, it will delay promise resolution until it is able to execute.
  *
  * ```ts
@@ -366,7 +366,7 @@ declare module discord {
     /**
      * Feature flags conditionally set on a [[discord.Guild]]
      *
-     * Flags are set when guilds have special features enabled, they can not be changed.
+     * Flags are set when guilds have special features enabled, they cannot be changed.
      */
     const enum Feature {
       /**
@@ -454,7 +454,7 @@ declare module discord {
        */
       ALL_MESSAGES = 0,
       /**
-       * The user will only receive desktop/mobile noficiations when they are mentioned.
+       * The user will only receive desktop/mobile notifications when they are mentioned.
        */
       ONLY_MENTIONS = 1,
     }
@@ -494,7 +494,7 @@ declare module discord {
     }
 
     /**
-     * An enumeration of possible verficiation levels a guild can set.
+     * An enumeration of possible verification  levels a guild can set.
      */
     const enum VerificationLevel {
       /**
@@ -897,7 +897,7 @@ declare module discord {
      *
      * @param type the preferred image type. Defaults to [[discord.ImageType.WEBP]].
      */
-    getIconUrl(type: discord.ImageType): string | null;
+    getIconUrl(type?: discord.ImageType): string | null;
 
     /**
      * Builds a URL for the guild's splash image, if set.
@@ -932,7 +932,7 @@ declare module discord {
    */
   class AuditLogEntry {
     /**
-     * The unique identifier for this audit log entry. Encodes the timestamp this event occured at.
+     * The unique identifier for this audit log entry. Encodes the timestamp this event occurred at.
      */
     readonly id: Snowflake;
     /**
@@ -1477,7 +1477,7 @@ declare module discord {
      */
     interface IGuildMemberOptions {
       /**
-       * If specifed, sets the nickname.
+       * If specified, sets the nickname.
        *
        * Note: Sending an empty string will clear their username.
        */
@@ -2845,7 +2845,7 @@ declare module discord {
        */
       requireColons?: boolean;
       /**
-       * If `true`, this emoji is managed by an integration and you amy not modify it.
+       * If `true`, this emoji is managed by an integration and you cannot modify it.
        */
       managed?: boolean;
       /**
@@ -2925,7 +2925,7 @@ declare module discord {
      */
     readonly requireColons: boolean;
     /**
-     * If `true`, this emoji is managed by an integration and you amy not modify it.
+     * If `true`, this emoji is managed by an integration and you cannot modify it.
      */
 
     readonly managed: boolean;
@@ -3547,7 +3547,7 @@ declare module discord {
    */
   class VoiceState {
     /**
-     * The guild id this voice state is targetting.
+     * The guild id this voice state is targeting.
      */
     guildId: Snowflake;
     /**
@@ -3626,7 +3626,7 @@ declare module discord {
       /**
        * The id of the [[discord.Guild]] this event occurred in.
        *
-       * Note: will be undefined if the event ocurred in a DM channel.
+       * Note: will be undefined if the event occurred in a DM channel.
        */
       guildId?: Snowflake;
     }
@@ -3646,7 +3646,7 @@ declare module discord {
       /**
        * The id of the [[discord.Guild]] this event occurred in, if any.
        *
-       * Note: will be undefined if the event ocurred in a DM channel.
+       * Note: will be undefined if the event occurred in a DM channel.
        */
       guildId?: Snowflake;
     }
@@ -3670,13 +3670,13 @@ declare module discord {
       /**
        * The id of the [[discord.Guild]] this event occurred in, if any.
        *
-       * Note: will be undefined if the event ocurred in a DM channel.
+       * Note: will be undefined if the event occurred in a DM channel.
        */
       guildId?: Snowflake;
       /**
        * An instance of [[discord.GuildMember]] for the user. Requires [[guildId]] to present.
        *
-       * Note: will be undefined if the event ocurred in a [[discord.DMChannel]].
+       * Note: will be undefined if the event occurred in a [[discord.DMChannel]].
        */
       member?: GuildMember;
       /**
@@ -3704,13 +3704,13 @@ declare module discord {
       /**
        * The id of the [[discord.Guild]] this event occurred in, if any.
        *
-       * Note: will be undefined if the event ocurred in a DM channel.
+       * Note: will be undefined if the event occurred in a DM channel.
        */
       guildId?: Snowflake;
       /**
        * An instance of [[discord.GuildMember]] for the user. Requires [[guildId]] to present.
        *
-       * Note: will be undefined if the event ocurred in a [[discord.DMChannel]].
+       * Note: will be undefined if the event occurred in a [[discord.DMChannel]].
        */
       member?: GuildMember;
       /**
@@ -3734,7 +3734,7 @@ declare module discord {
       /**
        * The id of the [[discord.Guild]] this event occurred in, if any.
        *
-       * Note: will be undefined if the event ocurred in a DM channel.
+       * Note: will be undefined if the event occurred in a DM channel.
        */
       guildId?: Snowflake;
     }
@@ -3858,7 +3858,7 @@ declare module discord {
       /**
        * The id of the [[discord.Guild]] this event occurred in.
        *
-       * Note: Will be undefined if the event occured in a [[discord.DMChannel]].
+       * Note: Will be undefined if the event occurred in a [[discord.DMChannel]].
        */
       guildId?: Snowflake;
       /**
@@ -3950,6 +3950,10 @@ declare module discord {
      * See [[discord.on]] for information on how to register a CHANNEL_PINS_UPDATE event handler.
      */
     CHANNEL_PINS_UPDATE = "CHANNEL_PINS_UPDATE",
+    /**
+     * See [[discord.on]] for information on how to register a GUILD_CREATE event handler.
+     */
+    GUILD_CREATE = "GUILD_CREATE",
     /**
      * See [[discord.on]] for information on how to register a GUILD_UPDATE event handler.
      */
@@ -4140,6 +4144,16 @@ declare module discord {
   function on(
     event: Event.MESSAGE_REACTION_REMOVE_ALL | "MESSAGE_REACTION_REMOVE_ALL",
     handler: (event: Event.IMessageReactionRemoveAll) => Promise<unknown>
+  ): void;
+
+  /**
+   * Fired when a bot is invited to a guild, or after the shard serving this guild reconnects to the Discord gateway.
+   *
+   * @event
+   */
+  function on(
+    event: Event.GUILD_CREATE | "GUILD_CREATE",
+    handler: (guild: Guild) => Promise<unknown>
   ): void;
 
   /**
@@ -4472,6 +4486,21 @@ declare module discord {
        * Only allows the command to be run in the specified `channelIds`.
        */
       function channelIdIn(channelIds: Array<discord.Snowflake>): ICommandFilter;
+
+      /**
+       * Only allows the command to be run in a channel which has the specified `parentId`.
+       */
+      function hasParentId(parentId: discord.Snowflake): ICommandFilter;
+
+      /**
+       * Only allows the command to be run in a channel which has the specified `parentIds`.
+       */
+      function parentIdIn(parentIds: Array<discord.Snowflake>): ICommandFilter;
+
+      /**
+       * Only allows the command to be run in a channel which is marked nsfw.
+       */
+      function isChannelNsfw(): ICommandFilter;
 
       /**
        * Only allows the command to be run if the user has the [[discord.Permissions.CREATE_INSTANT_INVITE]] permission.
@@ -5247,6 +5276,17 @@ declare module discord {
       [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P];
     };
 
+    interface ICommandExecutor {
+      execute(
+        message: discord.GuildMemberMessage,
+        commandPrefix: string,
+        rawArguments: string,
+        isRootExecutor: boolean
+      ): Promise<void>;
+    }
+
+    type Named<T> = { name: string } & T;
+
     /**
      * Command groups contain categories of logically separated groups of commands.
      *
@@ -5254,13 +5294,26 @@ declare module discord {
      *
      * Commands must be added to command groups via one of the registration methods available.
      */
-    class CommandGroup {
+    class CommandGroup implements ICommandExecutor {
       /**
        * Constructs a new command group. By default, this constructor will register message events and listen for messages that match commands added to the command group.
        *
        * @param options The options for this command group.
        */
       constructor(options?: ICommandGroupOptions);
+
+      /**
+       * Attaches the command executors provided.
+       *
+       * For more examples, see [[discord.command.handler]].
+       *
+       * Generally it is preferred to use [[discord.command.CommandGroup.on on]], [[discord.command.CommandGroup.raw raw]] and [[discord.command.CommandGroup.subcommand subcommand]] depending on how you wish
+       * to structure your module. Attach is generally more useful when you are importing un-attached commands from various modules, whereas [[discord.command.CommandGroup.on on]] & company are useful if you
+       * want to define your command handlers in-line.
+       *
+       * @param executors An object, keyed by the name that the command executor will use.
+       */
+      attach(executors: { [name: string]: discord.command.ICommandExecutor }): this;
 
       /**
        * Sets the filter(s) to be used for this command group. All child commands will use these filters.
@@ -5275,6 +5328,19 @@ declare module discord {
        * Registers a command that expects arguments.
        *
        * If argument parsing/validation fails, an error will be returned to the user and the handler will not run.
+       *
+       * #### Example
+       *
+       * Creates a script that will have a command that returns a number that has been multiplied by 2, as `!double N`, where `!double 4` would output `8`
+       *
+       * ```ts
+       * const commandGroup = new discord.command.CommandGroup();
+       * commandGroup.on(
+       *   'double',
+       *   (ctx) => ({ n: ctx.integer() }),
+       *   (message, { n }) => message.reply(`${n * 2}`)
+       * );
+       * ```
        *
        * @param options A string containing the name of the command, or an object with more options (including filters, description, etc).
        * @param parser A function that collects the argument types this command expects.
@@ -5291,10 +5357,42 @@ declare module discord {
        *
        * All text proceeding the command name is passed to the handler in the "args" parameter as a string.
        *
+       * #### Example
+       *
+       * Creates a script that will reply with `pong!` when `!ping` is said in chat.
+       *
+       * ```ts
+       * const commandGroup = new discord.command.CommandGroup();
+       * commandGroup.raw("ping", message => message.reply("pong!"));
+       * ```
+       *
        * @param options A string containing the name of the command, or an object with more options (including filters, description, etc).
        * @param handler A function to be ran when command validation succeeds and the command should be executed.
        */
       raw(options: string | ICommandOptions, handler: CommandHandler<string>): this;
+
+      /**
+       *
+       * Creates, registers and returns a sub-command group.
+       *
+       * This command is an alternate form of [[discord.command.CommandGroup.subcommand subcommand]], that lets capture the sub-command's [[discord.command.CommandGroup CommandGroup]]. For more on sub-commands, see the [[discord.command.CommandGroup.subcommand subcommand]] docs.
+       *
+       * #### Example:
+       *
+       * Creates a script that will have the following commands:
+       *  - `!lights on`
+       *  - `!lights off`
+       *
+       * ```ts
+       * const commandGroup = new discord.command.CommandGroup();
+       * const subCommandGroup = commandGroup.subcommandGroup("lights");
+       * subCommandGroup.raw("on", m => m.reply("lights on turned on!"));
+       * subCommandGroup.raw("off", m => m.reply("lights turned off!"));
+       * ```
+       *
+       * @param options An object containing the command group's options. Register is not able to be set, as the command group is implicitly registered as a sub-command for this command group.
+       */
+      subcommandGroup(options: Named<Omit<ICommandGroupOptions, "register">>): CommandGroup;
 
       /**
        * Registers a command that may be followed by additional nested command groups.
@@ -5303,12 +5401,36 @@ declare module discord {
        *
        * Sub-command groups are just like Command Groups, and will require filters of all parent sub-commands to be passed before executing any sub-commands.
        *
-       * @param options A string containing the name of the command, or an object with more options.
+       * #### Example:
+       *
+       * Creates a script that will have the following commands:
+       *  - `!lights on`
+       *  - `!lights off`
+       *
+       * ```ts
+       * const commandGroup = new discord.command.CommandGroup();
+       * commandGroup.subcommand("lights", subCommandGroup => {
+       *  subCommandGroup.raw("on", m => m.reply("lights on turned on!"));
+       *  subCommandGroup.raw("off", m => m.reply("lights turned off!"));
+       * });
+       * ```
+       *
+       * @param options A string containing the name of the command, or an object with more options. See [[discord.command.ICommandGroupOptions]]. The `name` property must be present, specifying the name of the subcommand-group. Sub-command groups may not be automatically registered, so the `register` property must not be set.
        * @param commandGroup A CommandGroup instance (must not be previously registered) or a function which passes a nested CommandGroup as the first parameter.
        */
       subcommand(
-        options: string | Exclude<ICommandOptions, "filters">,
-        commandGroup: CommandGroup | ((subCommandGroup: CommandGroup) => void)
+        options: string | Named<Omit<ICommandGroupOptions, "register">>,
+        commandGroup: (subCommandGroup: CommandGroup) => void
+      ): this;
+
+      /**
+       * Deprecated - attach the subcommand group using [[discord.command.CommandGroup.attach attach]] instead.
+       *
+       * @deprecated
+       */
+      subcommand(
+        options: string | Named<Omit<ICommandGroupOptions, "filters" | "register">>,
+        commandGroup: CommandGroup
       ): this;
 
       /**
@@ -5337,7 +5459,7 @@ declare module discord {
       /**
        * Registers a command that expects arguments.
        *
-       * @deprecated Replaced by [[discord.command.on]].
+       * @deprecated Replaced by [[discord.command.CommandGroup.on on]].
        */
       registerCommand<T extends CommandArgumentsContainer>(
         options: string | ICommandOptions,
@@ -5348,13 +5470,95 @@ declare module discord {
       /**
        * Registers a command that expects no arguments.
        *
-       * @deprecated Replaced by [[discord.command.raw]].
+       * @deprecated Replaced by [[discord.command.CommandGroup.raw raw]].
        */
       registerCommand(
         options: string | ICommandOptions,
         handler: CommandHandlerDeprecated<null>
       ): this;
+
+      /**
+       * Executes the command group as an ICommandExecutor. This is an internal API, and is subject to breakage.
+       *
+       * @private - internal API, do not use.
+       */
+      execute(
+        message: discord.GuildMemberMessage,
+        commandPrefix: string,
+        rawArguments: string,
+        isRootExecutor: boolean
+      ): Promise<void>;
     }
+
+    /**
+     * Creates an un-attached command handler that can be attached to a [[discord.command.CommandGroup CommandGroup]] using the [[discord.command.CommandGroup.attach attach]] method.
+     *
+     * If you have no need to split your handlers across modules, it's generally more preferred to use [[discord.command.CommandGroup.on CommandGroup.on]]!
+     *
+     * #### Example:
+     * ```ts
+     * const commandGroup = new discord.command.CommandGroup();
+     * const hello = discord.command.handler(
+     *  ctx => ({name: ctx.text()}),
+     *  (msg, {name}) => msg.reply(`Hello ${name}`)
+     * );
+     *
+     * commandGroup.attach({hello});
+     * ```
+     *
+     * This allows you to export commands directly from modules.
+     *
+     * In `main.ts`:
+     *
+     * ```ts
+     * import * as EconomyCommands from './economy-commands';
+     * const commandGroup = new discord.command.CommandGroup();
+     * commandGroup.attach(EconomyCommands);
+     * ```
+     *
+     * In `economy-commands.ts`:
+     * ```ts
+     * export const balance = discord.command.rawHandler((m) =>
+     *   m.reply('your balance is $50')
+     * );
+     * export const buy = discord.command.handler(
+     *   (ctx) => ({ item: ctx.string() }),
+     *   (m, { item }) => m.reply(`You bought **${item}**, your balance is now $0`)
+     * );
+     * ```
+     *
+     * @param parser A function that collects the argument types this command expects.
+     * @param handler A function to be ran when command validation succeeds and the command should be executed.
+     * @param options A object containing the command options (filters, description, etc). It is not possible to specify a name here.
+     */
+    function handler<T extends CommandArgumentsContainer>(
+      parser: ArgumentsParser<T>,
+      handler: CommandHandler<ResolvedArgs<T>>,
+      options?: Omit<ICommandOptions, "name">
+    ): ICommandExecutor;
+
+    /**
+     * Creates an un-attached command handler which processes no arguments that can be attached to a [[discord.command.CommandGroup]] using the [[discord.command.CommandGroup.attach]] method.
+     *
+     * If you have no need to split your handlers across modules, it's generally more preferred to use [[discord.command.CommandGroup.raw]]!
+     *
+     * #### Examples
+     *
+     * ```ts
+     * const commandGroup = new discord.command.CommandGroup();
+     * const ping = discord.command.rawHandler(m => m.reply(`pong!`));
+     * commandGroup.attach({pong});
+     * ```
+     *
+     * For more examples, see the [[discord.command.handler]].
+     *
+     * @param handler A function to be ran when command validation succeeds and the command should be executed.
+     * @param options A object containing the command options (filters, description, etc). It is not possible to specify a name here.
+     */
+    function rawHandler(
+      handler: CommandHandler<string>,
+      options?: Omit<ICommandOptions, "name">
+    ): ICommandExecutor;
   }
 
   const enum Permissions {
