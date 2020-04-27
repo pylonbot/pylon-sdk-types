@@ -5712,6 +5712,13 @@ declare module discord {
     ): ICommandExecutor;
   }
 
+  /**
+   * An enumeration of permission bits that indicate an action users may or may not perform.
+   *
+   * For more information on Discord permissions, please see their docs on permissions.
+   *
+   * https://discordapp.com/developers/docs/topics/permissions
+   */
   const enum Permissions {
     CREATE_INSTANT_INVITE = 1,
     KICK_MEMBERS = 1 << 1,
@@ -5746,6 +5753,10 @@ declare module discord {
     MANAGE_EMOJIS = 1 << 30,
 
     NONE = 0,
+
+    /**
+     * A utility combining all permissions.
+     */
     ALL = CREATE_INSTANT_INVITE |
       KICK_MEMBERS |
       BAN_MEMBERS |
