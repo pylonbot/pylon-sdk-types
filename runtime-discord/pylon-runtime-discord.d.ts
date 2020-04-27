@@ -5864,4 +5864,10428 @@ declare module discord {
       MANAGE_WEBHOOKS |
       MANAGE_EMOJIS,
   }
+
+  /**
+   * The `decor` (decorations) module aims to provide constants for decorative items such as emojis and colors.
+   */
+  module decor {
+    /**
+     * An enumeration of numerical representations of default role color-picker options, as shown in the Discord client app.
+     */
+    const enum RoleColors {
+      /**
+       * Hex `#99AAB5` RGB: `rgb(153, 170, 181)`
+       */
+      DEFAULT = 0x99aab5,
+
+      /**
+       * Hex: `#1ABC9C` RGB: `rgb(26, 188, 156)`
+       */
+      CYAN = 0x1abc9c,
+
+      /**
+       * Hex: `#11806A` RGB: `rgb(17, 128, 106)`
+       */
+      DARK_CYAN = 0x11806a,
+
+      /**
+       * Hex: `#2ECC71` RGB: `rgb(46, 204, 113)`
+       */
+      GREEN = 0x2ecc71,
+
+      /**
+       * Hex: `#1F8B4C` RGB: `rgb(31, 139, 76)`
+       */
+      DARK_GREEN = 0x1f8b4c,
+
+      /**
+       * Hex: `#3498DB` RGB: `rgb(52, 152, 219)`
+       */
+      BLUE = 0x3498db,
+
+      /**
+       * Hex: `#206694` RGB: `rgb(32, 102, 148)`
+       */
+      DARK_BLUE = 0x206694,
+
+      /**
+       * Hex: `#9B59B6` RGB: `rgb(155, 89, 182)`
+       */
+      PURPLE = 0x9b59b6,
+
+      /**
+       * Hex: `#71368A` RGB: `rgb(113, 54, 138)`
+       */
+      DARK_PURPLE = 0x71368a,
+
+      /**
+       * Hex: `#E91E63` RGB: `rgb(233, 30, 99)`
+       */
+      PINK = 0xe91e63,
+
+      /**
+       * Hex: `#AD1457` RGB: `rgb(173, 20, 87)`
+       */
+      DARK_PINK = 0xad1457,
+
+      /**
+       * Hex: `#F1C40F` RGB: `rgb(241, 196, 15)`
+       */
+      YELLOW = 0xf1c40f,
+
+      /**
+       * Hex: `#C27C0E` RGB: `rgb(194, 124, 14)`
+       */
+      DARK_YELLOW = 0xc27c0e,
+
+      /**
+       * Hex: `#E67E22` RGB: `rgb(230, 126, 34)`
+       */
+      ORANGE = 0xe67e22,
+
+      /**
+       * Hex: `#A84300` RGB: `rgb(168, 67, 0)`
+       */
+      DARK_ORANGE = 0xa84300,
+
+      /**
+       * Hex: `#E74C3C` RGB: `rgb(231, 76, 60)`
+       */
+      RED = 0xe74c3c,
+
+      /**
+       * Hex: `#992D22` RGB: `rgb(153, 45, 34)`
+       */
+      DARK_RED = 0x992d22,
+
+      /**
+       * Hex: `#95A5A6` RGB: `rgb(149, 165, 166)`
+       */
+      GRAY = 0x95a5a6,
+
+      /**
+       * Hex: `#979C9F` RGB: `rgb(151, 156, 159)`
+       */
+      DARK_GRAY = 0x979c9f,
+
+      /**
+       * Hex: `#607D8B` RGB: `rgb(96, 125, 139)`
+       */
+      SLATE = 0x607d8b,
+
+      /**
+       * Hex: `#546E7A` RGB: `rgb(84, 110, 122)`
+       */
+      DARK_SLATE = 0x546e7a,
+    }
+
+    /**
+     * An enumeration mapping Discord emoji names to their unicode literal.
+     *
+     * For simplicity, the keys represent the same names you may use when sending messages with the Discord client.
+     * Some emojis may be represented more than once, in which case their aliases are listed in the documentation header.
+     */
+    const enum Emojis {
+      /**
+       * Emoji: 😀
+       */
+      "GRINNING" = "😀",
+      /**
+       * Emoji: 😬
+       */
+      "GRIMACING" = "😬",
+      /**
+       * Emoji: 😁
+       */
+      "GRIN" = "😁",
+      /**
+       * Emoji: 😂
+       */
+      "JOY" = "😂",
+      /**
+       * Emoji: 😃
+       */
+      "SMILEY" = "😃",
+      /**
+       * Emoji: 😄
+       */
+      "SMILE" = "😄",
+      /**
+       * Emoji: 😅
+       */
+      "SWEAT_SMILE" = "😅",
+      /**
+       * Emoji: 😆
+       *
+       * Aliases: `SATISFIED`
+       */
+      "LAUGHING" = "😆",
+      /**
+       * Emoji: 😆
+       *
+       * Aliases: `LAUGHING`
+       */
+      "SATISFIED" = "😆",
+      /**
+       * Emoji: 😇
+       */
+      "INNOCENT" = "😇",
+      /**
+       * Emoji: 😉
+       */
+      "WINK" = "😉",
+      /**
+       * Emoji: 😊
+       */
+      "BLUSH" = "😊",
+      /**
+       * Emoji: 🙂
+       *
+       * Aliases: `SLIGHTLY_SMILING_FACE`
+       */
+      "SLIGHT_SMILE" = "🙂",
+      /**
+       * Emoji: 🙂
+       *
+       * Aliases: `SLIGHT_SMILE`
+       */
+      "SLIGHTLY_SMILING_FACE" = "🙂",
+      /**
+       * Emoji: 🙃
+       *
+       * Aliases: `UPSIDE_DOWN_FACE`
+       */
+      "UPSIDE_DOWN" = "🙃",
+      /**
+       * Emoji: 🙃
+       *
+       * Aliases: `UPSIDE_DOWN`
+       */
+      "UPSIDE_DOWN_FACE" = "🙃",
+      /**
+       * Emoji: ☺
+       */
+      "RELAXED" = "☺",
+      /**
+       * Emoji: 😋
+       */
+      "YUM" = "😋",
+      /**
+       * Emoji: 😌
+       */
+      "RELIEVED" = "😌",
+      /**
+       * Emoji: 😍
+       */
+      "HEART_EYES" = "😍",
+      /**
+       * Emoji: 😘
+       */
+      "KISSING_HEART" = "😘",
+      /**
+       * Emoji: 😗
+       */
+      "KISSING" = "😗",
+      /**
+       * Emoji: 😙
+       */
+      "KISSING_SMILING_EYES" = "😙",
+      /**
+       * Emoji: 😚
+       */
+      "KISSING_CLOSED_EYES" = "😚",
+      /**
+       * Emoji: 😜
+       */
+      "STUCK_OUT_TONGUE_WINKING_EYE" = "😜",
+      /**
+       * Emoji: 😝
+       */
+      "STUCK_OUT_TONGUE_CLOSED_EYES" = "😝",
+      /**
+       * Emoji: 😛
+       */
+      "STUCK_OUT_TONGUE" = "😛",
+      /**
+       * Emoji: 🤑
+       *
+       * Aliases: `MONEY_MOUTH_FACE`
+       */
+      "MONEY_MOUTH" = "🤑",
+      /**
+       * Emoji: 🤑
+       *
+       * Aliases: `MONEY_MOUTH`
+       */
+      "MONEY_MOUTH_FACE" = "🤑",
+      /**
+       * Emoji: 🤓
+       *
+       * Aliases: `NERD_FACE`
+       */
+      "NERD" = "🤓",
+      /**
+       * Emoji: 🤓
+       *
+       * Aliases: `NERD`
+       */
+      "NERD_FACE" = "🤓",
+      /**
+       * Emoji: 😎
+       */
+      "SUNGLASSES" = "😎",
+      /**
+       * Emoji: 🤗
+       *
+       * Aliases: `HUGGING_FACE`
+       */
+      "HUGGING" = "🤗",
+      /**
+       * Emoji: 🤗
+       *
+       * Aliases: `HUGGING`
+       */
+      "HUGGING_FACE" = "🤗",
+      /**
+       * Emoji: 😏
+       */
+      "SMIRK" = "😏",
+      /**
+       * Emoji: 😶
+       */
+      "NO_MOUTH" = "😶",
+      /**
+       * Emoji: 😐
+       */
+      "NEUTRAL_FACE" = "😐",
+      /**
+       * Emoji: 😑
+       */
+      "EXPRESSIONLESS" = "😑",
+      /**
+       * Emoji: 😒
+       */
+      "UNAMUSED" = "😒",
+      /**
+       * Emoji: 🙄
+       *
+       * Aliases: `FACE_WITH_ROLLING_EYES`
+       */
+      "ROLLING_EYES" = "🙄",
+      /**
+       * Emoji: 🙄
+       *
+       * Aliases: `ROLLING_EYES`
+       */
+      "FACE_WITH_ROLLING_EYES" = "🙄",
+      /**
+       * Emoji: 🤔
+       *
+       * Aliases: `THINKING_FACE`
+       */
+      "THINKING" = "🤔",
+      /**
+       * Emoji: 🤔
+       *
+       * Aliases: `THINKING`
+       */
+      "THINKING_FACE" = "🤔",
+      /**
+       * Emoji: 😳
+       */
+      "FLUSHED" = "😳",
+      /**
+       * Emoji: 😞
+       */
+      "DISAPPOINTED" = "😞",
+      /**
+       * Emoji: 😟
+       */
+      "WORRIED" = "😟",
+      /**
+       * Emoji: 😠
+       */
+      "ANGRY" = "😠",
+      /**
+       * Emoji: 😡
+       */
+      "RAGE" = "😡",
+      /**
+       * Emoji: 😔
+       */
+      "PENSIVE" = "😔",
+      /**
+       * Emoji: 😕
+       */
+      "CONFUSED" = "😕",
+      /**
+       * Emoji: 🙁
+       *
+       * Aliases: `SLIGHTLY_FROWNING_FACE`
+       */
+      "SLIGHT_FROWN" = "🙁",
+      /**
+       * Emoji: 🙁
+       *
+       * Aliases: `SLIGHT_FROWN`
+       */
+      "SLIGHTLY_FROWNING_FACE" = "🙁",
+      /**
+       * Emoji: ☹
+       *
+       * Aliases: `WHITE_FROWNING_FACE`
+       */
+      "FROWNING2" = "☹",
+      /**
+       * Emoji: ☹
+       *
+       * Aliases: `FROWNING2`
+       */
+      "WHITE_FROWNING_FACE" = "☹",
+      /**
+       * Emoji: 😣
+       */
+      "PERSEVERE" = "😣",
+      /**
+       * Emoji: 😖
+       */
+      "CONFOUNDED" = "😖",
+      /**
+       * Emoji: 😫
+       */
+      "TIRED_FACE" = "😫",
+      /**
+       * Emoji: 😩
+       */
+      "WEARY" = "😩",
+      /**
+       * Emoji: 😤
+       */
+      "TRIUMPH" = "😤",
+      /**
+       * Emoji: 😮
+       */
+      "OPEN_MOUTH" = "😮",
+      /**
+       * Emoji: 😱
+       */
+      "SCREAM" = "😱",
+      /**
+       * Emoji: 😨
+       */
+      "FEARFUL" = "😨",
+      /**
+       * Emoji: 😰
+       */
+      "COLD_SWEAT" = "😰",
+      /**
+       * Emoji: 😯
+       */
+      "HUSHED" = "😯",
+      /**
+       * Emoji: 😦
+       */
+      "FROWNING" = "😦",
+      /**
+       * Emoji: 😧
+       */
+      "ANGUISHED" = "😧",
+      /**
+       * Emoji: 😢
+       */
+      "CRY" = "😢",
+      /**
+       * Emoji: 😥
+       */
+      "DISAPPOINTED_RELIEVED" = "😥",
+      /**
+       * Emoji: 😪
+       */
+      "SLEEPY" = "😪",
+      /**
+       * Emoji: 😓
+       */
+      "SWEAT" = "😓",
+      /**
+       * Emoji: 😭
+       */
+      "SOB" = "😭",
+      /**
+       * Emoji: 😵
+       */
+      "DIZZY_FACE" = "😵",
+      /**
+       * Emoji: 😲
+       */
+      "ASTONISHED" = "😲",
+      /**
+       * Emoji: 🤐
+       *
+       * Aliases: `ZIPPER_MOUTH_FACE`
+       */
+      "ZIPPER_MOUTH" = "🤐",
+      /**
+       * Emoji: 🤐
+       *
+       * Aliases: `ZIPPER_MOUTH`
+       */
+      "ZIPPER_MOUTH_FACE" = "🤐",
+      /**
+       * Emoji: 😷
+       */
+      "MASK" = "😷",
+      /**
+       * Emoji: 🤒
+       *
+       * Aliases: `FACE_WITH_THERMOMETER`
+       */
+      "THERMOMETER_FACE" = "🤒",
+      /**
+       * Emoji: 🤒
+       *
+       * Aliases: `THERMOMETER_FACE`
+       */
+      "FACE_WITH_THERMOMETER" = "🤒",
+      /**
+       * Emoji: 🤕
+       *
+       * Aliases: `FACE_WITH_HEAD_BANDAGE`
+       */
+      "HEAD_BANDAGE" = "🤕",
+      /**
+       * Emoji: 🤕
+       *
+       * Aliases: `HEAD_BANDAGE`
+       */
+      "FACE_WITH_HEAD_BANDAGE" = "🤕",
+      /**
+       * Emoji: 😴
+       */
+      "SLEEPING" = "😴",
+      /**
+       * Emoji: 💤
+       */
+      "ZZZ" = "💤",
+      /**
+       * Emoji: 💩
+       *
+       * Aliases: `SHIT`,`HANKEY`,`POO`
+       */
+      "POOP" = "💩",
+      /**
+       * Emoji: 💩
+       *
+       * Aliases: `POOP`,`HANKEY`,`POO`
+       */
+      "SHIT" = "💩",
+      /**
+       * Emoji: 💩
+       *
+       * Aliases: `POOP`,`SHIT`,`POO`
+       */
+      "HANKEY" = "💩",
+      /**
+       * Emoji: 💩
+       *
+       * Aliases: `POOP`,`SHIT`,`HANKEY`
+       */
+      "POO" = "💩",
+      /**
+       * Emoji: 😈
+       */
+      "SMILING_IMP" = "😈",
+      /**
+       * Emoji: 👿
+       */
+      "IMP" = "👿",
+      /**
+       * Emoji: 👹
+       */
+      "JAPANESE_OGRE" = "👹",
+      /**
+       * Emoji: 👺
+       */
+      "JAPANESE_GOBLIN" = "👺",
+      /**
+       * Emoji: 💀
+       *
+       * Aliases: `SKELETON`
+       */
+      "SKULL" = "💀",
+      /**
+       * Emoji: 💀
+       *
+       * Aliases: `SKULL`
+       */
+      "SKELETON" = "💀",
+      /**
+       * Emoji: 👻
+       */
+      "GHOST" = "👻",
+      /**
+       * Emoji: 👽
+       */
+      "ALIEN" = "👽",
+      /**
+       * Emoji: 🤖
+       *
+       * Aliases: `ROBOT_FACE`
+       */
+      "ROBOT" = "🤖",
+      /**
+       * Emoji: 🤖
+       *
+       * Aliases: `ROBOT`
+       */
+      "ROBOT_FACE" = "🤖",
+      /**
+       * Emoji: 😺
+       */
+      "SMILEY_CAT" = "😺",
+      /**
+       * Emoji: 😸
+       */
+      "SMILE_CAT" = "😸",
+      /**
+       * Emoji: 😹
+       */
+      "JOY_CAT" = "😹",
+      /**
+       * Emoji: 😻
+       */
+      "HEART_EYES_CAT" = "😻",
+      /**
+       * Emoji: 😼
+       */
+      "SMIRK_CAT" = "😼",
+      /**
+       * Emoji: 😽
+       */
+      "KISSING_CAT" = "😽",
+      /**
+       * Emoji: 🙀
+       */
+      "SCREAM_CAT" = "🙀",
+      /**
+       * Emoji: 😿
+       */
+      "CRYING_CAT_FACE" = "😿",
+      /**
+       * Emoji: 😾
+       */
+      "POUTING_CAT" = "😾",
+      /**
+       * Emoji: 🙌
+       */
+      "RAISED_HANDS" = "🙌",
+      /**
+       * Emoji: 👏
+       */
+      "CLAP" = "👏",
+      /**
+       * Emoji: 👋
+       */
+      "WAVE" = "👋",
+      /**
+       * Emoji: 👍
+       *
+       * Aliases: `_+1`,`THUMBUP`
+       */
+      "THUMBSUP" = "👍",
+      /**
+       * Emoji: 👍
+       *
+       * Aliases: `THUMBSUP`,`THUMBUP`
+       */
+      "_+1" = "👍",
+      /**
+       * Emoji: 👍
+       *
+       * Aliases: `THUMBSUP`,`_+1`
+       */
+      "THUMBUP" = "👍",
+      /**
+       * Emoji: 👎
+       *
+       * Aliases: `_-1`,`THUMBDOWN`
+       */
+      "THUMBSDOWN" = "👎",
+      /**
+       * Emoji: 👎
+       *
+       * Aliases: `THUMBSDOWN`,`THUMBDOWN`
+       */
+      "_-1" = "👎",
+      /**
+       * Emoji: 👎
+       *
+       * Aliases: `THUMBSDOWN`,`_-1`
+       */
+      "THUMBDOWN" = "👎",
+      /**
+       * Emoji: 👊
+       */
+      "PUNCH" = "👊",
+      /**
+       * Emoji: ✊
+       */
+      "FIST" = "✊",
+      /**
+       * Emoji: ✌
+       */
+      "V" = "✌",
+      /**
+       * Emoji: 👌
+       */
+      "OK_HAND" = "👌",
+      /**
+       * Emoji: ✋
+       */
+      "RAISED_HAND" = "✋",
+      /**
+       * Emoji: 👐
+       */
+      "OPEN_HANDS" = "👐",
+      /**
+       * Emoji: 💪
+       */
+      "MUSCLE" = "💪",
+      /**
+       * Emoji: 🙏
+       */
+      "PRAY" = "🙏",
+      /**
+       * Emoji: ☝
+       */
+      "POINT_UP" = "☝",
+      /**
+       * Emoji: 👆
+       */
+      "POINT_UP_2" = "👆",
+      /**
+       * Emoji: 👇
+       */
+      "POINT_DOWN" = "👇",
+      /**
+       * Emoji: 👈
+       */
+      "POINT_LEFT" = "👈",
+      /**
+       * Emoji: 👉
+       */
+      "POINT_RIGHT" = "👉",
+      /**
+       * Emoji: 🖕
+       *
+       * Aliases: `REVERSED_HAND_WITH_MIDDLE_FINGER_EXTENDED`
+       */
+      "MIDDLE_FINGER" = "🖕",
+      /**
+       * Emoji: 🖕
+       *
+       * Aliases: `MIDDLE_FINGER`
+       */
+      "REVERSED_HAND_WITH_MIDDLE_FINGER_EXTENDED" = "🖕",
+      /**
+       * Emoji: 🖐
+       *
+       * Aliases: `RAISED_HAND_WITH_FINGERS_SPLAYED`
+       */
+      "HAND_SPLAYED" = "🖐",
+      /**
+       * Emoji: 🖐
+       *
+       * Aliases: `HAND_SPLAYED`
+       */
+      "RAISED_HAND_WITH_FINGERS_SPLAYED" = "🖐",
+      /**
+       * Emoji: 🤘
+       *
+       * Aliases: `SIGN_OF_THE_HORNS`
+       */
+      "METAL" = "🤘",
+      /**
+       * Emoji: 🤘
+       *
+       * Aliases: `METAL`
+       */
+      "SIGN_OF_THE_HORNS" = "🤘",
+      /**
+       * Emoji: 🖖
+       *
+       * Aliases: `RAISED_HAND_WITH_PART_BETWEEN_MIDDLE_AND_RING_FINGERS`
+       */
+      "VULCAN" = "🖖",
+      /**
+       * Emoji: 🖖
+       *
+       * Aliases: `VULCAN`
+       */
+      "RAISED_HAND_WITH_PART_BETWEEN_MIDDLE_AND_RING_FINGERS" = "🖖",
+      /**
+       * Emoji: ✍
+       */
+      "WRITING_HAND" = "✍",
+      /**
+       * Emoji: 💅
+       */
+      "NAIL_CARE" = "💅",
+      /**
+       * Emoji: 👄
+       */
+      "LIPS" = "👄",
+      /**
+       * Emoji: 👅
+       */
+      "TONGUE" = "👅",
+      /**
+       * Emoji: 👂
+       */
+      "EAR" = "👂",
+      /**
+       * Emoji: 👃
+       */
+      "NOSE" = "👃",
+      /**
+       * Emoji: 👁
+       */
+      "EYE" = "👁",
+      /**
+       * Emoji: 👀
+       */
+      "EYES" = "👀",
+      /**
+       * Emoji: 👤
+       */
+      "BUST_IN_SILHOUETTE" = "👤",
+      /**
+       * Emoji: 👥
+       */
+      "BUSTS_IN_SILHOUETTE" = "👥",
+      /**
+       * Emoji: 🗣
+       *
+       * Aliases: `SPEAKING_HEAD_IN_SILHOUETTE`
+       */
+      "SPEAKING_HEAD" = "🗣",
+      /**
+       * Emoji: 🗣
+       *
+       * Aliases: `SPEAKING_HEAD`
+       */
+      "SPEAKING_HEAD_IN_SILHOUETTE" = "🗣",
+      /**
+       * Emoji: 👶
+       */
+      "BABY" = "👶",
+      /**
+       * Emoji: 👦
+       */
+      "BOY" = "👦",
+      /**
+       * Emoji: 👧
+       */
+      "GIRL" = "👧",
+      /**
+       * Emoji: 👨
+       */
+      "MAN" = "👨",
+      /**
+       * Emoji: 👩
+       */
+      "WOMAN" = "👩",
+      /**
+       * Emoji: 👱
+       *
+       * Aliases: `PERSON_WITH_BLOND_HAIR`
+       */
+      "BLOND_HAIRED_PERSON" = "👱",
+      /**
+       * Emoji: 👱
+       *
+       * Aliases: `BLOND_HAIRED_PERSON`
+       */
+      "PERSON_WITH_BLOND_HAIR" = "👱",
+      /**
+       * Emoji: 👴
+       */
+      "OLDER_MAN" = "👴",
+      /**
+       * Emoji: 👵
+       *
+       * Aliases: `GRANDMA`
+       */
+      "OLDER_WOMAN" = "👵",
+      /**
+       * Emoji: 👵
+       *
+       * Aliases: `OLDER_WOMAN`
+       */
+      "GRANDMA" = "👵",
+      /**
+       * Emoji: 👲
+       */
+      "MAN_WITH_GUA_PI_MAO" = "👲",
+      /**
+       * Emoji: 👳
+       *
+       * Aliases: `PERSON_WITH_TURBAN`
+       */
+      "PERSON_WEARING_TURBAN" = "👳",
+      /**
+       * Emoji: 👳
+       *
+       * Aliases: `PERSON_WEARING_TURBAN`
+       */
+      "PERSON_WITH_TURBAN" = "👳",
+      /**
+       * Emoji: 👮
+       *
+       * Aliases: `COP`
+       */
+      "POLICE_OFFICER" = "👮",
+      /**
+       * Emoji: 👮
+       *
+       * Aliases: `POLICE_OFFICER`
+       */
+      "COP" = "👮",
+      /**
+       * Emoji: 👷
+       */
+      "CONSTRUCTION_WORKER" = "👷",
+      /**
+       * Emoji: 💂
+       *
+       * Aliases: `FOOT_GUARD`
+       */
+      "GUARD" = "💂",
+      /**
+       * Emoji: 💂
+       *
+       * Aliases: `GUARD`
+       */
+      "FOOT_GUARD" = "💂",
+      /**
+       * Emoji: 🕵
+       *
+       * Aliases: `SLEUTH_OR_SPY`,`DETECTIVE`
+       */
+      "SPY" = "🕵",
+      /**
+       * Emoji: 🕵
+       *
+       * Aliases: `SPY`,`DETECTIVE`
+       */
+      "SLEUTH_OR_SPY" = "🕵",
+      /**
+       * Emoji: 🕵
+       *
+       * Aliases: `SPY`,`SLEUTH_OR_SPY`
+       */
+      "DETECTIVE" = "🕵",
+      /**
+       * Emoji: 🎅
+       */
+      "SANTA" = "🎅",
+      /**
+       * Emoji: 👼
+       */
+      "ANGEL" = "👼",
+      /**
+       * Emoji: 👸
+       */
+      "PRINCESS" = "👸",
+      /**
+       * Emoji: 👰
+       */
+      "BRIDE_WITH_VEIL" = "👰",
+      /**
+       * Emoji: 🚶
+       *
+       * Aliases: `PEDESTRIAN`
+       */
+      "WALKING" = "🚶",
+      /**
+       * Emoji: 🚶
+       *
+       * Aliases: `WALKING`
+       */
+      "PEDESTRIAN" = "🚶",
+      /**
+       * Emoji: 🏃
+       */
+      "RUNNER" = "🏃",
+      /**
+       * Emoji: 💃
+       *
+       * Aliases: `WOMAN_DANCER`,`WOMAN_DANCING`
+       */
+      "DANCER" = "💃",
+      /**
+       * Emoji: 💃
+       *
+       * Aliases: `DANCER`,`WOMAN_DANCING`
+       */
+      "WOMAN_DANCER" = "💃",
+      /**
+       * Emoji: 💃
+       *
+       * Aliases: `DANCER`,`WOMAN_DANCER`
+       */
+      "WOMAN_DANCING" = "💃",
+      /**
+       * Emoji: 👯
+       *
+       * Aliases: `PEOPLE_WITH_BUNNY_EARS`
+       */
+      "DANCERS" = "👯",
+      /**
+       * Emoji: 👯
+       *
+       * Aliases: `DANCERS`
+       */
+      "PEOPLE_WITH_BUNNY_EARS" = "👯",
+      /**
+       * Emoji: 👫
+       */
+      "COUPLE" = "👫",
+      /**
+       * Emoji: 👬
+       */
+      "TWO_MEN_HOLDING_HANDS" = "👬",
+      /**
+       * Emoji: 👭
+       */
+      "TWO_WOMEN_HOLDING_HANDS" = "👭",
+      /**
+       * Emoji: 🙇
+       */
+      "BOW" = "🙇",
+      /**
+       * Emoji: 💁
+       */
+      "INFORMATION_DESK_PERSON" = "💁",
+      /**
+       * Emoji: 🙅
+       *
+       * Aliases: `NO_GOOD`,`PERSON_NO`
+       */
+      "PERSON_GESTURING_NO" = "🙅",
+      /**
+       * Emoji: 🙅
+       *
+       * Aliases: `PERSON_GESTURING_NO`,`PERSON_NO`
+       */
+      "NO_GOOD" = "🙅",
+      /**
+       * Emoji: 🙅
+       *
+       * Aliases: `PERSON_GESTURING_NO`,`NO_GOOD`
+       */
+      "PERSON_NO" = "🙅",
+      /**
+       * Emoji: 🙆
+       *
+       * Aliases: `OK_PERSON`,`GESTURE_OK`
+       */
+      "PERSON_GESTURING_OK" = "🙆",
+      /**
+       * Emoji: 🙆
+       *
+       * Aliases: `PERSON_GESTURING_OK`,`GESTURE_OK`
+       */
+      "OK_PERSON" = "🙆",
+      /**
+       * Emoji: 🙆
+       *
+       * Aliases: `PERSON_GESTURING_OK`,`OK_PERSON`
+       */
+      "GESTURE_OK" = "🙆",
+      /**
+       * Emoji: 🙋
+       */
+      "RAISING_HAND" = "🙋",
+      /**
+       * Emoji: 🙎
+       */
+      "PERSON_WITH_POUTING_FACE" = "🙎",
+      /**
+       * Emoji: 🙍
+       */
+      "PERSON_FROWNING" = "🙍",
+      /**
+       * Emoji: 💇
+       */
+      "HAIRCUT" = "💇",
+      /**
+       * Emoji: 💆
+       */
+      "MASSAGE" = "💆",
+      /**
+       * Emoji: 💑
+       */
+      "COUPLE_WITH_HEART" = "💑",
+      /**
+       * Emoji: 👩‍❤️‍👩
+       *
+       * Aliases: `COUPLE_WITH_HEART_WW`
+       */
+      "COUPLE_WW" = "👩‍❤️‍👩",
+      /**
+       * Emoji: 👩‍❤️‍👩
+       *
+       * Aliases: `COUPLE_WW`
+       */
+      "COUPLE_WITH_HEART_WW" = "👩‍❤️‍👩",
+      /**
+       * Emoji: 👨‍❤️‍👨
+       *
+       * Aliases: `COUPLE_WITH_HEART_MM`
+       */
+      "COUPLE_MM" = "👨‍❤️‍👨",
+      /**
+       * Emoji: 👨‍❤️‍👨
+       *
+       * Aliases: `COUPLE_MM`
+       */
+      "COUPLE_WITH_HEART_MM" = "👨‍❤️‍👨",
+      /**
+       * Emoji: 💏
+       */
+      "COUPLEKISS" = "💏",
+      /**
+       * Emoji: 👩‍❤️‍💋‍👩
+       *
+       * Aliases: `COUPLEKISS_WW`
+       */
+      "KISS_WW" = "👩‍❤️‍💋‍👩",
+      /**
+       * Emoji: 👩‍❤️‍💋‍👩
+       *
+       * Aliases: `KISS_WW`
+       */
+      "COUPLEKISS_WW" = "👩‍❤️‍💋‍👩",
+      /**
+       * Emoji: 👨‍❤️‍💋‍👨
+       *
+       * Aliases: `COUPLEKISS_MM`
+       */
+      "KISS_MM" = "👨‍❤️‍💋‍👨",
+      /**
+       * Emoji: 👨‍❤️‍💋‍👨
+       *
+       * Aliases: `KISS_MM`
+       */
+      "COUPLEKISS_MM" = "👨‍❤️‍💋‍👨",
+      /**
+       * Emoji: 👪
+       */
+      "FAMILY" = "👪",
+      /**
+       * Emoji: 👨‍👩‍👧
+       */
+      "FAMILY_MWG" = "👨‍👩‍👧",
+      /**
+       * Emoji: 👨‍👩‍👧‍👦
+       */
+      "FAMILY_MWGB" = "👨‍👩‍👧‍👦",
+      /**
+       * Emoji: 👨‍👩‍👦‍👦
+       */
+      "FAMILY_MWBB" = "👨‍👩‍👦‍👦",
+      /**
+       * Emoji: 👨‍👩‍👧‍👧
+       */
+      "FAMILY_MWGG" = "👨‍👩‍👧‍👧",
+      /**
+       * Emoji: 👩‍👩‍👦
+       */
+      "FAMILY_WWB" = "👩‍👩‍👦",
+      /**
+       * Emoji: 👩‍👩‍👧
+       */
+      "FAMILY_WWG" = "👩‍👩‍👧",
+      /**
+       * Emoji: 👩‍👩‍👧‍👦
+       */
+      "FAMILY_WWGB" = "👩‍👩‍👧‍👦",
+      /**
+       * Emoji: 👩‍👩‍👦‍👦
+       */
+      "FAMILY_WWBB" = "👩‍👩‍👦‍👦",
+      /**
+       * Emoji: 👩‍👩‍👧‍👧
+       */
+      "FAMILY_WWGG" = "👩‍👩‍👧‍👧",
+      /**
+       * Emoji: 👨‍👨‍👦
+       */
+      "FAMILY_MMB" = "👨‍👨‍👦",
+      /**
+       * Emoji: 👨‍👨‍👧
+       */
+      "FAMILY_MMG" = "👨‍👨‍👧",
+      /**
+       * Emoji: 👨‍👨‍👧‍👦
+       */
+      "FAMILY_MMGB" = "👨‍👨‍👧‍👦",
+      /**
+       * Emoji: 👨‍👨‍👦‍👦
+       */
+      "FAMILY_MMBB" = "👨‍👨‍👦‍👦",
+      /**
+       * Emoji: 👨‍👨‍👧‍👧
+       */
+      "FAMILY_MMGG" = "👨‍👨‍👧‍👧",
+      /**
+       * Emoji: 👨‍👦
+       */
+      "FAMILY_MB" = "👨‍👦",
+      /**
+       * Emoji: 👨‍👦‍👦
+       */
+      "FAMILY_MBB" = "👨‍👦‍👦",
+      /**
+       * Emoji: 👨‍👧
+       */
+      "FAMILY_MG" = "👨‍👧",
+      /**
+       * Emoji: 👨‍👧‍👦
+       */
+      "FAMILY_MGB" = "👨‍👧‍👦",
+      /**
+       * Emoji: 👨‍👧‍👧
+       */
+      "FAMILY_MGG" = "👨‍👧‍👧",
+      /**
+       * Emoji: 👩‍👦
+       */
+      "FAMILY_WB" = "👩‍👦",
+      /**
+       * Emoji: 👩‍👦‍👦
+       */
+      "FAMILY_WBB" = "👩‍👦‍👦",
+      /**
+       * Emoji: 👩‍👧
+       */
+      "FAMILY_WG" = "👩‍👧",
+      /**
+       * Emoji: 👩‍👧‍👦
+       */
+      "FAMILY_WGB" = "👩‍👧‍👦",
+      /**
+       * Emoji: 👩‍👧‍👧
+       */
+      "FAMILY_WGG" = "👩‍👧‍👧",
+      /**
+       * Emoji: 👚
+       */
+      "WOMANS_CLOTHES" = "👚",
+      /**
+       * Emoji: 👕
+       */
+      "SHIRT" = "👕",
+      /**
+       * Emoji: 👖
+       */
+      "JEANS" = "👖",
+      /**
+       * Emoji: 👔
+       */
+      "NECKTIE" = "👔",
+      /**
+       * Emoji: 👗
+       */
+      "DRESS" = "👗",
+      /**
+       * Emoji: 👙
+       */
+      "BIKINI" = "👙",
+      /**
+       * Emoji: 👘
+       */
+      "KIMONO" = "👘",
+      /**
+       * Emoji: 💄
+       */
+      "LIPSTICK" = "💄",
+      /**
+       * Emoji: 💋
+       */
+      "KISS" = "💋",
+      /**
+       * Emoji: 👣
+       */
+      "FOOTPRINTS" = "👣",
+      /**
+       * Emoji: 👠
+       */
+      "HIGH_HEEL" = "👠",
+      /**
+       * Emoji: 👡
+       */
+      "SANDAL" = "👡",
+      /**
+       * Emoji: 👢
+       */
+      "BOOT" = "👢",
+      /**
+       * Emoji: 👞
+       */
+      "MANS_SHOE" = "👞",
+      /**
+       * Emoji: 👟
+       */
+      "ATHLETIC_SHOE" = "👟",
+      /**
+       * Emoji: 👒
+       */
+      "WOMANS_HAT" = "👒",
+      /**
+       * Emoji: 🎩
+       */
+      "TOPHAT" = "🎩",
+      /**
+       * Emoji: ⛑
+       *
+       * Aliases: `HELMET_WITH_WHITE_CROSS`
+       */
+      "HELMET_WITH_CROSS" = "⛑",
+      /**
+       * Emoji: ⛑
+       *
+       * Aliases: `HELMET_WITH_CROSS`
+       */
+      "HELMET_WITH_WHITE_CROSS" = "⛑",
+      /**
+       * Emoji: 🎓
+       */
+      "MORTAR_BOARD" = "🎓",
+      /**
+       * Emoji: 👑
+       */
+      "CROWN" = "👑",
+      /**
+       * Emoji: 🎒
+       */
+      "SCHOOL_SATCHEL" = "🎒",
+      /**
+       * Emoji: 👝
+       */
+      "POUCH" = "👝",
+      /**
+       * Emoji: 👛
+       */
+      "PURSE" = "👛",
+      /**
+       * Emoji: 👜
+       */
+      "HANDBAG" = "👜",
+      /**
+       * Emoji: 💼
+       */
+      "BRIEFCASE" = "💼",
+      /**
+       * Emoji: 👓
+       */
+      "EYEGLASSES" = "👓",
+      /**
+       * Emoji: 🕶
+       */
+      "DARK_SUNGLASSES" = "🕶",
+      /**
+       * Emoji: 💍
+       */
+      "RING" = "💍",
+      /**
+       * Emoji: 🌂
+       */
+      "CLOSED_UMBRELLA" = "🌂",
+      /**
+       * Emoji: 🤠
+       *
+       * Aliases: `FACE_WITH_COWBOY_HAT`
+       */
+      "COWBOY" = "🤠",
+      /**
+       * Emoji: 🤠
+       *
+       * Aliases: `COWBOY`
+       */
+      "FACE_WITH_COWBOY_HAT" = "🤠",
+      /**
+       * Emoji: 🤡
+       *
+       * Aliases: `CLOWN_FACE`
+       */
+      "CLOWN" = "🤡",
+      /**
+       * Emoji: 🤡
+       *
+       * Aliases: `CLOWN`
+       */
+      "CLOWN_FACE" = "🤡",
+      /**
+       * Emoji: 🤢
+       *
+       * Aliases: `SICK`
+       */
+      "NAUSEATED_FACE" = "🤢",
+      /**
+       * Emoji: 🤢
+       *
+       * Aliases: `NAUSEATED_FACE`
+       */
+      "SICK" = "🤢",
+      /**
+       * Emoji: 🤣
+       *
+       * Aliases: `ROLLING_ON_THE_FLOOR_LAUGHING`
+       */
+      "ROFL" = "🤣",
+      /**
+       * Emoji: 🤣
+       *
+       * Aliases: `ROFL`
+       */
+      "ROLLING_ON_THE_FLOOR_LAUGHING" = "🤣",
+      /**
+       * Emoji: 🤤
+       *
+       * Aliases: `DROOL`
+       */
+      "DROOLING_FACE" = "🤤",
+      /**
+       * Emoji: 🤤
+       *
+       * Aliases: `DROOLING_FACE`
+       */
+      "DROOL" = "🤤",
+      /**
+       * Emoji: 🤥
+       *
+       * Aliases: `LIAR`
+       */
+      "LYING_FACE" = "🤥",
+      /**
+       * Emoji: 🤥
+       *
+       * Aliases: `LYING_FACE`
+       */
+      "LIAR" = "🤥",
+      /**
+       * Emoji: 🤧
+       *
+       * Aliases: `SNEEZE`
+       */
+      "SNEEZING_FACE" = "🤧",
+      /**
+       * Emoji: 🤧
+       *
+       * Aliases: `SNEEZING_FACE`
+       */
+      "SNEEZE" = "🤧",
+      /**
+       * Emoji: 🤴
+       */
+      "PRINCE" = "🤴",
+      /**
+       * Emoji: 🤵
+       */
+      "MAN_IN_TUXEDO" = "🤵",
+      /**
+       * Emoji: 🤶
+       *
+       * Aliases: `MOTHER_CHRISTMAS`
+       */
+      "MRS_CLAUS" = "🤶",
+      /**
+       * Emoji: 🤶
+       *
+       * Aliases: `MRS_CLAUS`
+       */
+      "MOTHER_CHRISTMAS" = "🤶",
+      /**
+       * Emoji: 🤦
+       *
+       * Aliases: `FACEPALM`
+       */
+      "FACE_PALM" = "🤦",
+      /**
+       * Emoji: 🤦
+       *
+       * Aliases: `FACE_PALM`
+       */
+      "FACEPALM" = "🤦",
+      /**
+       * Emoji: 🤷
+       *
+       * Aliases: `SHRUG`
+       */
+      "PERSON_SHRUGGING" = "🤷",
+      /**
+       * Emoji: 🤷
+       *
+       * Aliases: `PERSON_SHRUGGING`
+       */
+      "SHRUG" = "🤷",
+      /**
+       * Emoji: 🤰
+       *
+       * Aliases: `EXPECTING_WOMAN`
+       */
+      "PREGNANT_WOMAN" = "🤰",
+      /**
+       * Emoji: 🤰
+       *
+       * Aliases: `PREGNANT_WOMAN`
+       */
+      "EXPECTING_WOMAN" = "🤰",
+      /**
+       * Emoji: 🤳
+       */
+      "SELFIE" = "🤳",
+      /**
+       * Emoji: 🕺
+       *
+       * Aliases: `MALE_DANCER`
+       */
+      "MAN_DANCING" = "🕺",
+      /**
+       * Emoji: 🕺
+       *
+       * Aliases: `MAN_DANCING`
+       */
+      "MALE_DANCER" = "🕺",
+      /**
+       * Emoji: 🤙
+       *
+       * Aliases: `CALL_ME_HAND`
+       */
+      "CALL_ME" = "🤙",
+      /**
+       * Emoji: 🤙
+       *
+       * Aliases: `CALL_ME`
+       */
+      "CALL_ME_HAND" = "🤙",
+      /**
+       * Emoji: 🤚
+       *
+       * Aliases: `BACK_OF_HAND`
+       */
+      "RAISED_BACK_OF_HAND" = "🤚",
+      /**
+       * Emoji: 🤚
+       *
+       * Aliases: `RAISED_BACK_OF_HAND`
+       */
+      "BACK_OF_HAND" = "🤚",
+      /**
+       * Emoji: 🤛
+       *
+       * Aliases: `LEFT_FIST`
+       */
+      "LEFT_FACING_FIST" = "🤛",
+      /**
+       * Emoji: 🤛
+       *
+       * Aliases: `LEFT_FACING_FIST`
+       */
+      "LEFT_FIST" = "🤛",
+      /**
+       * Emoji: 🤜
+       *
+       * Aliases: `RIGHT_FIST`
+       */
+      "RIGHT_FACING_FIST" = "🤜",
+      /**
+       * Emoji: 🤜
+       *
+       * Aliases: `RIGHT_FACING_FIST`
+       */
+      "RIGHT_FIST" = "🤜",
+      /**
+       * Emoji: 🤝
+       *
+       * Aliases: `SHAKING_HANDS`
+       */
+      "HANDSHAKE" = "🤝",
+      /**
+       * Emoji: 🤝
+       *
+       * Aliases: `HANDSHAKE`
+       */
+      "SHAKING_HANDS" = "🤝",
+      /**
+       * Emoji: 🤞
+       *
+       * Aliases: `HAND_WITH_INDEX_AND_MIDDLE_FINGER_CROSSED`
+       */
+      "FINGERS_CROSSED" = "🤞",
+      /**
+       * Emoji: 🤞
+       *
+       * Aliases: `FINGERS_CROSSED`
+       */
+      "HAND_WITH_INDEX_AND_MIDDLE_FINGER_CROSSED" = "🤞",
+      /**
+       * Emoji: 🤩
+       *
+       * Aliases: `STARSTRUCK`,`STAR_EYES`
+       */
+      "STAR_STRUCK" = "🤩",
+      /**
+       * Emoji: 🤩
+       *
+       * Aliases: `STAR_STRUCK`,`STAR_EYES`
+       */
+      "STARSTRUCK" = "🤩",
+      /**
+       * Emoji: 🤩
+       *
+       * Aliases: `STAR_STRUCK`,`STARSTRUCK`
+       */
+      "STAR_EYES" = "🤩",
+      /**
+       * Emoji: 🤨
+       *
+       * Aliases: `RAISED_EYEBROW`,`COLBERT`,`SKEPTICAL`
+       */
+      "FACE_WITH_RAISED_EYEBROW" = "🤨",
+      /**
+       * Emoji: 🤨
+       *
+       * Aliases: `FACE_WITH_RAISED_EYEBROW`,`COLBERT`,`SKEPTICAL`
+       */
+      "RAISED_EYEBROW" = "🤨",
+      /**
+       * Emoji: 🤨
+       *
+       * Aliases: `FACE_WITH_RAISED_EYEBROW`,`RAISED_EYEBROW`,`SKEPTICAL`
+       */
+      "COLBERT" = "🤨",
+      /**
+       * Emoji: 🤨
+       *
+       * Aliases: `FACE_WITH_RAISED_EYEBROW`,`RAISED_EYEBROW`,`COLBERT`
+       */
+      "SKEPTICAL" = "🤨",
+      /**
+       * Emoji: 🤯
+       *
+       * Aliases: `MINDBLOWN`,`MIND_BLOWN`
+       */
+      "EXPLODING_HEAD" = "🤯",
+      /**
+       * Emoji: 🤯
+       *
+       * Aliases: `EXPLODING_HEAD`,`MIND_BLOWN`
+       */
+      "MINDBLOWN" = "🤯",
+      /**
+       * Emoji: 🤯
+       *
+       * Aliases: `EXPLODING_HEAD`,`MINDBLOWN`
+       */
+      "MIND_BLOWN" = "🤯",
+      /**
+       * Emoji: 🤪
+       *
+       * Aliases: `ZANY`,`CRAZY`
+       */
+      "ZANY_FACE" = "🤪",
+      /**
+       * Emoji: 🤪
+       *
+       * Aliases: `ZANY_FACE`,`CRAZY`
+       */
+      "ZANY" = "🤪",
+      /**
+       * Emoji: 🤪
+       *
+       * Aliases: `ZANY_FACE`,`ZANY`
+       */
+      "CRAZY" = "🤪",
+      /**
+       * Emoji: 🤬
+       *
+       * Aliases: `SWEARING`,`GRAWLIXES`,`CURSING`,`CUSSING`
+       */
+      "FACE_WITH_SYMBOLS_OVER_MOUTH" = "🤬",
+      /**
+       * Emoji: 🤬
+       *
+       * Aliases: `FACE_WITH_SYMBOLS_OVER_MOUTH`,`GRAWLIXES`,`CURSING`,`CUSSING`
+       */
+      "SWEARING" = "🤬",
+      /**
+       * Emoji: 🤬
+       *
+       * Aliases: `FACE_WITH_SYMBOLS_OVER_MOUTH`,`SWEARING`,`CURSING`,`CUSSING`
+       */
+      "GRAWLIXES" = "🤬",
+      /**
+       * Emoji: 🤬
+       *
+       * Aliases: `FACE_WITH_SYMBOLS_OVER_MOUTH`,`SWEARING`,`GRAWLIXES`,`CUSSING`
+       */
+      "CURSING" = "🤬",
+      /**
+       * Emoji: 🤬
+       *
+       * Aliases: `FACE_WITH_SYMBOLS_OVER_MOUTH`,`SWEARING`,`GRAWLIXES`,`CURSING`
+       */
+      "CUSSING" = "🤬",
+      /**
+       * Emoji: 🤮
+       *
+       * Aliases: `VOMITING`,`VOMIT`,`THROW_UP`
+       */
+      "FACE_VOMITING" = "🤮",
+      /**
+       * Emoji: 🤮
+       *
+       * Aliases: `FACE_VOMITING`,`VOMIT`,`THROW_UP`
+       */
+      "VOMITING" = "🤮",
+      /**
+       * Emoji: 🤮
+       *
+       * Aliases: `FACE_VOMITING`,`VOMITING`,`THROW_UP`
+       */
+      "VOMIT" = "🤮",
+      /**
+       * Emoji: 🤮
+       *
+       * Aliases: `FACE_VOMITING`,`VOMITING`,`VOMIT`
+       */
+      "THROW_UP" = "🤮",
+      /**
+       * Emoji: 🤫
+       *
+       * Aliases: `SHUSH`,`SHHH`
+       */
+      "SHUSHING_FACE" = "🤫",
+      /**
+       * Emoji: 🤫
+       *
+       * Aliases: `SHUSHING_FACE`,`SHHH`
+       */
+      "SHUSH" = "🤫",
+      /**
+       * Emoji: 🤫
+       *
+       * Aliases: `SHUSHING_FACE`,`SHUSH`
+       */
+      "SHHH" = "🤫",
+      /**
+       * Emoji: 🤭
+       *
+       * Aliases: `HAND_OVER_MOUTH`
+       */
+      "FACE_WITH_HAND_OVER_MOUTH" = "🤭",
+      /**
+       * Emoji: 🤭
+       *
+       * Aliases: `FACE_WITH_HAND_OVER_MOUTH`
+       */
+      "HAND_OVER_MOUTH" = "🤭",
+      /**
+       * Emoji: 🧐
+       *
+       * Aliases: `MONOCLE`
+       */
+      "FACE_WITH_MONOCLE" = "🧐",
+      /**
+       * Emoji: 🧐
+       *
+       * Aliases: `FACE_WITH_MONOCLE`
+       */
+      "MONOCLE" = "🧐",
+      /**
+       * Emoji: 🥰
+       *
+       * Aliases: `FACE_WITH_HEARTS`
+       */
+      "SMILING_FACE_WITH_3_HEARTS" = "🥰",
+      /**
+       * Emoji: 🥰
+       *
+       * Aliases: `SMILING_FACE_WITH_3_HEARTS`
+       */
+      "FACE_WITH_HEARTS" = "🥰",
+      /**
+       * Emoji: 🥵
+       *
+       * Aliases: `HOT`
+       */
+      "HOT_FACE" = "🥵",
+      /**
+       * Emoji: 🥵
+       *
+       * Aliases: `HOT_FACE`
+       */
+      "HOT" = "🥵",
+      /**
+       * Emoji: 🥶
+       *
+       * Aliases: `FREEZING_FACE`,`FREEZING`,`COLD`
+       */
+      "COLD_FACE" = "🥶",
+      /**
+       * Emoji: 🥶
+       *
+       * Aliases: `COLD_FACE`,`FREEZING`,`COLD`
+       */
+      "FREEZING_FACE" = "🥶",
+      /**
+       * Emoji: 🥶
+       *
+       * Aliases: `COLD_FACE`,`FREEZING_FACE`,`COLD`
+       */
+      "FREEZING" = "🥶",
+      /**
+       * Emoji: 🥶
+       *
+       * Aliases: `COLD_FACE`,`FREEZING_FACE`,`FREEZING`
+       */
+      "COLD" = "🥶",
+      /**
+       * Emoji: 🥳
+       *
+       * Aliases: `PARTYING`
+       */
+      "PARTYING_FACE" = "🥳",
+      /**
+       * Emoji: 🥳
+       *
+       * Aliases: `PARTYING_FACE`
+       */
+      "PARTYING" = "🥳",
+      /**
+       * Emoji: 🥴
+       *
+       * Aliases: `WOOZY`
+       */
+      "WOOZY_FACE" = "🥴",
+      /**
+       * Emoji: 🥴
+       *
+       * Aliases: `WOOZY_FACE`
+       */
+      "WOOZY" = "🥴",
+      /**
+       * Emoji: 🥺
+       *
+       * Aliases: `BEGGING_FACE`,`PLEADING`,`BEGGING`,`PUPPY_DOG_EYES`
+       */
+      "PLEADING_FACE" = "🥺",
+      /**
+       * Emoji: 🥺
+       *
+       * Aliases: `PLEADING_FACE`,`PLEADING`,`BEGGING`,`PUPPY_DOG_EYES`
+       */
+      "BEGGING_FACE" = "🥺",
+      /**
+       * Emoji: 🥺
+       *
+       * Aliases: `PLEADING_FACE`,`BEGGING_FACE`,`BEGGING`,`PUPPY_DOG_EYES`
+       */
+      "PLEADING" = "🥺",
+      /**
+       * Emoji: 🥺
+       *
+       * Aliases: `PLEADING_FACE`,`BEGGING_FACE`,`PLEADING`,`PUPPY_DOG_EYES`
+       */
+      "BEGGING" = "🥺",
+      /**
+       * Emoji: 🥺
+       *
+       * Aliases: `PLEADING_FACE`,`BEGGING_FACE`,`PLEADING`,`BEGGING`
+       */
+      "PUPPY_DOG_EYES" = "🥺",
+      /**
+       * Emoji: 🧒
+       *
+       * Aliases: `KID`
+       */
+      "CHILD" = "🧒",
+      /**
+       * Emoji: 🧒
+       *
+       * Aliases: `CHILD`
+       */
+      "KID" = "🧒",
+      /**
+       * Emoji: 🧑
+       */
+      "ADULT" = "🧑",
+      /**
+       * Emoji: 🧓
+       *
+       * Aliases: `OLD`
+       */
+      "OLDER_ADULT" = "🧓",
+      /**
+       * Emoji: 🧓
+       *
+       * Aliases: `OLDER_ADULT`
+       */
+      "OLD" = "🧓",
+      /**
+       * Emoji: 🧕
+       *
+       * Aliases: `HEADSCARF`
+       */
+      "WOMAN_WITH_HEADSCARF" = "🧕",
+      /**
+       * Emoji: 🧕
+       *
+       * Aliases: `WOMAN_WITH_HEADSCARF`
+       */
+      "HEADSCARF" = "🧕",
+      /**
+       * Emoji: 🧔
+       *
+       * Aliases: `BEARD`
+       */
+      "BEARDED_PERSON" = "🧔",
+      /**
+       * Emoji: 🧔
+       *
+       * Aliases: `BEARDED_PERSON`
+       */
+      "BEARD" = "🧔",
+      /**
+       * Emoji: 🤱
+       */
+      "BREAST_FEEDING" = "🤱",
+      /**
+       * Emoji: 🧙
+       */
+      "MAGE" = "🧙",
+      /**
+       * Emoji: 🧙‍♂️
+       *
+       * Aliases: `WIZARD`,`SORCERER`
+       */
+      "MAN_MAGE" = "🧙‍♂️",
+      /**
+       * Emoji: 🧙‍♂️
+       *
+       * Aliases: `MAN_MAGE`,`SORCERER`
+       */
+      "WIZARD" = "🧙‍♂️",
+      /**
+       * Emoji: 🧙‍♂️
+       *
+       * Aliases: `MAN_MAGE`,`WIZARD`
+       */
+      "SORCERER" = "🧙‍♂️",
+      /**
+       * Emoji: 🧙‍♀️
+       *
+       * Aliases: `WITCH`,`SORCERESS`
+       */
+      "WOMAN_MAGE" = "🧙‍♀️",
+      /**
+       * Emoji: 🧙‍♀️
+       *
+       * Aliases: `WOMAN_MAGE`,`SORCERESS`
+       */
+      "WITCH" = "🧙‍♀️",
+      /**
+       * Emoji: 🧙‍♀️
+       *
+       * Aliases: `WOMAN_MAGE`,`WITCH`
+       */
+      "SORCERESS" = "🧙‍♀️",
+      /**
+       * Emoji: 🧚
+       */
+      "FAIRY" = "🧚",
+      /**
+       * Emoji: 🧚‍♀️
+       */
+      "WOMAN_FAIRY" = "🧚‍♀️",
+      /**
+       * Emoji: 🧚‍♂️
+       */
+      "MAN_FAIRY" = "🧚‍♂️",
+      /**
+       * Emoji: 🧛
+       */
+      "VAMPIRE" = "🧛",
+      /**
+       * Emoji: 🧛‍♂️
+       *
+       * Aliases: `DRACULA`
+       */
+      "MAN_VAMPIRE" = "🧛‍♂️",
+      /**
+       * Emoji: 🧛‍♂️
+       *
+       * Aliases: `MAN_VAMPIRE`
+       */
+      "DRACULA" = "🧛‍♂️",
+      /**
+       * Emoji: 🧛‍♀️
+       */
+      "WOMAN_VAMPIRE" = "🧛‍♀️",
+      /**
+       * Emoji: 🧜
+       */
+      "MERPERSON" = "🧜",
+      /**
+       * Emoji: 🧜‍♀️
+       *
+       * Aliases: `MERGIRL`,`MERWOMAN`
+       */
+      "MERMAID" = "🧜‍♀️",
+      /**
+       * Emoji: 🧜‍♀️
+       *
+       * Aliases: `MERMAID`,`MERWOMAN`
+       */
+      "MERGIRL" = "🧜‍♀️",
+      /**
+       * Emoji: 🧜‍♀️
+       *
+       * Aliases: `MERMAID`,`MERGIRL`
+       */
+      "MERWOMAN" = "🧜‍♀️",
+      /**
+       * Emoji: 🧜‍♂️
+       *
+       * Aliases: `MERBOY`
+       */
+      "MERMAN" = "🧜‍♂️",
+      /**
+       * Emoji: 🧜‍♂️
+       *
+       * Aliases: `MERMAN`
+       */
+      "MERBOY" = "🧜‍♂️",
+      /**
+       * Emoji: 🧝
+       */
+      "ELF" = "🧝",
+      /**
+       * Emoji: 🧝‍♀️
+       */
+      "WOMAN_ELF" = "🧝‍♀️",
+      /**
+       * Emoji: 🧝‍♂️
+       */
+      "MAN_ELF" = "🧝‍♂️",
+      /**
+       * Emoji: 🧞
+       *
+       * Aliases: `DJINN`
+       */
+      "GENIE" = "🧞",
+      /**
+       * Emoji: 🧞
+       *
+       * Aliases: `GENIE`
+       */
+      "DJINN" = "🧞",
+      /**
+       * Emoji: 🧞‍♀️
+       */
+      "WOMAN_GENIE" = "🧞‍♀️",
+      /**
+       * Emoji: 🧞‍♂️
+       */
+      "MAN_GENIE" = "🧞‍♂️",
+      /**
+       * Emoji: 🧟
+       *
+       * Aliases: `UNDEAD`,`WALKING_DEAD`
+       */
+      "ZOMBIE" = "🧟",
+      /**
+       * Emoji: 🧟
+       *
+       * Aliases: `ZOMBIE`,`WALKING_DEAD`
+       */
+      "UNDEAD" = "🧟",
+      /**
+       * Emoji: 🧟
+       *
+       * Aliases: `ZOMBIE`,`UNDEAD`
+       */
+      "WALKING_DEAD" = "🧟",
+      /**
+       * Emoji: 🧟‍♀️
+       */
+      "WOMAN_ZOMBIE" = "🧟‍♀️",
+      /**
+       * Emoji: 🧟‍♂️
+       */
+      "MAN_ZOMBIE" = "🧟‍♂️",
+      /**
+       * Emoji: 🧖
+       *
+       * Aliases: `STEAMY_ROOM`,`SAUNA`
+       */
+      "PERSON_IN_STEAMY_ROOM" = "🧖",
+      /**
+       * Emoji: 🧖
+       *
+       * Aliases: `PERSON_IN_STEAMY_ROOM`,`SAUNA`
+       */
+      "STEAMY_ROOM" = "🧖",
+      /**
+       * Emoji: 🧖
+       *
+       * Aliases: `PERSON_IN_STEAMY_ROOM`,`STEAMY_ROOM`
+       */
+      "SAUNA" = "🧖",
+      /**
+       * Emoji: 🧖‍♂️
+       *
+       * Aliases: `MAN_IN_SAUNA`
+       */
+      "MAN_IN_STEAMY_ROOM" = "🧖‍♂️",
+      /**
+       * Emoji: 🧖‍♂️
+       *
+       * Aliases: `MAN_IN_STEAMY_ROOM`
+       */
+      "MAN_IN_SAUNA" = "🧖‍♂️",
+      /**
+       * Emoji: 🧖‍♀️
+       *
+       * Aliases: `WOMAN_IN_SAUNA`
+       */
+      "WOMAN_IN_STEAMY_ROOM" = "🧖‍♀️",
+      /**
+       * Emoji: 🧖‍♀️
+       *
+       * Aliases: `WOMAN_IN_STEAMY_ROOM`
+       */
+      "WOMAN_IN_SAUNA" = "🧖‍♀️",
+      /**
+       * Emoji: 🤟
+       *
+       * Aliases: `LOVE_YOU`,`ILY`
+       */
+      "LOVE_YOU_GESTURE" = "🤟",
+      /**
+       * Emoji: 🤟
+       *
+       * Aliases: `LOVE_YOU_GESTURE`,`ILY`
+       */
+      "LOVE_YOU" = "🤟",
+      /**
+       * Emoji: 🤟
+       *
+       * Aliases: `LOVE_YOU_GESTURE`,`LOVE_YOU`
+       */
+      "ILY" = "🤟",
+      /**
+       * Emoji: 🤲
+       *
+       * Aliases: `PALMS_TOGETHER`,`DUA`,`CUPPED_HANDS`
+       */
+      "PALMS_UP_TOGETHER" = "🤲",
+      /**
+       * Emoji: 🤲
+       *
+       * Aliases: `PALMS_UP_TOGETHER`,`DUA`,`CUPPED_HANDS`
+       */
+      "PALMS_TOGETHER" = "🤲",
+      /**
+       * Emoji: 🤲
+       *
+       * Aliases: `PALMS_UP_TOGETHER`,`PALMS_TOGETHER`,`CUPPED_HANDS`
+       */
+      "DUA" = "🤲",
+      /**
+       * Emoji: 🤲
+       *
+       * Aliases: `PALMS_UP_TOGETHER`,`PALMS_TOGETHER`,`DUA`
+       */
+      "CUPPED_HANDS" = "🤲",
+      /**
+       * Emoji: 🧠
+       */
+      "BRAIN" = "🧠",
+      /**
+       * Emoji: 🧣
+       */
+      "SCARF" = "🧣",
+      /**
+       * Emoji: 🧤
+       */
+      "GLOVES" = "🧤",
+      /**
+       * Emoji: 🧥
+       *
+       * Aliases: `JACKET`
+       */
+      "COAT" = "🧥",
+      /**
+       * Emoji: 🧥
+       *
+       * Aliases: `COAT`
+       */
+      "JACKET" = "🧥",
+      /**
+       * Emoji: 🧦
+       */
+      "SOCKS" = "🧦",
+      /**
+       * Emoji: 🧢
+       *
+       * Aliases: `CAP`,`BASEBALL_CAP`
+       */
+      "BILLED_CAP" = "🧢",
+      /**
+       * Emoji: 🧢
+       *
+       * Aliases: `BILLED_CAP`,`BASEBALL_CAP`
+       */
+      "CAP" = "🧢",
+      /**
+       * Emoji: 🧢
+       *
+       * Aliases: `BILLED_CAP`,`CAP`
+       */
+      "BASEBALL_CAP" = "🧢",
+      /**
+       * Emoji: 👨‍🦰
+       *
+       * Aliases: `MAN_RED_HAIR`,`MAN_REDHEAD`
+       */
+      "MAN_RED_HAIRED" = "👨‍🦰",
+      /**
+       * Emoji: 👨‍🦰
+       *
+       * Aliases: `MAN_RED_HAIRED`,`MAN_REDHEAD`
+       */
+      "MAN_RED_HAIR" = "👨‍🦰",
+      /**
+       * Emoji: 👨‍🦰
+       *
+       * Aliases: `MAN_RED_HAIRED`,`MAN_RED_HAIR`
+       */
+      "MAN_REDHEAD" = "👨‍🦰",
+      /**
+       * Emoji: 👩‍🦰
+       *
+       * Aliases: `WOMAN_RED_HAIR`,`WOMAN_REDHEAD`
+       */
+      "WOMAN_RED_HAIRED" = "👩‍🦰",
+      /**
+       * Emoji: 👩‍🦰
+       *
+       * Aliases: `WOMAN_RED_HAIRED`,`WOMAN_REDHEAD`
+       */
+      "WOMAN_RED_HAIR" = "👩‍🦰",
+      /**
+       * Emoji: 👩‍🦰
+       *
+       * Aliases: `WOMAN_RED_HAIRED`,`WOMAN_RED_HAIR`
+       */
+      "WOMAN_REDHEAD" = "👩‍🦰",
+      /**
+       * Emoji: 👩‍🦱
+       *
+       * Aliases: `WOMAN_CURLY_HAIR`
+       */
+      "WOMAN_CURLY_HAIRED" = "👩‍🦱",
+      /**
+       * Emoji: 👩‍🦱
+       *
+       * Aliases: `WOMAN_CURLY_HAIRED`
+       */
+      "WOMAN_CURLY_HAIR" = "👩‍🦱",
+      /**
+       * Emoji: 👨‍🦱
+       *
+       * Aliases: `MAN_CURLY_HAIR`
+       */
+      "MAN_CURLY_HAIRED" = "👨‍🦱",
+      /**
+       * Emoji: 👨‍🦱
+       *
+       * Aliases: `MAN_CURLY_HAIRED`
+       */
+      "MAN_CURLY_HAIR" = "👨‍🦱",
+      /**
+       * Emoji: 👩‍🦳
+       *
+       * Aliases: `WOMAN_WHITE_HAIR`
+       */
+      "WOMAN_WHITE_HAIRED" = "👩‍🦳",
+      /**
+       * Emoji: 👩‍🦳
+       *
+       * Aliases: `WOMAN_WHITE_HAIRED`
+       */
+      "WOMAN_WHITE_HAIR" = "👩‍🦳",
+      /**
+       * Emoji: 👨‍🦳
+       *
+       * Aliases: `MAN_WHITE_HAIR`
+       */
+      "MAN_WHITE_HAIRED" = "👨‍🦳",
+      /**
+       * Emoji: 👨‍🦳
+       *
+       * Aliases: `MAN_WHITE_HAIRED`
+       */
+      "MAN_WHITE_HAIR" = "👨‍🦳",
+      /**
+       * Emoji: 👩‍🦲
+       *
+       * Aliases: `BALD_WOMAN`
+       */
+      "WOMAN_BALD" = "👩‍🦲",
+      /**
+       * Emoji: 👩‍🦲
+       *
+       * Aliases: `WOMAN_BALD`
+       */
+      "BALD_WOMAN" = "👩‍🦲",
+      /**
+       * Emoji: 👨‍🦲
+       *
+       * Aliases: `BALD_MAN`
+       */
+      "MAN_BALD" = "👨‍🦲",
+      /**
+       * Emoji: 👨‍🦲
+       *
+       * Aliases: `MAN_BALD`
+       */
+      "BALD_MAN" = "👨‍🦲",
+      /**
+       * Emoji: 🦸
+       */
+      "SUPERHERO" = "🦸",
+      /**
+       * Emoji: 🦸‍♂️
+       */
+      "MAN_SUPERHERO" = "🦸‍♂️",
+      /**
+       * Emoji: 🦸‍♀️
+       */
+      "WOMAN_SUPERHERO" = "🦸‍♀️",
+      /**
+       * Emoji: 🦹
+       */
+      "SUPERVILLAIN" = "🦹",
+      /**
+       * Emoji: 🦹‍♂️
+       */
+      "MAN_SUPERVILLAIN" = "🦹‍♂️",
+      /**
+       * Emoji: 🦹‍♀️
+       */
+      "WOMAN_SUPERVILLAIN" = "🦹‍♀️",
+      /**
+       * Emoji: 🦵
+       *
+       * Aliases: `KICK`
+       */
+      "LEG" = "🦵",
+      /**
+       * Emoji: 🦵
+       *
+       * Aliases: `LEG`
+       */
+      "KICK" = "🦵",
+      /**
+       * Emoji: 🦶
+       *
+       * Aliases: `STOMP`
+       */
+      "FOOT" = "🦶",
+      /**
+       * Emoji: 🦶
+       *
+       * Aliases: `FOOT`
+       */
+      "STOMP" = "🦶",
+      /**
+       * Emoji: 🦴
+       */
+      "BONE" = "🦴",
+      /**
+       * Emoji: 🦷
+       */
+      "TOOTH" = "🦷",
+      /**
+       * Emoji: 🥽
+       *
+       * Aliases: `SAFETY_GOGGLES`
+       */
+      "GOGGLES" = "🥽",
+      /**
+       * Emoji: 🥽
+       *
+       * Aliases: `GOGGLES`
+       */
+      "SAFETY_GOGGLES" = "🥽",
+      /**
+       * Emoji: 🥼
+       *
+       * Aliases: `LABCOAT`,`DOCTOR`,`SCIENTIST`
+       */
+      "LAB_COAT" = "🥼",
+      /**
+       * Emoji: 🥼
+       *
+       * Aliases: `LAB_COAT`,`DOCTOR`,`SCIENTIST`
+       */
+      "LABCOAT" = "🥼",
+      /**
+       * Emoji: 🥼
+       *
+       * Aliases: `LAB_COAT`,`LABCOAT`,`SCIENTIST`
+       */
+      "DOCTOR" = "🥼",
+      /**
+       * Emoji: 🧑‍🔬
+       */
+      "SCIENTIST" = "🧑‍🔬",
+      /**
+       * Emoji: 🥾
+       */
+      "HIKING_BOOT" = "🥾",
+      /**
+       * Emoji: 🥿
+       *
+       * Aliases: `FLAT_SHOE`,`SLIPPER`
+       */
+      "WOMANS_FLAT_SHOE" = "🥿",
+      /**
+       * Emoji: 🥿
+       *
+       * Aliases: `WOMANS_FLAT_SHOE`,`SLIPPER`
+       */
+      "FLAT_SHOE" = "🥿",
+      /**
+       * Emoji: 🥿
+       *
+       * Aliases: `WOMANS_FLAT_SHOE`,`FLAT_SHOE`
+       */
+      "SLIPPER" = "🥿",
+      /**
+       * Emoji: 🤵‍♀️
+       */
+      "WOMAN_IN_TUXEDO" = "🤵‍♀️",
+      /**
+       * Emoji: 🕴️‍♀️
+       */
+      "WOMAN_LEVITATE" = "🕴️‍♀️",
+      /**
+       * Emoji: 👨‍⚕️
+       *
+       * Aliases: `MAN_DOCTOR`
+       */
+      "MAN_HEALTH_WORKER" = "👨‍⚕️",
+      /**
+       * Emoji: 👨‍⚕️
+       *
+       * Aliases: `MAN_HEALTH_WORKER`
+       */
+      "MAN_DOCTOR" = "👨‍⚕️",
+      /**
+       * Emoji: 👩‍⚕️
+       *
+       * Aliases: `WOMAN_DOCTOR`
+       */
+      "WOMAN_HEALTH_WORKER" = "👩‍⚕️",
+      /**
+       * Emoji: 👩‍⚕️
+       *
+       * Aliases: `WOMAN_HEALTH_WORKER`
+       */
+      "WOMAN_DOCTOR" = "👩‍⚕️",
+      /**
+       * Emoji: 👨‍🎓
+       */
+      "MAN_STUDENT" = "👨‍🎓",
+      /**
+       * Emoji: 👩‍🎓
+       */
+      "WOMAN_STUDENT" = "👩‍🎓",
+      /**
+       * Emoji: 👨‍🏫
+       */
+      "MAN_TEACHER" = "👨‍🏫",
+      /**
+       * Emoji: 👩‍🏫
+       */
+      "WOMAN_TEACHER" = "👩‍🏫",
+      /**
+       * Emoji: 👨‍⚖️
+       */
+      "MAN_JUDGE" = "👨‍⚖️",
+      /**
+       * Emoji: 👩‍⚖️
+       */
+      "WOMAN_JUDGE" = "👩‍⚖️",
+      /**
+       * Emoji: 👨‍🌾
+       */
+      "MAN_FARMER" = "👨‍🌾",
+      /**
+       * Emoji: 👩‍🌾
+       */
+      "WOMAN_FARMER" = "👩‍🌾",
+      /**
+       * Emoji: 👨‍🍳
+       */
+      "MAN_COOK" = "👨‍🍳",
+      /**
+       * Emoji: 👩‍🍳
+       */
+      "WOMAN_COOK" = "👩‍🍳",
+      /**
+       * Emoji: 👨‍🔧
+       */
+      "MAN_MECHANIC" = "👨‍🔧",
+      /**
+       * Emoji: 👩‍🔧
+       */
+      "WOMAN_MECHANIC" = "👩‍🔧",
+      /**
+       * Emoji: 👨‍🏭
+       */
+      "MAN_FACTORY_WORKER" = "👨‍🏭",
+      /**
+       * Emoji: 👩‍🏭
+       */
+      "WOMAN_FACTORY_WORKER" = "👩‍🏭",
+      /**
+       * Emoji: 👨‍💼
+       *
+       * Aliases: `BUSINESSWOMAN`
+       */
+      "MAN_OFFICE_WORKER" = "👨‍💼",
+      /**
+       * Emoji: 👩‍💼
+       *
+       * Aliases: `WOMAN_OFFICE_WORKER`
+       */
+      "BUSINESSWOMAN" = "👩‍💼",
+      /**
+       * Emoji: 👩‍💼
+       *
+       * Aliases: `BUSINESSWOMAN`
+       */
+      "WOMAN_OFFICE_WORKER" = "👩‍💼",
+      /**
+       * Emoji: 👨‍🔬
+       */
+      "MAN_SCIENTIST" = "👨‍🔬",
+      /**
+       * Emoji: 👩‍🔬
+       */
+      "WOMAN_SCIENTIST" = "👩‍🔬",
+      /**
+       * Emoji: 👨‍💻
+       *
+       * Aliases: `MAN_BLOGGER`
+       */
+      "MAN_TECHNOLOGIST" = "👨‍💻",
+      /**
+       * Emoji: 👨‍💻
+       *
+       * Aliases: `MAN_TECHNOLOGIST`
+       */
+      "MAN_BLOGGER" = "👨‍💻",
+      /**
+       * Emoji: 👩‍💻
+       *
+       * Aliases: `WOMAN_BLOGGER`
+       */
+      "WOMAN_TECHNOLOGIST" = "👩‍💻",
+      /**
+       * Emoji: 👩‍💻
+       *
+       * Aliases: `WOMAN_TECHNOLOGIST`
+       */
+      "WOMAN_BLOGGER" = "👩‍💻",
+      /**
+       * Emoji: 👨‍🎤
+       */
+      "MAN_SINGER" = "👨‍🎤",
+      /**
+       * Emoji: 👩‍🎤
+       */
+      "WOMAN_SINGER" = "👩‍🎤",
+      /**
+       * Emoji: 👨‍🎨
+       */
+      "MAN_ARTIST" = "👨‍🎨",
+      /**
+       * Emoji: 👩‍🎨
+       */
+      "WOMAN_ARTIST" = "👩‍🎨",
+      /**
+       * Emoji: 👨‍✈️
+       */
+      "MAN_PILOT" = "👨‍✈️",
+      /**
+       * Emoji: 👩‍✈️
+       */
+      "WOMAN_PILOT" = "👩‍✈️",
+      /**
+       * Emoji: 👨‍🚀
+       */
+      "MAN_ASTRONAUT" = "👨‍🚀",
+      /**
+       * Emoji: 👩‍🚀
+       */
+      "WOMAN_ASTRONAUT" = "👩‍🚀",
+      /**
+       * Emoji: 👨‍🚒
+       */
+      "MAN_FIREFIGHTER" = "👨‍🚒",
+      /**
+       * Emoji: 👩‍🚒
+       */
+      "WOMAN_FIREFIGHTER" = "👩‍🚒",
+      /**
+       * Emoji: 👮‍♂️
+       *
+       * Aliases: `POLICEMAN`
+       */
+      "MAN_POLICE_OFFICER" = "👮‍♂️",
+      /**
+       * Emoji: 👮‍♂️
+       *
+       * Aliases: `MAN_POLICE_OFFICER`
+       */
+      "POLICEMAN" = "👮‍♂️",
+      /**
+       * Emoji: 👮‍♀️
+       *
+       * Aliases: `POLICEWOMAN`
+       */
+      "WOMAN_POLICE_OFFICER" = "👮‍♀️",
+      /**
+       * Emoji: 👮‍♀️
+       *
+       * Aliases: `WOMAN_POLICE_OFFICER`
+       */
+      "POLICEWOMAN" = "👮‍♀️",
+      /**
+       * Emoji: 🕵️‍♂️
+       *
+       * Aliases: `MAN_SPY`,`MAN_SLEUTH`
+       */
+      "MAN_DETECTIVE" = "🕵️‍♂️",
+      /**
+       * Emoji: 🕵️‍♂️
+       *
+       * Aliases: `MAN_DETECTIVE`,`MAN_SLEUTH`
+       */
+      "MAN_SPY" = "🕵️‍♂️",
+      /**
+       * Emoji: 🕵️‍♂️
+       *
+       * Aliases: `MAN_DETECTIVE`,`MAN_SPY`
+       */
+      "MAN_SLEUTH" = "🕵️‍♂️",
+      /**
+       * Emoji: 🕵️‍♀️
+       *
+       * Aliases: `WOMAN_SPY`,`WOMAN_SLEUTH`
+       */
+      "WOMAN_DETECTIVE" = "🕵️‍♀️",
+      /**
+       * Emoji: 🕵️‍♀️
+       *
+       * Aliases: `WOMAN_DETECTIVE`,`WOMAN_SLEUTH`
+       */
+      "WOMAN_SPY" = "🕵️‍♀️",
+      /**
+       * Emoji: 🕵️‍♀️
+       *
+       * Aliases: `WOMAN_DETECTIVE`,`WOMAN_SPY`
+       */
+      "WOMAN_SLEUTH" = "🕵️‍♀️",
+      /**
+       * Emoji: 💂‍♂️
+       *
+       * Aliases: `GUARDSMAN`
+       */
+      "MAN_GUARD" = "💂‍♂️",
+      /**
+       * Emoji: 💂‍♂️
+       *
+       * Aliases: `MAN_GUARD`
+       */
+      "GUARDSMAN" = "💂‍♂️",
+      /**
+       * Emoji: 💂‍♀️
+       *
+       * Aliases: `GUARDSWOMAN`
+       */
+      "WOMAN_GUARD" = "💂‍♀️",
+      /**
+       * Emoji: 💂‍♀️
+       *
+       * Aliases: `WOMAN_GUARD`
+       */
+      "GUARDSWOMAN" = "💂‍♀️",
+      /**
+       * Emoji: 👷‍♂️
+       */
+      "MAN_CONSTRUCTION_WORKER" = "👷‍♂️",
+      /**
+       * Emoji: 👷‍♀️
+       */
+      "WOMAN_CONSTRUCTION_WORKER" = "👷‍♀️",
+      /**
+       * Emoji: 👳‍♂️
+       *
+       * Aliases: `MAN_WITH_TURBAN`
+       */
+      "MAN_WEARING_TURBAN" = "👳‍♂️",
+      /**
+       * Emoji: 👳‍♂️
+       *
+       * Aliases: `MAN_WEARING_TURBAN`
+       */
+      "MAN_WITH_TURBAN" = "👳‍♂️",
+      /**
+       * Emoji: 👳‍♀️
+       *
+       * Aliases: `WOMAN_WITH_TURBAN`
+       */
+      "WOMAN_WEARING_TURBAN" = "👳‍♀️",
+      /**
+       * Emoji: 👳‍♀️
+       *
+       * Aliases: `WOMAN_WEARING_TURBAN`
+       */
+      "WOMAN_WITH_TURBAN" = "👳‍♀️",
+      /**
+       * Emoji: 👱‍♂️
+       *
+       * Aliases: `MAN_WITH_BLOND_HAIR`
+       */
+      "BLOND_HAIRED_MAN" = "👱‍♂️",
+      /**
+       * Emoji: 👱‍♂️
+       *
+       * Aliases: `BLOND_HAIRED_MAN`
+       */
+      "MAN_WITH_BLOND_HAIR" = "👱‍♂️",
+      /**
+       * Emoji: 👱‍♀️
+       *
+       * Aliases: `WOMAN_WITH_BLOND_HAIR`
+       */
+      "BLOND_HAIRED_WOMAN" = "👱‍♀️",
+      /**
+       * Emoji: 👱‍♀️
+       *
+       * Aliases: `BLOND_HAIRED_WOMAN`
+       */
+      "WOMAN_WITH_BLOND_HAIR" = "👱‍♀️",
+      /**
+       * Emoji: 🙍‍♂️
+       */
+      "MAN_FROWNING" = "🙍‍♂️",
+      /**
+       * Emoji: 🙍‍♀️
+       */
+      "WOMAN_FROWNING" = "🙍‍♀️",
+      /**
+       * Emoji: 🙎‍♂️
+       */
+      "MAN_POUTING" = "🙎‍♂️",
+      /**
+       * Emoji: 🙎‍♀️
+       */
+      "WOMAN_POUTING" = "🙎‍♀️",
+      /**
+       * Emoji: 🙅‍♂️
+       *
+       * Aliases: `MAN_NO`
+       */
+      "MAN_GESTURING_NO" = "🙅‍♂️",
+      /**
+       * Emoji: 🙅‍♂️
+       *
+       * Aliases: `MAN_GESTURING_NO`
+       */
+      "MAN_NO" = "🙅‍♂️",
+      /**
+       * Emoji: 🙅‍♀️
+       *
+       * Aliases: `WOMAN_NO`
+       */
+      "WOMAN_GESTURING_NO" = "🙅‍♀️",
+      /**
+       * Emoji: 🙅‍♀️
+       *
+       * Aliases: `WOMAN_GESTURING_NO`
+       */
+      "WOMAN_NO" = "🙅‍♀️",
+      /**
+       * Emoji: 🙆‍♂️
+       *
+       * Aliases: `MAN_OK`,`OK_MAN`
+       */
+      "MAN_GESTURING_OK" = "🙆‍♂️",
+      /**
+       * Emoji: 🙆‍♂️
+       *
+       * Aliases: `MAN_GESTURING_OK`,`OK_MAN`
+       */
+      "MAN_OK" = "🙆‍♂️",
+      /**
+       * Emoji: 🙆‍♂️
+       *
+       * Aliases: `MAN_GESTURING_OK`,`MAN_OK`
+       */
+      "OK_MAN" = "🙆‍♂️",
+      /**
+       * Emoji: 🙆‍♀️
+       *
+       * Aliases: `WOMAN_OK`,`OK_WOMAN`
+       */
+      "WOMAN_GESTURING_OK" = "🙆‍♀️",
+      /**
+       * Emoji: 🙆‍♀️
+       *
+       * Aliases: `WOMAN_GESTURING_OK`,`OK_WOMAN`
+       */
+      "WOMAN_OK" = "🙆‍♀️",
+      /**
+       * Emoji: 🙆‍♀️
+       *
+       * Aliases: `WOMAN_GESTURING_OK`,`WOMAN_OK`
+       */
+      "OK_WOMAN" = "🙆‍♀️",
+      /**
+       * Emoji: 💁‍♂️
+       *
+       * Aliases: `INFORMATION_DESK_MAN`
+       */
+      "MAN_TIPPING_HAND" = "💁‍♂️",
+      /**
+       * Emoji: 💁‍♂️
+       *
+       * Aliases: `MAN_TIPPING_HAND`
+       */
+      "INFORMATION_DESK_MAN" = "💁‍♂️",
+      /**
+       * Emoji: 💁‍♀️
+       *
+       * Aliases: `INFORMATION_DESK_WOMAN`
+       */
+      "WOMAN_TIPPING_HAND" = "💁‍♀️",
+      /**
+       * Emoji: 💁‍♀️
+       *
+       * Aliases: `WOMAN_TIPPING_HAND`
+       */
+      "INFORMATION_DESK_WOMAN" = "💁‍♀️",
+      /**
+       * Emoji: 🙋‍♂️
+       */
+      "MAN_RAISING_HAND" = "🙋‍♂️",
+      /**
+       * Emoji: 🙋‍♀️
+       */
+      "WOMAN_RAISING_HAND" = "🙋‍♀️",
+      /**
+       * Emoji: 🙇‍♂️
+       */
+      "MAN_BOWING" = "🙇‍♂️",
+      /**
+       * Emoji: 🙇‍♀️
+       */
+      "WOMAN_BOWING" = "🙇‍♀️",
+      /**
+       * Emoji: 🤦‍♂️
+       *
+       * Aliases: `MAN_FACE_PALM`
+       */
+      "MAN_FACEPALMING" = "🤦‍♂️",
+      /**
+       * Emoji: 🤦‍♂️
+       *
+       * Aliases: `MAN_FACEPALMING`
+       */
+      "MAN_FACE_PALM" = "🤦‍♂️",
+      /**
+       * Emoji: 🤦‍♀️
+       *
+       * Aliases: `WOMAN_FACE_PALM`
+       */
+      "WOMAN_FACEPALMING" = "🤦‍♀️",
+      /**
+       * Emoji: 🤦‍♀️
+       *
+       * Aliases: `WOMAN_FACEPALMING`
+       */
+      "WOMAN_FACE_PALM" = "🤦‍♀️",
+      /**
+       * Emoji: 🤷‍♂️
+       *
+       * Aliases: `MAN_SHRUG`
+       */
+      "MAN_SHRUGGING" = "🤷‍♂️",
+      /**
+       * Emoji: 🤷‍♂️
+       *
+       * Aliases: `MAN_SHRUGGING`
+       */
+      "MAN_SHRUG" = "🤷‍♂️",
+      /**
+       * Emoji: 🤷‍♀️
+       *
+       * Aliases: `WOMAN_SHRUG`
+       */
+      "WOMAN_SHRUGGING" = "🤷‍♀️",
+      /**
+       * Emoji: 🤷‍♀️
+       *
+       * Aliases: `WOMAN_SHRUGGING`
+       */
+      "WOMAN_SHRUG" = "🤷‍♀️",
+      /**
+       * Emoji: 🥱
+       */
+      "YAWNING_FACE" = "🥱",
+      /**
+       * Emoji: 🤏
+       */
+      "PINCHING_HAND" = "🤏",
+      /**
+       * Emoji: 🦾
+       */
+      "MECHANICAL_ARM" = "🦾",
+      /**
+       * Emoji: 🦿
+       */
+      "MECHANICAL_LEG" = "🦿",
+      /**
+       * Emoji: 🧏
+       */
+      "DEAF_PERSON" = "🧏",
+      /**
+       * Emoji: 🧏‍♂️
+       */
+      "DEAF_MAN" = "🧏‍♂️",
+      /**
+       * Emoji: 🧏‍♀️
+       */
+      "DEAF_WOMAN" = "🧏‍♀️",
+      /**
+       * Emoji: 🧍
+       */
+      "PERSON_STANDING" = "🧍",
+      /**
+       * Emoji: 🧍‍♂️
+       */
+      "MAN_STANDING" = "🧍‍♂️",
+      /**
+       * Emoji: 🧍‍♀️
+       */
+      "WOMAN_STANDING" = "🧍‍♀️",
+      /**
+       * Emoji: 🧎
+       */
+      "PERSON_KNEELING" = "🧎",
+      /**
+       * Emoji: 🧎‍♂️
+       */
+      "MAN_KNEELING" = "🧎‍♂️",
+      /**
+       * Emoji: 🧎‍♀️
+       */
+      "WOMAN_KNEELING" = "🧎‍♀️",
+      /**
+       * Emoji: 👨‍🦯
+       */
+      "MAN_WITH_PROBING_CANE" = "👨‍🦯",
+      /**
+       * Emoji: 👩‍🦯
+       */
+      "WOMAN_WITH_PROBING_CANE" = "👩‍🦯",
+      /**
+       * Emoji: 👨‍🦼
+       */
+      "MAN_IN_MOTORIZED_WHEELCHAIR" = "👨‍🦼",
+      /**
+       * Emoji: 👩‍🦼
+       */
+      "WOMAN_IN_MOTORIZED_WHEELCHAIR" = "👩‍🦼",
+      /**
+       * Emoji: 👨‍🦽
+       */
+      "MAN_IN_MANUAL_WHEELCHAIR" = "👨‍🦽",
+      /**
+       * Emoji: 👩‍🦽
+       */
+      "WOMAN_IN_MANUAL_WHEELCHAIR" = "👩‍🦽",
+      /**
+       * Emoji: 🧑‍🤝‍🧑
+       */
+      "PEOPLE_HOLDING_HANDS" = "🧑‍🤝‍🧑",
+      /**
+       * Emoji: 🧑‍🦰
+       */
+      "PERSON_RED_HAIRED" = "🧑‍🦰",
+      /**
+       * Emoji: 🧑‍🦱
+       */
+      "PERSON_CURLY_HAIRED" = "🧑‍🦱",
+      /**
+       * Emoji: 🧑‍🦳
+       */
+      "PERSON_WHITE_HAIRED" = "🧑‍🦳",
+      /**
+       * Emoji: 🧑‍🦲
+       */
+      "PERSON_BALD" = "🧑‍🦲",
+      /**
+       * Emoji: 🧑‍⚕️
+       */
+      "HEALTH_WORKER" = "🧑‍⚕️",
+      /**
+       * Emoji: 🧑‍🎓
+       */
+      "STUDENT" = "🧑‍🎓",
+      /**
+       * Emoji: 🧑‍🏫
+       */
+      "TEACHER" = "🧑‍🏫",
+      /**
+       * Emoji: 🧑‍⚖️
+       */
+      "JUDGE" = "🧑‍⚖️",
+      /**
+       * Emoji: 🧑‍🌾
+       */
+      "FARMER" = "🧑‍🌾",
+      /**
+       * Emoji: 🧑‍🍳
+       */
+      "COOK" = "🧑‍🍳",
+      /**
+       * Emoji: 🧰
+       *
+       * Aliases: `TOOLBOX`
+       */
+      "MECHANIC" = "🧰",
+      /**
+       * Emoji: 🧑‍🏭
+       */
+      "FACTORY_WORKER" = "🧑‍🏭",
+      /**
+       * Emoji: 🧑‍💼
+       */
+      "OFFICE_WORKER" = "🧑‍💼",
+      /**
+       * Emoji: 🧑‍💻
+       */
+      "TECHNOLOGIST" = "🧑‍💻",
+      /**
+       * Emoji: 🧑‍🎤
+       */
+      "SINGER" = "🧑‍🎤",
+      /**
+       * Emoji: 🧑‍🎨
+       */
+      "ARTIST" = "🧑‍🎨",
+      /**
+       * Emoji: 🧑‍✈️
+       */
+      "PILOT" = "🧑‍✈️",
+      /**
+       * Emoji: 🧑‍🚀
+       */
+      "ASTRONAUT" = "🧑‍🚀",
+      /**
+       * Emoji: 🧑‍🚒
+       */
+      "FIREFIGHTER" = "🧑‍🚒",
+      /**
+       * Emoji: 🧑‍🦯
+       */
+      "PERSON_WITH_PROBING_CANE" = "🧑‍🦯",
+      /**
+       * Emoji: 🧑‍🦼
+       */
+      "PERSON_IN_MOTORIZED_WHEELCHAIR" = "🧑‍🦼",
+      /**
+       * Emoji: 🧑‍🦽
+       */
+      "PERSON_IN_MANUAL_WHEELCHAIR" = "🧑‍🦽",
+      /**
+       * Emoji: 🧵
+       *
+       * Aliases: `SPOOL`,`STRING`
+       */
+      "THREAD" = "🧵",
+      /**
+       * Emoji: 🧵
+       *
+       * Aliases: `THREAD`,`STRING`
+       */
+      "SPOOL" = "🧵",
+      /**
+       * Emoji: 🧵
+       *
+       * Aliases: `THREAD`,`SPOOL`
+       */
+      "STRING" = "🧵",
+      /**
+       * Emoji: 🧶
+       *
+       * Aliases: `CROCHET`,`KNIT`
+       */
+      "YARN" = "🧶",
+      /**
+       * Emoji: 🧶
+       *
+       * Aliases: `YARN`,`KNIT`
+       */
+      "CROCHET" = "🧶",
+      /**
+       * Emoji: 🧶
+       *
+       * Aliases: `YARN`,`CROCHET`
+       */
+      "KNIT" = "🧶",
+      /**
+       * Emoji: 🤿
+       */
+      "DIVING_MASK" = "🤿",
+      /**
+       * Emoji: 🦺
+       */
+      "SAFETY_VEST" = "🦺",
+      /**
+       * Emoji: 🥻
+       */
+      "SARI" = "🥻",
+      /**
+       * Emoji: 🩱
+       */
+      "ONE_PIECE_SWIMSUIT" = "🩱",
+      /**
+       * Emoji: 🩲
+       */
+      "BRIEFS" = "🩲",
+      /**
+       * Emoji: 🩳
+       */
+      "SHORTS" = "🩳",
+      /**
+       * Emoji: 🩰
+       */
+      "BALLET_SHOES" = "🩰",
+      /**
+       * Emoji: 🪕
+       */
+      "BANJO" = "🪕",
+      /**
+       * Emoji: 🐶
+       */
+      "DOG" = "🐶",
+      /**
+       * Emoji: 🐱
+       */
+      "CAT" = "🐱",
+      /**
+       * Emoji: 🐭
+       */
+      "MOUSE" = "🐭",
+      /**
+       * Emoji: 🐹
+       */
+      "HAMSTER" = "🐹",
+      /**
+       * Emoji: 🐰
+       */
+      "RABBIT" = "🐰",
+      /**
+       * Emoji: 🐻
+       */
+      "BEAR" = "🐻",
+      /**
+       * Emoji: 🐼
+       */
+      "PANDA_FACE" = "🐼",
+      /**
+       * Emoji: 🐨
+       */
+      "KOALA" = "🐨",
+      /**
+       * Emoji: 🐯
+       */
+      "TIGER" = "🐯",
+      /**
+       * Emoji: 🦁
+       *
+       * Aliases: `LION`
+       */
+      "LION_FACE" = "🦁",
+      /**
+       * Emoji: 🦁
+       *
+       * Aliases: `LION_FACE`
+       */
+      "LION" = "🦁",
+      /**
+       * Emoji: 🐮
+       */
+      "COW" = "🐮",
+      /**
+       * Emoji: 🐷
+       */
+      "PIG" = "🐷",
+      /**
+       * Emoji: 🐽
+       */
+      "PIG_NOSE" = "🐽",
+      /**
+       * Emoji: 🐸
+       */
+      "FROG" = "🐸",
+      /**
+       * Emoji: 🐙
+       */
+      "OCTOPUS" = "🐙",
+      /**
+       * Emoji: 🐵
+       */
+      "MONKEY_FACE" = "🐵",
+      /**
+       * Emoji: 🙈
+       */
+      "SEE_NO_EVIL" = "🙈",
+      /**
+       * Emoji: 🙉
+       */
+      "HEAR_NO_EVIL" = "🙉",
+      /**
+       * Emoji: 🙊
+       */
+      "SPEAK_NO_EVIL" = "🙊",
+      /**
+       * Emoji: 🐒
+       */
+      "MONKEY" = "🐒",
+      /**
+       * Emoji: 🐔
+       */
+      "CHICKEN" = "🐔",
+      /**
+       * Emoji: 🐧
+       */
+      "PENGUIN" = "🐧",
+      /**
+       * Emoji: 🐦
+       */
+      "BIRD" = "🐦",
+      /**
+       * Emoji: 🐤
+       */
+      "BABY_CHICK" = "🐤",
+      /**
+       * Emoji: 🐣
+       */
+      "HATCHING_CHICK" = "🐣",
+      /**
+       * Emoji: 🐥
+       */
+      "HATCHED_CHICK" = "🐥",
+      /**
+       * Emoji: 🐺
+       */
+      "WOLF" = "🐺",
+      /**
+       * Emoji: 🐗
+       */
+      "BOAR" = "🐗",
+      /**
+       * Emoji: 🐴
+       */
+      "HORSE" = "🐴",
+      /**
+       * Emoji: 🦄
+       *
+       * Aliases: `UNICORN_FACE`
+       */
+      "UNICORN" = "🦄",
+      /**
+       * Emoji: 🦄
+       *
+       * Aliases: `UNICORN`
+       */
+      "UNICORN_FACE" = "🦄",
+      /**
+       * Emoji: 🐝
+       */
+      "BEE" = "🐝",
+      /**
+       * Emoji: 🐛
+       */
+      "BUG" = "🐛",
+      /**
+       * Emoji: 🐌
+       */
+      "SNAIL" = "🐌",
+      /**
+       * Emoji: 🐞
+       */
+      "BEETLE" = "🐞",
+      /**
+       * Emoji: 🐜
+       */
+      "ANT" = "🐜",
+      /**
+       * Emoji: 🕷
+       */
+      "SPIDER" = "🕷",
+      /**
+       * Emoji: 🦂
+       */
+      "SCORPION" = "🦂",
+      /**
+       * Emoji: 🦀
+       */
+      "CRAB" = "🦀",
+      /**
+       * Emoji: 🐍
+       */
+      "SNAKE" = "🐍",
+      /**
+       * Emoji: 🐢
+       */
+      "TURTLE" = "🐢",
+      /**
+       * Emoji: 🐠
+       */
+      "TROPICAL_FISH" = "🐠",
+      /**
+       * Emoji: 🐟
+       */
+      "FISH" = "🐟",
+      /**
+       * Emoji: 🐡
+       */
+      "BLOWFISH" = "🐡",
+      /**
+       * Emoji: 🐬
+       */
+      "DOLPHIN" = "🐬",
+      /**
+       * Emoji: 🐳
+       */
+      "WHALE" = "🐳",
+      /**
+       * Emoji: 🐋
+       */
+      "WHALE2" = "🐋",
+      /**
+       * Emoji: 🐊
+       */
+      "CROCODILE" = "🐊",
+      /**
+       * Emoji: 🐆
+       */
+      "LEOPARD" = "🐆",
+      /**
+       * Emoji: 🐅
+       */
+      "TIGER2" = "🐅",
+      /**
+       * Emoji: 🐃
+       */
+      "WATER_BUFFALO" = "🐃",
+      /**
+       * Emoji: 🐂
+       */
+      "OX" = "🐂",
+      /**
+       * Emoji: 🐄
+       */
+      "COW2" = "🐄",
+      /**
+       * Emoji: 🐪
+       */
+      "DROMEDARY_CAMEL" = "🐪",
+      /**
+       * Emoji: 🐫
+       */
+      "CAMEL" = "🐫",
+      /**
+       * Emoji: 🐘
+       */
+      "ELEPHANT" = "🐘",
+      /**
+       * Emoji: 🐐
+       */
+      "GOAT" = "🐐",
+      /**
+       * Emoji: 🐏
+       */
+      "RAM" = "🐏",
+      /**
+       * Emoji: 🐑
+       */
+      "SHEEP" = "🐑",
+      /**
+       * Emoji: 🐎
+       */
+      "RACEHORSE" = "🐎",
+      /**
+       * Emoji: 🐖
+       */
+      "PIG2" = "🐖",
+      /**
+       * Emoji: 🐀
+       */
+      "RAT" = "🐀",
+      /**
+       * Emoji: 🐁
+       */
+      "MOUSE2" = "🐁",
+      /**
+       * Emoji: 🐓
+       */
+      "ROOSTER" = "🐓",
+      /**
+       * Emoji: 🦃
+       */
+      "TURKEY" = "🦃",
+      /**
+       * Emoji: 🕊
+       *
+       * Aliases: `DOVE_OF_PEACE`
+       */
+      "DOVE" = "🕊",
+      /**
+       * Emoji: 🕊
+       *
+       * Aliases: `DOVE`
+       */
+      "DOVE_OF_PEACE" = "🕊",
+      /**
+       * Emoji: 🐕
+       */
+      "DOG2" = "🐕",
+      /**
+       * Emoji: 🐩
+       */
+      "POODLE" = "🐩",
+      /**
+       * Emoji: 🐈
+       */
+      "CAT2" = "🐈",
+      /**
+       * Emoji: 🐇
+       */
+      "RABBIT2" = "🐇",
+      /**
+       * Emoji: 🐿
+       */
+      "CHIPMUNK" = "🐿",
+      /**
+       * Emoji: 🐾
+       *
+       * Aliases: `PAW_PRINTS`
+       */
+      "FEET" = "🐾",
+      /**
+       * Emoji: 🐾
+       *
+       * Aliases: `FEET`
+       */
+      "PAW_PRINTS" = "🐾",
+      /**
+       * Emoji: 🐉
+       */
+      "DRAGON" = "🐉",
+      /**
+       * Emoji: 🐲
+       */
+      "DRAGON_FACE" = "🐲",
+      /**
+       * Emoji: 🌵
+       */
+      "CACTUS" = "🌵",
+      /**
+       * Emoji: 🎄
+       */
+      "CHRISTMAS_TREE" = "🎄",
+      /**
+       * Emoji: 🌲
+       */
+      "EVERGREEN_TREE" = "🌲",
+      /**
+       * Emoji: 🌳
+       */
+      "DECIDUOUS_TREE" = "🌳",
+      /**
+       * Emoji: 🌴
+       */
+      "PALM_TREE" = "🌴",
+      /**
+       * Emoji: 🌱
+       */
+      "SEEDLING" = "🌱",
+      /**
+       * Emoji: 🌿
+       */
+      "HERB" = "🌿",
+      /**
+       * Emoji: ☘
+       */
+      "SHAMROCK" = "☘",
+      /**
+       * Emoji: 🍀
+       */
+      "FOUR_LEAF_CLOVER" = "🍀",
+      /**
+       * Emoji: 🎍
+       */
+      "BAMBOO" = "🎍",
+      /**
+       * Emoji: 🎋
+       */
+      "TANABATA_TREE" = "🎋",
+      /**
+       * Emoji: 🍃
+       */
+      "LEAVES" = "🍃",
+      /**
+       * Emoji: 🍂
+       */
+      "FALLEN_LEAF" = "🍂",
+      /**
+       * Emoji: 🍁
+       */
+      "MAPLE_LEAF" = "🍁",
+      /**
+       * Emoji: 🌾
+       */
+      "EAR_OF_RICE" = "🌾",
+      /**
+       * Emoji: 🌺
+       */
+      "HIBISCUS" = "🌺",
+      /**
+       * Emoji: 🌻
+       */
+      "SUNFLOWER" = "🌻",
+      /**
+       * Emoji: 🌹
+       */
+      "ROSE" = "🌹",
+      /**
+       * Emoji: 🌷
+       */
+      "TULIP" = "🌷",
+      /**
+       * Emoji: 🌼
+       */
+      "BLOSSOM" = "🌼",
+      /**
+       * Emoji: 🌸
+       */
+      "CHERRY_BLOSSOM" = "🌸",
+      /**
+       * Emoji: 💐
+       */
+      "BOUQUET" = "💐",
+      /**
+       * Emoji: 🍄
+       */
+      "MUSHROOM" = "🍄",
+      /**
+       * Emoji: 🌰
+       */
+      "CHESTNUT" = "🌰",
+      /**
+       * Emoji: 🎃
+       */
+      "JACK_O_LANTERN" = "🎃",
+      /**
+       * Emoji: 🐚
+       */
+      "SHELL" = "🐚",
+      /**
+       * Emoji: 🕸
+       */
+      "SPIDER_WEB" = "🕸",
+      /**
+       * Emoji: 🌎
+       */
+      "EARTH_AMERICAS" = "🌎",
+      /**
+       * Emoji: 🌍
+       */
+      "EARTH_AFRICA" = "🌍",
+      /**
+       * Emoji: 🌏
+       */
+      "EARTH_ASIA" = "🌏",
+      /**
+       * Emoji: 🌕
+       */
+      "FULL_MOON" = "🌕",
+      /**
+       * Emoji: 🌖
+       */
+      "WANING_GIBBOUS_MOON" = "🌖",
+      /**
+       * Emoji: 🌗
+       */
+      "LAST_QUARTER_MOON" = "🌗",
+      /**
+       * Emoji: 🌘
+       */
+      "WANING_CRESCENT_MOON" = "🌘",
+      /**
+       * Emoji: 🌑
+       */
+      "NEW_MOON" = "🌑",
+      /**
+       * Emoji: 🌒
+       */
+      "WAXING_CRESCENT_MOON" = "🌒",
+      /**
+       * Emoji: 🌓
+       */
+      "FIRST_QUARTER_MOON" = "🌓",
+      /**
+       * Emoji: 🌔
+       */
+      "WAXING_GIBBOUS_MOON" = "🌔",
+      /**
+       * Emoji: 🌚
+       */
+      "NEW_MOON_WITH_FACE" = "🌚",
+      /**
+       * Emoji: 🌝
+       */
+      "FULL_MOON_WITH_FACE" = "🌝",
+      /**
+       * Emoji: 🌛
+       */
+      "FIRST_QUARTER_MOON_WITH_FACE" = "🌛",
+      /**
+       * Emoji: 🌜
+       */
+      "LAST_QUARTER_MOON_WITH_FACE" = "🌜",
+      /**
+       * Emoji: 🌞
+       */
+      "SUN_WITH_FACE" = "🌞",
+      /**
+       * Emoji: 🌙
+       */
+      "CRESCENT_MOON" = "🌙",
+      /**
+       * Emoji: ⭐
+       */
+      "STAR" = "⭐",
+      /**
+       * Emoji: 🌟
+       */
+      "STAR2" = "🌟",
+      /**
+       * Emoji: 💫
+       */
+      "DIZZY" = "💫",
+      /**
+       * Emoji: ✨
+       */
+      "SPARKLES" = "✨",
+      /**
+       * Emoji: ☄
+       */
+      "COMET" = "☄",
+      /**
+       * Emoji: ☀
+       */
+      "SUNNY" = "☀",
+      /**
+       * Emoji: 🌤
+       *
+       * Aliases: `WHITE_SUN_WITH_SMALL_CLOUD`
+       */
+      "WHITE_SUN_SMALL_CLOUD" = "🌤",
+      /**
+       * Emoji: 🌤
+       *
+       * Aliases: `WHITE_SUN_SMALL_CLOUD`
+       */
+      "WHITE_SUN_WITH_SMALL_CLOUD" = "🌤",
+      /**
+       * Emoji: ⛅
+       */
+      "PARTLY_SUNNY" = "⛅",
+      /**
+       * Emoji: 🌥
+       *
+       * Aliases: `WHITE_SUN_BEHIND_CLOUD`
+       */
+      "WHITE_SUN_CLOUD" = "🌥",
+      /**
+       * Emoji: 🌥
+       *
+       * Aliases: `WHITE_SUN_CLOUD`
+       */
+      "WHITE_SUN_BEHIND_CLOUD" = "🌥",
+      /**
+       * Emoji: 🌦
+       *
+       * Aliases: `WHITE_SUN_BEHIND_CLOUD_WITH_RAIN`
+       */
+      "WHITE_SUN_RAIN_CLOUD" = "🌦",
+      /**
+       * Emoji: 🌦
+       *
+       * Aliases: `WHITE_SUN_RAIN_CLOUD`
+       */
+      "WHITE_SUN_BEHIND_CLOUD_WITH_RAIN" = "🌦",
+      /**
+       * Emoji: ☁
+       */
+      "CLOUD" = "☁",
+      /**
+       * Emoji: 🌧
+       *
+       * Aliases: `CLOUD_WITH_RAIN`
+       */
+      "CLOUD_RAIN" = "🌧",
+      /**
+       * Emoji: 🌧
+       *
+       * Aliases: `CLOUD_RAIN`
+       */
+      "CLOUD_WITH_RAIN" = "🌧",
+      /**
+       * Emoji: ⛈
+       *
+       * Aliases: `THUNDER_CLOUD_AND_RAIN`
+       */
+      "THUNDER_CLOUD_RAIN" = "⛈",
+      /**
+       * Emoji: ⛈
+       *
+       * Aliases: `THUNDER_CLOUD_RAIN`
+       */
+      "THUNDER_CLOUD_AND_RAIN" = "⛈",
+      /**
+       * Emoji: 🌩
+       *
+       * Aliases: `CLOUD_WITH_LIGHTNING`
+       */
+      "CLOUD_LIGHTNING" = "🌩",
+      /**
+       * Emoji: 🌩
+       *
+       * Aliases: `CLOUD_LIGHTNING`
+       */
+      "CLOUD_WITH_LIGHTNING" = "🌩",
+      /**
+       * Emoji: ⚡
+       */
+      "ZAP" = "⚡",
+      /**
+       * Emoji: 🔥
+       *
+       * Aliases: `FLAME`
+       */
+      "FIRE" = "🔥",
+      /**
+       * Emoji: 🔥
+       *
+       * Aliases: `FIRE`
+       */
+      "FLAME" = "🔥",
+      /**
+       * Emoji: 💥
+       */
+      "BOOM" = "💥",
+      /**
+       * Emoji: ❄
+       */
+      "SNOWFLAKE" = "❄",
+      /**
+       * Emoji: 🌨
+       *
+       * Aliases: `CLOUD_WITH_SNOW`
+       */
+      "CLOUD_SNOW" = "🌨",
+      /**
+       * Emoji: 🌨
+       *
+       * Aliases: `CLOUD_SNOW`
+       */
+      "CLOUD_WITH_SNOW" = "🌨",
+      /**
+       * Emoji: ☃
+       */
+      "SNOWMAN2" = "☃",
+      /**
+       * Emoji: ⛄
+       */
+      "SNOWMAN" = "⛄",
+      /**
+       * Emoji: 🌬
+       */
+      "WIND_BLOWING_FACE" = "🌬",
+      /**
+       * Emoji: 💨
+       */
+      "DASH" = "💨",
+      /**
+       * Emoji: 🌪
+       *
+       * Aliases: `CLOUD_WITH_TORNADO`
+       */
+      "CLOUD_TORNADO" = "🌪",
+      /**
+       * Emoji: 🌪
+       *
+       * Aliases: `CLOUD_TORNADO`
+       */
+      "CLOUD_WITH_TORNADO" = "🌪",
+      /**
+       * Emoji: 🌫
+       */
+      "FOG" = "🌫",
+      /**
+       * Emoji: ☂
+       */
+      "UMBRELLA2" = "☂",
+      /**
+       * Emoji: ☔
+       */
+      "UMBRELLA" = "☔",
+      /**
+       * Emoji: 💧
+       */
+      "DROPLET" = "💧",
+      /**
+       * Emoji: 💦
+       */
+      "SWEAT_DROPS" = "💦",
+      /**
+       * Emoji: 🌊
+       */
+      "OCEAN" = "🌊",
+      /**
+       * Emoji: 🦅
+       */
+      "EAGLE" = "🦅",
+      /**
+       * Emoji: 🦆
+       */
+      "DUCK" = "🦆",
+      /**
+       * Emoji: 🦇
+       */
+      "BAT" = "🦇",
+      /**
+       * Emoji: 🦈
+       */
+      "SHARK" = "🦈",
+      /**
+       * Emoji: 🦉
+       */
+      "OWL" = "🦉",
+      /**
+       * Emoji: 🦊
+       *
+       * Aliases: `FOX_FACE`
+       */
+      "FOX" = "🦊",
+      /**
+       * Emoji: 🦊
+       *
+       * Aliases: `FOX`
+       */
+      "FOX_FACE" = "🦊",
+      /**
+       * Emoji: 🦋
+       */
+      "BUTTERFLY" = "🦋",
+      /**
+       * Emoji: 🦌
+       */
+      "DEER" = "🦌",
+      /**
+       * Emoji: 🦍
+       */
+      "GORILLA" = "🦍",
+      /**
+       * Emoji: 🦎
+       */
+      "LIZARD" = "🦎",
+      /**
+       * Emoji: 🦏
+       *
+       * Aliases: `RHINOCEROS`
+       */
+      "RHINO" = "🦏",
+      /**
+       * Emoji: 🦏
+       *
+       * Aliases: `RHINO`
+       */
+      "RHINOCEROS" = "🦏",
+      /**
+       * Emoji: 🥀
+       *
+       * Aliases: `WILTED_FLOWER`
+       */
+      "WILTED_ROSE" = "🥀",
+      /**
+       * Emoji: 🥀
+       *
+       * Aliases: `WILTED_ROSE`
+       */
+      "WILTED_FLOWER" = "🥀",
+      /**
+       * Emoji: 🦐
+       */
+      "SHRIMP" = "🦐",
+      /**
+       * Emoji: 🦑
+       */
+      "SQUID" = "🦑",
+      /**
+       * Emoji: 🦝
+       */
+      "RACCOON" = "🦝",
+      /**
+       * Emoji: 🦙
+       *
+       * Aliases: `ALPACA`,`WOOL`
+       */
+      "LLAMA" = "🦙",
+      /**
+       * Emoji: 🦙
+       *
+       * Aliases: `LLAMA`,`WOOL`
+       */
+      "ALPACA" = "🦙",
+      /**
+       * Emoji: 🦙
+       *
+       * Aliases: `LLAMA`,`ALPACA`
+       */
+      "WOOL" = "🦙",
+      /**
+       * Emoji: 🦛
+       *
+       * Aliases: `HIPPO`
+       */
+      "HIPPOPOTAMUS" = "🦛",
+      /**
+       * Emoji: 🦛
+       *
+       * Aliases: `HIPPOPOTAMUS`
+       */
+      "HIPPO" = "🦛",
+      /**
+       * Emoji: 🦘
+       *
+       * Aliases: `AUSTRALIA`,`JUMP`,`MARSUPIAL`
+       */
+      "KANGAROO" = "🦘",
+      /**
+       * Emoji: 🦘
+       *
+       * Aliases: `KANGAROO`,`JUMP`,`MARSUPIAL`
+       */
+      "AUSTRALIA" = "🦘",
+      /**
+       * Emoji: 🦘
+       *
+       * Aliases: `KANGAROO`,`AUSTRALIA`,`MARSUPIAL`
+       */
+      "JUMP" = "🦘",
+      /**
+       * Emoji: 🦘
+       *
+       * Aliases: `KANGAROO`,`AUSTRALIA`,`JUMP`
+       */
+      "MARSUPIAL" = "🦘",
+      /**
+       * Emoji: 🦡
+       *
+       * Aliases: `HONEY_BADGER`
+       */
+      "BADGER" = "🦡",
+      /**
+       * Emoji: 🦡
+       *
+       * Aliases: `BADGER`
+       */
+      "HONEY_BADGER" = "🦡",
+      /**
+       * Emoji: 🦢
+       *
+       * Aliases: `CYGNET`
+       */
+      "SWAN" = "🦢",
+      /**
+       * Emoji: 🦢
+       *
+       * Aliases: `SWAN`
+       */
+      "CYGNET" = "🦢",
+      /**
+       * Emoji: 🦚
+       *
+       * Aliases: `PEAHEN`
+       */
+      "PEACOCK" = "🦚",
+      /**
+       * Emoji: 🦚
+       *
+       * Aliases: `PEACOCK`
+       */
+      "PEAHEN" = "🦚",
+      /**
+       * Emoji: 🦜
+       */
+      "PARROT" = "🦜",
+      /**
+       * Emoji: 🦞
+       *
+       * Aliases: `BISQUE`,`SEAFOOD`
+       */
+      "LOBSTER" = "🦞",
+      /**
+       * Emoji: 🦞
+       *
+       * Aliases: `LOBSTER`,`SEAFOOD`
+       */
+      "BISQUE" = "🦞",
+      /**
+       * Emoji: 🦞
+       *
+       * Aliases: `LOBSTER`,`BISQUE`
+       */
+      "SEAFOOD" = "🦞",
+      /**
+       * Emoji: 🦟
+       *
+       * Aliases: `INSECT`,`DISEASE`,`MALARIA`,`FEVER`
+       */
+      "MOSQUITO" = "🦟",
+      /**
+       * Emoji: 🦟
+       *
+       * Aliases: `MOSQUITO`,`DISEASE`,`MALARIA`,`FEVER`
+       */
+      "INSECT" = "🦟",
+      /**
+       * Emoji: 🦟
+       *
+       * Aliases: `MOSQUITO`,`INSECT`,`MALARIA`,`FEVER`
+       */
+      "DISEASE" = "🦟",
+      /**
+       * Emoji: 🦟
+       *
+       * Aliases: `MOSQUITO`,`INSECT`,`DISEASE`,`FEVER`
+       */
+      "MALARIA" = "🦟",
+      /**
+       * Emoji: 🦟
+       *
+       * Aliases: `MOSQUITO`,`INSECT`,`DISEASE`,`MALARIA`
+       */
+      "FEVER" = "🦟",
+      /**
+       * Emoji: 🦠
+       *
+       * Aliases: `AMOEBA`,`BACTERIA`,`VIRUS`
+       */
+      "MICROBE" = "🦠",
+      /**
+       * Emoji: 🦠
+       *
+       * Aliases: `MICROBE`,`BACTERIA`,`VIRUS`
+       */
+      "AMOEBA" = "🦠",
+      /**
+       * Emoji: 🦠
+       *
+       * Aliases: `MICROBE`,`AMOEBA`,`VIRUS`
+       */
+      "BACTERIA" = "🦠",
+      /**
+       * Emoji: 🦠
+       *
+       * Aliases: `MICROBE`,`AMOEBA`,`BACTERIA`
+       */
+      "VIRUS" = "🦠",
+      /**
+       * Emoji: 🦓
+       */
+      "ZEBRA" = "🦓",
+      /**
+       * Emoji: 🦒
+       */
+      "GIRAFFE" = "🦒",
+      /**
+       * Emoji: 🦔
+       *
+       * Aliases: `ECHINDA`,`SPINY`
+       */
+      "HEDGEHOG" = "🦔",
+      /**
+       * Emoji: 🦔
+       *
+       * Aliases: `HEDGEHOG`,`SPINY`
+       */
+      "ECHINDA" = "🦔",
+      /**
+       * Emoji: 🦔
+       *
+       * Aliases: `HEDGEHOG`,`ECHINDA`
+       */
+      "SPINY" = "🦔",
+      /**
+       * Emoji: 🦕
+       *
+       * Aliases: `BRACHIOSAURUS`,`BRONTOSAURUS`,`DIPLODOCUS`,`DINOSAUR`
+       */
+      "SAUROPOD" = "🦕",
+      /**
+       * Emoji: 🦕
+       *
+       * Aliases: `SAUROPOD`,`BRONTOSAURUS`,`DIPLODOCUS`,`DINOSAUR`
+       */
+      "BRACHIOSAURUS" = "🦕",
+      /**
+       * Emoji: 🦕
+       *
+       * Aliases: `SAUROPOD`,`BRACHIOSAURUS`,`DIPLODOCUS`,`DINOSAUR`
+       */
+      "BRONTOSAURUS" = "🦕",
+      /**
+       * Emoji: 🦕
+       *
+       * Aliases: `SAUROPOD`,`BRACHIOSAURUS`,`BRONTOSAURUS`,`DINOSAUR`
+       */
+      "DIPLODOCUS" = "🦕",
+      /**
+       * Emoji: 🦕
+       *
+       * Aliases: `SAUROPOD`,`BRACHIOSAURUS`,`BRONTOSAURUS`,`DIPLODOCUS`
+       */
+      "DINOSAUR" = "🦕",
+      /**
+       * Emoji: 🦖
+       *
+       * Aliases: `TYRANNOSAURUS_REX`
+       */
+      "T_REX" = "🦖",
+      /**
+       * Emoji: 🦖
+       *
+       * Aliases: `T_REX`
+       */
+      "TYRANNOSAURUS_REX" = "🦖",
+      /**
+       * Emoji: 🏏
+       *
+       * Aliases: `CRICKET_BAT_BALL`
+       */
+      "CRICKET" = "🏏",
+      /**
+       * Emoji: 🦗
+       *
+       * Aliases: `CRICKET`,`ORTHOPTERA`
+       */
+      "GRASSHOPPER" = "🦗",
+      /**
+       * Emoji: 🦗
+       *
+       * Aliases: `CRICKET`,`GRASSHOPPER`
+       */
+      "ORTHOPTERA" = "🦗",
+      /**
+       * Emoji: 🦧
+       */
+      "ORANGUTAN" = "🦧",
+      /**
+       * Emoji: 🦮
+       */
+      "GUIDE_DOG" = "🦮",
+      /**
+       * Emoji: 🐕‍🦺
+       */
+      "SERVICE_DOG" = "🐕‍🦺",
+      /**
+       * Emoji: 🦥
+       */
+      "SLOTH" = "🦥",
+      /**
+       * Emoji: 🦦
+       */
+      "OTTER" = "🦦",
+      /**
+       * Emoji: 🦨
+       */
+      "SKUNK" = "🦨",
+      /**
+       * Emoji: 🦩
+       */
+      "FLAMINGO" = "🦩",
+      /**
+       * Emoji: 🦪
+       */
+      "OYSTER" = "🦪",
+      /**
+       * Emoji: 🪐
+       */
+      "RINGED_PLANET" = "🪐",
+      /**
+       * Emoji: 🍏
+       */
+      "GREEN_APPLE" = "🍏",
+      /**
+       * Emoji: 🍎
+       */
+      "APPLE" = "🍎",
+      /**
+       * Emoji: 🍐
+       */
+      "PEAR" = "🍐",
+      /**
+       * Emoji: 🍊
+       */
+      "TANGERINE" = "🍊",
+      /**
+       * Emoji: 🍋
+       */
+      "LEMON" = "🍋",
+      /**
+       * Emoji: 🍌
+       */
+      "BANANA" = "🍌",
+      /**
+       * Emoji: 🍉
+       */
+      "WATERMELON" = "🍉",
+      /**
+       * Emoji: 🍇
+       */
+      "GRAPES" = "🍇",
+      /**
+       * Emoji: 🍓
+       */
+      "STRAWBERRY" = "🍓",
+      /**
+       * Emoji: 🍈
+       */
+      "MELON" = "🍈",
+      /**
+       * Emoji: 🍒
+       */
+      "CHERRIES" = "🍒",
+      /**
+       * Emoji: 🍑
+       */
+      "PEACH" = "🍑",
+      /**
+       * Emoji: 🍍
+       */
+      "PINEAPPLE" = "🍍",
+      /**
+       * Emoji: 🍅
+       */
+      "TOMATO" = "🍅",
+      /**
+       * Emoji: 🍆
+       */
+      "EGGPLANT" = "🍆",
+      /**
+       * Emoji: 🌶
+       */
+      "HOT_PEPPER" = "🌶",
+      /**
+       * Emoji: 🌽
+       */
+      "CORN" = "🌽",
+      /**
+       * Emoji: 🍠
+       */
+      "SWEET_POTATO" = "🍠",
+      /**
+       * Emoji: 🍯
+       */
+      "HONEY_POT" = "🍯",
+      /**
+       * Emoji: 🍞
+       */
+      "BREAD" = "🍞",
+      /**
+       * Emoji: 🧀
+       *
+       * Aliases: `CHEESE_WEDGE`
+       */
+      "CHEESE" = "🧀",
+      /**
+       * Emoji: 🧀
+       *
+       * Aliases: `CHEESE`
+       */
+      "CHEESE_WEDGE" = "🧀",
+      /**
+       * Emoji: 🍗
+       */
+      "POULTRY_LEG" = "🍗",
+      /**
+       * Emoji: 🍖
+       */
+      "MEAT_ON_BONE" = "🍖",
+      /**
+       * Emoji: 🍤
+       */
+      "FRIED_SHRIMP" = "🍤",
+      /**
+       * Emoji: 🍳
+       */
+      "COOKING" = "🍳",
+      /**
+       * Emoji: 🍔
+       */
+      "HAMBURGER" = "🍔",
+      /**
+       * Emoji: 🍟
+       */
+      "FRIES" = "🍟",
+      /**
+       * Emoji: 🌭
+       *
+       * Aliases: `HOT_DOG`
+       */
+      "HOTDOG" = "🌭",
+      /**
+       * Emoji: 🌭
+       *
+       * Aliases: `HOTDOG`
+       */
+      "HOT_DOG" = "🌭",
+      /**
+       * Emoji: 🍕
+       */
+      "PIZZA" = "🍕",
+      /**
+       * Emoji: 🍝
+       */
+      "SPAGHETTI" = "🍝",
+      /**
+       * Emoji: 🌮
+       */
+      "TACO" = "🌮",
+      /**
+       * Emoji: 🌯
+       */
+      "BURRITO" = "🌯",
+      /**
+       * Emoji: 🍜
+       */
+      "RAMEN" = "🍜",
+      /**
+       * Emoji: 🍲
+       */
+      "STEW" = "🍲",
+      /**
+       * Emoji: 🍥
+       */
+      "FISH_CAKE" = "🍥",
+      /**
+       * Emoji: 🍣
+       */
+      "SUSHI" = "🍣",
+      /**
+       * Emoji: 🍱
+       */
+      "BENTO" = "🍱",
+      /**
+       * Emoji: 🍛
+       */
+      "CURRY" = "🍛",
+      /**
+       * Emoji: 🍙
+       */
+      "RICE_BALL" = "🍙",
+      /**
+       * Emoji: 🍚
+       */
+      "RICE" = "🍚",
+      /**
+       * Emoji: 🍘
+       */
+      "RICE_CRACKER" = "🍘",
+      /**
+       * Emoji: 🍢
+       */
+      "ODEN" = "🍢",
+      /**
+       * Emoji: 🍡
+       */
+      "DANGO" = "🍡",
+      /**
+       * Emoji: 🍧
+       */
+      "SHAVED_ICE" = "🍧",
+      /**
+       * Emoji: 🍨
+       */
+      "ICE_CREAM" = "🍨",
+      /**
+       * Emoji: 🍦
+       */
+      "ICECREAM" = "🍦",
+      /**
+       * Emoji: 🍰
+       */
+      "CAKE" = "🍰",
+      /**
+       * Emoji: 🎂
+       */
+      "BIRTHDAY" = "🎂",
+      /**
+       * Emoji: 🍮
+       *
+       * Aliases: `PUDDING`,`FLAN`
+       */
+      "CUSTARD" = "🍮",
+      /**
+       * Emoji: 🍮
+       *
+       * Aliases: `CUSTARD`,`FLAN`
+       */
+      "PUDDING" = "🍮",
+      /**
+       * Emoji: 🍮
+       *
+       * Aliases: `CUSTARD`,`PUDDING`
+       */
+      "FLAN" = "🍮",
+      /**
+       * Emoji: 🍬
+       */
+      "CANDY" = "🍬",
+      /**
+       * Emoji: 🍭
+       */
+      "LOLLIPOP" = "🍭",
+      /**
+       * Emoji: 🍫
+       */
+      "CHOCOLATE_BAR" = "🍫",
+      /**
+       * Emoji: 🍿
+       */
+      "POPCORN" = "🍿",
+      /**
+       * Emoji: 🍩
+       */
+      "DOUGHNUT" = "🍩",
+      /**
+       * Emoji: 🍪
+       */
+      "COOKIE" = "🍪",
+      /**
+       * Emoji: 🍺
+       */
+      "BEER" = "🍺",
+      /**
+       * Emoji: 🍻
+       */
+      "BEERS" = "🍻",
+      /**
+       * Emoji: 🍷
+       */
+      "WINE_GLASS" = "🍷",
+      /**
+       * Emoji: 🍸
+       */
+      "COCKTAIL" = "🍸",
+      /**
+       * Emoji: 🍹
+       */
+      "TROPICAL_DRINK" = "🍹",
+      /**
+       * Emoji: 🍾
+       *
+       * Aliases: `BOTTLE_WITH_POPPING_CORK`
+       */
+      "CHAMPAGNE" = "🍾",
+      /**
+       * Emoji: 🍾
+       *
+       * Aliases: `CHAMPAGNE`
+       */
+      "BOTTLE_WITH_POPPING_CORK" = "🍾",
+      /**
+       * Emoji: 🍶
+       */
+      "SAKE" = "🍶",
+      /**
+       * Emoji: 🍵
+       */
+      "TEA" = "🍵",
+      /**
+       * Emoji: ☕
+       */
+      "COFFEE" = "☕",
+      /**
+       * Emoji: 🍼
+       */
+      "BABY_BOTTLE" = "🍼",
+      /**
+       * Emoji: 🍴
+       */
+      "FORK_AND_KNIFE" = "🍴",
+      /**
+       * Emoji: 🍽
+       *
+       * Aliases: `FORK_AND_KNIFE_WITH_PLATE`
+       */
+      "FORK_KNIFE_PLATE" = "🍽",
+      /**
+       * Emoji: 🍽
+       *
+       * Aliases: `FORK_KNIFE_PLATE`
+       */
+      "FORK_AND_KNIFE_WITH_PLATE" = "🍽",
+      /**
+       * Emoji: 🥐
+       */
+      "CROISSANT" = "🥐",
+      /**
+       * Emoji: 🥑
+       */
+      "AVOCADO" = "🥑",
+      /**
+       * Emoji: 🥒
+       */
+      "CUCUMBER" = "🥒",
+      /**
+       * Emoji: 🥓
+       */
+      "BACON" = "🥓",
+      /**
+       * Emoji: 🥔
+       */
+      "POTATO" = "🥔",
+      /**
+       * Emoji: 🥕
+       */
+      "CARROT" = "🥕",
+      /**
+       * Emoji: 🥖
+       *
+       * Aliases: `BAGUETTE_BREAD`
+       */
+      "FRENCH_BREAD" = "🥖",
+      /**
+       * Emoji: 🥖
+       *
+       * Aliases: `FRENCH_BREAD`
+       */
+      "BAGUETTE_BREAD" = "🥖",
+      /**
+       * Emoji: 🥗
+       *
+       * Aliases: `GREEN_SALAD`
+       */
+      "SALAD" = "🥗",
+      /**
+       * Emoji: 🥗
+       *
+       * Aliases: `SALAD`
+       */
+      "GREEN_SALAD" = "🥗",
+      /**
+       * Emoji: 🥘
+       *
+       * Aliases: `PAELLA`
+       */
+      "SHALLOW_PAN_OF_FOOD" = "🥘",
+      /**
+       * Emoji: 🥘
+       *
+       * Aliases: `SHALLOW_PAN_OF_FOOD`
+       */
+      "PAELLA" = "🥘",
+      /**
+       * Emoji: 🥙
+       *
+       * Aliases: `STUFFED_PITA`
+       */
+      "STUFFED_FLATBREAD" = "🥙",
+      /**
+       * Emoji: 🥙
+       *
+       * Aliases: `STUFFED_FLATBREAD`
+       */
+      "STUFFED_PITA" = "🥙",
+      /**
+       * Emoji: 🥂
+       *
+       * Aliases: `CLINKING_GLASS`
+       */
+      "CHAMPAGNE_GLASS" = "🥂",
+      /**
+       * Emoji: 🥂
+       *
+       * Aliases: `CHAMPAGNE_GLASS`
+       */
+      "CLINKING_GLASS" = "🥂",
+      /**
+       * Emoji: 🥃
+       *
+       * Aliases: `WHISKY`
+       */
+      "TUMBLER_GLASS" = "🥃",
+      /**
+       * Emoji: 🥃
+       *
+       * Aliases: `TUMBLER_GLASS`
+       */
+      "WHISKY" = "🥃",
+      /**
+       * Emoji: 🥄
+       */
+      "SPOON" = "🥄",
+      /**
+       * Emoji: 🥚
+       */
+      "EGG" = "🥚",
+      /**
+       * Emoji: 🥛
+       *
+       * Aliases: `GLASS_OF_MILK`
+       */
+      "MILK" = "🥛",
+      /**
+       * Emoji: 🥛
+       *
+       * Aliases: `MILK`
+       */
+      "GLASS_OF_MILK" = "🥛",
+      /**
+       * Emoji: 🥜
+       *
+       * Aliases: `SHELLED_PEANUT`
+       */
+      "PEANUTS" = "🥜",
+      /**
+       * Emoji: 🥜
+       *
+       * Aliases: `PEANUTS`
+       */
+      "SHELLED_PEANUT" = "🥜",
+      /**
+       * Emoji: 🥝
+       *
+       * Aliases: `KIWIFRUIT`
+       */
+      "KIWI" = "🥝",
+      /**
+       * Emoji: 🥝
+       *
+       * Aliases: `KIWI`
+       */
+      "KIWIFRUIT" = "🥝",
+      /**
+       * Emoji: 🥞
+       */
+      "PANCAKES" = "🥞",
+      /**
+       * Emoji: 🥭
+       *
+       * Aliases: `TROPICAL`
+       */
+      "MANGO" = "🥭",
+      /**
+       * Emoji: 🥭
+       *
+       * Aliases: `MANGO`
+       */
+      "TROPICAL" = "🥭",
+      /**
+       * Emoji: 🥬
+       *
+       * Aliases: `CABBAGE`,`KALE`,`LETTUCE`
+       */
+      "LEAFY_GREEN" = "🥬",
+      /**
+       * Emoji: 🥬
+       *
+       * Aliases: `LEAFY_GREEN`,`KALE`,`LETTUCE`
+       */
+      "CABBAGE" = "🥬",
+      /**
+       * Emoji: 🥬
+       *
+       * Aliases: `LEAFY_GREEN`,`CABBAGE`,`LETTUCE`
+       */
+      "KALE" = "🥬",
+      /**
+       * Emoji: 🥬
+       *
+       * Aliases: `LEAFY_GREEN`,`CABBAGE`,`KALE`
+       */
+      "LETTUCE" = "🥬",
+      /**
+       * Emoji: 🥯
+       *
+       * Aliases: `SCHMEAR`
+       */
+      "BAGEL" = "🥯",
+      /**
+       * Emoji: 🥯
+       *
+       * Aliases: `BAGEL`
+       */
+      "SCHMEAR" = "🥯",
+      /**
+       * Emoji: 🧂
+       *
+       * Aliases: `CONDEMENT`,`SHAKER`,`SALT_SHAKER`
+       */
+      "SALT" = "🧂",
+      /**
+       * Emoji: 🧂
+       *
+       * Aliases: `SALT`,`SHAKER`,`SALT_SHAKER`
+       */
+      "CONDEMENT" = "🧂",
+      /**
+       * Emoji: 🧂
+       *
+       * Aliases: `SALT`,`CONDEMENT`,`SALT_SHAKER`
+       */
+      "SHAKER" = "🧂",
+      /**
+       * Emoji: 🧂
+       *
+       * Aliases: `SALT`,`CONDEMENT`,`SHAKER`
+       */
+      "SALT_SHAKER" = "🧂",
+      /**
+       * Emoji: 🥮
+       */
+      "MOON_CAKE" = "🥮",
+      /**
+       * Emoji: 🧁
+       *
+       * Aliases: `BAKERY`,`SWEET`
+       */
+      "CUPCAKE" = "🧁",
+      /**
+       * Emoji: 🧁
+       *
+       * Aliases: `CUPCAKE`,`SWEET`
+       */
+      "BAKERY" = "🧁",
+      /**
+       * Emoji: 🧁
+       *
+       * Aliases: `CUPCAKE`,`BAKERY`
+       */
+      "SWEET" = "🧁",
+      /**
+       * Emoji: 🥥
+       */
+      "COCONUT" = "🥥",
+      /**
+       * Emoji: 🥦
+       */
+      "BROCCOLI" = "🥦",
+      /**
+       * Emoji: 🥨
+       */
+      "PRETZEL" = "🥨",
+      /**
+       * Emoji: 🥩
+       *
+       * Aliases: `STEAK`,`LAMBCHOP`,`PORKCHOP`
+       */
+      "CUT_OF_MEAT" = "🥩",
+      /**
+       * Emoji: 🥩
+       *
+       * Aliases: `CUT_OF_MEAT`,`LAMBCHOP`,`PORKCHOP`
+       */
+      "STEAK" = "🥩",
+      /**
+       * Emoji: 🥩
+       *
+       * Aliases: `CUT_OF_MEAT`,`STEAK`,`PORKCHOP`
+       */
+      "LAMBCHOP" = "🥩",
+      /**
+       * Emoji: 🥩
+       *
+       * Aliases: `CUT_OF_MEAT`,`STEAK`,`LAMBCHOP`
+       */
+      "PORKCHOP" = "🥩",
+      /**
+       * Emoji: 🥪
+       */
+      "SANDWICH" = "🥪",
+      /**
+       * Emoji: 🥣
+       *
+       * Aliases: `CEREAL_BOWL`,`OATMEAL`
+       */
+      "BOWL_WITH_SPOON" = "🥣",
+      /**
+       * Emoji: 🥣
+       *
+       * Aliases: `BOWL_WITH_SPOON`,`OATMEAL`
+       */
+      "CEREAL_BOWL" = "🥣",
+      /**
+       * Emoji: 🥣
+       *
+       * Aliases: `BOWL_WITH_SPOON`,`CEREAL_BOWL`
+       */
+      "OATMEAL" = "🥣",
+      /**
+       * Emoji: 🥫
+       *
+       * Aliases: `CAN`
+       */
+      "CANNED_FOOD" = "🥫",
+      /**
+       * Emoji: 🥫
+       *
+       * Aliases: `CANNED_FOOD`
+       */
+      "CAN" = "🥫",
+      /**
+       * Emoji: 🥟
+       *
+       * Aliases: `POTSTICKER`
+       */
+      "DUMPLING" = "🥟",
+      /**
+       * Emoji: 🥟
+       *
+       * Aliases: `DUMPLING`
+       */
+      "POTSTICKER" = "🥟",
+      /**
+       * Emoji: 🥠
+       */
+      "FORTUNE_COOKIE" = "🥠",
+      /**
+       * Emoji: 🥡
+       */
+      "TAKEOUT_BOX" = "🥡",
+      /**
+       * Emoji: 🥧
+       */
+      "PIE" = "🥧",
+      /**
+       * Emoji: 🥤
+       *
+       * Aliases: `TO_GO_CUP`
+       */
+      "CUP_WITH_STRAW" = "🥤",
+      /**
+       * Emoji: 🥤
+       *
+       * Aliases: `CUP_WITH_STRAW`
+       */
+      "TO_GO_CUP" = "🥤",
+      /**
+       * Emoji: 🥢
+       */
+      "CHOPSTICKS" = "🥢",
+      /**
+       * Emoji: 🧄
+       */
+      "GARLIC" = "🧄",
+      /**
+       * Emoji: 🧅
+       */
+      "ONION" = "🧅",
+      /**
+       * Emoji: 🧇
+       */
+      "WAFFLE" = "🧇",
+      /**
+       * Emoji: 🧆
+       */
+      "FALAFEL" = "🧆",
+      /**
+       * Emoji: 🧈
+       */
+      "BUTTER" = "🧈",
+      /**
+       * Emoji: 🧃
+       *
+       * Aliases: `JUICE_BOX`
+       */
+      "BEVERAGE_BOX" = "🧃",
+      /**
+       * Emoji: 🧃
+       *
+       * Aliases: `BEVERAGE_BOX`
+       */
+      "JUICE_BOX" = "🧃",
+      /**
+       * Emoji: 🧉
+       */
+      "MATE" = "🧉",
+      /**
+       * Emoji: 🧊
+       */
+      "ICE_CUBE" = "🧊",
+      /**
+       * Emoji: ⚽
+       */
+      "SOCCER" = "⚽",
+      /**
+       * Emoji: 🏀
+       */
+      "BASKETBALL" = "🏀",
+      /**
+       * Emoji: 🏈
+       */
+      "FOOTBALL" = "🏈",
+      /**
+       * Emoji: ⚾
+       */
+      "BASEBALL" = "⚾",
+      /**
+       * Emoji: 🎾
+       */
+      "TENNIS" = "🎾",
+      /**
+       * Emoji: 🏐
+       */
+      "VOLLEYBALL" = "🏐",
+      /**
+       * Emoji: 🏉
+       */
+      "RUGBY_FOOTBALL" = "🏉",
+      /**
+       * Emoji: 🎱
+       */
+      "8BALL" = "🎱",
+      /**
+       * Emoji: ⛳
+       */
+      "GOLF" = "⛳",
+      /**
+       * Emoji: 🏌
+       */
+      "GOLFER" = "🏌",
+      /**
+       * Emoji: 🏓
+       *
+       * Aliases: `TABLE_TENNIS`
+       */
+      "PING_PONG" = "🏓",
+      /**
+       * Emoji: 🏓
+       *
+       * Aliases: `PING_PONG`
+       */
+      "TABLE_TENNIS" = "🏓",
+      /**
+       * Emoji: 🏸
+       */
+      "BADMINTON" = "🏸",
+      /**
+       * Emoji: 🏒
+       */
+      "HOCKEY" = "🏒",
+      /**
+       * Emoji: 🏑
+       */
+      "FIELD_HOCKEY" = "🏑",
+      /**
+       * Emoji: 🏏
+       *
+       * Aliases: `CRICKET`
+       */
+      "CRICKET_BAT_BALL" = "🏏",
+      /**
+       * Emoji: 🎿
+       */
+      "SKI" = "🎿",
+      /**
+       * Emoji: ⛷
+       */
+      "SKIER" = "⛷",
+      /**
+       * Emoji: 🏂
+       */
+      "SNOWBOARDER" = "🏂",
+      /**
+       * Emoji: ⛸
+       */
+      "ICE_SKATE" = "⛸",
+      /**
+       * Emoji: 🏹
+       *
+       * Aliases: `ARCHERY`
+       */
+      "BOW_AND_ARROW" = "🏹",
+      /**
+       * Emoji: 🏹
+       *
+       * Aliases: `BOW_AND_ARROW`
+       */
+      "ARCHERY" = "🏹",
+      /**
+       * Emoji: 🎣
+       */
+      "FISHING_POLE_AND_FISH" = "🎣",
+      /**
+       * Emoji: 🚣
+       */
+      "ROWBOAT" = "🚣",
+      /**
+       * Emoji: 🏊
+       */
+      "SWIMMER" = "🏊",
+      /**
+       * Emoji: 🏄
+       */
+      "SURFER" = "🏄",
+      /**
+       * Emoji: 🛀
+       */
+      "BATH" = "🛀",
+      /**
+       * Emoji: ⛹
+       *
+       * Aliases: `PERSON_WITH_BALL`
+       */
+      "BASKETBALL_PLAYER" = "⛹",
+      /**
+       * Emoji: ⛹
+       *
+       * Aliases: `BASKETBALL_PLAYER`
+       */
+      "PERSON_WITH_BALL" = "⛹",
+      /**
+       * Emoji: 🏋
+       *
+       * Aliases: `WEIGHT_LIFTER`
+       */
+      "LIFTER" = "🏋",
+      /**
+       * Emoji: 🏋
+       *
+       * Aliases: `LIFTER`
+       */
+      "WEIGHT_LIFTER" = "🏋",
+      /**
+       * Emoji: 🚴
+       */
+      "BICYCLIST" = "🚴",
+      /**
+       * Emoji: 🚵
+       */
+      "MOUNTAIN_BICYCLIST" = "🚵",
+      /**
+       * Emoji: 🏇
+       */
+      "HORSE_RACING" = "🏇",
+      /**
+       * Emoji: 🕴
+       *
+       * Aliases: `MAN_IN_BUSINESS_SUIT_LEVITATING`
+       */
+      "LEVITATE" = "🕴",
+      /**
+       * Emoji: 🕴
+       *
+       * Aliases: `LEVITATE`
+       */
+      "MAN_IN_BUSINESS_SUIT_LEVITATING" = "🕴",
+      /**
+       * Emoji: 🏆
+       */
+      "TROPHY" = "🏆",
+      /**
+       * Emoji: 🎽
+       */
+      "RUNNING_SHIRT_WITH_SASH" = "🎽",
+      /**
+       * Emoji: 🏅
+       *
+       * Aliases: `SPORTS_MEDAL`
+       */
+      "MEDAL" = "🏅",
+      /**
+       * Emoji: 🏅
+       *
+       * Aliases: `MEDAL`
+       */
+      "SPORTS_MEDAL" = "🏅",
+      /**
+       * Emoji: 🎖
+       */
+      "MILITARY_MEDAL" = "🎖",
+      /**
+       * Emoji: 🎗
+       */
+      "REMINDER_RIBBON" = "🎗",
+      /**
+       * Emoji: 🏵
+       */
+      "ROSETTE" = "🏵",
+      /**
+       * Emoji: 🎫
+       */
+      "TICKET" = "🎫",
+      /**
+       * Emoji: 🎟
+       *
+       * Aliases: `ADMISSION_TICKETS`
+       */
+      "TICKETS" = "🎟",
+      /**
+       * Emoji: 🎟
+       *
+       * Aliases: `TICKETS`
+       */
+      "ADMISSION_TICKETS" = "🎟",
+      /**
+       * Emoji: 🎭
+       */
+      "PERFORMING_ARTS" = "🎭",
+      /**
+       * Emoji: 🎨
+       */
+      "ART" = "🎨",
+      /**
+       * Emoji: 🎪
+       */
+      "CIRCUS_TENT" = "🎪",
+      /**
+       * Emoji: 🎤
+       */
+      "MICROPHONE" = "🎤",
+      /**
+       * Emoji: 🎧
+       */
+      "HEADPHONES" = "🎧",
+      /**
+       * Emoji: 🎼
+       */
+      "MUSICAL_SCORE" = "🎼",
+      /**
+       * Emoji: 🎹
+       */
+      "MUSICAL_KEYBOARD" = "🎹",
+      /**
+       * Emoji: 🎷
+       */
+      "SAXOPHONE" = "🎷",
+      /**
+       * Emoji: 🎺
+       */
+      "TRUMPET" = "🎺",
+      /**
+       * Emoji: 🎸
+       */
+      "GUITAR" = "🎸",
+      /**
+       * Emoji: 🎻
+       */
+      "VIOLIN" = "🎻",
+      /**
+       * Emoji: 🎬
+       */
+      "CLAPPER" = "🎬",
+      /**
+       * Emoji: 🎮
+       */
+      "VIDEO_GAME" = "🎮",
+      /**
+       * Emoji: 👾
+       */
+      "SPACE_INVADER" = "👾",
+      /**
+       * Emoji: 🎯
+       */
+      "DART" = "🎯",
+      /**
+       * Emoji: 🎲
+       */
+      "GAME_DIE" = "🎲",
+      /**
+       * Emoji: 🎰
+       */
+      "SLOT_MACHINE" = "🎰",
+      /**
+       * Emoji: 🎳
+       */
+      "BOWLING" = "🎳",
+      /**
+       * Emoji: 🤸
+       *
+       * Aliases: `PERSON_DOING_CARTWHEEL`
+       */
+      "CARTWHEEL" = "🤸",
+      /**
+       * Emoji: 🤸
+       *
+       * Aliases: `CARTWHEEL`
+       */
+      "PERSON_DOING_CARTWHEEL" = "🤸",
+      /**
+       * Emoji: 🤹
+       *
+       * Aliases: `JUGGLER`
+       */
+      "JUGGLING" = "🤹",
+      /**
+       * Emoji: 🤹
+       *
+       * Aliases: `JUGGLING`
+       */
+      "JUGGLER" = "🤹",
+      /**
+       * Emoji: 🤼
+       *
+       * Aliases: `WRESTLING`
+       */
+      "WRESTLERS" = "🤼",
+      /**
+       * Emoji: 🤼
+       *
+       * Aliases: `WRESTLERS`
+       */
+      "WRESTLING" = "🤼",
+      /**
+       * Emoji: 🥊
+       *
+       * Aliases: `BOXING_GLOVES`
+       */
+      "BOXING_GLOVE" = "🥊",
+      /**
+       * Emoji: 🥊
+       *
+       * Aliases: `BOXING_GLOVE`
+       */
+      "BOXING_GLOVES" = "🥊",
+      /**
+       * Emoji: 🥋
+       *
+       * Aliases: `KARATE_UNIFORM`
+       */
+      "MARTIAL_ARTS_UNIFORM" = "🥋",
+      /**
+       * Emoji: 🥋
+       *
+       * Aliases: `MARTIAL_ARTS_UNIFORM`
+       */
+      "KARATE_UNIFORM" = "🥋",
+      /**
+       * Emoji: 🤽
+       */
+      "WATER_POLO" = "🤽",
+      /**
+       * Emoji: 🤾
+       */
+      "HANDBALL" = "🤾",
+      /**
+       * Emoji: 🥅
+       *
+       * Aliases: `GOAL_NET`
+       */
+      "GOAL" = "🥅",
+      /**
+       * Emoji: 🥅
+       *
+       * Aliases: `GOAL`
+       */
+      "GOAL_NET" = "🥅",
+      /**
+       * Emoji: 🤺
+       *
+       * Aliases: `FENCING`
+       */
+      "FENCER" = "🤺",
+      /**
+       * Emoji: 🤺
+       *
+       * Aliases: `FENCER`
+       */
+      "FENCING" = "🤺",
+      /**
+       * Emoji: 🥇
+       *
+       * Aliases: `FIRST_PLACE_MEDAL`
+       */
+      "FIRST_PLACE" = "🥇",
+      /**
+       * Emoji: 🥇
+       *
+       * Aliases: `FIRST_PLACE`
+       */
+      "FIRST_PLACE_MEDAL" = "🥇",
+      /**
+       * Emoji: 🥈
+       *
+       * Aliases: `SECOND_PLACE_MEDAL`
+       */
+      "SECOND_PLACE" = "🥈",
+      /**
+       * Emoji: 🥈
+       *
+       * Aliases: `SECOND_PLACE`
+       */
+      "SECOND_PLACE_MEDAL" = "🥈",
+      /**
+       * Emoji: 🥉
+       *
+       * Aliases: `THIRD_PLACE_MEDAL`
+       */
+      "THIRD_PLACE" = "🥉",
+      /**
+       * Emoji: 🥉
+       *
+       * Aliases: `THIRD_PLACE`
+       */
+      "THIRD_PLACE_MEDAL" = "🥉",
+      /**
+       * Emoji: 🥁
+       *
+       * Aliases: `DRUM_WITH_DRUMSTICKS`
+       */
+      "DRUM" = "🥁",
+      /**
+       * Emoji: 🥁
+       *
+       * Aliases: `DRUM`
+       */
+      "DRUM_WITH_DRUMSTICKS" = "🥁",
+      /**
+       * Emoji: 🥌
+       */
+      "CURLING_STONE" = "🥌",
+      /**
+       * Emoji: 🛷
+       *
+       * Aliases: `SLEDGE`,`SLEIGH`,`LUGE`,`TOBOGGAN`
+       */
+      "SLED" = "🛷",
+      /**
+       * Emoji: 🛷
+       *
+       * Aliases: `SLED`,`SLEIGH`,`LUGE`,`TOBOGGAN`
+       */
+      "SLEDGE" = "🛷",
+      /**
+       * Emoji: 🛷
+       *
+       * Aliases: `SLED`,`SLEDGE`,`LUGE`,`TOBOGGAN`
+       */
+      "SLEIGH" = "🛷",
+      /**
+       * Emoji: 🛷
+       *
+       * Aliases: `SLED`,`SLEDGE`,`SLEIGH`,`TOBOGGAN`
+       */
+      "LUGE" = "🛷",
+      /**
+       * Emoji: 🛷
+       *
+       * Aliases: `SLED`,`SLEDGE`,`SLEIGH`,`LUGE`
+       */
+      "TOBOGGAN" = "🛷",
+      /**
+       * Emoji: 🥎
+       */
+      "SOFTBALL" = "🥎",
+      /**
+       * Emoji: 🥏
+       *
+       * Aliases: `FRISBEE`,`ULTIMATE`
+       */
+      "FLYING_DISC" = "🥏",
+      /**
+       * Emoji: 🥏
+       *
+       * Aliases: `FLYING_DISC`,`ULTIMATE`
+       */
+      "FRISBEE" = "🥏",
+      /**
+       * Emoji: 🥏
+       *
+       * Aliases: `FLYING_DISC`,`FRISBEE`
+       */
+      "ULTIMATE" = "🥏",
+      /**
+       * Emoji: 🥍
+       */
+      "LACROSSE" = "🥍",
+      /**
+       * Emoji: 🧩
+       *
+       * Aliases: `PUZZLE`
+       */
+      "JIGSAW" = "🧩",
+      /**
+       * Emoji: 🧩
+       *
+       * Aliases: `JIGSAW`
+       */
+      "PUZZLE" = "🧩",
+      /**
+       * Emoji: 🧸
+       *
+       * Aliases: `TOY`
+       */
+      "TEDDY_BEAR" = "🧸",
+      /**
+       * Emoji: 🧸
+       *
+       * Aliases: `TEDDY_BEAR`
+       */
+      "TOY" = "🧸",
+      /**
+       * Emoji: ♟️
+       *
+       * Aliases: `CHESS`
+       */
+      "CHESS_PAWN" = "♟️",
+      /**
+       * Emoji: ♟️
+       *
+       * Aliases: `CHESS_PAWN`
+       */
+      "CHESS" = "♟️",
+      /**
+       * Emoji: 💆‍♂️
+       */
+      "MAN_MASSAGE" = "💆‍♂️",
+      /**
+       * Emoji: 💆‍♀️
+       */
+      "WOMAN_MASSAGE" = "💆‍♀️",
+      /**
+       * Emoji: 💇‍♂️
+       */
+      "MAN_HAIRCUT" = "💇‍♂️",
+      /**
+       * Emoji: 💇‍♀️
+       */
+      "WOMAN_HAIRCUT" = "💇‍♀️",
+      /**
+       * Emoji: 🚶‍♂️
+       *
+       * Aliases: `MAN_PEDESTRIAN`
+       */
+      "MAN_WALKING" = "🚶‍♂️",
+      /**
+       * Emoji: 🚶‍♂️
+       *
+       * Aliases: `MAN_WALKING`
+       */
+      "MAN_PEDESTRIAN" = "🚶‍♂️",
+      /**
+       * Emoji: 🚶‍♀️
+       *
+       * Aliases: `WOMAN_PEDESTRIAN`
+       */
+      "WOMAN_WALKING" = "🚶‍♀️",
+      /**
+       * Emoji: 🚶‍♀️
+       *
+       * Aliases: `WOMAN_WALKING`
+       */
+      "WOMAN_PEDESTRIAN" = "🚶‍♀️",
+      /**
+       * Emoji: 🏃‍♂️
+       *
+       * Aliases: `MAN_RUNNER`
+       */
+      "MAN_RUNNING" = "🏃‍♂️",
+      /**
+       * Emoji: 🏃‍♂️
+       *
+       * Aliases: `MAN_RUNNING`
+       */
+      "MAN_RUNNER" = "🏃‍♂️",
+      /**
+       * Emoji: 🏃‍♀️
+       *
+       * Aliases: `WOMAN_RUNNER`
+       */
+      "WOMAN_RUNNING" = "🏃‍♀️",
+      /**
+       * Emoji: 🏃‍♀️
+       *
+       * Aliases: `WOMAN_RUNNING`
+       */
+      "WOMAN_RUNNER" = "🏃‍♀️",
+      /**
+       * Emoji: 👯‍♂️
+       *
+       * Aliases: `MEN_DANCING`
+       */
+      "MEN_WITH_BUNNY_EARS_PARTYING" = "👯‍♂️",
+      /**
+       * Emoji: 👯‍♂️
+       *
+       * Aliases: `MEN_WITH_BUNNY_EARS_PARTYING`
+       */
+      "MEN_DANCING" = "👯‍♂️",
+      /**
+       * Emoji: 👯‍♀️
+       *
+       * Aliases: `WOMEN_DANCING`
+       */
+      "WOMEN_WITH_BUNNY_EARS_PARTYING" = "👯‍♀️",
+      /**
+       * Emoji: 👯‍♀️
+       *
+       * Aliases: `WOMEN_WITH_BUNNY_EARS_PARTYING`
+       */
+      "WOMEN_DANCING" = "👯‍♀️",
+      /**
+       * Emoji: 🏌️‍♂️
+       *
+       * Aliases: `MAN_GOLFER`
+       */
+      "MAN_GOLFING" = "🏌️‍♂️",
+      /**
+       * Emoji: 🏌️‍♂️
+       *
+       * Aliases: `MAN_GOLFING`
+       */
+      "MAN_GOLFER" = "🏌️‍♂️",
+      /**
+       * Emoji: 🏌️‍♀️
+       *
+       * Aliases: `WOMAN_GOLFER`
+       */
+      "WOMAN_GOLFING" = "🏌️‍♀️",
+      /**
+       * Emoji: 🏌️‍♀️
+       *
+       * Aliases: `WOMAN_GOLFING`
+       */
+      "WOMAN_GOLFER" = "🏌️‍♀️",
+      /**
+       * Emoji: 🏄‍♂️
+       *
+       * Aliases: `MAN_SURFER`
+       */
+      "MAN_SURFING" = "🏄‍♂️",
+      /**
+       * Emoji: 🏄‍♂️
+       *
+       * Aliases: `MAN_SURFING`
+       */
+      "MAN_SURFER" = "🏄‍♂️",
+      /**
+       * Emoji: 🏄‍♀️
+       *
+       * Aliases: `WOMAN_SURFER`
+       */
+      "WOMAN_SURFING" = "🏄‍♀️",
+      /**
+       * Emoji: 🏄‍♀️
+       *
+       * Aliases: `WOMAN_SURFING`
+       */
+      "WOMAN_SURFER" = "🏄‍♀️",
+      /**
+       * Emoji: 🚣‍♂️
+       *
+       * Aliases: `MAN_ROWBOAT`
+       */
+      "MAN_ROWING_BOAT" = "🚣‍♂️",
+      /**
+       * Emoji: 🚣‍♂️
+       *
+       * Aliases: `MAN_ROWING_BOAT`
+       */
+      "MAN_ROWBOAT" = "🚣‍♂️",
+      /**
+       * Emoji: 🚣‍♀️
+       *
+       * Aliases: `WOMAN_ROWBOAT`
+       */
+      "WOMAN_ROWING_BOAT" = "🚣‍♀️",
+      /**
+       * Emoji: 🚣‍♀️
+       *
+       * Aliases: `WOMAN_ROWING_BOAT`
+       */
+      "WOMAN_ROWBOAT" = "🚣‍♀️",
+      /**
+       * Emoji: 🏊‍♂️
+       *
+       * Aliases: `MAN_SWIMMER`
+       */
+      "MAN_SWIMMING" = "🏊‍♂️",
+      /**
+       * Emoji: 🏊‍♂️
+       *
+       * Aliases: `MAN_SWIMMING`
+       */
+      "MAN_SWIMMER" = "🏊‍♂️",
+      /**
+       * Emoji: 🏊‍♀️
+       *
+       * Aliases: `WOMAN_SWIMMER`
+       */
+      "WOMAN_SWIMMING" = "🏊‍♀️",
+      /**
+       * Emoji: 🏊‍♀️
+       *
+       * Aliases: `WOMAN_SWIMMING`
+       */
+      "WOMAN_SWIMMER" = "🏊‍♀️",
+      /**
+       * Emoji: ⛹️‍♂️
+       *
+       * Aliases: `MAN_BASKETBALL_PLAYER`
+       */
+      "MAN_BOUNCING_BALL" = "⛹️‍♂️",
+      /**
+       * Emoji: ⛹️‍♂️
+       *
+       * Aliases: `MAN_BOUNCING_BALL`
+       */
+      "MAN_BASKETBALL_PLAYER" = "⛹️‍♂️",
+      /**
+       * Emoji: ⛹️‍♀️
+       *
+       * Aliases:
+       */
+      "WOMAN_BOUNCING_BALL" = "⛹️‍♀️",
+      /**
+       * Emoji: 🏋️‍♂️
+       *
+       * Aliases: `MAN_WEIGHT_LIFTER`
+       */
+      "MAN_LIFTING_WEIGHTS" = "🏋️‍♂️",
+      /**
+       * Emoji: 🏋️‍♂️
+       *
+       * Aliases: `MAN_LIFTING_WEIGHTS`
+       */
+      "MAN_WEIGHT_LIFTER" = "🏋️‍♂️",
+      /**
+       * Emoji: 🏋️‍♀️
+       *
+       * Aliases: `WOMAN_WEIGHT_LIFTER`
+       */
+      "WOMAN_LIFTING_WEIGHTS" = "🏋️‍♀️",
+      /**
+       * Emoji: 🏋️‍♀️
+       *
+       * Aliases: `WOMAN_LIFTING_WEIGHTS`
+       */
+      "WOMAN_WEIGHT_LIFTER" = "🏋️‍♀️",
+      /**
+       * Emoji: 🚴‍♂️
+       *
+       * Aliases: `MAN_BICYCLIST`
+       */
+      "MAN_BIKING" = "🚴‍♂️",
+      /**
+       * Emoji: 🚴‍♂️
+       *
+       * Aliases: `MAN_BIKING`
+       */
+      "MAN_BICYCLIST" = "🚴‍♂️",
+      /**
+       * Emoji: 🚴‍♀️
+       *
+       * Aliases: `WOMAN_BICYCLIST`
+       */
+      "WOMAN_BIKING" = "🚴‍♀️",
+      /**
+       * Emoji: 🚴‍♀️
+       *
+       * Aliases: `WOMAN_BIKING`
+       */
+      "WOMAN_BICYCLIST" = "🚴‍♀️",
+      /**
+       * Emoji: 🚵‍♂️
+       *
+       * Aliases: `MAN_MOUNTAIN_BICYCLIST`
+       */
+      "MAN_MOUNTAIN_BIKING" = "🚵‍♂️",
+      /**
+       * Emoji: 🚵‍♂️
+       *
+       * Aliases: `MAN_MOUNTAIN_BIKING`
+       */
+      "MAN_MOUNTAIN_BICYCLIST" = "🚵‍♂️",
+      /**
+       * Emoji: 🚵‍♀️
+       *
+       * Aliases: `WOMAN_MOUNTAIN_BICYCLIST`
+       */
+      "WOMAN_MOUNTAIN_BIKING" = "🚵‍♀️",
+      /**
+       * Emoji: 🚵‍♀️
+       *
+       * Aliases: `WOMAN_MOUNTAIN_BIKING`
+       */
+      "WOMAN_MOUNTAIN_BICYCLIST" = "🚵‍♀️",
+      /**
+       * Emoji: 🤸‍♂️
+       *
+       * Aliases: `MAN_DOING_CARTWHEEL`
+       */
+      "MAN_CARTWHEELING" = "🤸‍♂️",
+      /**
+       * Emoji: 🤸‍♂️
+       *
+       * Aliases: `MAN_CARTWHEELING`
+       */
+      "MAN_DOING_CARTWHEEL" = "🤸‍♂️",
+      /**
+       * Emoji: 🤸‍♀️
+       *
+       * Aliases: `WOMAN_DOING_CARTWHEEL`
+       */
+      "WOMAN_CARTWHEELING" = "🤸‍♀️",
+      /**
+       * Emoji: 🤸‍♀️
+       *
+       * Aliases: `WOMAN_CARTWHEELING`
+       */
+      "WOMAN_DOING_CARTWHEEL" = "🤸‍♀️",
+      /**
+       * Emoji: 🤼‍♂️
+       *
+       * Aliases: `MEN_WRESTLERS`
+       */
+      "MEN_WRESTLING" = "🤼‍♂️",
+      /**
+       * Emoji: 🤼‍♂️
+       *
+       * Aliases: `MEN_WRESTLING`
+       */
+      "MEN_WRESTLERS" = "🤼‍♂️",
+      /**
+       * Emoji: 🤼‍♀️
+       *
+       * Aliases: `WOMEN_WRESTLERS`
+       */
+      "WOMEN_WRESTLING" = "🤼‍♀️",
+      /**
+       * Emoji: 🤼‍♀️
+       *
+       * Aliases: `WOMEN_WRESTLING`
+       */
+      "WOMEN_WRESTLERS" = "🤼‍♀️",
+      /**
+       * Emoji: 🤽‍♂️
+       */
+      "MAN_PLAYING_WATER_POLO" = "🤽‍♂️",
+      /**
+       * Emoji: 🤽‍♀️
+       */
+      "WOMAN_PLAYING_WATER_POLO" = "🤽‍♀️",
+      /**
+       * Emoji: 🤾‍♂️
+       */
+      "MAN_PLAYING_HANDBALL" = "🤾‍♂️",
+      /**
+       * Emoji: 🤾‍♀️
+       */
+      "WOMAN_PLAYING_HANDBALL" = "🤾‍♀️",
+      /**
+       * Emoji: 🤹‍♂️
+       *
+       * Aliases: `MAN_JUGGLER`
+       */
+      "MAN_JUGGLING" = "🤹‍♂️",
+      /**
+       * Emoji: 🤹‍♂️
+       *
+       * Aliases: `MAN_JUGGLING`
+       */
+      "MAN_JUGGLER" = "🤹‍♂️",
+      /**
+       * Emoji: 🤹‍♀️
+       *
+       * Aliases: `WOMAN_JUGGLER`
+       */
+      "WOMAN_JUGGLING" = "🤹‍♀️",
+      /**
+       * Emoji: 🤹‍♀️
+       *
+       * Aliases: `WOMAN_JUGGLING`
+       */
+      "WOMAN_JUGGLER" = "🤹‍♀️",
+      /**
+       * Emoji: 🧗
+       *
+       * Aliases: `CLIMBING`,`ROCK_CLIMBING`
+       */
+      "PERSON_CLIMBING" = "🧗",
+      /**
+       * Emoji: 🧗
+       *
+       * Aliases: `PERSON_CLIMBING`,`ROCK_CLIMBING`
+       */
+      "CLIMBING" = "🧗",
+      /**
+       * Emoji: 🧗
+       *
+       * Aliases: `PERSON_CLIMBING`,`CLIMBING`
+       */
+      "ROCK_CLIMBING" = "🧗",
+      /**
+       * Emoji: 🧗‍♀️
+       *
+       * Aliases: `MAN_ROCK_CLIMBING`
+       */
+      "WOMAN_CLIMBING" = "🧗‍♀️",
+      /**
+       * Emoji: 🧗‍♂️
+       *
+       * Aliases: `MAN_CLIMBING`
+       */
+      "MAN_ROCK_CLIMBING" = "🧗‍♂️",
+      /**
+       * Emoji: 🧗‍♂️
+       *
+       * Aliases: `MAN_ROCK_CLIMBING`
+       */
+      "MAN_CLIMBING" = "🧗‍♂️",
+      /**
+       * Emoji: 🧘
+       *
+       * Aliases: `LOTUS_POSITION`,`MEDITATION`,`YOGA`
+       */
+      "PERSON_IN_LOTUS_POSITION" = "🧘",
+      /**
+       * Emoji: 🧘
+       *
+       * Aliases: `PERSON_IN_LOTUS_POSITION`,`MEDITATION`,`YOGA`
+       */
+      "LOTUS_POSITION" = "🧘",
+      /**
+       * Emoji: 🧘
+       *
+       * Aliases: `PERSON_IN_LOTUS_POSITION`,`LOTUS_POSITION`,`YOGA`
+       */
+      "MEDITATION" = "🧘",
+      /**
+       * Emoji: 🧘
+       *
+       * Aliases: `PERSON_IN_LOTUS_POSITION`,`LOTUS_POSITION`,`MEDITATION`
+       */
+      "YOGA" = "🧘",
+      /**
+       * Emoji: 🧘‍♂️
+       *
+       * Aliases: `MAN_LOTUS_POSITION`,`MAN_MEDITATION`,`MAN_YOGA`
+       */
+      "MAN_IN_LOTUS_POSITION" = "🧘‍♂️",
+      /**
+       * Emoji: 🧘‍♂️
+       *
+       * Aliases: `MAN_IN_LOTUS_POSITION`,`MAN_MEDITATION`,`MAN_YOGA`
+       */
+      "MAN_LOTUS_POSITION" = "🧘‍♂️",
+      /**
+       * Emoji: 🧘‍♂️
+       *
+       * Aliases: `MAN_IN_LOTUS_POSITION`,`MAN_LOTUS_POSITION`,`MAN_YOGA`
+       */
+      "MAN_MEDITATION" = "🧘‍♂️",
+      /**
+       * Emoji: 🧘‍♂️
+       *
+       * Aliases: `MAN_IN_LOTUS_POSITION`,`MAN_LOTUS_POSITION`,`MAN_MEDITATION`
+       */
+      "MAN_YOGA" = "🧘‍♂️",
+      /**
+       * Emoji: 🧘‍♀️
+       *
+       * Aliases: `WOMAN_LOTUS_POSITION`,`WOMAN_MEDITATION`,`WOMAN_YOGA`
+       */
+      "WOMAN_IN_LOTUS_POSITION" = "🧘‍♀️",
+      /**
+       * Emoji: 🧘‍♀️
+       *
+       * Aliases: `WOMAN_IN_LOTUS_POSITION`,`WOMAN_MEDITATION`,`WOMAN_YOGA`
+       */
+      "WOMAN_LOTUS_POSITION" = "🧘‍♀️",
+      /**
+       * Emoji: 🧘‍♀️
+       *
+       * Aliases: `WOMAN_IN_LOTUS_POSITION`,`WOMAN_LOTUS_POSITION`,`WOMAN_YOGA`
+       */
+      "WOMAN_MEDITATION" = "🧘‍♀️",
+      /**
+       * Emoji: 🧘‍♀️
+       *
+       * Aliases: `WOMAN_IN_LOTUS_POSITION`,`WOMAN_LOTUS_POSITION`,`WOMAN_MEDITATION`
+       */
+      "WOMAN_YOGA" = "🧘‍♀️",
+      /**
+       * Emoji: 🛹
+       */
+      "SKATEBOARD" = "🛹",
+      /**
+       * Emoji: 🪂
+       */
+      "PARACHUTE" = "🪂",
+      /**
+       * Emoji: 🪀
+       *
+       * Aliases: `YOYO`
+       */
+      "YO_YO" = "🪀",
+      /**
+       * Emoji: 🪀
+       *
+       * Aliases: `YO_YO`
+       */
+      "YOYO" = "🪀",
+      /**
+       * Emoji: 🪁
+       */
+      "KITE" = "🪁",
+      /**
+       * Emoji: 🚗
+       */
+      "RED_CAR" = "🚗",
+      /**
+       * Emoji: 🚕
+       */
+      "TAXI" = "🚕",
+      /**
+       * Emoji: 🚙
+       */
+      "BLUE_CAR" = "🚙",
+      /**
+       * Emoji: 🚌
+       */
+      "BUS" = "🚌",
+      /**
+       * Emoji: 🚎
+       */
+      "TROLLEYBUS" = "🚎",
+      /**
+       * Emoji: 🏎
+       *
+       * Aliases: `RACING_CAR`
+       */
+      "RACE_CAR" = "🏎",
+      /**
+       * Emoji: 🏎
+       *
+       * Aliases: `RACE_CAR`
+       */
+      "RACING_CAR" = "🏎",
+      /**
+       * Emoji: 🚓
+       */
+      "POLICE_CAR" = "🚓",
+      /**
+       * Emoji: 🚑
+       */
+      "AMBULANCE" = "🚑",
+      /**
+       * Emoji: 🚒
+       */
+      "FIRE_ENGINE" = "🚒",
+      /**
+       * Emoji: 🚐
+       */
+      "MINIBUS" = "🚐",
+      /**
+       * Emoji: 🚚
+       */
+      "TRUCK" = "🚚",
+      /**
+       * Emoji: 🚛
+       */
+      "ARTICULATED_LORRY" = "🚛",
+      /**
+       * Emoji: 🚜
+       */
+      "TRACTOR" = "🚜",
+      /**
+       * Emoji: 🏍
+       *
+       * Aliases: `RACING_MOTORCYCLE`
+       */
+      "MOTORCYCLE" = "🏍",
+      /**
+       * Emoji: 🏍
+       *
+       * Aliases: `MOTORCYCLE`
+       */
+      "RACING_MOTORCYCLE" = "🏍",
+      /**
+       * Emoji: 🚲
+       */
+      "BIKE" = "🚲",
+      /**
+       * Emoji: 🚨
+       */
+      "ROTATING_LIGHT" = "🚨",
+      /**
+       * Emoji: 🚔
+       */
+      "ONCOMING_POLICE_CAR" = "🚔",
+      /**
+       * Emoji: 🚍
+       */
+      "ONCOMING_BUS" = "🚍",
+      /**
+       * Emoji: 🚘
+       */
+      "ONCOMING_AUTOMOBILE" = "🚘",
+      /**
+       * Emoji: 🚖
+       */
+      "ONCOMING_TAXI" = "🚖",
+      /**
+       * Emoji: 🚡
+       */
+      "AERIAL_TRAMWAY" = "🚡",
+      /**
+       * Emoji: 🚠
+       */
+      "MOUNTAIN_CABLEWAY" = "🚠",
+      /**
+       * Emoji: 🚟
+       */
+      "SUSPENSION_RAILWAY" = "🚟",
+      /**
+       * Emoji: 🚃
+       */
+      "RAILWAY_CAR" = "🚃",
+      /**
+       * Emoji: 🚋
+       */
+      "TRAIN" = "🚋",
+      /**
+       * Emoji: 🚝
+       */
+      "MONORAIL" = "🚝",
+      /**
+       * Emoji: 🚄
+       */
+      "BULLETTRAIN_SIDE" = "🚄",
+      /**
+       * Emoji: 🚅
+       */
+      "BULLETTRAIN_FRONT" = "🚅",
+      /**
+       * Emoji: 🚈
+       */
+      "LIGHT_RAIL" = "🚈",
+      /**
+       * Emoji: 🚞
+       */
+      "MOUNTAIN_RAILWAY" = "🚞",
+      /**
+       * Emoji: 🚂
+       */
+      "STEAM_LOCOMOTIVE" = "🚂",
+      /**
+       * Emoji: 🚆
+       */
+      "TRAIN2" = "🚆",
+      /**
+       * Emoji: 🚇
+       */
+      "METRO" = "🚇",
+      /**
+       * Emoji: 🚊
+       */
+      "TRAM" = "🚊",
+      /**
+       * Emoji: 🚉
+       */
+      "STATION" = "🚉",
+      /**
+       * Emoji: 🚁
+       */
+      "HELICOPTER" = "🚁",
+      /**
+       * Emoji: 🛩
+       *
+       * Aliases: `SMALL_AIRPLANE`
+       */
+      "AIRPLANE_SMALL" = "🛩",
+      /**
+       * Emoji: 🛩
+       *
+       * Aliases: `AIRPLANE_SMALL`
+       */
+      "SMALL_AIRPLANE" = "🛩",
+      /**
+       * Emoji: ✈
+       */
+      "AIRPLANE" = "✈",
+      /**
+       * Emoji: 🛫
+       */
+      "AIRPLANE_DEPARTURE" = "🛫",
+      /**
+       * Emoji: 🛬
+       */
+      "AIRPLANE_ARRIVING" = "🛬",
+      /**
+       * Emoji: ⛵
+       */
+      "SAILBOAT" = "⛵",
+      /**
+       * Emoji: 🛥
+       */
+      "MOTORBOAT" = "🛥",
+      /**
+       * Emoji: 🚤
+       */
+      "SPEEDBOAT" = "🚤",
+      /**
+       * Emoji: ⛴
+       */
+      "FERRY" = "⛴",
+      /**
+       * Emoji: 🛳
+       *
+       * Aliases: `PASSENGER_SHIP`
+       */
+      "CRUISE_SHIP" = "🛳",
+      /**
+       * Emoji: 🛳
+       *
+       * Aliases: `CRUISE_SHIP`
+       */
+      "PASSENGER_SHIP" = "🛳",
+      /**
+       * Emoji: 🚀
+       */
+      "ROCKET" = "🚀",
+      /**
+       * Emoji: 🛰
+       */
+      "SATELLITE_ORBITAL" = "🛰",
+      /**
+       * Emoji: 💺
+       */
+      "SEAT" = "💺",
+      /**
+       * Emoji: ⚓
+       */
+      "ANCHOR" = "⚓",
+      /**
+       * Emoji: 🚧
+       */
+      "CONSTRUCTION" = "🚧",
+      /**
+       * Emoji: ⛽
+       */
+      "FUELPUMP" = "⛽",
+      /**
+       * Emoji: 🚏
+       */
+      "BUSSTOP" = "🚏",
+      /**
+       * Emoji: 🚦
+       */
+      "VERTICAL_TRAFFIC_LIGHT" = "🚦",
+      /**
+       * Emoji: 🚥
+       */
+      "TRAFFIC_LIGHT" = "🚥",
+      /**
+       * Emoji: 🚢
+       */
+      "SHIP" = "🚢",
+      /**
+       * Emoji: 🎡
+       */
+      "FERRIS_WHEEL" = "🎡",
+      /**
+       * Emoji: 🎢
+       */
+      "ROLLER_COASTER" = "🎢",
+      /**
+       * Emoji: 🎠
+       */
+      "CAROUSEL_HORSE" = "🎠",
+      /**
+       * Emoji: 🏗
+       *
+       * Aliases: `BUILDING_CONSTRUCTION`
+       */
+      "CONSTRUCTION_SITE" = "🏗",
+      /**
+       * Emoji: 🏗
+       *
+       * Aliases: `CONSTRUCTION_SITE`
+       */
+      "BUILDING_CONSTRUCTION" = "🏗",
+      /**
+       * Emoji: 🌁
+       */
+      "FOGGY" = "🌁",
+      /**
+       * Emoji: 🗼
+       */
+      "TOKYO_TOWER" = "🗼",
+      /**
+       * Emoji: 🏭
+       */
+      "FACTORY" = "🏭",
+      /**
+       * Emoji: ⛲
+       */
+      "FOUNTAIN" = "⛲",
+      /**
+       * Emoji: 🎑
+       */
+      "RICE_SCENE" = "🎑",
+      /**
+       * Emoji: ⛰
+       */
+      "MOUNTAIN" = "⛰",
+      /**
+       * Emoji: 🏔
+       *
+       * Aliases: `SNOW_CAPPED_MOUNTAIN`
+       */
+      "MOUNTAIN_SNOW" = "🏔",
+      /**
+       * Emoji: 🏔
+       *
+       * Aliases: `MOUNTAIN_SNOW`
+       */
+      "SNOW_CAPPED_MOUNTAIN" = "🏔",
+      /**
+       * Emoji: 🗻
+       */
+      "MOUNT_FUJI" = "🗻",
+      /**
+       * Emoji: 🌋
+       */
+      "VOLCANO" = "🌋",
+      /**
+       * Emoji: 🗾
+       */
+      "JAPAN" = "🗾",
+      /**
+       * Emoji: 🏕
+       */
+      "CAMPING" = "🏕",
+      /**
+       * Emoji: ⛺
+       */
+      "TENT" = "⛺",
+      /**
+       * Emoji: 🏞
+       *
+       * Aliases: `NATIONAL_PARK`
+       */
+      "PARK" = "🏞",
+      /**
+       * Emoji: 🏞
+       *
+       * Aliases: `PARK`
+       */
+      "NATIONAL_PARK" = "🏞",
+      /**
+       * Emoji: 🛣
+       */
+      "MOTORWAY" = "🛣",
+      /**
+       * Emoji: 🛤
+       *
+       * Aliases: `RAILROAD_TRACK`
+       */
+      "RAILWAY_TRACK" = "🛤",
+      /**
+       * Emoji: 🛤
+       *
+       * Aliases: `RAILWAY_TRACK`
+       */
+      "RAILROAD_TRACK" = "🛤",
+      /**
+       * Emoji: 🌅
+       */
+      "SUNRISE" = "🌅",
+      /**
+       * Emoji: 🌄
+       */
+      "SUNRISE_OVER_MOUNTAINS" = "🌄",
+      /**
+       * Emoji: 🏜
+       */
+      "DESERT" = "🏜",
+      /**
+       * Emoji: 🏖
+       *
+       * Aliases: `BEACH_WITH_UMBRELLA`
+       */
+      "BEACH" = "🏖",
+      /**
+       * Emoji: 🏖
+       *
+       * Aliases: `BEACH`
+       */
+      "BEACH_WITH_UMBRELLA" = "🏖",
+      /**
+       * Emoji: 🏝
+       *
+       * Aliases: `DESERT_ISLAND`
+       */
+      "ISLAND" = "🏝",
+      /**
+       * Emoji: 🏝
+       *
+       * Aliases: `ISLAND`
+       */
+      "DESERT_ISLAND" = "🏝",
+      /**
+       * Emoji: 🌇
+       *
+       * Aliases: `CITY_SUNRISE`
+       */
+      "CITY_SUNSET" = "🌇",
+      /**
+       * Emoji: 🌇
+       *
+       * Aliases: `CITY_SUNSET`
+       */
+      "CITY_SUNRISE" = "🌇",
+      /**
+       * Emoji: 🌆
+       */
+      "CITY_DUSK" = "🌆",
+      /**
+       * Emoji: 🏙
+       */
+      "CITYSCAPE" = "🏙",
+      /**
+       * Emoji: 🌃
+       */
+      "NIGHT_WITH_STARS" = "🌃",
+      /**
+       * Emoji: 🌉
+       */
+      "BRIDGE_AT_NIGHT" = "🌉",
+      /**
+       * Emoji: 🌌
+       */
+      "MILKY_WAY" = "🌌",
+      /**
+       * Emoji: 🌠
+       */
+      "STARS" = "🌠",
+      /**
+       * Emoji: 🎇
+       */
+      "SPARKLER" = "🎇",
+      /**
+       * Emoji: 🧨
+       *
+       * Aliases: `FIRECRACKER`,`DYNAMITE`,`EXPLOSIVE`
+       */
+      "FIREWORKS" = "🧨",
+      /**
+       * Emoji: 🌈
+       */
+      "RAINBOW" = "🌈",
+      /**
+       * Emoji: 🏘
+       *
+       * Aliases: `HOUSE_BUILDINGS`
+       */
+      "HOMES" = "🏘",
+      /**
+       * Emoji: 🏘
+       *
+       * Aliases: `HOMES`
+       */
+      "HOUSE_BUILDINGS" = "🏘",
+      /**
+       * Emoji: 🏰
+       */
+      "EUROPEAN_CASTLE" = "🏰",
+      /**
+       * Emoji: 🏯
+       */
+      "JAPANESE_CASTLE" = "🏯",
+      /**
+       * Emoji: 🏟
+       */
+      "STADIUM" = "🏟",
+      /**
+       * Emoji: 🗽
+       */
+      "STATUE_OF_LIBERTY" = "🗽",
+      /**
+       * Emoji: 🏠
+       */
+      "HOUSE" = "🏠",
+      /**
+       * Emoji: 🏡
+       */
+      "HOUSE_WITH_GARDEN" = "🏡",
+      /**
+       * Emoji: 🏚
+       *
+       * Aliases: `DERELICT_HOUSE_BUILDING`
+       */
+      "HOUSE_ABANDONED" = "🏚",
+      /**
+       * Emoji: 🏚
+       *
+       * Aliases: `HOUSE_ABANDONED`
+       */
+      "DERELICT_HOUSE_BUILDING" = "🏚",
+      /**
+       * Emoji: 🏢
+       */
+      "OFFICE" = "🏢",
+      /**
+       * Emoji: 🏬
+       */
+      "DEPARTMENT_STORE" = "🏬",
+      /**
+       * Emoji: 🏣
+       */
+      "POST_OFFICE" = "🏣",
+      /**
+       * Emoji: 🏤
+       */
+      "EUROPEAN_POST_OFFICE" = "🏤",
+      /**
+       * Emoji: 🏥
+       */
+      "HOSPITAL" = "🏥",
+      /**
+       * Emoji: 🏦
+       */
+      "BANK" = "🏦",
+      /**
+       * Emoji: 🏨
+       */
+      "HOTEL" = "🏨",
+      /**
+       * Emoji: 🏪
+       */
+      "CONVENIENCE_STORE" = "🏪",
+      /**
+       * Emoji: 🏫
+       */
+      "SCHOOL" = "🏫",
+      /**
+       * Emoji: 🏩
+       */
+      "LOVE_HOTEL" = "🏩",
+      /**
+       * Emoji: 💒
+       */
+      "WEDDING" = "💒",
+      /**
+       * Emoji: 🏛
+       */
+      "CLASSICAL_BUILDING" = "🏛",
+      /**
+       * Emoji: ⛪
+       */
+      "CHURCH" = "⛪",
+      /**
+       * Emoji: 🕌
+       */
+      "MOSQUE" = "🕌",
+      /**
+       * Emoji: 🕍
+       */
+      "SYNAGOGUE" = "🕍",
+      /**
+       * Emoji: 🕋
+       */
+      "KAABA" = "🕋",
+      /**
+       * Emoji: ⛩
+       */
+      "SHINTO_SHRINE" = "⛩",
+      /**
+       * Emoji: 🛴
+       */
+      "SCOOTER" = "🛴",
+      /**
+       * Emoji: 🛵
+       *
+       * Aliases: `MOTORBIKE`
+       */
+      "MOTOR_SCOOTER" = "🛵",
+      /**
+       * Emoji: 🛵
+       *
+       * Aliases: `MOTOR_SCOOTER`
+       */
+      "MOTORBIKE" = "🛵",
+      /**
+       * Emoji: 🛶
+       *
+       * Aliases: `KAYAK`
+       */
+      "CANOE" = "🛶",
+      /**
+       * Emoji: 🛶
+       *
+       * Aliases: `CANOE`
+       */
+      "KAYAK" = "🛶",
+      /**
+       * Emoji: 🛸
+       *
+       * Aliases: `UFO`
+       */
+      "FLYING_SAUCER" = "🛸",
+      /**
+       * Emoji: 🛸
+       *
+       * Aliases: `FLYING_SAUCER`
+       */
+      "UFO" = "🛸",
+      /**
+       * Emoji: 🧳
+       *
+       * Aliases: `PACKING`,`TRAVEL`
+       */
+      "LUGGAGE" = "🧳",
+      /**
+       * Emoji: 🧳
+       *
+       * Aliases: `LUGGAGE`,`TRAVEL`
+       */
+      "PACKING" = "🧳",
+      /**
+       * Emoji: 🧳
+       *
+       * Aliases: `LUGGAGE`,`PACKING`
+       */
+      "TRAVEL" = "🧳",
+      /**
+       * Emoji: 🛕
+       */
+      "HINDU_TEMPLE" = "🛕",
+      /**
+       * Emoji: 🦽
+       */
+      "MANUAL_WHEELCHAIR" = "🦽",
+      /**
+       * Emoji: 🦼
+       */
+      "MOTORIZED_WHEELCHAIR" = "🦼",
+      /**
+       * Emoji: 🛺
+       */
+      "AUTO_RICKSHAW" = "🛺",
+      /**
+       * Emoji: ⌚
+       */
+      "WATCH" = "⌚",
+      /**
+       * Emoji: 📱
+       */
+      "IPHONE" = "📱",
+      /**
+       * Emoji: 📲
+       */
+      "CALLING" = "📲",
+      /**
+       * Emoji: 💻
+       */
+      "COMPUTER" = "💻",
+      /**
+       * Emoji: ⌨
+       */
+      "KEYBOARD" = "⌨",
+      /**
+       * Emoji: 🖥
+       *
+       * Aliases: `DESKTOP_COMPUTER`
+       */
+      "DESKTOP" = "🖥",
+      /**
+       * Emoji: 🖥
+       *
+       * Aliases: `DESKTOP`
+       */
+      "DESKTOP_COMPUTER" = "🖥",
+      /**
+       * Emoji: 🖨
+       */
+      "PRINTER" = "🖨",
+      /**
+       * Emoji: 🖱
+       *
+       * Aliases: `THREE_BUTTON_MOUSE`
+       */
+      "MOUSE_THREE_BUTTON" = "🖱",
+      /**
+       * Emoji: 🖱
+       *
+       * Aliases: `MOUSE_THREE_BUTTON`
+       */
+      "THREE_BUTTON_MOUSE" = "🖱",
+      /**
+       * Emoji: 🖲
+       */
+      "TRACKBALL" = "🖲",
+      /**
+       * Emoji: 🕹
+       */
+      "JOYSTICK" = "🕹",
+      /**
+       * Emoji: 🗜
+       */
+      "COMPRESSION" = "🗜",
+      /**
+       * Emoji: 💽
+       */
+      "MINIDISC" = "💽",
+      /**
+       * Emoji: 💾
+       */
+      "FLOPPY_DISK" = "💾",
+      /**
+       * Emoji: 💿
+       */
+      "CD" = "💿",
+      /**
+       * Emoji: 📀
+       */
+      "DVD" = "📀",
+      /**
+       * Emoji: 📼
+       */
+      "VHS" = "📼",
+      /**
+       * Emoji: 📷
+       */
+      "CAMERA" = "📷",
+      /**
+       * Emoji: 📸
+       */
+      "CAMERA_WITH_FLASH" = "📸",
+      /**
+       * Emoji: 📹
+       */
+      "VIDEO_CAMERA" = "📹",
+      /**
+       * Emoji: 🎥
+       */
+      "MOVIE_CAMERA" = "🎥",
+      /**
+       * Emoji: 📽
+       *
+       * Aliases: `FILM_PROJECTOR`
+       */
+      "PROJECTOR" = "📽",
+      /**
+       * Emoji: 📽
+       *
+       * Aliases: `PROJECTOR`
+       */
+      "FILM_PROJECTOR" = "📽",
+      /**
+       * Emoji: 🎞
+       */
+      "FILM_FRAMES" = "🎞",
+      /**
+       * Emoji: 📞
+       */
+      "TELEPHONE_RECEIVER" = "📞",
+      /**
+       * Emoji: ☎
+       */
+      "TELEPHONE" = "☎",
+      /**
+       * Emoji: 📟
+       */
+      "PAGER" = "📟",
+      /**
+       * Emoji: 📠
+       */
+      "FAX" = "📠",
+      /**
+       * Emoji: 📺
+       */
+      "TV" = "📺",
+      /**
+       * Emoji: 📻
+       */
+      "RADIO" = "📻",
+      /**
+       * Emoji: 🎙
+       *
+       * Aliases: `STUDIO_MICROPHONE`
+       */
+      "MICROPHONE2" = "🎙",
+      /**
+       * Emoji: 🎙
+       *
+       * Aliases: `MICROPHONE2`
+       */
+      "STUDIO_MICROPHONE" = "🎙",
+      /**
+       * Emoji: 🎚
+       */
+      "LEVEL_SLIDER" = "🎚",
+      /**
+       * Emoji: 🎛
+       */
+      "CONTROL_KNOBS" = "🎛",
+      /**
+       * Emoji: ⏱
+       */
+      "STOPWATCH" = "⏱",
+      /**
+       * Emoji: ⏲
+       *
+       * Aliases: `TIMER_CLOCK`
+       */
+      "TIMER" = "⏲",
+      /**
+       * Emoji: ⏲
+       *
+       * Aliases: `TIMER`
+       */
+      "TIMER_CLOCK" = "⏲",
+      /**
+       * Emoji: ⏰
+       */
+      "ALARM_CLOCK" = "⏰",
+      /**
+       * Emoji: 🕰
+       *
+       * Aliases: `MANTLEPIECE_CLOCK`
+       */
+      "CLOCK" = "🕰",
+      /**
+       * Emoji: 🕰
+       *
+       * Aliases: `CLOCK`
+       */
+      "MANTLEPIECE_CLOCK" = "🕰",
+      /**
+       * Emoji: ⏳
+       */
+      "HOURGLASS_FLOWING_SAND" = "⏳",
+      /**
+       * Emoji: ⌛
+       */
+      "HOURGLASS" = "⌛",
+      /**
+       * Emoji: 📡
+       */
+      "SATELLITE" = "📡",
+      /**
+       * Emoji: 🔋
+       */
+      "BATTERY" = "🔋",
+      /**
+       * Emoji: 🔌
+       */
+      "ELECTRIC_PLUG" = "🔌",
+      /**
+       * Emoji: 💡
+       */
+      "BULB" = "💡",
+      /**
+       * Emoji: 🔦
+       */
+      "FLASHLIGHT" = "🔦",
+      /**
+       * Emoji: 🕯
+       */
+      "CANDLE" = "🕯",
+      /**
+       * Emoji: 🗑
+       */
+      "WASTEBASKET" = "🗑",
+      /**
+       * Emoji: 🛢
+       *
+       * Aliases: `OIL_DRUM`
+       */
+      "OIL" = "🛢",
+      /**
+       * Emoji: 🛢
+       *
+       * Aliases: `OIL`
+       */
+      "OIL_DRUM" = "🛢",
+      /**
+       * Emoji: 💸
+       */
+      "MONEY_WITH_WINGS" = "💸",
+      /**
+       * Emoji: 💵
+       */
+      "DOLLAR" = "💵",
+      /**
+       * Emoji: 💴
+       */
+      "YEN" = "💴",
+      /**
+       * Emoji: 💶
+       */
+      "EURO" = "💶",
+      /**
+       * Emoji: 💷
+       */
+      "POUND" = "💷",
+      /**
+       * Emoji: 💰
+       */
+      "MONEYBAG" = "💰",
+      /**
+       * Emoji: 💳
+       */
+      "CREDIT_CARD" = "💳",
+      /**
+       * Emoji: 💎
+       */
+      "GEM" = "💎",
+      /**
+       * Emoji: ⚖
+       */
+      "SCALES" = "⚖",
+      /**
+       * Emoji: 🔧
+       */
+      "WRENCH" = "🔧",
+      /**
+       * Emoji: 🔨
+       */
+      "HAMMER" = "🔨",
+      /**
+       * Emoji: ⚒
+       *
+       * Aliases: `HAMMER_AND_PICK`
+       */
+      "HAMMER_PICK" = "⚒",
+      /**
+       * Emoji: ⚒
+       *
+       * Aliases: `HAMMER_PICK`
+       */
+      "HAMMER_AND_PICK" = "⚒",
+      /**
+       * Emoji: 🛠
+       *
+       * Aliases: `HAMMER_AND_WRENCH`
+       */
+      "TOOLS" = "🛠",
+      /**
+       * Emoji: 🛠
+       *
+       * Aliases: `TOOLS`
+       */
+      "HAMMER_AND_WRENCH" = "🛠",
+      /**
+       * Emoji: ⛏
+       */
+      "PICK" = "⛏",
+      /**
+       * Emoji: 🔩
+       */
+      "NUT_AND_BOLT" = "🔩",
+      /**
+       * Emoji: ⚙
+       */
+      "GEAR" = "⚙",
+      /**
+       * Emoji: ⛓
+       */
+      "CHAINS" = "⛓",
+      /**
+       * Emoji: 🔫
+       */
+      "GUN" = "🔫",
+      /**
+       * Emoji: 💣
+       */
+      "BOMB" = "💣",
+      /**
+       * Emoji: 🔪
+       */
+      "KNIFE" = "🔪",
+      /**
+       * Emoji: 🗡
+       *
+       * Aliases: `DAGGER_KNIFE`
+       */
+      "DAGGER" = "🗡",
+      /**
+       * Emoji: 🗡
+       *
+       * Aliases: `DAGGER`
+       */
+      "DAGGER_KNIFE" = "🗡",
+      /**
+       * Emoji: ⚔
+       */
+      "CROSSED_SWORDS" = "⚔",
+      /**
+       * Emoji: 🛡
+       */
+      "SHIELD" = "🛡",
+      /**
+       * Emoji: 🚬
+       */
+      "SMOKING" = "🚬",
+      /**
+       * Emoji: ☠
+       *
+       * Aliases: `SKULL_AND_CROSSBONES`
+       */
+      "SKULL_CROSSBONES" = "☠",
+      /**
+       * Emoji: ☠
+       *
+       * Aliases: `SKULL_CROSSBONES`
+       */
+      "SKULL_AND_CROSSBONES" = "☠",
+      /**
+       * Emoji: ⚰
+       */
+      "COFFIN" = "⚰",
+      /**
+       * Emoji: ⚱
+       *
+       * Aliases: `FUNERAL_URN`
+       */
+      "URN" = "⚱",
+      /**
+       * Emoji: ⚱
+       *
+       * Aliases: `URN`
+       */
+      "FUNERAL_URN" = "⚱",
+      /**
+       * Emoji: 🏺
+       */
+      "AMPHORA" = "🏺",
+      /**
+       * Emoji: 🔮
+       */
+      "CRYSTAL_BALL" = "🔮",
+      /**
+       * Emoji: 📿
+       */
+      "PRAYER_BEADS" = "📿",
+      /**
+       * Emoji: 💈
+       */
+      "BARBER" = "💈",
+      /**
+       * Emoji: ⚗
+       */
+      "ALEMBIC" = "⚗",
+      /**
+       * Emoji: 🔭
+       */
+      "TELESCOPE" = "🔭",
+      /**
+       * Emoji: 🔬
+       */
+      "MICROSCOPE" = "🔬",
+      /**
+       * Emoji: 🕳
+       */
+      "HOLE" = "🕳",
+      /**
+       * Emoji: 💊
+       */
+      "PILL" = "💊",
+      /**
+       * Emoji: 💉
+       */
+      "SYRINGE" = "💉",
+      /**
+       * Emoji: 🌡
+       */
+      "THERMOMETER" = "🌡",
+      /**
+       * Emoji: 🏷
+       */
+      "LABEL" = "🏷",
+      /**
+       * Emoji: 🔖
+       */
+      "BOOKMARK" = "🔖",
+      /**
+       * Emoji: 🚽
+       */
+      "TOILET" = "🚽",
+      /**
+       * Emoji: 🚿
+       */
+      "SHOWER" = "🚿",
+      /**
+       * Emoji: 🛁
+       */
+      "BATHTUB" = "🛁",
+      /**
+       * Emoji: 🔑
+       */
+      "KEY" = "🔑",
+      /**
+       * Emoji: 🗝
+       *
+       * Aliases: `OLD_KEY`
+       */
+      "KEY2" = "🗝",
+      /**
+       * Emoji: 🗝
+       *
+       * Aliases: `KEY2`
+       */
+      "OLD_KEY" = "🗝",
+      /**
+       * Emoji: 🛋
+       *
+       * Aliases: `COUCH_AND_LAMP`
+       */
+      "COUCH" = "🛋",
+      /**
+       * Emoji: 🛋
+       *
+       * Aliases: `COUCH`
+       */
+      "COUCH_AND_LAMP" = "🛋",
+      /**
+       * Emoji: 🛌
+       *
+       * Aliases: `PERSON_SLEEPING`
+       */
+      "SLEEPING_ACCOMMODATION" = "🛌",
+      /**
+       * Emoji: 🛌
+       *
+       * Aliases: `SLEEPING_ACCOMMODATION`
+       */
+      "PERSON_SLEEPING" = "🛌",
+      /**
+       * Emoji: 🛏
+       */
+      "BED" = "🛏",
+      /**
+       * Emoji: 🚪
+       */
+      "DOOR" = "🚪",
+      /**
+       * Emoji: 🛎
+       *
+       * Aliases: `BELLHOP_BELL`
+       */
+      "BELLHOP" = "🛎",
+      /**
+       * Emoji: 🛎
+       *
+       * Aliases: `BELLHOP`
+       */
+      "BELLHOP_BELL" = "🛎",
+      /**
+       * Emoji: 🖼
+       *
+       * Aliases: `FRAME_WITH_PICTURE`
+       */
+      "FRAME_PHOTO" = "🖼",
+      /**
+       * Emoji: 🖼
+       *
+       * Aliases: `FRAME_PHOTO`
+       */
+      "FRAME_WITH_PICTURE" = "🖼",
+      /**
+       * Emoji: 🗺
+       *
+       * Aliases: `WORLD_MAP`
+       */
+      "MAP" = "🗺",
+      /**
+       * Emoji: 🗺
+       *
+       * Aliases: `MAP`
+       */
+      "WORLD_MAP" = "🗺",
+      /**
+       * Emoji: ⛱
+       *
+       * Aliases: `UMBRELLA_ON_GROUND`
+       */
+      "BEACH_UMBRELLA" = "⛱",
+      /**
+       * Emoji: ⛱
+       *
+       * Aliases: `BEACH_UMBRELLA`
+       */
+      "UMBRELLA_ON_GROUND" = "⛱",
+      /**
+       * Emoji: 🗿
+       */
+      "MOYAI" = "🗿",
+      /**
+       * Emoji: 🛍
+       */
+      "SHOPPING_BAGS" = "🛍",
+      /**
+       * Emoji: 🎈
+       */
+      "BALLOON" = "🎈",
+      /**
+       * Emoji: 🎏
+       */
+      "FLAGS" = "🎏",
+      /**
+       * Emoji: 🎀
+       */
+      "RIBBON" = "🎀",
+      /**
+       * Emoji: 🎁
+       */
+      "GIFT" = "🎁",
+      /**
+       * Emoji: 🎊
+       */
+      "CONFETTI_BALL" = "🎊",
+      /**
+       * Emoji: 🎉
+       */
+      "TADA" = "🎉",
+      /**
+       * Emoji: 🎎
+       */
+      "DOLLS" = "🎎",
+      /**
+       * Emoji: 🎐
+       */
+      "WIND_CHIME" = "🎐",
+      /**
+       * Emoji: 🎌
+       */
+      "CROSSED_FLAGS" = "🎌",
+      /**
+       * Emoji: 🏮
+       */
+      "IZAKAYA_LANTERN" = "🏮",
+      /**
+       * Emoji: ✉
+       */
+      "ENVELOPE" = "✉",
+      /**
+       * Emoji: 📩
+       */
+      "ENVELOPE_WITH_ARROW" = "📩",
+      /**
+       * Emoji: 📨
+       */
+      "INCOMING_ENVELOPE" = "📨",
+      /**
+       * Emoji: 📧
+       *
+       * Aliases: `EMAIL`
+       */
+      "E_MAIL" = "📧",
+      /**
+       * Emoji: 📧
+       *
+       * Aliases: `E_MAIL`
+       */
+      "EMAIL" = "📧",
+      /**
+       * Emoji: 💌
+       */
+      "LOVE_LETTER" = "💌",
+      /**
+       * Emoji: 📮
+       */
+      "POSTBOX" = "📮",
+      /**
+       * Emoji: 📪
+       */
+      "MAILBOX_CLOSED" = "📪",
+      /**
+       * Emoji: 📫
+       */
+      "MAILBOX" = "📫",
+      /**
+       * Emoji: 📬
+       */
+      "MAILBOX_WITH_MAIL" = "📬",
+      /**
+       * Emoji: 📭
+       */
+      "MAILBOX_WITH_NO_MAIL" = "📭",
+      /**
+       * Emoji: 📦
+       */
+      "PACKAGE" = "📦",
+      /**
+       * Emoji: 📯
+       */
+      "POSTAL_HORN" = "📯",
+      /**
+       * Emoji: 📥
+       */
+      "INBOX_TRAY" = "📥",
+      /**
+       * Emoji: 📤
+       */
+      "OUTBOX_TRAY" = "📤",
+      /**
+       * Emoji: 📜
+       */
+      "SCROLL" = "📜",
+      /**
+       * Emoji: 📃
+       */
+      "PAGE_WITH_CURL" = "📃",
+      /**
+       * Emoji: 📑
+       */
+      "BOOKMARK_TABS" = "📑",
+      /**
+       * Emoji: 📊
+       */
+      "BAR_CHART" = "📊",
+      /**
+       * Emoji: 📈
+       */
+      "CHART_WITH_UPWARDS_TREND" = "📈",
+      /**
+       * Emoji: 📉
+       */
+      "CHART_WITH_DOWNWARDS_TREND" = "📉",
+      /**
+       * Emoji: 📄
+       */
+      "PAGE_FACING_UP" = "📄",
+      /**
+       * Emoji: 📅
+       */
+      "DATE" = "📅",
+      /**
+       * Emoji: 📆
+       */
+      "CALENDAR" = "📆",
+      /**
+       * Emoji: 🗓
+       *
+       * Aliases: `SPIRAL_CALENDAR_PAD`
+       */
+      "CALENDAR_SPIRAL" = "🗓",
+      /**
+       * Emoji: 🗓
+       *
+       * Aliases: `CALENDAR_SPIRAL`
+       */
+      "SPIRAL_CALENDAR_PAD" = "🗓",
+      /**
+       * Emoji: 📇
+       */
+      "CARD_INDEX" = "📇",
+      /**
+       * Emoji: 🗃
+       *
+       * Aliases: `CARD_FILE_BOX`
+       */
+      "CARD_BOX" = "🗃",
+      /**
+       * Emoji: 🗃
+       *
+       * Aliases: `CARD_BOX`
+       */
+      "CARD_FILE_BOX" = "🗃",
+      /**
+       * Emoji: 🗳
+       *
+       * Aliases: `BALLOT_BOX_WITH_BALLOT`
+       */
+      "BALLOT_BOX" = "🗳",
+      /**
+       * Emoji: 🗳
+       *
+       * Aliases: `BALLOT_BOX`
+       */
+      "BALLOT_BOX_WITH_BALLOT" = "🗳",
+      /**
+       * Emoji: 🗄
+       */
+      "FILE_CABINET" = "🗄",
+      /**
+       * Emoji: 📋
+       */
+      "CLIPBOARD" = "📋",
+      /**
+       * Emoji: 🗒
+       *
+       * Aliases: `SPIRAL_NOTE_PAD`
+       */
+      "NOTEPAD_SPIRAL" = "🗒",
+      /**
+       * Emoji: 🗒
+       *
+       * Aliases: `NOTEPAD_SPIRAL`
+       */
+      "SPIRAL_NOTE_PAD" = "🗒",
+      /**
+       * Emoji: 📁
+       */
+      "FILE_FOLDER" = "📁",
+      /**
+       * Emoji: 📂
+       */
+      "OPEN_FILE_FOLDER" = "📂",
+      /**
+       * Emoji: 🗂
+       *
+       * Aliases: `CARD_INDEX_DIVIDERS`
+       */
+      "DIVIDERS" = "🗂",
+      /**
+       * Emoji: 🗂
+       *
+       * Aliases: `DIVIDERS`
+       */
+      "CARD_INDEX_DIVIDERS" = "🗂",
+      /**
+       * Emoji: 🗞
+       *
+       * Aliases: `ROLLED_UP_NEWSPAPER`
+       */
+      "NEWSPAPER2" = "🗞",
+      /**
+       * Emoji: 🗞
+       *
+       * Aliases: `NEWSPAPER2`
+       */
+      "ROLLED_UP_NEWSPAPER" = "🗞",
+      /**
+       * Emoji: 📰
+       */
+      "NEWSPAPER" = "📰",
+      /**
+       * Emoji: 📓
+       */
+      "NOTEBOOK" = "📓",
+      /**
+       * Emoji: 📕
+       */
+      "CLOSED_BOOK" = "📕",
+      /**
+       * Emoji: 📗
+       */
+      "GREEN_BOOK" = "📗",
+      /**
+       * Emoji: 📘
+       */
+      "BLUE_BOOK" = "📘",
+      /**
+       * Emoji: 📙
+       */
+      "ORANGE_BOOK" = "📙",
+      /**
+       * Emoji: 📔
+       */
+      "NOTEBOOK_WITH_DECORATIVE_COVER" = "📔",
+      /**
+       * Emoji: 📒
+       */
+      "LEDGER" = "📒",
+      /**
+       * Emoji: 📚
+       */
+      "BOOKS" = "📚",
+      /**
+       * Emoji: 📖
+       */
+      "BOOK" = "📖",
+      /**
+       * Emoji: 🔗
+       */
+      "LINK" = "🔗",
+      /**
+       * Emoji: 📎
+       */
+      "PAPERCLIP" = "📎",
+      /**
+       * Emoji: 🖇
+       *
+       * Aliases: `LINKED_PAPERCLIPS`
+       */
+      "PAPERCLIPS" = "🖇",
+      /**
+       * Emoji: 🖇
+       *
+       * Aliases: `PAPERCLIPS`
+       */
+      "LINKED_PAPERCLIPS" = "🖇",
+      /**
+       * Emoji: ✂
+       */
+      "SCISSORS" = "✂",
+      /**
+       * Emoji: 📐
+       */
+      "TRIANGULAR_RULER" = "📐",
+      /**
+       * Emoji: 📏
+       */
+      "STRAIGHT_RULER" = "📏",
+      /**
+       * Emoji: 📌
+       */
+      "PUSHPIN" = "📌",
+      /**
+       * Emoji: 📍
+       */
+      "ROUND_PUSHPIN" = "📍",
+      /**
+       * Emoji: 🔐
+       */
+      "CLOSED_LOCK_WITH_KEY" = "🔐",
+      /**
+       * Emoji: 🔒
+       */
+      "LOCK" = "🔒",
+      /**
+       * Emoji: 🔓
+       */
+      "UNLOCK" = "🔓",
+      /**
+       * Emoji: 🔏
+       */
+      "LOCK_WITH_INK_PEN" = "🔏",
+      /**
+       * Emoji: 🖊
+       *
+       * Aliases: `LOWER_LEFT_BALLPOINT_PEN`
+       */
+      "PEN_BALLPOINT" = "🖊",
+      /**
+       * Emoji: 🖊
+       *
+       * Aliases: `PEN_BALLPOINT`
+       */
+      "LOWER_LEFT_BALLPOINT_PEN" = "🖊",
+      /**
+       * Emoji: 🖋
+       *
+       * Aliases: `LOWER_LEFT_FOUNTAIN_PEN`
+       */
+      "PEN_FOUNTAIN" = "🖋",
+      /**
+       * Emoji: 🖋
+       *
+       * Aliases: `PEN_FOUNTAIN`
+       */
+      "LOWER_LEFT_FOUNTAIN_PEN" = "🖋",
+      /**
+       * Emoji: ✒
+       */
+      "BLACK_NIB" = "✒",
+      /**
+       * Emoji: 📝
+       */
+      "PENCIL" = "📝",
+      /**
+       * Emoji: ✏
+       */
+      "PENCIL2" = "✏",
+      /**
+       * Emoji: 🖍
+       *
+       * Aliases: `LOWER_LEFT_CRAYON`
+       */
+      "CRAYON" = "🖍",
+      /**
+       * Emoji: 🖍
+       *
+       * Aliases: `CRAYON`
+       */
+      "LOWER_LEFT_CRAYON" = "🖍",
+      /**
+       * Emoji: 🖌
+       *
+       * Aliases: `LOWER_LEFT_PAINTBRUSH`
+       */
+      "PAINTBRUSH" = "🖌",
+      /**
+       * Emoji: 🖌
+       *
+       * Aliases: `PAINTBRUSH`
+       */
+      "LOWER_LEFT_PAINTBRUSH" = "🖌",
+      /**
+       * Emoji: 🔍
+       */
+      "MAG" = "🔍",
+      /**
+       * Emoji: 🔎
+       */
+      "MAG_RIGHT" = "🔎",
+      /**
+       * Emoji: 🛒
+       *
+       * Aliases: `SHOPPING_TROLLEY`
+       */
+      "SHOPPING_CART" = "🛒",
+      /**
+       * Emoji: 🛒
+       *
+       * Aliases: `SHOPPING_CART`
+       */
+      "SHOPPING_TROLLEY" = "🛒",
+      /**
+       * Emoji: 🧮
+       *
+       * Aliases: `CALCULATION`
+       */
+      "ABACUS" = "🧮",
+      /**
+       * Emoji: 🧮
+       *
+       * Aliases: `ABACUS`
+       */
+      "CALCULATION" = "🧮",
+      /**
+       * Emoji: 🧾
+       */
+      "RECEIPT" = "🧾",
+      /**
+       * Emoji: 🧰
+       *
+       * Aliases: `MECHANIC`
+       */
+      "TOOLBOX" = "🧰",
+      /**
+       * Emoji: 🧲
+       *
+       * Aliases: `HORSESHOE`
+       */
+      "MAGNET" = "🧲",
+      /**
+       * Emoji: 🧲
+       *
+       * Aliases: `MAGNET`
+       */
+      "HORSESHOE" = "🧲",
+      /**
+       * Emoji: 🧪
+       *
+       * Aliases: `CHEMISTRY`,`EXPERIMENT`,`SCIENCE`
+       */
+      "TEST_TUBE" = "🧪",
+      /**
+       * Emoji: 🧪
+       *
+       * Aliases: `TEST_TUBE`,`EXPERIMENT`,`SCIENCE`
+       */
+      "CHEMISTRY" = "🧪",
+      /**
+       * Emoji: 🧪
+       *
+       * Aliases: `TEST_TUBE`,`CHEMISTRY`,`SCIENCE`
+       */
+      "EXPERIMENT" = "🧪",
+      /**
+       * Emoji: 🧪
+       *
+       * Aliases: `TEST_TUBE`,`CHEMISTRY`,`EXPERIMENT`
+       */
+      "SCIENCE" = "🧪",
+      /**
+       * Emoji: 🧫
+       *
+       * Aliases: `BIOLOGIST`,`BIOLOGY`,`LAB`
+       */
+      "PETRI_DISH" = "🧫",
+      /**
+       * Emoji: 🧫
+       *
+       * Aliases: `PETRI_DISH`,`BIOLOGY`,`LAB`
+       */
+      "BIOLOGIST" = "🧫",
+      /**
+       * Emoji: 🧫
+       *
+       * Aliases: `PETRI_DISH`,`BIOLOGIST`,`LAB`
+       */
+      "BIOLOGY" = "🧫",
+      /**
+       * Emoji: 🧫
+       *
+       * Aliases: `PETRI_DISH`,`BIOLOGIST`,`BIOLOGY`
+       */
+      "LAB" = "🧫",
+      /**
+       * Emoji: 🧬
+       *
+       * Aliases: `EVOLUTION`,`GENE`,`GENETICS`
+       */
+      "DNA" = "🧬",
+      /**
+       * Emoji: 🧬
+       *
+       * Aliases: `DNA`,`GENE`,`GENETICS`
+       */
+      "EVOLUTION" = "🧬",
+      /**
+       * Emoji: 🧬
+       *
+       * Aliases: `DNA`,`EVOLUTION`,`GENETICS`
+       */
+      "GENE" = "🧬",
+      /**
+       * Emoji: 🧬
+       *
+       * Aliases: `DNA`,`EVOLUTION`,`GENE`
+       */
+      "GENETICS" = "🧬",
+      /**
+       * Emoji: 🧴
+       *
+       * Aliases: `LOTION`,`MOISTURIZER`,`SHAMPOO`,`SUNSCREEN`
+       */
+      "SQUEEZE_BOTTLE" = "🧴",
+      /**
+       * Emoji: 🧴
+       *
+       * Aliases: `SQUEEZE_BOTTLE`,`MOISTURIZER`,`SHAMPOO`,`SUNSCREEN`
+       */
+      "LOTION" = "🧴",
+      /**
+       * Emoji: 🧴
+       *
+       * Aliases: `SQUEEZE_BOTTLE`,`LOTION`,`SHAMPOO`,`SUNSCREEN`
+       */
+      "MOISTURIZER" = "🧴",
+      /**
+       * Emoji: 🧴
+       *
+       * Aliases: `SQUEEZE_BOTTLE`,`LOTION`,`MOISTURIZER`,`SUNSCREEN`
+       */
+      "SHAMPOO" = "🧴",
+      /**
+       * Emoji: 🧴
+       *
+       * Aliases: `SQUEEZE_BOTTLE`,`LOTION`,`MOISTURIZER`,`SHAMPOO`
+       */
+      "SUNSCREEN" = "🧴",
+      /**
+       * Emoji: 🧷
+       */
+      "SAFETY_PIN" = "🧷",
+      /**
+       * Emoji: 🧹
+       *
+       * Aliases: `CLEAN`,`SWEEP`
+       */
+      "BROOM" = "🧹",
+      /**
+       * Emoji: 🧹
+       *
+       * Aliases: `BROOM`,`SWEEP`
+       */
+      "CLEAN" = "🧹",
+      /**
+       * Emoji: 🧹
+       *
+       * Aliases: `BROOM`,`CLEAN`
+       */
+      "SWEEP" = "🧹",
+      /**
+       * Emoji: 🧺
+       */
+      "BASKET" = "🧺",
+      /**
+       * Emoji: 🧻
+       *
+       * Aliases: `TOILET_PAPER`,`BATHROOM_TISSUE`
+       */
+      "ROLL_OF_PAPER" = "🧻",
+      /**
+       * Emoji: 🧻
+       *
+       * Aliases: `ROLL_OF_PAPER`,`BATHROOM_TISSUE`
+       */
+      "TOILET_PAPER" = "🧻",
+      /**
+       * Emoji: 🧻
+       *
+       * Aliases: `ROLL_OF_PAPER`,`TOILET_PAPER`
+       */
+      "BATHROOM_TISSUE" = "🧻",
+      /**
+       * Emoji: 🧼
+       */
+      "SOAP" = "🧼",
+      /**
+       * Emoji: 🧽
+       */
+      "SPONGE" = "🧽",
+      /**
+       * Emoji: 🧯
+       */
+      "FIRE_EXTINGUISHER" = "🧯",
+      /**
+       * Emoji: 🧭
+       *
+       * Aliases: `NAVIGATION`,`ORIENTEERING`
+       */
+      "COMPASS" = "🧭",
+      /**
+       * Emoji: 🧭
+       *
+       * Aliases: `COMPASS`,`ORIENTEERING`
+       */
+      "NAVIGATION" = "🧭",
+      /**
+       * Emoji: 🧭
+       *
+       * Aliases: `COMPASS`,`NAVIGATION`
+       */
+      "ORIENTEERING" = "🧭",
+      /**
+       * Emoji: 🧨
+       *
+       * Aliases: `DYNAMITE`,`EXPLOSIVE`,`FIREWORKS`
+       */
+      "FIRECRACKER" = "🧨",
+      /**
+       * Emoji: 🧨
+       *
+       * Aliases: `FIRECRACKER`,`EXPLOSIVE`,`FIREWORKS`
+       */
+      "DYNAMITE" = "🧨",
+      /**
+       * Emoji: 🧨
+       *
+       * Aliases: `FIRECRACKER`,`DYNAMITE`,`FIREWORKS`
+       */
+      "EXPLOSIVE" = "🧨",
+      /**
+       * Emoji: 🧧
+       *
+       * Aliases: `RED_GIFT_ENVELOPE`,`LAI_SEE`,`RED_PACKET`
+       */
+      "RED_ENVELOPE" = "🧧",
+      /**
+       * Emoji: 🧧
+       *
+       * Aliases: `RED_ENVELOPE`,`LAI_SEE`,`RED_PACKET`
+       */
+      "RED_GIFT_ENVELOPE" = "🧧",
+      /**
+       * Emoji: 🧧
+       *
+       * Aliases: `RED_ENVELOPE`,`RED_GIFT_ENVELOPE`,`RED_PACKET`
+       */
+      "LAI_SEE" = "🧧",
+      /**
+       * Emoji: 🧧
+       *
+       * Aliases: `RED_ENVELOPE`,`RED_GIFT_ENVELOPE`,`LAI_SEE`
+       */
+      "RED_PACKET" = "🧧",
+      /**
+       * Emoji: 🧿
+       */
+      "NAZAR_AMULET" = "🧿",
+      /**
+       * Emoji: 🧱
+       *
+       * Aliases: `BRICK`
+       */
+      "BRICKS" = "🧱",
+      /**
+       * Emoji: 🧱
+       *
+       * Aliases: `BRICKS`
+       */
+      "BRICK" = "🧱",
+      /**
+       * Emoji: 🪔
+       */
+      "DIYA_LAMP" = "🪔",
+      /**
+       * Emoji: 🪓
+       */
+      "AXE" = "🪓",
+      /**
+       * Emoji: 🦯
+       */
+      "PROBING_CANE" = "🦯",
+      /**
+       * Emoji: 🩸
+       */
+      "DROP_OF_BLOOD" = "🩸",
+      /**
+       * Emoji: 🩹
+       *
+       * Aliases: `BAND_AID`
+       */
+      "ADHESIVE_BANDAGE" = "🩹",
+      /**
+       * Emoji: 🩹
+       *
+       * Aliases: `ADHESIVE_BANDAGE`
+       */
+      "BAND_AID" = "🩹",
+      /**
+       * Emoji: 🩺
+       */
+      "STETHOSCOPE" = "🩺",
+      /**
+       * Emoji: 🪑
+       */
+      "CHAIR" = "🪑",
+      /**
+       * Emoji: 🪒
+       */
+      "RAZOR" = "🪒",
+      /**
+       * Emoji: 💯
+       */
+      "_100" = "💯",
+      /**
+       * Emoji: 🔢
+       */
+      "_1234" = "🔢",
+      /**
+       * Emoji: ❤
+       */
+      "HEART" = "❤",
+      /**
+       * Emoji: 🧡
+       */
+      "ORANGE_HEART" = "🧡",
+      /**
+       * Emoji: 💛
+       */
+      "YELLOW_HEART" = "💛",
+      /**
+       * Emoji: 💚
+       */
+      "GREEN_HEART" = "💚",
+      /**
+       * Emoji: 💙
+       */
+      "BLUE_HEART" = "💙",
+      /**
+       * Emoji: 💜
+       */
+      "PURPLE_HEART" = "💜",
+      /**
+       * Emoji: 🖤
+       */
+      "BLACK_HEART" = "🖤",
+      /**
+       * Emoji: 🤎
+       */
+      "BROWN_HEART" = "🤎",
+      /**
+       * Emoji: 🤍
+       */
+      "WHITE_HEART" = "🤍",
+      /**
+       * Emoji: 💔
+       */
+      "BROKEN_HEART" = "💔",
+      /**
+       * Emoji: ❣
+       *
+       * Aliases: `HEAVY_HEART_EXCLAMATION_MARK_ORNAMENT`
+       */
+      "HEART_EXCLAMATION" = "❣",
+      /**
+       * Emoji: ❣
+       *
+       * Aliases: `HEART_EXCLAMATION`
+       */
+      "HEAVY_HEART_EXCLAMATION_MARK_ORNAMENT" = "❣",
+      /**
+       * Emoji: 💕
+       */
+      "TWO_HEARTS" = "💕",
+      /**
+       * Emoji: 💞
+       */
+      "REVOLVING_HEARTS" = "💞",
+      /**
+       * Emoji: 💓
+       */
+      "HEARTBEAT" = "💓",
+      /**
+       * Emoji: 💗
+       */
+      "HEARTPULSE" = "💗",
+      /**
+       * Emoji: 💖
+       */
+      "SPARKLING_HEART" = "💖",
+      /**
+       * Emoji: 💘
+       */
+      "CUPID" = "💘",
+      /**
+       * Emoji: 💝
+       */
+      "GIFT_HEART" = "💝",
+      /**
+       * Emoji: 💟
+       */
+      "HEART_DECORATION" = "💟",
+      /**
+       * Emoji: ☮
+       *
+       * Aliases: `PEACE_SYMBOL`
+       */
+      "PEACE" = "☮",
+      /**
+       * Emoji: ☮
+       *
+       * Aliases: `PEACE`
+       */
+      "PEACE_SYMBOL" = "☮",
+      /**
+       * Emoji: ✝
+       *
+       * Aliases: `LATIN_CROSS`
+       */
+      "CROSS" = "✝",
+      /**
+       * Emoji: ✝
+       *
+       * Aliases: `CROSS`
+       */
+      "LATIN_CROSS" = "✝",
+      /**
+       * Emoji: ☪
+       */
+      "STAR_AND_CRESCENT" = "☪",
+      /**
+       * Emoji: 🕉
+       */
+      "OM_SYMBOL" = "🕉",
+      /**
+       * Emoji: ☸
+       */
+      "WHEEL_OF_DHARMA" = "☸",
+      /**
+       * Emoji: ✡
+       */
+      "STAR_OF_DAVID" = "✡",
+      /**
+       * Emoji: 🔯
+       */
+      "SIX_POINTED_STAR" = "🔯",
+      /**
+       * Emoji: 🕎
+       */
+      "MENORAH" = "🕎",
+      /**
+       * Emoji: ☯
+       */
+      "YIN_YANG" = "☯",
+      /**
+       * Emoji: ☦
+       */
+      "ORTHODOX_CROSS" = "☦",
+      /**
+       * Emoji: 🛐
+       *
+       * Aliases: `WORSHIP_SYMBOL`
+       */
+      "PLACE_OF_WORSHIP" = "🛐",
+      /**
+       * Emoji: 🛐
+       *
+       * Aliases: `PLACE_OF_WORSHIP`
+       */
+      "WORSHIP_SYMBOL" = "🛐",
+      /**
+       * Emoji: ⛎
+       */
+      "OPHIUCHUS" = "⛎",
+      /**
+       * Emoji: ♈
+       */
+      "ARIES" = "♈",
+      /**
+       * Emoji: ♉
+       */
+      "TAURUS" = "♉",
+      /**
+       * Emoji: ♊
+       */
+      "GEMINI" = "♊",
+      /**
+       * Emoji: ♋
+       */
+      "CANCER" = "♋",
+      /**
+       * Emoji: ♌
+       */
+      "LEO" = "♌",
+      /**
+       * Emoji: ♍
+       */
+      "VIRGO" = "♍",
+      /**
+       * Emoji: ♎
+       */
+      "LIBRA" = "♎",
+      /**
+       * Emoji: ♏
+       */
+      "SCORPIUS" = "♏",
+      /**
+       * Emoji: ♐
+       */
+      "SAGITTARIUS" = "♐",
+      /**
+       * Emoji: ♑
+       */
+      "CAPRICORN" = "♑",
+      /**
+       * Emoji: ♒
+       */
+      "AQUARIUS" = "♒",
+      /**
+       * Emoji: ♓
+       */
+      "PISCES" = "♓",
+      /**
+       * Emoji: 🆔
+       */
+      "ID" = "🆔",
+      /**
+       * Emoji: ⚛
+       *
+       * Aliases: `ATOM_SYMBOL`
+       */
+      "ATOM" = "⚛",
+      /**
+       * Emoji: ⚛
+       *
+       * Aliases: `ATOM`
+       */
+      "ATOM_SYMBOL" = "⚛",
+      /**
+       * Emoji: 🈳
+       */
+      "U7A7A" = "🈳",
+      /**
+       * Emoji: 🈹
+       */
+      "U5272" = "🈹",
+      /**
+       * Emoji: ☢
+       *
+       * Aliases: `RADIOACTIVE_SIGN`
+       */
+      "RADIOACTIVE" = "☢",
+      /**
+       * Emoji: ☢
+       *
+       * Aliases: `RADIOACTIVE`
+       */
+      "RADIOACTIVE_SIGN" = "☢",
+      /**
+       * Emoji: ☣
+       *
+       * Aliases: `BIOHAZARD_SIGN`
+       */
+      "BIOHAZARD" = "☣",
+      /**
+       * Emoji: ☣
+       *
+       * Aliases: `BIOHAZARD`
+       */
+      "BIOHAZARD_SIGN" = "☣",
+      /**
+       * Emoji: 📴
+       */
+      "MOBILE_PHONE_OFF" = "📴",
+      /**
+       * Emoji: 📳
+       */
+      "VIBRATION_MODE" = "📳",
+      /**
+       * Emoji: 🈶
+       */
+      "U6709" = "🈶",
+      /**
+       * Emoji: 🈚
+       */
+      "U7121" = "🈚",
+      /**
+       * Emoji: 🈸
+       */
+      "U7533" = "🈸",
+      /**
+       * Emoji: 🈺
+       */
+      "U55B6" = "🈺",
+      /**
+       * Emoji: 🈷
+       */
+      "U6708" = "🈷",
+      /**
+       * Emoji: ✴
+       */
+      "EIGHT_POINTED_BLACK_STAR" = "✴",
+      /**
+       * Emoji: 🆚
+       */
+      "VS" = "🆚",
+      /**
+       * Emoji: 🉑
+       */
+      "ACCEPT" = "🉑",
+      /**
+       * Emoji: 💮
+       */
+      "WHITE_FLOWER" = "💮",
+      /**
+       * Emoji: 🉐
+       */
+      "IDEOGRAPH_ADVANTAGE" = "🉐",
+      /**
+       * Emoji: ㊙
+       */
+      "SECRET" = "㊙",
+      /**
+       * Emoji: ㊗
+       */
+      "CONGRATULATIONS" = "㊗",
+      /**
+       * Emoji: 🈴
+       */
+      "U5408" = "🈴",
+      /**
+       * Emoji: 🈵
+       */
+      "U6E80" = "🈵",
+      /**
+       * Emoji: 🈲
+       */
+      "U7981" = "🈲",
+      /**
+       * Emoji: 🅰
+       */
+      "A" = "🅰",
+      /**
+       * Emoji: 🅱
+       */
+      "B" = "🅱",
+      /**
+       * Emoji: 🆎
+       */
+      "AB" = "🆎",
+      /**
+       * Emoji: 🆑
+       */
+      "CL" = "🆑",
+      /**
+       * Emoji: 🅾
+       */
+      "O2" = "🅾",
+      /**
+       * Emoji: 🆘
+       */
+      "SOS" = "🆘",
+      /**
+       * Emoji: ⛔
+       */
+      "NO_ENTRY" = "⛔",
+      /**
+       * Emoji: 📛
+       */
+      "NAME_BADGE" = "📛",
+      /**
+       * Emoji: 🚫
+       */
+      "NO_ENTRY_SIGN" = "🚫",
+      /**
+       * Emoji: ❌
+       */
+      "X" = "❌",
+      /**
+       * Emoji: ⭕
+       */
+      "O" = "⭕",
+      /**
+       * Emoji: 💢
+       */
+      "ANGER" = "💢",
+      /**
+       * Emoji: ♨
+       */
+      "HOTSPRINGS" = "♨",
+      /**
+       * Emoji: 🚷
+       */
+      "NO_PEDESTRIANS" = "🚷",
+      /**
+       * Emoji: 🚯
+       */
+      "DO_NOT_LITTER" = "🚯",
+      /**
+       * Emoji: 🚳
+       */
+      "NO_BICYCLES" = "🚳",
+      /**
+       * Emoji: 🚱
+       */
+      "NON_POTABLE_WATER" = "🚱",
+      /**
+       * Emoji: 🔞
+       */
+      "UNDERAGE" = "🔞",
+      /**
+       * Emoji: 📵
+       */
+      "NO_MOBILE_PHONES" = "📵",
+      /**
+       * Emoji: ❗
+       */
+      "EXCLAMATION" = "❗",
+      /**
+       * Emoji: ❕
+       */
+      "GREY_EXCLAMATION" = "❕",
+      /**
+       * Emoji: ❓
+       */
+      "QUESTION" = "❓",
+      /**
+       * Emoji: ❔
+       */
+      "GREY_QUESTION" = "❔",
+      /**
+       * Emoji: ‼
+       */
+      "BANGBANG" = "‼",
+      /**
+       * Emoji: ⁉
+       */
+      "INTERROBANG" = "⁉",
+      /**
+       * Emoji: 🔅
+       */
+      "LOW_BRIGHTNESS" = "🔅",
+      /**
+       * Emoji: 🔆
+       */
+      "HIGH_BRIGHTNESS" = "🔆",
+      /**
+       * Emoji: 🔱
+       */
+      "TRIDENT" = "🔱",
+      /**
+       * Emoji: ⚜
+       */
+      "FLEUR_DE_LIS" = "⚜",
+      /**
+       * Emoji: 〽
+       */
+      "PART_ALTERNATION_MARK" = "〽",
+      /**
+       * Emoji: ⚠
+       */
+      "WARNING" = "⚠",
+      /**
+       * Emoji: 🚸
+       */
+      "CHILDREN_CROSSING" = "🚸",
+      /**
+       * Emoji: 🔰
+       */
+      "BEGINNER" = "🔰",
+      /**
+       * Emoji: ♻
+       */
+      "RECYCLE" = "♻",
+      /**
+       * Emoji: 🈯
+       */
+      "U6307" = "🈯",
+      /**
+       * Emoji: 💹
+       */
+      "CHART" = "💹",
+      /**
+       * Emoji: ❇
+       */
+      "SPARKLE" = "❇",
+      /**
+       * Emoji: ✳
+       */
+      "EIGHT_SPOKED_ASTERISK" = "✳",
+      /**
+       * Emoji: ❎
+       */
+      "NEGATIVE_SQUARED_CROSS_MARK" = "❎",
+      /**
+       * Emoji: ✅
+       */
+      "WHITE_CHECK_MARK" = "✅",
+      /**
+       * Emoji: 💠
+       */
+      "DIAMOND_SHAPE_WITH_A_DOT_INSIDE" = "💠",
+      /**
+       * Emoji: 🌀
+       */
+      "CYCLONE" = "🌀",
+      /**
+       * Emoji: ➿
+       */
+      "LOOP" = "➿",
+      /**
+       * Emoji: 🌐
+       */
+      "GLOBE_WITH_MERIDIANS" = "🌐",
+      /**
+       * Emoji: Ⓜ
+       */
+      "M" = "Ⓜ",
+      /**
+       * Emoji: 🏧
+       */
+      "ATM" = "🏧",
+      /**
+       * Emoji: 🈂
+       */
+      "SA" = "🈂",
+      /**
+       * Emoji: 🛂
+       */
+      "PASSPORT_CONTROL" = "🛂",
+      /**
+       * Emoji: 🛃
+       */
+      "CUSTOMS" = "🛃",
+      /**
+       * Emoji: 🛄
+       */
+      "BAGGAGE_CLAIM" = "🛄",
+      /**
+       * Emoji: 🛅
+       */
+      "LEFT_LUGGAGE" = "🛅",
+      /**
+       * Emoji: ♿
+       */
+      "WHEELCHAIR" = "♿",
+      /**
+       * Emoji: 🚭
+       */
+      "NO_SMOKING" = "🚭",
+      /**
+       * Emoji: 🚾
+       */
+      "WC" = "🚾",
+      /**
+       * Emoji: 🅿
+       */
+      "PARKING" = "🅿",
+      /**
+       * Emoji: 🚰
+       */
+      "POTABLE_WATER" = "🚰",
+      /**
+       * Emoji: 🚹
+       */
+      "MENS" = "🚹",
+      /**
+       * Emoji: 🚺
+       */
+      "WOMENS" = "🚺",
+      /**
+       * Emoji: 🚼
+       */
+      "BABY_SYMBOL" = "🚼",
+      /**
+       * Emoji: 🚻
+       */
+      "RESTROOM" = "🚻",
+      /**
+       * Emoji: 🚮
+       */
+      "PUT_LITTER_IN_ITS_PLACE" = "🚮",
+      /**
+       * Emoji: 🎦
+       */
+      "CINEMA" = "🎦",
+      /**
+       * Emoji: 📶
+       */
+      "SIGNAL_STRENGTH" = "📶",
+      /**
+       * Emoji: 🈁
+       */
+      "KOKO" = "🈁",
+      /**
+       * Emoji: 🆖
+       */
+      "NG" = "🆖",
+      /**
+       * Emoji: 🆗
+       */
+      "OK" = "🆗",
+      /**
+       * Emoji: 🆙
+       */
+      "UP" = "🆙",
+      /**
+       * Emoji: 🆒
+       */
+      "COOL" = "🆒",
+      /**
+       * Emoji: 🆕
+       */
+      "NEW" = "🆕",
+      /**
+       * Emoji: 🆓
+       */
+      "FREE" = "🆓",
+      /**
+       * Emoji: 0⃣
+       */
+      "ZERO" = "0⃣",
+      /**
+       * Emoji: 1⃣
+       */
+      "ONE" = "1⃣",
+      /**
+       * Emoji: 2⃣
+       */
+      "TWO" = "2⃣",
+      /**
+       * Emoji: 3⃣
+       */
+      "THREE" = "3⃣",
+      /**
+       * Emoji: 4⃣
+       */
+      "FOUR" = "4⃣",
+      /**
+       * Emoji: 5⃣
+       */
+      "FIVE" = "5⃣",
+      /**
+       * Emoji: 6⃣
+       */
+      "SIX" = "6⃣",
+      /**
+       * Emoji: 7⃣
+       */
+      "SEVEN" = "7⃣",
+      /**
+       * Emoji: 8⃣
+       */
+      "EIGHT" = "8⃣",
+      /**
+       * Emoji: 9⃣
+       */
+      "NINE" = "9⃣",
+      /**
+       * Emoji: 🔟
+       */
+      "KEYCAP_TEN" = "🔟",
+      /**
+       * Emoji: ▶
+       */
+      "ARROW_FORWARD" = "▶",
+      /**
+       * Emoji: ⏸
+       *
+       * Aliases: `DOUBLE_VERTICAL_BAR`
+       */
+      "PAUSE_BUTTON" = "⏸",
+      /**
+       * Emoji: ⏸
+       *
+       * Aliases: `PAUSE_BUTTON`
+       */
+      "DOUBLE_VERTICAL_BAR" = "⏸",
+      /**
+       * Emoji: ⏯
+       */
+      "PLAY_PAUSE" = "⏯",
+      /**
+       * Emoji: ⏹
+       */
+      "STOP_BUTTON" = "⏹",
+      /**
+       * Emoji: ⏺
+       */
+      "RECORD_BUTTON" = "⏺",
+      /**
+       * Emoji: ⏭
+       *
+       * Aliases: `NEXT_TRACK`
+       */
+      "TRACK_NEXT" = "⏭",
+      /**
+       * Emoji: ⏭
+       *
+       * Aliases: `TRACK_NEXT`
+       */
+      "NEXT_TRACK" = "⏭",
+      /**
+       * Emoji: ⏮
+       *
+       * Aliases: `PREVIOUS_TRACK`
+       */
+      "TRACK_PREVIOUS" = "⏮",
+      /**
+       * Emoji: ⏮
+       *
+       * Aliases: `TRACK_PREVIOUS`
+       */
+      "PREVIOUS_TRACK" = "⏮",
+      /**
+       * Emoji: ⏩
+       */
+      "FAST_FORWARD" = "⏩",
+      /**
+       * Emoji: ⏪
+       */
+      "REWIND" = "⏪",
+      /**
+       * Emoji: 🔀
+       */
+      "TWISTED_RIGHTWARDS_ARROWS" = "🔀",
+      /**
+       * Emoji: 🔁
+       */
+      "REPEAT" = "🔁",
+      /**
+       * Emoji: 🔂
+       */
+      "REPEAT_ONE" = "🔂",
+      /**
+       * Emoji: ◀
+       */
+      "ARROW_BACKWARD" = "◀",
+      /**
+       * Emoji: 🔼
+       */
+      "ARROW_UP_SMALL" = "🔼",
+      /**
+       * Emoji: 🔽
+       */
+      "ARROW_DOWN_SMALL" = "🔽",
+      /**
+       * Emoji: ⏫
+       */
+      "ARROW_DOUBLE_UP" = "⏫",
+      /**
+       * Emoji: ⏬
+       */
+      "ARROW_DOUBLE_DOWN" = "⏬",
+      /**
+       * Emoji: ➡
+       */
+      "ARROW_RIGHT" = "➡",
+      /**
+       * Emoji: ⬅
+       */
+      "ARROW_LEFT" = "⬅",
+      /**
+       * Emoji: ⬆
+       */
+      "ARROW_UP" = "⬆",
+      /**
+       * Emoji: ⬇
+       */
+      "ARROW_DOWN" = "⬇",
+      /**
+       * Emoji: ↗
+       */
+      "ARROW_UPPER_RIGHT" = "↗",
+      /**
+       * Emoji: ↘
+       */
+      "ARROW_LOWER_RIGHT" = "↘",
+      /**
+       * Emoji: ↙
+       */
+      "ARROW_LOWER_LEFT" = "↙",
+      /**
+       * Emoji: ↖
+       */
+      "ARROW_UPPER_LEFT" = "↖",
+      /**
+       * Emoji: ↕
+       */
+      "ARROW_UP_DOWN" = "↕",
+      /**
+       * Emoji: ↔
+       */
+      "LEFT_RIGHT_ARROW" = "↔",
+      /**
+       * Emoji: 🔄
+       */
+      "ARROWS_COUNTERCLOCKWISE" = "🔄",
+      /**
+       * Emoji: ↪
+       */
+      "ARROW_RIGHT_HOOK" = "↪",
+      /**
+       * Emoji: ↩
+       */
+      "LEFTWARDS_ARROW_WITH_HOOK" = "↩",
+      /**
+       * Emoji: ⤴
+       */
+      "ARROW_HEADING_UP" = "⤴",
+      /**
+       * Emoji: ⤵
+       */
+      "ARROW_HEADING_DOWN" = "⤵",
+      /**
+       * Emoji: #⃣
+       */
+      "HASH" = "#⃣",
+      /**
+       * Emoji: *⃣
+       *
+       * Aliases: `KEYCAP_ASTERISK`
+       */
+      "ASTERISK" = "*⃣",
+      /**
+       * Emoji: *⃣
+       *
+       * Aliases: `ASTERISK`
+       */
+      "KEYCAP_ASTERISK" = "*⃣",
+      /**
+       * Emoji: ℹ
+       */
+      "INFORMATION_SOURCE" = "ℹ",
+      /**
+       * Emoji: 🔤
+       */
+      "ABC" = "🔤",
+      /**
+       * Emoji: 🔡
+       */
+      "ABCD" = "🔡",
+      /**
+       * Emoji: 🔠
+       */
+      "CAPITAL_ABCD" = "🔠",
+      /**
+       * Emoji: 🔣
+       */
+      "SYMBOLS" = "🔣",
+      /**
+       * Emoji: 🎵
+       */
+      "MUSICAL_NOTE" = "🎵",
+      /**
+       * Emoji: 🎶
+       */
+      "NOTES" = "🎶",
+      /**
+       * Emoji: 〰
+       */
+      "WAVY_DASH" = "〰",
+      /**
+       * Emoji: ➰
+       */
+      "CURLY_LOOP" = "➰",
+      /**
+       * Emoji: ✔
+       */
+      "HEAVY_CHECK_MARK" = "✔",
+      /**
+       * Emoji: 🔃
+       */
+      "ARROWS_CLOCKWISE" = "🔃",
+      /**
+       * Emoji: ➕
+       */
+      "HEAVY_PLUS_SIGN" = "➕",
+      /**
+       * Emoji: ➖
+       */
+      "HEAVY_MINUS_SIGN" = "➖",
+      /**
+       * Emoji: ➗
+       */
+      "HEAVY_DIVISION_SIGN" = "➗",
+      /**
+       * Emoji: ✖
+       */
+      "HEAVY_MULTIPLICATION_X" = "✖",
+      /**
+       * Emoji: 💲
+       */
+      "HEAVY_DOLLAR_SIGN" = "💲",
+      /**
+       * Emoji: 💱
+       */
+      "CURRENCY_EXCHANGE" = "💱",
+      /**
+       * Emoji: ©
+       */
+      "COPYRIGHT" = "©",
+      /**
+       * Emoji: ®
+       */
+      "REGISTERED" = "®",
+      /**
+       * Emoji: ™
+       */
+      "TM" = "™",
+      /**
+       * Emoji: 🔚
+       */
+      "END" = "🔚",
+      /**
+       * Emoji: 🔙
+       */
+      "BACK" = "🔙",
+      /**
+       * Emoji: 🔛
+       */
+      "ON" = "🔛",
+      /**
+       * Emoji: 🔝
+       */
+      "TOP" = "🔝",
+      /**
+       * Emoji: 🔜
+       */
+      "SOON" = "🔜",
+      /**
+       * Emoji: ☑
+       */
+      "BALLOT_BOX_WITH_CHECK" = "☑",
+      /**
+       * Emoji: 🔘
+       */
+      "RADIO_BUTTON" = "🔘",
+      /**
+       * Emoji: ⚪
+       */
+      "WHITE_CIRCLE" = "⚪",
+      /**
+       * Emoji: ⚫
+       */
+      "BLACK_CIRCLE" = "⚫",
+      /**
+       * Emoji: 🔴
+       */
+      "RED_CIRCLE" = "🔴",
+      /**
+       * Emoji: 🔵
+       *
+       * Aliases: `LARGE_BLUE_CIRCLE`
+       */
+      "BLUE_CIRCLE" = "🔵",
+      /**
+       * Emoji: 🔵
+       *
+       * Aliases: `BLUE_CIRCLE`
+       */
+      "LARGE_BLUE_CIRCLE" = "🔵",
+      /**
+       * Emoji: 🟤
+       */
+      "BROWN_CIRCLE" = "🟤",
+      /**
+       * Emoji: 🟣
+       */
+      "PURPLE_CIRCLE" = "🟣",
+      /**
+       * Emoji: 🟢
+       */
+      "GREEN_CIRCLE" = "🟢",
+      /**
+       * Emoji: 🟡
+       */
+      "YELLOW_CIRCLE" = "🟡",
+      /**
+       * Emoji: 🟠
+       */
+      "ORANGE_CIRCLE" = "🟠",
+      /**
+       * Emoji: 🔸
+       */
+      "SMALL_ORANGE_DIAMOND" = "🔸",
+      /**
+       * Emoji: 🔹
+       */
+      "SMALL_BLUE_DIAMOND" = "🔹",
+      /**
+       * Emoji: 🔶
+       */
+      "LARGE_ORANGE_DIAMOND" = "🔶",
+      /**
+       * Emoji: 🔷
+       */
+      "LARGE_BLUE_DIAMOND" = "🔷",
+      /**
+       * Emoji: 🔺
+       */
+      "SMALL_RED_TRIANGLE" = "🔺",
+      /**
+       * Emoji: ▪
+       */
+      "BLACK_SMALL_SQUARE" = "▪",
+      /**
+       * Emoji: ▫
+       */
+      "WHITE_SMALL_SQUARE" = "▫",
+      /**
+       * Emoji: ⬛
+       */
+      "BLACK_LARGE_SQUARE" = "⬛",
+      /**
+       * Emoji: ⬜
+       */
+      "WHITE_LARGE_SQUARE" = "⬜",
+      /**
+       * Emoji: 🟥
+       */
+      "RED_SQUARE" = "🟥",
+      /**
+       * Emoji: 🟧
+       */
+      "ORANGE_SQUARE" = "🟧",
+      /**
+       * Emoji: 🟨
+       */
+      "YELLOW_SQUARE" = "🟨",
+      /**
+       * Emoji: 🟩
+       */
+      "GREEN_SQUARE" = "🟩",
+      /**
+       * Emoji: 🟦
+       */
+      "BLUE_SQUARE" = "🟦",
+      /**
+       * Emoji: 🟪
+       */
+      "PURPLE_SQUARE" = "🟪",
+      /**
+       * Emoji: 🟫
+       */
+      "BROWN_SQUARE" = "🟫",
+      /**
+       * Emoji: 🔻
+       */
+      "SMALL_RED_TRIANGLE_DOWN" = "🔻",
+      /**
+       * Emoji: ◼
+       */
+      "BLACK_MEDIUM_SQUARE" = "◼",
+      /**
+       * Emoji: ◻
+       */
+      "WHITE_MEDIUM_SQUARE" = "◻",
+      /**
+       * Emoji: ◾
+       */
+      "BLACK_MEDIUM_SMALL_SQUARE" = "◾",
+      /**
+       * Emoji: ◽
+       */
+      "WHITE_MEDIUM_SMALL_SQUARE" = "◽",
+      /**
+       * Emoji: 🔲
+       */
+      "BLACK_SQUARE_BUTTON" = "🔲",
+      /**
+       * Emoji: 🔳
+       */
+      "WHITE_SQUARE_BUTTON" = "🔳",
+      /**
+       * Emoji: 🔈
+       */
+      "SPEAKER" = "🔈",
+      /**
+       * Emoji: 🔉
+       */
+      "SOUND" = "🔉",
+      /**
+       * Emoji: 🔊
+       */
+      "LOUD_SOUND" = "🔊",
+      /**
+       * Emoji: 🔇
+       */
+      "MUTE" = "🔇",
+      /**
+       * Emoji: 📣
+       */
+      "MEGA" = "📣",
+      /**
+       * Emoji: 📢
+       */
+      "LOUDSPEAKER" = "📢",
+      /**
+       * Emoji: 🔔
+       */
+      "BELL" = "🔔",
+      /**
+       * Emoji: 🔕
+       */
+      "NO_BELL" = "🔕",
+      /**
+       * Emoji: 🃏
+       */
+      "BLACK_JOKER" = "🃏",
+      /**
+       * Emoji: 🀄
+       */
+      "MAHJONG" = "🀄",
+      /**
+       * Emoji: ♠
+       */
+      "SPADES" = "♠",
+      /**
+       * Emoji: ♣
+       */
+      "CLUBS" = "♣",
+      /**
+       * Emoji: ♥
+       */
+      "HEARTS" = "♥",
+      /**
+       * Emoji: ♦
+       */
+      "DIAMONDS" = "♦",
+      /**
+       * Emoji: 🎴
+       */
+      "FLOWER_PLAYING_CARDS" = "🎴",
+      /**
+       * Emoji: 💭
+       */
+      "THOUGHT_BALLOON" = "💭",
+      /**
+       * Emoji: 🗯
+       *
+       * Aliases: `RIGHT_ANGER_BUBBLE`
+       */
+      "ANGER_RIGHT" = "🗯",
+      /**
+       * Emoji: 🗯
+       *
+       * Aliases: `ANGER_RIGHT`
+       */
+      "RIGHT_ANGER_BUBBLE" = "🗯",
+      /**
+       * Emoji: 💬
+       */
+      "SPEECH_BALLOON" = "💬",
+      /**
+       * Emoji: 🕐
+       */
+      "CLOCK1" = "🕐",
+      /**
+       * Emoji: 🕑
+       */
+      "CLOCK2" = "🕑",
+      /**
+       * Emoji: 🕒
+       */
+      "CLOCK3" = "🕒",
+      /**
+       * Emoji: 🕓
+       */
+      "CLOCK4" = "🕓",
+      /**
+       * Emoji: 🕔
+       */
+      "CLOCK5" = "🕔",
+      /**
+       * Emoji: 🕕
+       */
+      "CLOCK6" = "🕕",
+      /**
+       * Emoji: 🕖
+       */
+      "CLOCK7" = "🕖",
+      /**
+       * Emoji: 🕗
+       */
+      "CLOCK8" = "🕗",
+      /**
+       * Emoji: 🕘
+       */
+      "CLOCK9" = "🕘",
+      /**
+       * Emoji: 🕙
+       */
+      "CLOCK10" = "🕙",
+      /**
+       * Emoji: 🕚
+       */
+      "CLOCK11" = "🕚",
+      /**
+       * Emoji: 🕛
+       */
+      "CLOCK12" = "🕛",
+      /**
+       * Emoji: 🕜
+       */
+      "CLOCK130" = "🕜",
+      /**
+       * Emoji: 🕝
+       */
+      "CLOCK230" = "🕝",
+      /**
+       * Emoji: 🕞
+       */
+      "CLOCK330" = "🕞",
+      /**
+       * Emoji: 🕟
+       */
+      "CLOCK430" = "🕟",
+      /**
+       * Emoji: 🕠
+       */
+      "CLOCK530" = "🕠",
+      /**
+       * Emoji: 🕡
+       */
+      "CLOCK630" = "🕡",
+      /**
+       * Emoji: 🕢
+       */
+      "CLOCK730" = "🕢",
+      /**
+       * Emoji: 🕣
+       */
+      "CLOCK830" = "🕣",
+      /**
+       * Emoji: 🕤
+       */
+      "CLOCK930" = "🕤",
+      /**
+       * Emoji: 🕥
+       */
+      "CLOCK1030" = "🕥",
+      /**
+       * Emoji: 🕦
+       */
+      "CLOCK1130" = "🕦",
+      /**
+       * Emoji: 🕧
+       */
+      "CLOCK1230" = "🕧",
+      /**
+       * Emoji: 👁‍🗨
+       */
+      "EYE_IN_SPEECH_BUBBLE" = "👁‍🗨",
+      /**
+       * Emoji: 🗨
+       *
+       * Aliases: `LEFT_SPEECH_BUBBLE`
+       */
+      "SPEECH_LEFT" = "🗨",
+      /**
+       * Emoji: 🗨
+       *
+       * Aliases: `SPEECH_LEFT`
+       */
+      "LEFT_SPEECH_BUBBLE" = "🗨",
+      /**
+       * Emoji: ⏏
+       *
+       * Aliases: `EJECT_SYMBOL`
+       */
+      "EJECT" = "⏏",
+      /**
+       * Emoji: ⏏
+       *
+       * Aliases: `EJECT`
+       */
+      "EJECT_SYMBOL" = "⏏",
+      /**
+       * Emoji: 🛑
+       *
+       * Aliases: `STOP_SIGN`
+       */
+      "OCTAGONAL_SIGN" = "🛑",
+      /**
+       * Emoji: 🛑
+       *
+       * Aliases: `OCTAGONAL_SIGN`
+       */
+      "STOP_SIGN" = "🛑",
+      /**
+       * Emoji: 🇿
+       */
+      "REGIONAL_INDICATOR_Z" = "🇿",
+      /**
+       * Emoji: 🇾
+       */
+      "REGIONAL_INDICATOR_Y" = "🇾",
+      /**
+       * Emoji: 🇽
+       */
+      "REGIONAL_INDICATOR_X" = "🇽",
+      /**
+       * Emoji: 🇼
+       */
+      "REGIONAL_INDICATOR_W" = "🇼",
+      /**
+       * Emoji: 🇻
+       */
+      "REGIONAL_INDICATOR_V" = "🇻",
+      /**
+       * Emoji: 🇺
+       */
+      "REGIONAL_INDICATOR_U" = "🇺",
+      /**
+       * Emoji: 🇹
+       */
+      "REGIONAL_INDICATOR_T" = "🇹",
+      /**
+       * Emoji: 🇸
+       */
+      "REGIONAL_INDICATOR_S" = "🇸",
+      /**
+       * Emoji: 🇷
+       */
+      "REGIONAL_INDICATOR_R" = "🇷",
+      /**
+       * Emoji: 🇶
+       */
+      "REGIONAL_INDICATOR_Q" = "🇶",
+      /**
+       * Emoji: 🇵
+       */
+      "REGIONAL_INDICATOR_P" = "🇵",
+      /**
+       * Emoji: 🇴
+       */
+      "REGIONAL_INDICATOR_O" = "🇴",
+      /**
+       * Emoji: 🇳
+       */
+      "REGIONAL_INDICATOR_N" = "🇳",
+      /**
+       * Emoji: 🇲
+       */
+      "REGIONAL_INDICATOR_M" = "🇲",
+      /**
+       * Emoji: 🇱
+       */
+      "REGIONAL_INDICATOR_L" = "🇱",
+      /**
+       * Emoji: 🇰
+       */
+      "REGIONAL_INDICATOR_K" = "🇰",
+      /**
+       * Emoji: 🇯
+       */
+      "REGIONAL_INDICATOR_J" = "🇯",
+      /**
+       * Emoji: 🇮
+       */
+      "REGIONAL_INDICATOR_I" = "🇮",
+      /**
+       * Emoji: 🇭
+       */
+      "REGIONAL_INDICATOR_H" = "🇭",
+      /**
+       * Emoji: 🇬
+       */
+      "REGIONAL_INDICATOR_G" = "🇬",
+      /**
+       * Emoji: 🇫
+       */
+      "REGIONAL_INDICATOR_F" = "🇫",
+      /**
+       * Emoji: 🇪
+       */
+      "REGIONAL_INDICATOR_E" = "🇪",
+      /**
+       * Emoji: 🇩
+       */
+      "REGIONAL_INDICATOR_D" = "🇩",
+      /**
+       * Emoji: 🇨
+       */
+      "REGIONAL_INDICATOR_C" = "🇨",
+      /**
+       * Emoji: 🇧
+       */
+      "REGIONAL_INDICATOR_B" = "🇧",
+      /**
+       * Emoji: 🇦
+       */
+      "REGIONAL_INDICATOR_A" = "🇦",
+      /**
+       * Emoji: ♾️
+       */
+      "INFINITY" = "♾️",
+      /**
+       * Emoji: ♀️
+       *
+       * Aliases: `FEMALE`
+       */
+      "FEMALE_SIGN" = "♀️",
+      /**
+       * Emoji: ♀️
+       *
+       * Aliases: `FEMALE_SIGN`
+       */
+      "FEMALE" = "♀️",
+      /**
+       * Emoji: ♂️
+       *
+       * Aliases: `MALE`
+       */
+      "MALE_SIGN" = "♂️",
+      /**
+       * Emoji: ♂️
+       *
+       * Aliases: `MALE_SIGN`
+       */
+      "MALE" = "♂️",
+      /**
+       * Emoji: ⚕️
+       *
+       * Aliases: `STAFF_OF_AESCULAPIUS`
+       */
+      "MEDICAL_SYMBOL" = "⚕️",
+      /**
+       * Emoji: ⚕️
+       *
+       * Aliases: `MEDICAL_SYMBOL`
+       */
+      "STAFF_OF_AESCULAPIUS" = "⚕️",
+      /**
+       * Emoji: ⚧️
+       *
+       * Aliases: `TRANS_SYMBOL`
+       */
+      "TRANSGENDER_SYMBOL" = "⚧️",
+      /**
+       * Emoji: ⚧️
+       *
+       * Aliases: `TRANSGENDER_SYMBOL`
+       */
+      "TRANS_SYMBOL" = "⚧️",
+      /**
+       * Emoji: 🏳
+       */
+      "FLAG_WHITE" = "🏳",
+      /**
+       * Emoji: 🏴
+       */
+      "FLAG_BLACK" = "🏴",
+      /**
+       * Emoji: 🏁
+       */
+      "CHECKERED_FLAG" = "🏁",
+      /**
+       * Emoji: 🚩
+       */
+      "TRIANGULAR_FLAG_ON_POST" = "🚩",
+      /**
+       * Emoji: 🏳️‍🌈
+       *
+       * Aliases: `GAY_PRIDE_FLAG`
+       */
+      "RAINBOW_FLAG" = "🏳️‍🌈",
+      /**
+       * Emoji: 🏳️‍🌈
+       *
+       * Aliases: `RAINBOW_FLAG`
+       */
+      "GAY_PRIDE_FLAG" = "🏳️‍🌈",
+      /**
+       * Emoji: 🏳️‍⚧️
+       *
+       * Aliases: `TRANS_FLAG`
+       */
+      "TRANSGENDER_FLAG" = "🏳️‍⚧️",
+      /**
+       * Emoji: 🏳️‍⚧️
+       *
+       * Aliases: `TRANSGENDER_FLAG`
+       */
+      "TRANS_FLAG" = "🏳️‍⚧️",
+      /**
+       * Emoji: 🏴‍☠️
+       *
+       * Aliases: `PIRATE`,`JOLLY_ROGER`
+       */
+      "PIRATE_FLAG" = "🏴‍☠️",
+      /**
+       * Emoji: 🏴‍☠️
+       *
+       * Aliases: `PIRATE_FLAG`,`JOLLY_ROGER`
+       */
+      "PIRATE" = "🏴‍☠️",
+      /**
+       * Emoji: 🏴‍☠️
+       *
+       * Aliases: `PIRATE_FLAG`,`PIRATE`
+       */
+      "JOLLY_ROGER" = "🏴‍☠️",
+      /**
+       * Emoji: 🇦🇨
+       */
+      "FLAG_AC" = "🇦🇨",
+      /**
+       * Emoji: 🇦🇫
+       */
+      "FLAG_AF" = "🇦🇫",
+      /**
+       * Emoji: 🇦🇱
+       */
+      "FLAG_AL" = "🇦🇱",
+      /**
+       * Emoji: 🇩🇿
+       */
+      "FLAG_DZ" = "🇩🇿",
+      /**
+       * Emoji: 🇦🇩
+       */
+      "FLAG_AD" = "🇦🇩",
+      /**
+       * Emoji: 🇦🇴
+       */
+      "FLAG_AO" = "🇦🇴",
+      /**
+       * Emoji: 🇦🇮
+       */
+      "FLAG_AI" = "🇦🇮",
+      /**
+       * Emoji: 🇦🇬
+       */
+      "FLAG_AG" = "🇦🇬",
+      /**
+       * Emoji: 🇦🇷
+       */
+      "FLAG_AR" = "🇦🇷",
+      /**
+       * Emoji: 🇦🇲
+       */
+      "FLAG_AM" = "🇦🇲",
+      /**
+       * Emoji: 🇦🇼
+       */
+      "FLAG_AW" = "🇦🇼",
+      /**
+       * Emoji: 🇦🇺
+       */
+      "FLAG_AU" = "🇦🇺",
+      /**
+       * Emoji: 🇦🇹
+       */
+      "FLAG_AT" = "🇦🇹",
+      /**
+       * Emoji: 🇦🇿
+       */
+      "FLAG_AZ" = "🇦🇿",
+      /**
+       * Emoji: 🇧🇸
+       */
+      "FLAG_BS" = "🇧🇸",
+      /**
+       * Emoji: 🇧🇭
+       */
+      "FLAG_BH" = "🇧🇭",
+      /**
+       * Emoji: 🇧🇩
+       */
+      "FLAG_BD" = "🇧🇩",
+      /**
+       * Emoji: 🇧🇧
+       */
+      "FLAG_BB" = "🇧🇧",
+      /**
+       * Emoji: 🇧🇾
+       */
+      "FLAG_BY" = "🇧🇾",
+      /**
+       * Emoji: 🇧🇪
+       */
+      "FLAG_BE" = "🇧🇪",
+      /**
+       * Emoji: 🇧🇿
+       */
+      "FLAG_BZ" = "🇧🇿",
+      /**
+       * Emoji: 🇧🇯
+       */
+      "FLAG_BJ" = "🇧🇯",
+      /**
+       * Emoji: 🇧🇲
+       */
+      "FLAG_BM" = "🇧🇲",
+      /**
+       * Emoji: 🇧🇹
+       */
+      "FLAG_BT" = "🇧🇹",
+      /**
+       * Emoji: 🇧🇴
+       */
+      "FLAG_BO" = "🇧🇴",
+      /**
+       * Emoji: 🇧🇦
+       */
+      "FLAG_BA" = "🇧🇦",
+      /**
+       * Emoji: 🇧🇼
+       */
+      "FLAG_BW" = "🇧🇼",
+      /**
+       * Emoji: 🇧🇷
+       */
+      "FLAG_BR" = "🇧🇷",
+      /**
+       * Emoji: 🇧🇳
+       */
+      "FLAG_BN" = "🇧🇳",
+      /**
+       * Emoji: 🇧🇬
+       */
+      "FLAG_BG" = "🇧🇬",
+      /**
+       * Emoji: 🇧🇫
+       */
+      "FLAG_BF" = "🇧🇫",
+      /**
+       * Emoji: 🇧🇮
+       */
+      "FLAG_BI" = "🇧🇮",
+      /**
+       * Emoji: 🇨🇻
+       */
+      "FLAG_CV" = "🇨🇻",
+      /**
+       * Emoji: 🇰🇭
+       */
+      "FLAG_KH" = "🇰🇭",
+      /**
+       * Emoji: 🇨🇲
+       */
+      "FLAG_CM" = "🇨🇲",
+      /**
+       * Emoji: 🇨🇦
+       */
+      "FLAG_CA" = "🇨🇦",
+      /**
+       * Emoji: 🇰🇾
+       */
+      "FLAG_KY" = "🇰🇾",
+      /**
+       * Emoji: 🇨🇫
+       */
+      "FLAG_CF" = "🇨🇫",
+      /**
+       * Emoji: 🇹🇩
+       */
+      "FLAG_TD" = "🇹🇩",
+      /**
+       * Emoji: 🇨🇱
+       */
+      "FLAG_CL" = "🇨🇱",
+      /**
+       * Emoji: 🇨🇳
+       */
+      "FLAG_CN" = "🇨🇳",
+      /**
+       * Emoji: 🇨🇴
+       */
+      "FLAG_CO" = "🇨🇴",
+      /**
+       * Emoji: 🇰🇲
+       */
+      "FLAG_KM" = "🇰🇲",
+      /**
+       * Emoji: 🇨🇬
+       */
+      "FLAG_CG" = "🇨🇬",
+      /**
+       * Emoji: 🇨🇩
+       */
+      "FLAG_CD" = "🇨🇩",
+      /**
+       * Emoji: 🇨🇷
+       */
+      "FLAG_CR" = "🇨🇷",
+      /**
+       * Emoji: 🇭🇷
+       */
+      "FLAG_HR" = "🇭🇷",
+      /**
+       * Emoji: 🇨🇺
+       */
+      "FLAG_CU" = "🇨🇺",
+      /**
+       * Emoji: 🇨🇾
+       */
+      "FLAG_CY" = "🇨🇾",
+      /**
+       * Emoji: 🇨🇿
+       */
+      "FLAG_CZ" = "🇨🇿",
+      /**
+       * Emoji: 🇩🇰
+       */
+      "FLAG_DK" = "🇩🇰",
+      /**
+       * Emoji: 🇩🇯
+       */
+      "FLAG_DJ" = "🇩🇯",
+      /**
+       * Emoji: 🇩🇲
+       */
+      "FLAG_DM" = "🇩🇲",
+      /**
+       * Emoji: 🇩🇴
+       */
+      "FLAG_DO" = "🇩🇴",
+      /**
+       * Emoji: 🇪🇨
+       */
+      "FLAG_EC" = "🇪🇨",
+      /**
+       * Emoji: 🇪🇬
+       */
+      "FLAG_EG" = "🇪🇬",
+      /**
+       * Emoji: 🇸🇻
+       */
+      "FLAG_SV" = "🇸🇻",
+      /**
+       * Emoji: 🇬🇶
+       */
+      "FLAG_GQ" = "🇬🇶",
+      /**
+       * Emoji: 🇪🇷
+       */
+      "FLAG_ER" = "🇪🇷",
+      /**
+       * Emoji: 🇪🇪
+       */
+      "FLAG_EE" = "🇪🇪",
+      /**
+       * Emoji: 🇪🇹
+       */
+      "FLAG_ET" = "🇪🇹",
+      /**
+       * Emoji: 🇫🇰
+       */
+      "FLAG_FK" = "🇫🇰",
+      /**
+       * Emoji: 🇫🇴
+       */
+      "FLAG_FO" = "🇫🇴",
+      /**
+       * Emoji: 🇫🇯
+       */
+      "FLAG_FJ" = "🇫🇯",
+      /**
+       * Emoji: 🇫🇮
+       */
+      "FLAG_FI" = "🇫🇮",
+      /**
+       * Emoji: 🇫🇷
+       */
+      "FLAG_FR" = "🇫🇷",
+      /**
+       * Emoji: 🇵🇫
+       */
+      "FLAG_PF" = "🇵🇫",
+      /**
+       * Emoji: 🇬🇦
+       */
+      "FLAG_GA" = "🇬🇦",
+      /**
+       * Emoji: 🇬🇲
+       */
+      "FLAG_GM" = "🇬🇲",
+      /**
+       * Emoji: 🇬🇪
+       */
+      "FLAG_GE" = "🇬🇪",
+      /**
+       * Emoji: 🇩🇪
+       */
+      "FLAG_DE" = "🇩🇪",
+      /**
+       * Emoji: 🇬🇭
+       */
+      "FLAG_GH" = "🇬🇭",
+      /**
+       * Emoji: 🇬🇮
+       */
+      "FLAG_GI" = "🇬🇮",
+      /**
+       * Emoji: 🇬🇷
+       */
+      "FLAG_GR" = "🇬🇷",
+      /**
+       * Emoji: 🇬🇱
+       */
+      "FLAG_GL" = "🇬🇱",
+      /**
+       * Emoji: 🇬🇩
+       */
+      "FLAG_GD" = "🇬🇩",
+      /**
+       * Emoji: 🇬🇺
+       */
+      "FLAG_GU" = "🇬🇺",
+      /**
+       * Emoji: 🇬🇹
+       */
+      "FLAG_GT" = "🇬🇹",
+      /**
+       * Emoji: 🇬🇳
+       */
+      "FLAG_GN" = "🇬🇳",
+      /**
+       * Emoji: 🇬🇼
+       */
+      "FLAG_GW" = "🇬🇼",
+      /**
+       * Emoji: 🇬🇾
+       */
+      "FLAG_GY" = "🇬🇾",
+      /**
+       * Emoji: 🇭🇹
+       */
+      "FLAG_HT" = "🇭🇹",
+      /**
+       * Emoji: 🇭🇳
+       */
+      "FLAG_HN" = "🇭🇳",
+      /**
+       * Emoji: 🇭🇰
+       */
+      "FLAG_HK" = "🇭🇰",
+      /**
+       * Emoji: 🇭🇺
+       */
+      "FLAG_HU" = "🇭🇺",
+      /**
+       * Emoji: 🇮🇸
+       */
+      "FLAG_IS" = "🇮🇸",
+      /**
+       * Emoji: 🇮🇳
+       */
+      "FLAG_IN" = "🇮🇳",
+      /**
+       * Emoji: 🇮🇩
+       */
+      "FLAG_ID" = "🇮🇩",
+      /**
+       * Emoji: 🇮🇷
+       */
+      "FLAG_IR" = "🇮🇷",
+      /**
+       * Emoji: 🇮🇶
+       */
+      "FLAG_IQ" = "🇮🇶",
+      /**
+       * Emoji: 🇮🇪
+       */
+      "FLAG_IE" = "🇮🇪",
+      /**
+       * Emoji: 🇮🇱
+       */
+      "FLAG_IL" = "🇮🇱",
+      /**
+       * Emoji: 🇮🇹
+       */
+      "FLAG_IT" = "🇮🇹",
+      /**
+       * Emoji: 🇨🇮
+       */
+      "FLAG_CI" = "🇨🇮",
+      /**
+       * Emoji: 🇯🇲
+       */
+      "FLAG_JM" = "🇯🇲",
+      /**
+       * Emoji: 🇯🇵
+       */
+      "FLAG_JP" = "🇯🇵",
+      /**
+       * Emoji: 🇯🇪
+       */
+      "FLAG_JE" = "🇯🇪",
+      /**
+       * Emoji: 🇯🇴
+       */
+      "FLAG_JO" = "🇯🇴",
+      /**
+       * Emoji: 🇰🇿
+       */
+      "FLAG_KZ" = "🇰🇿",
+      /**
+       * Emoji: 🇰🇪
+       */
+      "FLAG_KE" = "🇰🇪",
+      /**
+       * Emoji: 🇰🇮
+       */
+      "FLAG_KI" = "🇰🇮",
+      /**
+       * Emoji: 🇽🇰
+       */
+      "FLAG_XK" = "🇽🇰",
+      /**
+       * Emoji: 🇰🇼
+       */
+      "FLAG_KW" = "🇰🇼",
+      /**
+       * Emoji: 🇰🇬
+       */
+      "FLAG_KG" = "🇰🇬",
+      /**
+       * Emoji: 🇱🇦
+       */
+      "FLAG_LA" = "🇱🇦",
+      /**
+       * Emoji: 🇱🇻
+       */
+      "FLAG_LV" = "🇱🇻",
+      /**
+       * Emoji: 🇱🇧
+       */
+      "FLAG_LB" = "🇱🇧",
+      /**
+       * Emoji: 🇱🇸
+       */
+      "FLAG_LS" = "🇱🇸",
+      /**
+       * Emoji: 🇱🇷
+       */
+      "FLAG_LR" = "🇱🇷",
+      /**
+       * Emoji: 🇱🇾
+       */
+      "FLAG_LY" = "🇱🇾",
+      /**
+       * Emoji: 🇱🇮
+       */
+      "FLAG_LI" = "🇱🇮",
+      /**
+       * Emoji: 🇱🇹
+       */
+      "FLAG_LT" = "🇱🇹",
+      /**
+       * Emoji: 🇱🇺
+       */
+      "FLAG_LU" = "🇱🇺",
+      /**
+       * Emoji: 🇲🇴
+       */
+      "FLAG_MO" = "🇲🇴",
+      /**
+       * Emoji: 🇲🇰
+       */
+      "FLAG_MK" = "🇲🇰",
+      /**
+       * Emoji: 🇲🇬
+       */
+      "FLAG_MG" = "🇲🇬",
+      /**
+       * Emoji: 🇲🇼
+       */
+      "FLAG_MW" = "🇲🇼",
+      /**
+       * Emoji: 🇲🇾
+       */
+      "FLAG_MY" = "🇲🇾",
+      /**
+       * Emoji: 🇲🇻
+       */
+      "FLAG_MV" = "🇲🇻",
+      /**
+       * Emoji: 🇲🇱
+       */
+      "FLAG_ML" = "🇲🇱",
+      /**
+       * Emoji: 🇲🇹
+       */
+      "FLAG_MT" = "🇲🇹",
+      /**
+       * Emoji: 🇲🇭
+       */
+      "FLAG_MH" = "🇲🇭",
+      /**
+       * Emoji: 🇲🇷
+       */
+      "FLAG_MR" = "🇲🇷",
+      /**
+       * Emoji: 🇲🇺
+       */
+      "FLAG_MU" = "🇲🇺",
+      /**
+       * Emoji: 🇲🇽
+       */
+      "FLAG_MX" = "🇲🇽",
+      /**
+       * Emoji: 🇫🇲
+       */
+      "FLAG_FM" = "🇫🇲",
+      /**
+       * Emoji: 🇲🇩
+       */
+      "FLAG_MD" = "🇲🇩",
+      /**
+       * Emoji: 🇲🇨
+       */
+      "FLAG_MC" = "🇲🇨",
+      /**
+       * Emoji: 🇲🇳
+       */
+      "FLAG_MN" = "🇲🇳",
+      /**
+       * Emoji: 🇲🇪
+       */
+      "FLAG_ME" = "🇲🇪",
+      /**
+       * Emoji: 🇲🇸
+       */
+      "FLAG_MS" = "🇲🇸",
+      /**
+       * Emoji: 🇲🇦
+       */
+      "FLAG_MA" = "🇲🇦",
+      /**
+       * Emoji: 🇲🇿
+       */
+      "FLAG_MZ" = "🇲🇿",
+      /**
+       * Emoji: 🇲🇲
+       */
+      "FLAG_MM" = "🇲🇲",
+      /**
+       * Emoji: 🇳🇦
+       */
+      "FLAG_NA" = "🇳🇦",
+      /**
+       * Emoji: 🇳🇷
+       */
+      "FLAG_NR" = "🇳🇷",
+      /**
+       * Emoji: 🇳🇵
+       */
+      "FLAG_NP" = "🇳🇵",
+      /**
+       * Emoji: 🇳🇱
+       */
+      "FLAG_NL" = "🇳🇱",
+      /**
+       * Emoji: 🇳🇨
+       */
+      "FLAG_NC" = "🇳🇨",
+      /**
+       * Emoji: 🇳🇿
+       */
+      "FLAG_NZ" = "🇳🇿",
+      /**
+       * Emoji: 🇳🇮
+       */
+      "FLAG_NI" = "🇳🇮",
+      /**
+       * Emoji: 🇳🇪
+       */
+      "FLAG_NE" = "🇳🇪",
+      /**
+       * Emoji: 🇳🇬
+       */
+      "FLAG_NG" = "🇳🇬",
+      /**
+       * Emoji: 🇳🇺
+       */
+      "FLAG_NU" = "🇳🇺",
+      /**
+       * Emoji: 🇰🇵
+       */
+      "FLAG_KP" = "🇰🇵",
+      /**
+       * Emoji: 🇳🇴
+       */
+      "FLAG_NO" = "🇳🇴",
+      /**
+       * Emoji: 🇴🇲
+       */
+      "FLAG_OM" = "🇴🇲",
+      /**
+       * Emoji: 🇵🇰
+       */
+      "FLAG_PK" = "🇵🇰",
+      /**
+       * Emoji: 🇵🇼
+       */
+      "FLAG_PW" = "🇵🇼",
+      /**
+       * Emoji: 🇵🇸
+       */
+      "FLAG_PS" = "🇵🇸",
+      /**
+       * Emoji: 🇵🇦
+       */
+      "FLAG_PA" = "🇵🇦",
+      /**
+       * Emoji: 🇵🇬
+       */
+      "FLAG_PG" = "🇵🇬",
+      /**
+       * Emoji: 🇵🇾
+       */
+      "FLAG_PY" = "🇵🇾",
+      /**
+       * Emoji: 🇵🇪
+       */
+      "FLAG_PE" = "🇵🇪",
+      /**
+       * Emoji: 🇵🇭
+       */
+      "FLAG_PH" = "🇵🇭",
+      /**
+       * Emoji: 🇵🇱
+       */
+      "FLAG_PL" = "🇵🇱",
+      /**
+       * Emoji: 🇵🇹
+       */
+      "FLAG_PT" = "🇵🇹",
+      /**
+       * Emoji: 🇵🇷
+       */
+      "FLAG_PR" = "🇵🇷",
+      /**
+       * Emoji: 🇶🇦
+       */
+      "FLAG_QA" = "🇶🇦",
+      /**
+       * Emoji: 🇷🇴
+       */
+      "FLAG_RO" = "🇷🇴",
+      /**
+       * Emoji: 🇷🇺
+       */
+      "FLAG_RU" = "🇷🇺",
+      /**
+       * Emoji: 🇷🇼
+       */
+      "FLAG_RW" = "🇷🇼",
+      /**
+       * Emoji: 🇸🇭
+       */
+      "FLAG_SH" = "🇸🇭",
+      /**
+       * Emoji: 🇰🇳
+       */
+      "FLAG_KN" = "🇰🇳",
+      /**
+       * Emoji: 🇱🇨
+       */
+      "FLAG_LC" = "🇱🇨",
+      /**
+       * Emoji: 🇻🇨
+       */
+      "FLAG_VC" = "🇻🇨",
+      /**
+       * Emoji: 🇼🇸
+       */
+      "FLAG_WS" = "🇼🇸",
+      /**
+       * Emoji: 🇸🇲
+       */
+      "FLAG_SM" = "🇸🇲",
+      /**
+       * Emoji: 🇸🇹
+       */
+      "FLAG_ST" = "🇸🇹",
+      /**
+       * Emoji: 🇸🇦
+       */
+      "FLAG_SA" = "🇸🇦",
+      /**
+       * Emoji: 🇸🇳
+       */
+      "FLAG_SN" = "🇸🇳",
+      /**
+       * Emoji: 🇷🇸
+       */
+      "FLAG_RS" = "🇷🇸",
+      /**
+       * Emoji: 🇸🇨
+       */
+      "FLAG_SC" = "🇸🇨",
+      /**
+       * Emoji: 🇸🇱
+       */
+      "FLAG_SL" = "🇸🇱",
+      /**
+       * Emoji: 🇸🇬
+       */
+      "FLAG_SG" = "🇸🇬",
+      /**
+       * Emoji: 🇸🇰
+       */
+      "FLAG_SK" = "🇸🇰",
+      /**
+       * Emoji: 🇸🇮
+       */
+      "FLAG_SI" = "🇸🇮",
+      /**
+       * Emoji: 🇸🇧
+       */
+      "FLAG_SB" = "🇸🇧",
+      /**
+       * Emoji: 🇸🇴
+       */
+      "FLAG_SO" = "🇸🇴",
+      /**
+       * Emoji: 🇿🇦
+       */
+      "FLAG_ZA" = "🇿🇦",
+      /**
+       * Emoji: 🇰🇷
+       */
+      "FLAG_KR" = "🇰🇷",
+      /**
+       * Emoji: 🇪🇸
+       */
+      "FLAG_ES" = "🇪🇸",
+      /**
+       * Emoji: 🇱🇰
+       */
+      "FLAG_LK" = "🇱🇰",
+      /**
+       * Emoji: 🇸🇩
+       */
+      "FLAG_SD" = "🇸🇩",
+      /**
+       * Emoji: 🇸🇷
+       */
+      "FLAG_SR" = "🇸🇷",
+      /**
+       * Emoji: 🇸🇿
+       */
+      "FLAG_SZ" = "🇸🇿",
+      /**
+       * Emoji: 🇸🇪
+       */
+      "FLAG_SE" = "🇸🇪",
+      /**
+       * Emoji: 🇨🇭
+       */
+      "FLAG_CH" = "🇨🇭",
+      /**
+       * Emoji: 🇸🇾
+       */
+      "FLAG_SY" = "🇸🇾",
+      /**
+       * Emoji: 🇹🇼
+       */
+      "FLAG_TW" = "🇹🇼",
+      /**
+       * Emoji: 🇹🇯
+       */
+      "FLAG_TJ" = "🇹🇯",
+      /**
+       * Emoji: 🇹🇿
+       */
+      "FLAG_TZ" = "🇹🇿",
+      /**
+       * Emoji: 🇹🇭
+       */
+      "FLAG_TH" = "🇹🇭",
+      /**
+       * Emoji: 🇹🇱
+       */
+      "FLAG_TL" = "🇹🇱",
+      /**
+       * Emoji: 🇹🇬
+       */
+      "FLAG_TG" = "🇹🇬",
+      /**
+       * Emoji: 🇹🇴
+       */
+      "FLAG_TO" = "🇹🇴",
+      /**
+       * Emoji: 🇹🇹
+       */
+      "FLAG_TT" = "🇹🇹",
+      /**
+       * Emoji: 🇹🇳
+       */
+      "FLAG_TN" = "🇹🇳",
+      /**
+       * Emoji: 🇹🇷
+       */
+      "FLAG_TR" = "🇹🇷",
+      /**
+       * Emoji: 🇹🇲
+       */
+      "FLAG_TM" = "🇹🇲",
+      /**
+       * Emoji: 🇹🇻
+       */
+      "FLAG_TV" = "🇹🇻",
+      /**
+       * Emoji: 🇺🇬
+       */
+      "FLAG_UG" = "🇺🇬",
+      /**
+       * Emoji: 🇺🇦
+       */
+      "FLAG_UA" = "🇺🇦",
+      /**
+       * Emoji: 🇦🇪
+       */
+      "FLAG_AE" = "🇦🇪",
+      /**
+       * Emoji: 🇬🇧
+       *
+       * Aliases: `FLAG_UK`,`BRITAIN`,`UNITED_KINGDOM`
+       */
+      "FLAG_GB" = "🇬🇧",
+      /**
+       * Emoji: 🇬🇧
+       *
+       * Aliases: `FLAG_GB`,`BRITAIN`,`UNITED_KINGDOM`
+       */
+      "FLAG_UK" = "🇬🇧",
+      /**
+       * Emoji: 🇬🇧
+       *
+       * Aliases: `FLAG_GB`,`FLAG_UK`,`UNITED_KINGDOM`
+       */
+      "BRITAIN" = "🇬🇧",
+      /**
+       * Emoji: 🇬🇧
+       *
+       * Aliases: `FLAG_GB`,`FLAG_UK`,`BRITAIN`
+       */
+      "UNITED_KINGDOM" = "🇬🇧",
+      /**
+       * Emoji: 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+       *
+       * Aliases: `FLAG_ENG`,`FLAG_EN`
+       */
+      "ENGLAND" = "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      /**
+       * Emoji: 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+       *
+       * Aliases: `ENGLAND`,`FLAG_EN`
+       */
+      "FLAG_ENG" = "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      /**
+       * Emoji: 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+       *
+       * Aliases: `ENGLAND`,`FLAG_ENG`
+       */
+      "FLAG_EN" = "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      /**
+       * Emoji: 🏴󠁧󠁢󠁳󠁣󠁴󠁿
+       *
+       * Aliases: `FLAG_SCT`
+       */
+      "SCOTLAND" = "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+      /**
+       * Emoji: 🏴󠁧󠁢󠁳󠁣󠁴󠁿
+       *
+       * Aliases: `SCOTLAND`
+       */
+      "FLAG_SCT" = "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+      /**
+       * Emoji: 🏴󠁧󠁢󠁷󠁬󠁳󠁿
+       *
+       * Aliases: `FLAG_WLS`
+       */
+      "WALES" = "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+      /**
+       * Emoji: 🏴󠁧󠁢󠁷󠁬󠁳󠁿
+       *
+       * Aliases: `WALES`
+       */
+      "FLAG_WLS" = "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+      /**
+       * Emoji: 🇺🇸
+       *
+       * Aliases: `UNITED_STATES`
+       */
+      "FLAG_US" = "🇺🇸",
+      /**
+       * Emoji: 🇺🇸
+       *
+       * Aliases: `FLAG_US`
+       */
+      "UNITED_STATES" = "🇺🇸",
+      /**
+       * Emoji: 🇻🇮
+       */
+      "FLAG_VI" = "🇻🇮",
+      /**
+       * Emoji: 🇺🇾
+       */
+      "FLAG_UY" = "🇺🇾",
+      /**
+       * Emoji: 🇺🇿
+       */
+      "FLAG_UZ" = "🇺🇿",
+      /**
+       * Emoji: 🇻🇺
+       */
+      "FLAG_VU" = "🇻🇺",
+      /**
+       * Emoji: 🇻🇦
+       */
+      "FLAG_VA" = "🇻🇦",
+      /**
+       * Emoji: 🇻🇪
+       */
+      "FLAG_VE" = "🇻🇪",
+      /**
+       * Emoji: 🇻🇳
+       */
+      "FLAG_VN" = "🇻🇳",
+      /**
+       * Emoji: 🇼🇫
+       */
+      "FLAG_WF" = "🇼🇫",
+      /**
+       * Emoji: 🇪🇭
+       */
+      "FLAG_EH" = "🇪🇭",
+      /**
+       * Emoji: 🇾🇪
+       */
+      "FLAG_YE" = "🇾🇪",
+      /**
+       * Emoji: 🇿🇲
+       */
+      "FLAG_ZM" = "🇿🇲",
+      /**
+       * Emoji: 🇿🇼
+       */
+      "FLAG_ZW" = "🇿🇼",
+      /**
+       * Emoji: 🇷🇪
+       */
+      "FLAG_RE" = "🇷🇪",
+      /**
+       * Emoji: 🇦🇽
+       */
+      "FLAG_AX" = "🇦🇽",
+      /**
+       * Emoji: 🇹🇦
+       */
+      "FLAG_TA" = "🇹🇦",
+      /**
+       * Emoji: 🇮🇴
+       */
+      "FLAG_IO" = "🇮🇴",
+      /**
+       * Emoji: 🇧🇶
+       */
+      "FLAG_BQ" = "🇧🇶",
+      /**
+       * Emoji: 🇨🇽
+       */
+      "FLAG_CX" = "🇨🇽",
+      /**
+       * Emoji: 🇨🇨
+       */
+      "FLAG_CC" = "🇨🇨",
+      /**
+       * Emoji: 🇬🇬
+       */
+      "FLAG_GG" = "🇬🇬",
+      /**
+       * Emoji: 🇮🇲
+       */
+      "FLAG_IM" = "🇮🇲",
+      /**
+       * Emoji: 🇾🇹
+       */
+      "FLAG_YT" = "🇾🇹",
+      /**
+       * Emoji: 🇳🇫
+       */
+      "FLAG_NF" = "🇳🇫",
+      /**
+       * Emoji: 🇵🇳
+       */
+      "FLAG_PN" = "🇵🇳",
+      /**
+       * Emoji: 🇧🇱
+       */
+      "FLAG_BL" = "🇧🇱",
+      /**
+       * Emoji: 🇵🇲
+       */
+      "FLAG_PM" = "🇵🇲",
+      /**
+       * Emoji: 🇬🇸
+       */
+      "FLAG_GS" = "🇬🇸",
+      /**
+       * Emoji: 🇹🇰
+       */
+      "FLAG_TK" = "🇹🇰",
+      /**
+       * Emoji: 🇧🇻
+       */
+      "FLAG_BV" = "🇧🇻",
+      /**
+       * Emoji: 🇭🇲
+       */
+      "FLAG_HM" = "🇭🇲",
+      /**
+       * Emoji: 🇸🇯
+       */
+      "FLAG_SJ" = "🇸🇯",
+      /**
+       * Emoji: 🇺🇲
+       */
+      "FLAG_UM" = "🇺🇲",
+      /**
+       * Emoji: 🇮🇨
+       */
+      "FLAG_IC" = "🇮🇨",
+      /**
+       * Emoji: 🇪🇦
+       */
+      "FLAG_EA" = "🇪🇦",
+      /**
+       * Emoji: 🇨🇵
+       */
+      "FLAG_CP" = "🇨🇵",
+      /**
+       * Emoji: 🇩🇬
+       */
+      "FLAG_DG" = "🇩🇬",
+      /**
+       * Emoji: 🇦🇸
+       */
+      "FLAG_AS" = "🇦🇸",
+      /**
+       * Emoji: 🇦🇶
+       */
+      "FLAG_AQ" = "🇦🇶",
+      /**
+       * Emoji: 🇻🇬
+       */
+      "FLAG_VG" = "🇻🇬",
+      /**
+       * Emoji: 🇨🇰
+       */
+      "FLAG_CK" = "🇨🇰",
+      /**
+       * Emoji: 🇨🇼
+       */
+      "FLAG_CW" = "🇨🇼",
+      /**
+       * Emoji: 🇪🇺
+       */
+      "FLAG_EU" = "🇪🇺",
+      /**
+       * Emoji: 🇬🇫
+       */
+      "FLAG_GF" = "🇬🇫",
+      /**
+       * Emoji: 🇹🇫
+       */
+      "FLAG_TF" = "🇹🇫",
+      /**
+       * Emoji: 🇬🇵
+       */
+      "FLAG_GP" = "🇬🇵",
+      /**
+       * Emoji: 🇲🇶
+       */
+      "FLAG_MQ" = "🇲🇶",
+      /**
+       * Emoji: 🇲🇵
+       */
+      "FLAG_MP" = "🇲🇵",
+      /**
+       * Emoji: 🇸🇽
+       */
+      "FLAG_SX" = "🇸🇽",
+      /**
+       * Emoji: 🇸🇸
+       */
+      "FLAG_SS" = "🇸🇸",
+      /**
+       * Emoji: 🇹🇨
+       */
+      "FLAG_TC" = "🇹🇨",
+      /**
+       * Emoji: 🇲🇫
+       */
+      "FLAG_MF" = "🇲🇫",
+      /**
+       * Emoji: 🇺🇳
+       *
+       * Aliases: `FLAG_UN`
+       */
+      "UNITED_NATIONS" = "🇺🇳",
+      /**
+       * Emoji: 🇺🇳
+       *
+       * Aliases: `UNITED_NATIONS`
+       */
+      "FLAG_UN" = "🇺🇳",
+    }
+  }
 }
