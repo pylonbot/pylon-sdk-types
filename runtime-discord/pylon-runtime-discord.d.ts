@@ -2252,6 +2252,8 @@ declare module discord {
     /**
      * How often (in seconds) users are able to send messages.
      *
+     * The default value of `0` means the feature is disabled for this channel.
+     *
      * Note: Discord calls this "slow-mode".
      */
     readonly rateLimitPerUser: number | null;
@@ -2328,6 +2330,22 @@ declare module discord {
      * Typically unused by bots, but can be used to indicate a command response is "loading" or "processing."
      */
     triggerTypingIndicator(): Promise<void>;
+
+    /**
+     * Bulk-deletes messages from the channel. The bot must have `MANAGE_MESSAGES` permission in the channel to perform this action.
+     *
+     * You must supply no less than 2 and no greater than 100 messages to be deleted.
+     *
+     * If any supplied message is older than 2 weeks, the request will fail.
+     *
+     * Note: This action, when completed, will fire a [[discord.Event.MESSAGE_DELETE_BULK]] event.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param messages An iterable (Array, Set, etc) of message ids to delete.
+     *
+     */
+    bulkDeleteMessages(messages: Iterable<Snowflake>): Promise<void>;
   }
 
   namespace GuildNewsChannel {
@@ -2428,6 +2446,22 @@ declare module discord {
      * Typically unused by bots, but can be used to indicate a command response is "loading" or "processing."
      */
     triggerTypingIndicator(): Promise<void>;
+
+    /**
+     * Bulk-deletes messages from the channel. The bot must have `MANAGE_MESSAGES` permission in the channel to perform this action.
+     *
+     * You must supply no less than 2 and no greater than 100 messages to be deleted.
+     *
+     * If any supplied message is older than 2 weeks, the request will fail.
+     *
+     * Note: This action, when completed, will fire a [[discord.Event.MESSAGE_DELETE_BULK]] event.
+     *
+     * If an error occurs, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param messages An iterable (array, set, etc) of message ids to delete.
+     *
+     */
+    bulkDeleteMessages(messages: Iterable<Snowflake>): Promise<void>;
   }
 
   namespace GuildStoreChannel {
@@ -3494,6 +3528,24 @@ declare module discord {
      * @param user A user id or reference to a user object.
      */
     deleteReaction(emoji: string, user: Snowflake | User): Promise<void>;
+
+    /**
+     * Deletes all the reactions on this message.
+     *
+     * Note: Will fire a [[Event.MESSAGE_REACTION_REMOVE_ALL]] event, if registered.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     */
+    deleteAllReactions(): Promise<void>;
+
+    /**
+     * Deletes all reactions for the emoji specified on this message.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     */
+    deleteAllReactionsForEmoji(emoji: string): Promise<void>;
 
     /**
      * Attempts to edit a message. Messages may only be edited by their author.
@@ -5610,7 +5662,7 @@ declare module discord {
       /**
        * Registers a command that expects arguments.
        *
-       * @deprecated Replaced by [[discord.command.CommandGroup.on on]].
+       * @deprecated Replaced by [[discord.command.CommandGroup.on]].
        */
       registerCommand<T extends CommandArgumentsContainer>(
         options: string | ICommandOptions,
@@ -5621,7 +5673,7 @@ declare module discord {
       /**
        * Registers a command that expects no arguments.
        *
-       * @deprecated Replaced by [[discord.command.CommandGroup.raw raw]].
+       * @deprecated Replaced by [[discord.command.CommandGroup.raw]].
        */
       registerCommand(
         options: string | ICommandOptions,
@@ -5629,9 +5681,32 @@ declare module discord {
       ): this;
 
       /**
-       * Executes the command group as an ICommandExecutor. This is an internal API, and is subject to breakage.
+       * Manually executes the command group given a [[discord.Message]]. Useful if you specify `{ register: false }` when instantiating a new CommandGroup.
        *
-       * @private - internal API, do not use.
+       * If the message is not to be handled by this command group (given the command prefix and command name) the Promise will resolve as `false`.
+       *
+       * If the message was otherwise handled and executed, it will otherwise resolve `true`.
+       *
+       * Note: Use [[discord.command.CommandGroup.checkMessage]] to check (without executing) if the CommandGroup will execute for the given message.
+       *
+       * @returns `true` if a command was handled and executed successfully. The function will throw if the command handler errors.
+       *
+       */
+      handleMessage(message: discord.Message): Promise<boolean>;
+
+      /**
+       * Determines if the command group will execute given the supplied message, without executing the command.
+       *
+       * Note: Use [[discord.command.CommandGroup.handleMessage]] to execute a command within the CommandGroup.
+       *
+       * @param message
+       */
+      checkMessage(message: discord.Message): Promise<boolean>;
+
+      /**
+       * Executes the command group as an ICommandExecutor. This is an Internal API, and is subject to breakage.
+       *
+       * @private - Internal API, do not use. Use [[discord.command.CommandGroup.handleMessage]] to execute command groups manually.
        */
       execute(
         message: discord.GuildMemberMessage,
