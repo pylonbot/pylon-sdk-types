@@ -832,10 +832,20 @@ declare module discord {
      *
      * Note: The user does not have to be a member of the guild to ban them.
      *
-     * @param userId The user id to ban.
+     * @param user The user id or user-like object to ban.
      * @param options Options for the ban. All values are optional.
      */
-    createBan(userId: Snowflake, options?: discord.Guild.IGuildBanOptions): Promise<void>;
+    createBan(
+      user: Snowflake | User | GuildMember,
+      options?: discord.Guild.IGuildBanOptions
+    ): Promise<void>;
+
+    /**
+     * Un-bans or otherwise removes a ban for a specific user from the guild.
+     *
+     * @param user The user id or user-like object to un-ban.
+     */
+    deleteBan(user: Snowflake | User | GuildMember): Promise<void>;
 
     /**
      * Fetches an array of all the roles on this guild.
@@ -1497,7 +1507,7 @@ declare module discord {
       /**
        * If the user is in a voice channel and this property is specified, it moves the member to the specified channel, by id.
        */
-      channelId?: Snowflake;
+      channelId?: Snowflake | null;
     }
   }
 
@@ -1545,7 +1555,7 @@ declare module discord {
     /**
      * Fetches an instance of the user for this guild member.
      *
-     * @deprecated You can simply reference [[discord.GuildMember.user]] rather than asynchronously fetching the user.
+     * @deprecated Simply use the [[discord.GuildMember.user]] property.
      */
     getUser(): Promise<User>;
 
@@ -1561,9 +1571,9 @@ declare module discord {
      *
      * If an error occurs, a [[discord.ApiError]] is thrown.
      *
-     * @param options Properties to modify on this member.
+     * @param updateData Properties to modify on this member.
      */
-    edit(options: GuildMember.IGuildMemberOptions): Promise<void>;
+    edit(updateData: GuildMember.IGuildMemberOptions): Promise<void>;
 
     /**
      * Returns `true` if the member can perform actions that require the specified permission. Otherwise, `false` is returned.
@@ -1842,7 +1852,7 @@ declare module discord {
    *
    * Note: Pylon should never provide an instance of [[discord.Channel]] directly. You will always be given a more specific child class.
    *
-   * A channel can be type-refined by checking it's [[discord.Channel.type]] type against [[discord.Channel.Type]].
+   * A channel can be type-refined by checking its [[discord.Channel.type]] type against [[discord.Channel.Type]].
    */
   class Channel {
     /**
@@ -1880,20 +1890,39 @@ declare module discord {
     getMessage(messageId: string): Promise<Message | null>;
 
     /**
-     * Attempts to send a message to this channel.
+     * Attempts to send a message with additional options (embed, tts, allowedMentions) to this channel.
      *
-     * See [[discord.Message.OutgoingMessage]] for possible options.
+     * Note: `content` OR `embed` **must** be set on the options properties.
+     *
+     * See [[discord.Message.OutgoingMessageOptions]] for descriptions on possible options.
      *
      * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
      *
-     * @param messageData Outgoing message data.
+     * @param outgoingMessageOptions Outgoing message options.
      */
     sendMessage(
-      messageData:
-        | discord.Message.OutgoingMessage
-        | Promise<discord.Message.OutgoingMessage>
-        | (() => Promise<discord.Message.OutgoingMessage>)
+      outgoingMessageOptions: Message.OutgoingMessageArgument<Message.OutgoingMessageOptions>
     ): Promise<Message>;
+
+    /**
+     * Attempts to send a simple message from a string to this channel.
+     *
+     * Note: If you'd like to send an embed or pass additional options, see [[discord.Message.OutgoingMessageOptions]]
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param content Content to use for the outgoing message.
+     */
+    sendMessage(content: Message.OutgoingMessageArgument<string>): Promise<Message>;
+
+    /**
+     * Attempts to send a message with only a [[discord.Embed]] attached.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param embed The embed object you'd like to send to the channel.
+     */
+    sendMessage(embed: Message.OutgoingMessageArgument<Embed>): Promise<Message>;
 
     /**
      * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
@@ -1924,20 +1953,39 @@ declare module discord {
     getMessage(messageId: string): Promise<Message | null>;
 
     /**
-     * Attempts to send a message to this channel.
+     * Attempts to send a message with additional options (embed, tts, allowedMentions) to this channel.
      *
-     * See [[discord.Message.OutgoingMessage]] for possible options.
+     * Note: `content` OR `embed` **must** be set on the options properties.
+     *
+     * See [[discord.Message.OutgoingMessageOptions]] for descriptions on possible options.
      *
      * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
      *
-     * @param messageData Outgoing message data.
+     * @param outgoingMessageOptions Outgoing message options.
      */
     sendMessage(
-      messageData:
-        | discord.Message.OutgoingMessage
-        | Promise<discord.Message.OutgoingMessage>
-        | (() => Promise<discord.Message.OutgoingMessage>)
+      outgoingMessageOptions: Message.OutgoingMessageArgument<Message.OutgoingMessageOptions>
     ): Promise<Message>;
+
+    /**
+     * Attempts to send a simple message from a string to this channel.
+     *
+     * Note: If you'd like to send an embed or pass additional options, see [[discord.Message.OutgoingMessageOptions]]
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param content Content to use for the outgoing message.
+     */
+    sendMessage(content: Message.OutgoingMessageArgument<string>): Promise<Message>;
+
+    /**
+     * Attempts to send a message with only a [[discord.Embed]] attached.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param embed The embed object you'd like to send to the channel.
+     */
+    sendMessage(embed: Message.OutgoingMessageArgument<Embed>): Promise<Message>;
 
     /**
      * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
@@ -1993,7 +2041,7 @@ declare module discord {
      */
     readonly permissionOverwrites: Channel.IPermissionOverwrite[];
     /**
-     * If the channel resides within a [[discord.GuildCategory]], it's id is set on this property.
+     * If the channel resides within a [[discord.GuildCategory]], its id is set on this property.
      */
     readonly parentId: Snowflake | null;
     /**
@@ -2238,20 +2286,39 @@ declare module discord {
     getMessage(messageId: string): Promise<Message | null>;
 
     /**
-     * Attempts to send a message to this channel.
+     * Attempts to send a message with additional options (embed, tts, allowedMentions) to this channel.
      *
-     * See [[discord.Message.OutgoingMessage]] for possible options.
+     * Note: `content` OR `embed` **must** be set on the options properties.
+     *
+     * See [[discord.Message.OutgoingMessageOptions]] for descriptions on possible options.
      *
      * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
      *
-     * @param messageData Outgoing message data.
+     * @param outgoingMessageOptions Outgoing message options.
      */
     sendMessage(
-      messageData:
-        | discord.Message.OutgoingMessage
-        | Promise<discord.Message.OutgoingMessage>
-        | (() => Promise<discord.Message.OutgoingMessage>)
+      outgoingMessageOptions: Message.OutgoingMessageArgument<Message.OutgoingMessageOptions>
     ): Promise<Message>;
+
+    /**
+     * Attempts to send a simple message from a string to this channel.
+     *
+     * Note: If you'd like to send an embed or pass additional options, see [[discord.Message.OutgoingMessageOptions]]
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param content Content to use for the outgoing message.
+     */
+    sendMessage(content: Message.OutgoingMessageArgument<string>): Promise<Message>;
+
+    /**
+     * Attempts to send a message with only a [[discord.Embed]] attached.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param embed The embed object you'd like to send to the channel.
+     */
+    sendMessage(embed: Message.OutgoingMessageArgument<Embed>): Promise<Message>;
 
     /**
      * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
@@ -2268,11 +2335,11 @@ declare module discord {
       /**
        * The topic displayed above this channel.
        */
-      readonly topic: string | null;
+      readonly topic?: string | null;
       /**
        * If `true`, sets the NSFW setting to enabled for this channel.
        */
-      readonly nsfw: boolean;
+      readonly nsfw?: boolean;
     }
   }
 
@@ -2319,20 +2386,39 @@ declare module discord {
     getMessage(messageId: string): Promise<Message | null>;
 
     /**
-     * Attempts to send a message to this channel.
+     * Attempts to send a message with additional options (embed, tts, allowedMentions) to this channel.
      *
-     * See [[discord.Message.OutgoingMessage]] for possible options.
+     * Note: `content` OR `embed` **must** be set on the options properties.
+     *
+     * See [[discord.Message.OutgoingMessageOptions]] for descriptions on possible options.
      *
      * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
      *
-     * @param messageData Outgoing message data.
+     * @param outgoingMessageOptions Outgoing message options.
      */
     sendMessage(
-      messageData:
-        | discord.Message.OutgoingMessage
-        | Promise<discord.Message.OutgoingMessage>
-        | (() => Promise<discord.Message.OutgoingMessage>)
+      outgoingMessageOptions: Message.OutgoingMessageArgument<Message.OutgoingMessageOptions>
     ): Promise<Message>;
+
+    /**
+     * Attempts to send a simple message from a string to this channel.
+     *
+     * Note: If you'd like to send an embed or pass additional options, see [[discord.Message.OutgoingMessageOptions]]
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param content Content to use for the outgoing message.
+     */
+    sendMessage(content: Message.OutgoingMessageArgument<string>): Promise<Message>;
+
+    /**
+     * Attempts to send a message with only a [[discord.Embed]] attached.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param embed The embed object you'd like to send to the channel.
+     */
+    sendMessage(embed: Message.OutgoingMessageArgument<Embed>): Promise<Message>;
 
     /**
      * Triggers the `*Username* is typing...` message to appear near the text input box for users focused on the channel.
@@ -3151,6 +3237,8 @@ declare module discord {
     interface IOutgoingMessageOptions {
       /**
        * The message's text content.
+       *
+       * If the message has no embed, the content must be greater than 0 characters in length.
        */
       content?: string;
       /**
@@ -3159,8 +3247,10 @@ declare module discord {
       tts?: boolean;
       /**
        * An optional [[discord.Embed]] to include with this message.
+       *
+       * If `null`, the embed will be removed. If removing the embed, you must send the content property.
        */
-      embed?: Embed | Embed.IEmbed;
+      embed?: Embed | null;
       /**
        * If set, will restrict the notifications sent with this message if mention strings are included.
        *
@@ -3178,8 +3268,9 @@ declare module discord {
      */
     type OutgoingMessageOptions = IOutgoingMessageOptions &
       (
-        | { content: string; embed?: Embed | Embed.IEmbed }
-        | { content?: string; embed: Embed | Embed.IEmbed }
+        | { content: string; embed?: Embed }
+        | { content?: string; embed: Embed }
+        | { content: string; embed: null }
       );
 
     /**
@@ -3215,6 +3306,13 @@ declare module discord {
      * A type alias to describe possible outgoing message types.
      */
     type OutgoingMessage = string | OutgoingMessageOptions | Embed;
+
+    /**
+     * A type alias to describe the possible configurations to use when sending a message.
+     *
+     * If a Promise-like type is used, the bot will send a typing indicator for the channel before resolving the Promise and sending its content.
+     */
+    type OutgoingMessageArgument<T extends OutgoingMessage> = T | Promise<T> | (() => Promise<T>);
   }
 
   class Message {
@@ -3328,19 +3426,39 @@ declare module discord {
     getGuild(): Promise<Guild | null>;
 
     /**
-     * Attempts to send a message in the channel this message was sent in.
+     * Attempts to send a message with additional options (embed, tts, allowedMentions) to the channel this message was sent in.
      *
-     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     * Note: `content` OR `embed` **must** be set on the options properties.
      *
-     * @param messageData The outgoing message data you'd like to send. May be a simple string, a [[discord.Embed]] object, or an object containing a combination of the two plus additional options. See [[discord.Message.IOutgoingMessageOptions]] for a full list of options.
-     * @returns The newly created message object.
+     * See [[discord.Message.OutgoingMessageOptions]] for descriptions on possible options.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param outgoingMessageOptions Outgoing message options.
      */
     reply(
-      messageData:
-        | discord.Message.OutgoingMessage
-        | Promise<discord.Message.OutgoingMessage>
-        | (() => Promise<discord.Message.OutgoingMessage>)
+      outgoingMessageOptions: Message.OutgoingMessageArgument<Message.OutgoingMessageOptions>
     ): Promise<Message>;
+
+    /**
+     * Attempts to send a simple text message to the channel this message was sent in.
+     *
+     * Note: If you'd like to send an embed or pass additional options, see [[discord.Message.OutgoingMessageOptions]]
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param content Content to use for the outgoing message.
+     */
+    reply(content: Message.OutgoingMessageArgument<string>): Promise<Message>;
+
+    /**
+     * Attempts to send an [[discord.Embed]] to the channel this message was sent in.
+     *
+     * If an error occurs sending this message, a [[discord.ApiError]] exception will be thrown.
+     *
+     * @param embed The embed object you'd like to send to the channel.
+     */
+    reply(embed: Message.OutgoingMessageArgument<Embed>): Promise<Message>;
 
     /**
      * Attempts to permanently delete this message.
@@ -3378,14 +3496,47 @@ declare module discord {
     deleteReaction(emoji: string, user: Snowflake | User): Promise<void>;
 
     /**
-     * Attempts to edit a message. Messages can only be edited by their author.
+     * Attempts to edit a message. Messages may only be edited by their author.
+     *
+     * If you wish to remove an embed from the message, set the `embed` property to null.
+     * The message content may be set to an empty string only if the message has or is receiving an embed with the edit.
+     *
+     * Note: You may not modify `allowedMentions` or `tts` when editing a message, these only apply when a message is initially received.
      *
      * If an error occurred, a [[discord.ApiError]] exception is thrown.
      *
-     * @param messageData New outgoing message data for this message.
+     * @param messageOptions New message options for this message.
      * @returns On success, the Promise resolves as the new message object.
      */
-    edit(messageData: Message.OutgoingMessage): Promise<Message>;
+    edit(
+      messageOptions: Pick<Message.OutgoingMessageOptions, "content" | "embed">
+    ): Promise<Message>;
+
+    /**
+     * Attempts to edit a message. Replaces the content with the new provided content.
+     *
+     * Messages may only be edited if authored by the bot.
+     *
+     * Note: If you'd like more options (embeds, allowed mentions, etc) see [[discord.Message.OutgoingMessageOptions]].
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param content New content for this message.
+     * @returns On success, the Promise resolves as the new message object.
+     */
+    edit(content: string): Promise<Message>;
+
+    /**
+     * Attempts to edit a message. Sets the content to an empty string and adds or updates the embed associated with this message.
+     *
+     * Messages may only be edited if authored by the bot.
+     *
+     * If an error occurred, a [[discord.ApiError]] exception is thrown.
+     *
+     * @param embed A new [[discord.Embed]] for this message.
+     * @returns On success, the Promise resolves as the new message object.
+     */
+    edit(embed: Embed): Promise<Message>;
 
     /**
      * Changes the pinned status of this message.
@@ -4261,7 +4412,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_ROLE_UPDATE | "GUILD_ROLE_UPDATE",
-    handler: (event: Event.IGuildRoleUpdate) => Promise<unknown>
+    handler: (event: Event.IGuildRoleUpdate, oldRole: discord.Role) => Promise<unknown>
   ): void;
 
   /**
@@ -4271,7 +4422,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_ROLE_DELETE | "GUILD_ROLE_DELETE",
-    handler: (event: Event.IGuildRoleDelete) => Promise<unknown>
+    handler: (event: Event.IGuildRoleDelete, oldRole: discord.Role) => Promise<unknown>
   ): void;
 
   /**
