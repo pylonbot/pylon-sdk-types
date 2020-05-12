@@ -3074,7 +3074,7 @@ declare module discord {
       /**
        * A message in a channel that denotes a message was pinned.
        */
-      CHANNEL_PINNED_MESSAGE = 4,
+      CHANNEL_PINNED_MESSAGE = 6,
       /**
        * A special message that appears in the system channel that a guild member has joined the server.
        */
