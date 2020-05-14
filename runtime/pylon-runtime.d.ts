@@ -237,6 +237,19 @@ declare module pylon {
     ifNotExists?: boolean;
   }
 
+  interface IKVItemsOptions {
+    /**
+     * Returns keys after `from`. Meaning, if you had the keys `["a", "b", "c"]` in the namespace, calling `kv.items({from: "a"})` would return the items for the keys `["b", "c"]`.
+     */
+    from?: string;
+    /**
+     * The number of keys to return in the list call.
+     *
+     * Default and maximum is `100`. Minimum is `1`.
+     */
+    limit?: number;
+  }
+
   interface IKVListOptions {
     /**
      * Returns keys after `from`. Meaning, if you had the keys `["a", "b", "c"]` in the namespace, calling `kv.list({from: "a"})` would return `["b", "c"]`.
@@ -279,6 +292,12 @@ declare module pylon {
     };
 
     type CasOperation = CasDeleteIfEquals | CasSetIfNotExists | CasCompareAndSwap;
+
+    type Item = {
+      key: string;
+      value: ArrayBuffer | Json;
+      expiresAt: Date | null;
+    };
   }
 
   /**
@@ -411,6 +430,27 @@ declare module pylon {
     list(options?: IKVListOptions): Promise<string[]>;
 
     /**
+     * Exactly like [[pylon.KVNamespace.list list]], except that it returns the key + value pairs instead.
+     *
+     * The maximum [[pylon.IKVItemsOptions.limit limit]] is 100, however.
+     */
+    items(options?: IKVItemsOptions): Promise<KVNamespace.Item[]>;
+
+    /**
+     * Returns the number of keys present in this namespace.
+     */
+    count(): Promise<number>;
+
+    /**
+     * Clears the namespace. Returning the number of keys deleted.
+     *
+     * This operation will delete all the data in the namespace. The data is irrecoverably deleted.
+     *
+     * Use with caution!
+     */
+    clear(): Promise<number>;
+
+    /**
      * Deletes a given key from the namespace. Throwing if the key does not exist, or if `options.prevValue` is set, the previous value is not equal to the
      * value provided.
      *
@@ -531,7 +571,7 @@ declare module pylon {
      *  simpleKv
      *   .transact<number>(key, (prev) => (prev ?? 0) + inc)
      *   .then((val) => val ?? 0);
-     *  
+     *
      * commands.on('incr', ctx => ({key: ctx.string(), inc: ctx.integer()}), async (message, {key, inc}) => {
      *   const next = await incr(key, inc);
      *   await message.reply(`Incremented value to ${next}`);
@@ -600,4 +640,74 @@ declare module pylon {
   }
 
   const kv: KVNamespace;
+
+  /**
+   * Tasks allow you to register your own event handlers to be triggered at specific intervals or times.
+   *
+   * Tasks may not be registered at runtime (within event handler scopes). They must be registered at the root of your script.
+   * You must provide a unique task name for each task you register.
+   *
+   * Task event handlers are subject to the same limits of standard event handlers.
+   *
+   * See [[pylon.tasks.cron]].
+   */
+  module tasks {
+    /**
+     * Registers a task to be ran at fixed times (UTC) or intervals. Each execution of the task is an independent event execution context with it's own limits and context.
+     *
+     * Cron strings are a list of time selectors separated by space. The format can be seen below:
+     *
+     * ```
+     * ┌───── Second (0-59)
+     * │ ┌───── Minute (0-59 or *)
+     * │ │ ┌───── Hour (0-23 or *)
+     * │ │ │ ┌───── Day of Month (1-31 or *)
+     * │ │ │ │ ┌───── Month (1-12, Jan-Dec, or *)
+     * │ │ │ │ │ ┌───── Day of Week (1-7, Mon-Sun, or *)
+     * │ │ │ │ │ │ ┌───── Year (optional, default: *)
+     * │ │ │ │ │ │ │
+     * * * * * * * *
+     * ```
+     *
+     * Time fields may specify ranges, lists or intervals w/ offsets.
+     *
+     * **Ranges**: Every hour from 11AM through 4PM (UTC) on Monday thru Friday: `0 0 11-16 * * Mon-Fri *`
+     *
+     * **Lists**: Every Monday, Wednesday, and Friday at 12PM (UTC): `0 0 12 * * Mon,Wed,Fri *`
+     *
+     * **Intervals**: Every 5th minute, starting from minute 0: `0 0/5 * * * * *`
+     *
+     * *Note: The current minimum interval Pylon crons can run at are once every 5 minutes. You may schedule up to 5 cron handlers.*
+     *
+     * **Example** A cron that updates a voice channel's name every 10 minutes with the server's member count.
+     *
+     * ```ts
+     * // Set a constant voice channel id to use for this task.
+     * const VOICE_CHANNEL_ID = '524396721154176388430416';
+     *
+     * // Register a cron task
+     * pylon.tasks.cron('update_member_count', '0 0/10 * * * * *', async () => {
+     *   const channel = await discord.getGuildVoiceChannel(VOICE_CHANNEL_ID);
+     *   if (!channel) {
+     *     return;
+     *   }
+     *
+     *   const guild = await discord.getGuild(channel.guildId);
+     *   if (!guild) {
+     *     return;
+     *   }
+     *
+     *   // Update the voice channel's name with the server's member count.
+     *   await channel.edit({
+     *     name: `${guild.memberCount.toLocaleString()} Members`
+     *   });
+     * });
+     * ```
+     *
+     * @param name A unique identifier for this task. Must be alphanumeric including `-`, `_`, and `.`.
+     * @param cron A valid cron string for this task. See the docs for more info.
+     * @param handler The event handler to call when the cron event fires.
+     */
+    function cron(name: string, cron: string, handler: () => unknown | Promise<unknown>): void;
+  }
 }
