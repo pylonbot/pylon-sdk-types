@@ -110,7 +110,7 @@ declare class Headers {
   toJSON(): { [key: string]: string[] };
 }
 
-type RequestInfo = Request | string;
+type RequestInfo = Request | URL | string;
 type RequestRedirect = "follow" | "manaul" | "error";
 
 interface RequestInit {
@@ -710,4 +710,79 @@ declare module pylon {
      */
     function cron(name: string, cron: string, handler: () => unknown | Promise<unknown>): void;
   }
+
+  /**
+   * A group of values describing current limits and allocations for CPU bursting.
+   */
+  interface ICpuBurstBucketInfo {
+    /**
+     * The remaining burst CPU time allowed before the bucket resets, in milliseconds.
+     */
+    bucketRemainingMs: number;
+    /**
+     * The maximum burst CPU time allocated per-bucket, in milliseconds.
+     */
+    bucketMaximumMs: number;
+    /**
+     * The amount of time, in milliseconds, until the bucket is reset to the maximum amount.
+     */
+    bucketResetInMs: number;
+  }
+
+  /**
+   * Thrown when a CPU burst request fails. Usually due to exceeding quota limits.
+   */
+  class CpuBurstRequestError extends Error implements ICpuBurstBucketInfo {
+    bucketRemainingMs: number;
+    bucketMaximumMs: number;
+    bucketResetInMs: number;
+  }
+
+  /**
+   * Thrown when a CPU burst execution context exceeds the allocated CPU time limit.
+   */
+  class CpuBurstTimeoutError extends Error implements ICpuBurstBucketInfo {
+    bucketRemainingMs: number;
+    bucketMaximumMs: number;
+    bucketResetInMs: number;
+  }
+
+  /**
+   * An object returned from [[pylon.requestCpuBurst]] if the callback method was successful.
+   */
+  interface ICpuBurstResult<T> extends ICpuBurstBucketInfo {
+    /**
+     * The value returned from the callback, if any.
+     */
+    result: T;
+    /**
+     * The amount of CPU time consumed during the burst request.
+     */
+    usedCpuMs: number;
+  }
+
+  /**
+   * Requests a CPU burst execution context. The "callback" function argument will be ran with it's own CPU timeout.
+   *
+   * CPU burst contexts may run to completion and return a result, which is passed to the parent execution context.
+   * Furthermore, the context runs in-scope, so you can share any local variables between the main context and burst contexts.
+   *
+   * The second argument is an optional amount of maximum CPU milliseconds to consume for this burst request.
+   * By default, the limit is 1000ms. You may choose between 200ms and 3000ms.
+   *
+   * Any unused time greater than 200ms will be returned to your burst quota bucket for re-use in future burst requests.
+   * Your CPU burst quota bucket resets every 10 minutes. Information on your quota bucket is available in the return value
+   * See [[pylon.ICpuBurstResult]] for more info.
+   *
+   * If an error occurs (such as the quota limit exceeded) this function will throw an exception.
+   * See [[pylon.CpuBurstRequestError]] and [[pylon.CpuBurstTimeoutError]] for more information.
+   *
+   * @param callback The method to use as the entry-point for the child execution context.
+   * @param requestMs The amount of time in milliseconds to burst. Default: 1000ms
+   * @returns A promise that resolves with a [[pylon.ICpuBurstResult]] value of the callback, if the burst request and callback succeeded.
+   */
+  function requestCpuBurst<T>(
+    callback: () => Promise<T> | T,
+    requestMs?: number
+  ): Promise<ICpuBurstResult<T>>;
 }
