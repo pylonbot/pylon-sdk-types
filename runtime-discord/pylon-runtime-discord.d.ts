@@ -811,8 +811,8 @@ declare module discord {
       options?: Guild.IIterAuditLogsOptions
     ): AsyncIterableIterator<discord.AuditLogEntry.AnyAction>;
 
-    /* 
-      end audit-log bonanza 
+    /*
+      end audit-log bonanza
     */
 
     /**
@@ -1682,9 +1682,270 @@ declare module discord {
     ban(options?: Guild.IGuildBanOptions): Promise<void>;
 
     /**
+     * Returns the latest [[discord.Presence]] data for this member.
+     *
+     * The presence object contains their online/offline status, custom status, and other real-time activity data.
+     */
+    getPresence(): Promise<discord.Presence>;
+
+    /**
      * Returns a mention string in the format of `<@!id>` where id is the id of this user.
      */
     toMention(): string;
+  }
+
+  /**
+   * An object containing data about a user's presence in a guild.
+   */
+  namespace Presence {
+    /**
+     * An enumeration of possible statuses a user can be in.
+     *
+     * The default state for a presence (if unknown) is `OFFLINE`.
+     */
+    const enum Status {
+      /**
+       * Online (green)
+       */
+      ONLINE = "online",
+      /**
+       * Idle, or Away (yellow)
+       */
+      IDLE = "idle",
+      /**
+       * Do not Disturb (red)
+       */
+      DND = "dnd",
+      /**
+       * Offline/Invisible (grey)
+       */
+      OFFLINE = "offline",
+    }
+
+    /**
+     * An enumeration of possible activity types.
+     *
+     * The type denotes what will show under the username in the member list and other UI elements on the Discord client.
+     */
+    const enum ActivityType {
+      /**
+       * Example: `Playing {name}`
+       */
+      GAME = 0,
+      /**
+       * Example: `Streaming {name}`
+       */
+      STREAMING = 1,
+      /**
+       * Example: `Listening to {name}`
+       */
+      LISTENING = 2,
+      /**
+       * Example: `Watching {name}`
+       */
+      WATCHING = 3,
+      /**
+       * Custom Status
+       *
+       * Example: `{emoji} {name}`
+       */
+      CUSTOM = 4,
+    }
+
+    /**
+     * An object containing start and end time for this activity.
+     */
+    interface IActivityTimestamps {
+      /**
+       * The unix-epoch timestamp (in milliseconds) when this activity started (if any).
+       */
+      start: Date | null;
+      /**
+       * The unix-epoch timestamp (in milliseconds) when this activity ends (if any).
+       */
+      end: Date | null;
+    }
+
+    /**
+     * An object describing an emoji attached to an activity. Used for Custom Statuses.
+     */
+    interface IActivityEmoji {
+      /**
+       * The name of the emoji.
+       *
+       * If the emoji is a custom guild emoji, the name will be the text name set by the guild managers.
+       *
+       * Otherwise, the emoji will be the literal unicode surrogate for the emoji.
+       */
+      name: string;
+      /**
+       * If the emoji is a custom guild emoji, the id of the emoji.
+       *
+       * If the emoji is a unicode emoji, this property is null.
+       */
+      id: discord.Snowflake | null;
+      /**
+       * `true` if this emoji is animated. Only possible for custom guild emojis.
+       */
+      animated: boolean;
+    }
+
+    /**
+     * Information describing an activity party.
+     *
+     * Parties cannot be joined by bots.
+     */
+    interface IActivityParty {
+      /**
+       * A unique identifier for this party. It is not necessarily snowflake.
+       */
+      id: string | null;
+      /**
+       * The current number of users in the party.
+       */
+      currentSize: number;
+      /**
+       * The maximum number of users that can join the party.
+       */
+      maxSize: number;
+    }
+
+    /**
+     * An object containing any relevant image urls used for Rich Presence popups.
+     */
+    interface IActivityAssets {
+      largeImage: string | null;
+      largeText: string | null;
+      smallImage: string | null;
+      smallText: string | null;
+    }
+
+    /**
+     * An object containing secrets for Rich Presence joining and spectating.
+     */
+    interface IActivitySecrets {
+      join: string | null;
+      spectate: string | null;
+      match: string | null;
+    }
+
+    /**
+     * A bit set of flags that describe what Rich Presence actions can be performed on an activity.
+     */
+    const enum ActivityFlags {
+      NONE = 0,
+      INSTANCE = 1,
+      JOIN = 1 << 1,
+      SPECTATE = 1 << 2,
+      JOIN_REQUEST = 1 << 3,
+      SYNC = 1 << 4,
+      PLAY = 1 << 5,
+    }
+
+    /**
+     * An object describing an ongoing activity.
+     *
+     * This data is usually used to display the "Currently Playing" data on the user card in the Discord client.
+     *
+     * It also contains any other relevant Rich Presence data, if any exists.
+     *
+     * All fields are nullable except the name and type.
+     */
+    interface IActivity {
+      /**
+       * The name of the game or activity.
+       */
+      readonly name: string;
+      /**
+       * The type of activity this is.
+       */
+      readonly type: Presence.ActivityType;
+      /**
+       * A url for this activity, typically a url to a stream if the activity is a STREAMING.
+       */
+      readonly url: string | null;
+      /**
+       * The date this activity started.
+       */
+      readonly createdAt: Date | null;
+      /**
+       * An object containing start and end time for this activity.
+       */
+      readonly timestamps: Presence.IActivityTimestamps | null;
+      /**
+       * The application id (game id) this activity is associated with.
+       */
+      readonly applicationId: Snowflake | null;
+      /**
+       * What the player is currently doing.
+       */
+      readonly details: string | null;
+      /**
+       * The user's current party status.
+       */
+      readonly state: string | null;
+      /**
+       * The data for the Emoji used for the user's custom status, if set.
+       */
+      readonly emoji: Presence.IActivityEmoji | null;
+      /**
+       * The activity's party information.
+       */
+      readonly party: Presence.IActivityParty | null;
+      /**
+       * An object containing any relevant image urls used for Rich Presence popups.
+       */
+      readonly assets: Presence.IActivityAssets | null;
+      /**
+       * An object containing secrets for Rich Presence joining and spectating.
+       */
+      readonly secrets: Presence.IActivitySecrets | null;
+      /**
+       * `true` if the activity is an instanced game session.
+       */
+      readonly instance: boolean;
+      /**
+       * A bit set of flags that describe what Rich Presence actions can be performed on this activity.
+       */
+      readonly flags: Presence.ActivityFlags | null;
+    }
+
+    /**
+     * An object containing a potential status set for each device type a user may be using.
+     */
+    interface IClientStatus {
+      desktop: discord.Presence.ActivityType | null;
+      mobile: discord.Presence.ActivityType | null;
+      web: discord.Presence.ActivityType | null;
+    }
+  }
+
+  /**
+   * An object containing data about a user's presence in a guild.
+   */
+  class Presence {
+    /**
+     * The id of the user for the presence data
+     */
+    readonly userId: Snowflake;
+    /**
+     * The id of the guild this presence data exists for.
+     */
+    readonly guildId: Snowflake;
+    /**
+     * The current online/idle/dnd/offline status for the user.
+     */
+    readonly status: Presence.Status;
+    /**
+     * An array of activities included in the presence, if any.
+     *
+     * Activities describe games being played, custom statuses, rich-presence, and other integrations like listen-along.
+     */
+    readonly activities: Array<Presence.IActivity>;
+    /**
+     * An object containing a potential status set for each device type a user may be using.
+     */
+    readonly clientStatus: Presence.IClientStatus;
   }
 
   /**
@@ -5528,12 +5789,26 @@ declare module discord {
       | "user"
       | "userOptional"
       | "guildMember"
-      | "guildMemberOptional";
+      | "guildMemberOptional"
+      | "guildChannel"
+      | "guildChannelOptional"
+      | "guildTextChannel"
+      | "guildTextChannelOptional"
+      | "guildVoiceChannel"
+      | "guildVoiceChannelOptional";
 
     /**
      * A type union containing possible resolved argument types.
      */
-    type ArgumentTypeTypes = string | number | string[] | discord.User | discord.GuildMember;
+    type ArgumentTypeTypes =
+      | string
+      | number
+      | string[]
+      | discord.User
+      | discord.GuildMember
+      | discord.GuildChannel
+      | discord.GuildTextChannel
+      | discord.GuildVoiceChannel;
 
     /**
      * A type union containing possible options passed to an argument.
@@ -5565,6 +5840,28 @@ declare module discord {
       description?: string;
     }
 
+    interface IStringArgumentOptions {
+      /**
+       * For a string argument, the valid options the string can be. Choices are case sensitive.
+       */
+      choices?: string[];
+    }
+
+    interface INumericArgumentOptions {
+      /**
+       * For a numeric argument, the valid options the number can be.
+       */
+      choices?: number[];
+      /**
+       * For a numeric argument (`integer` or `number`), the minimum value that will be accepted (inclusive of the value.)
+       */
+      minValue?: number;
+      /**
+       * For a numeric argument (`integer` or `number`), the maximum value that will be accepted (inclusive of the value.)
+       */
+      maxValue?: number;
+    }
+
     interface IOptionalArgumentOptions<T> extends IArgumentOptions {
       /**
        * Optional arguments allow you to specify a default.
@@ -5578,42 +5875,42 @@ declare module discord {
        * Parses a single space-delimited argument as a string.
        * @param options argument config
        */
-      string(options?: IArgumentOptions): string;
+      string(options?: IArgumentOptions & IStringArgumentOptions): string;
 
       /**
        * Optionally parses a single space-delimited argument as a string.
        * @param options argument config
        */
-      stringOptional(options: IOptionalArgumentOptions<string>): string;
-      stringOptional(options?: IArgumentOptions): string | null;
+      stringOptional(options: IOptionalArgumentOptions<string> & IStringArgumentOptions): string;
+      stringOptional(options?: IArgumentOptions & IStringArgumentOptions): string | null;
 
       /**
        * Parses a single space-delimited argument with parseInt()
        * Non-numeric inputs will cause the command to error. Floating point inputs are truncated.
        * @param options argument config
        */
-      integer(options?: IArgumentOptions): number;
+      integer(options?: IArgumentOptions & INumericArgumentOptions): number;
       /**
        * Optionally parses a single space-delimited argument with parseInt()
        * Non-numeric inputs will cause the command to error. Floating point inputs are truncated.
        * @param options argument config
        */
-      integerOptional(options: IOptionalArgumentOptions<number>): number;
-      integerOptional(options?: IArgumentOptions): number | null;
+      integerOptional(options: IOptionalArgumentOptions<number> & INumericArgumentOptions): number;
+      integerOptional(options?: IArgumentOptions & INumericArgumentOptions): number | null;
 
       /**
        * Parses a single space-delimited argument with parseFloat()
        * Non-numeric inputs will cause the command to error.
        * @param options argument config
        */
-      number(options?: IArgumentOptions): number;
+      number(options?: IArgumentOptions & INumericArgumentOptions): number;
       /**
        * Optionally parses a single space-delimited argument with parseFloat()
        * Non-numeric inputs will cause the command to error.
        * @param options argument config
        */
-      numberOptional(options: IOptionalArgumentOptions<number>): number;
-      numberOptional(options?: IArgumentOptions): number | null;
+      numberOptional(options: IOptionalArgumentOptions<number> & INumericArgumentOptions): number;
+      numberOptional(options?: IArgumentOptions & INumericArgumentOptions): number | null;
 
       /**
        * Parses the rest of the command's input as a string, leaving no more content for any future arguments.
@@ -5672,6 +5969,52 @@ declare module discord {
        * @param options argument config
        */
       guildMemberOptional(options?: IArgumentOptions): Promise<discord.GuildMember | null>;
+
+      /**
+       * Parses a mention string or channel id that resolves a [[discord.GuildChannel]] object reference.
+       * If the channel was not found, the command will error.
+       * The command will error if not used in a guild.
+       */
+      guildChannel(options?: IArgumentOptions): Promise<discord.GuildChannel>;
+
+      /**
+       * Optionally parses a mention string or channel id that resolves a [[discord.GuildChannel]] object reference.
+       * If the channel was not found, the command will error.
+       * The command will error if not used in a guild.
+       */
+      guildChannelOptional(options?: IArgumentOptions): Promise<discord.GuildChannel | null>;
+
+      /**
+       * Parses a mention string or channel id that resolves a [[discord.GuildTextChannel]] object reference.
+       * If the channel was not found, or not a voice channel, the command will error.
+       * The command will error if not used in a guild.
+       */
+      guildTextChannel(options?: IArgumentOptions): Promise<discord.GuildTextChannel>;
+
+      /**
+       * Optionally parses a mention string or channel id that resolves a [[discord.GuildTextChannel]] object reference.
+       * If the channel was not found, or not a text channel, the command will error.
+       * The command will error if not used in a guild.
+       */
+      guildTextChannelOptional(
+        options?: IArgumentOptions
+      ): Promise<discord.GuildTextChannel | null>;
+
+      /**
+       * Parses a mention string or channel id that resolves a [[discord.GuildVoiceChannel]] object reference.
+       * If the channel was not found, or not a voice channel, the command will error.
+       * The command will error if not used in a guild.
+       */
+      guildVoiceChannel(options?: IArgumentOptions): Promise<discord.GuildVoiceChannel>;
+
+      /**
+       * Optionally parses a mention string or channel id that resolves a [[discord.GuildVoiceChannel]] object reference.
+       * If the channel was not found, or not a voice channel, the command will error.
+       * The command will error if not used in a guild.
+       */
+      guildVoiceChannelOptional(
+        options?: IArgumentOptions
+      ): Promise<discord.GuildVoiceChannel | null>;
     }
 
     /**
@@ -5682,6 +6025,10 @@ declare module discord {
        * The name of the command. Users will use this name to execute the command.
        */
       name: string;
+      /**
+       * Any additional aliases that can be used to invoke this command.
+       */
+      aliases?: string[];
       /**
        * A human-readable description for this command.
        */
@@ -5745,6 +6092,12 @@ declare module discord {
       | Promise<discord.User | null>
       | Promise<discord.GuildMember>
       | Promise<discord.GuildMember | null>
+      | Promise<discord.GuildChannel>
+      | Promise<discord.GuildChannel | null>
+      | Promise<discord.GuildTextChannel>
+      | Promise<discord.GuildTextChannel | null>
+      | Promise<discord.GuildVoiceChannel>
+      | Promise<discord.GuildVoiceChannel | null>
       | null;
 
     /**
@@ -5829,6 +6182,8 @@ declare module discord {
         rawArguments: string,
         isRootExecutor: boolean
       ): Promise<void>;
+
+      getAliases(): Set<string>;
     }
 
     type Named<T> = { name: string } & T;
@@ -6057,6 +6412,12 @@ declare module discord {
         rawArguments: string,
         isRootExecutor: boolean
       ): Promise<void>;
+
+      /**
+       *
+       * @private - Internal API, do not use.
+       */
+      getAliases(): Set<string>;
     }
 
     /**
