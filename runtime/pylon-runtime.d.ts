@@ -111,7 +111,7 @@ declare class Headers {
 }
 
 type RequestInfo = Request | URL | string;
-type RequestRedirect = "follow" | "manaul" | "error";
+type RequestRedirect = "follow" | "manual" | "error";
 
 interface RequestInit {
   body?: BodyInit | null;
