@@ -5197,6 +5197,11 @@ declare module discord {
   function getGuild(guildId: discord.Snowflake): Promise<discord.Guild | null>;
 
   /**
+   * Returns the [[discord.Snowflake]] ID for the guild the script is running on.
+   */
+  function getGuildId(): discord.Snowflake;
+
+  /**
    * Fetches a [[discord.Channel]] (or more specific child) object for a given Discord channel id.
    *
    * Note: You can only fetch channels within the script's active guild.
