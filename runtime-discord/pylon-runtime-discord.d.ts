@@ -323,29 +323,29 @@ declare module discord {
 
     type IterAuditLogsOptionsWithActionType<
       T extends discord.AuditLogEntry.ActionType | undefined
-    > = Guild.IIterAuditLogsOptions & {
-      actionType: T;
-    };
+      > = Guild.IIterAuditLogsOptions & {
+        actionType: T;
+      };
 
     /**
      * Options you can pass to [[discord.Guild.createChannel]].
      */
     type CreateChannelOptions =
       | (GuildCategory.IGuildCategoryOptions & {
-          type: Channel.Type.GUILD_CATEGORY;
-        })
+        type: Channel.Type.GUILD_CATEGORY;
+      })
       | (GuildTextChannel.IGuildTextChannelOptions & {
-          type: Channel.Type.GUILD_TEXT;
-        })
+        type: Channel.Type.GUILD_TEXT;
+      })
       | (GuildVoiceChannel.IGuildVoiceChannelOptions & {
-          type: Channel.Type.GUILD_VOICE;
-        })
+        type: Channel.Type.GUILD_VOICE;
+      })
       | (GuildNewsChannel.IGuildNewsChannelOptions & {
-          type: Channel.Type.GUILD_NEWS;
-        })
+        type: Channel.Type.GUILD_NEWS;
+      })
       | (GuildStoreChannel.IGuildStoreChannelOptions & {
-          type: Channel.Type.GUILD_STORE;
-        });
+        type: Channel.Type.GUILD_STORE;
+      });
 
     /**
      * Options you can pass to [[discord.GuildMember.ban]].
@@ -1214,14 +1214,14 @@ declare module discord {
 
     type ActionChannelPermissionOverwriteUpdateOptions =
       | {
-          readonly id: Snowflake;
-          readonly type: Channel.PermissionOverwriteType.MEMBER;
-        }
+        readonly id: Snowflake;
+        readonly type: Channel.PermissionOverwriteType.MEMBER;
+      }
       | {
-          readonly id: Snowflake;
-          readonly type: Channel.PermissionOverwriteType.ROLE;
-          readonly roleName: string;
-        };
+        readonly id: Snowflake;
+        readonly type: Channel.PermissionOverwriteType.ROLE;
+        readonly roleName: string;
+      };
 
     class ChannelPermissionOverwriteCreate extends AuditLogEntry {
       readonly actionType: ActionType.CHANNEL_OVERWRITE_CREATE;
@@ -2452,7 +2452,7 @@ declare module discord {
     /**
      * Returns the calculated member permissions for this channel.
      *
-     * It is built off the base member permissions via [[discord.GuildMember.permissions]] and the member and role-specific permission overwrites from [[discord.GuildChannel.permissionOverwrites]].
+     * It is calculated off the base member permissions via [[discord.GuildMember.permissions]] and the member and role-specific permission overwrites from [[discord.GuildChannel.permissionOverwrites]].
      *
      * Note: If you just want to see if a member has a permission, use [[discord.GuildChannel.canMember]].
      *
@@ -2464,13 +2464,36 @@ declare module discord {
     /**
      * Determines if a member can perform actions that require the permission specified in this channel.
      *
-     * Permissions are built off the base member permissions via [[discord.GuildMember.permissions]] and the member and role-specific permission overwrites from [[discord.GuildChannel.permissionOverwrites]].
+     * Permissions are calculated off the base member permissions via [[discord.GuildMember.permissions]] and the member and role-specific permission overwrites from [[discord.GuildChannel.permissionOverwrites]].
      *
      * @param member The GuildMember you want to calculate channel-specific permissions for.
      * @param permission The permission you are checking for. Check [[discord.Permissions]] for an exhaustive list of all permissions.
      * @returns `true` if the permission is granted, otherwise `false`.
      */
     canMember(member: GuildMember, permission: Permissions): boolean;
+
+    /**
+     * Returns the calculated role permissions for this channel.
+     *
+     * The permissions are calculated by finding the role in [[discord.GuildChannel.permissionOverwrites]] and applying on top of the everyone role permissions for the channel.
+     *
+     * Note: If you just want to see if a role has a permission, use [[discord.GuildChannel.canRole]].
+     *
+     * @param role The Role you want to calculate channel-specific permissions for.
+     * @returns The permission bit set calculated for the given role.
+     */
+    getRolePermissions(role: Role): number;
+
+    /**
+     * Determines if a role can perform actions that require the permission specified in this channel.
+     *
+     * The permissions are calculated by finding the role in [[discord.GuildChannel.permissionOverwrites]] and applying on top of the everyone role permissions for the channel.
+     *
+     * @param role The Role you want to calculate channel-specific permissions for.
+     * @param permission The permission you are checking for. Check [[discord.Permissions]] for an exhaustive list of all permissions.
+     * @returns `true` if the permission is granted, otherwise `false`.
+     */
+    canRole(role: Role, permission: Permissions): boolean;
 
     /**
      * Returns a mention string in the format of `<#id>` where id is the id of this channel.
@@ -2854,7 +2877,7 @@ declare module discord {
   }
 
   namespace GuildStoreChannel {
-    interface IGuildStoreChannelOptions extends GuildChannel.IGuildChannelOptions {}
+    interface IGuildStoreChannelOptions extends GuildChannel.IGuildChannelOptions { }
   }
 
   /**
@@ -3805,7 +3828,7 @@ declare module discord {
     /**
      * The author of this message, if any.
      */
-    readonly author: User | null;
+    readonly author: User;
     /**
      * If the message was sent in a guild, the [[discord.GuildMember]] who sent this message.
      */
@@ -3995,7 +4018,7 @@ declare module discord {
      * @returns On success, the Promise resolves as the new message object.
      */
     edit(
-      messageOptions: Pick<Message.OutgoingMessageOptions, "content" | "embed">
+      messageOptions: Pick<Message.OutgoingMessageOptions, "content" | "embed"> & { flags?: number }
     ): Promise<Message>;
 
     /**
@@ -5178,12 +5201,17 @@ declare module discord {
   ): Promise<discord.Invite | null>;
 
   /**
-   * Returns the [[discord.Snowflake]] ID for the current bot user the script is running on.
+   * Returns the [[discord.Snowflake]] ID for the [[discord.Guild]] this script is active for.
+   */
+  function getGuildId(): discord.Snowflake;
+
+  /**
+   * Returns the [[discord.Snowflake]] ID for the current bot user the deployment is running for.
    */
   function getBotId(): discord.Snowflake;
 
   /**
-   * Fetches a [[discord.User]] object containing information about the bot user the script is running on.
+   * Fetches a [[discord.User]] object containing information about the bot user the deployment is running for.
    */
   function getBotUser(): Promise<discord.User>;
 
@@ -5197,14 +5225,16 @@ declare module discord {
   function getGuild(guildId: discord.Snowflake): Promise<discord.Guild | null>;
 
   /**
-   * Returns the [[discord.Snowflake]] ID for the guild the script is running on.
+   * Fetches a [[discord.Guild]] object for the active deployment's guild.
+   *
+   * @param guildId The guild id (snowflake) you want to fetch guild data for.
    */
-  function getGuildId(): discord.Snowflake;
+  function getGuild(guildId?: undefined): Promise<discord.Guild>;
 
   /**
    * Fetches a [[discord.Channel]] (or more specific child) object for a given Discord channel id.
    *
-   * Note: You can only fetch channels within the script's active guild.
+   * Note: You can only fetch channels for the guild your deployment is associated with.
    *
    * @param channelId The channel id (snowflake) you want to fetch channel data for.
    */
@@ -6298,7 +6328,7 @@ declare module discord {
        *
        * @param options An object containing the command group's options. Register is not able to be set, as the command group is implicitly registered as a sub-command for this command group.
        */
-      subcommandGroup(options: Named<Omit<ICommandGroupOptions, "register">>): CommandGroup;
+      subcommandGroup(options: string | Named<Omit<ICommandGroupOptions, "register">>): CommandGroup;
 
       /**
        * Registers a command that may be followed by additional nested command groups.
@@ -6542,36 +6572,36 @@ declare module discord {
      * A utility combining all permissions.
      */
     ALL = CREATE_INSTANT_INVITE |
-      KICK_MEMBERS |
-      BAN_MEMBERS |
-      ADMINISTRATOR |
-      MANAGE_CHANNELS |
-      MANAGE_GUILD |
-      ADD_REACTIONS |
-      VIEW_AUDIT_LOGS |
-      VOICE_PRIORITY_SPEAKER |
-      STREAM |
-      READ_MESSAGES |
-      SEND_MESSAGES |
-      SEND_TTS_MESSAGES |
-      MANAGE_MESSAGES |
-      EMBED_LINKS |
-      ATTACH_FILES |
-      READ_MESSAGE_HISTORY |
-      MENTION_EVERYONE |
-      EXTERNAL_EMOJIS |
-      VIEW_GUILD_ANALYTICS |
-      VOICE_CONNECT |
-      VOICE_SPEAK |
-      VOICE_MUTE_MEMBERS |
-      VOICE_DEAFEN_MEMBERS |
-      VOICE_MOVE_MEMBERS |
-      VOICE_USE_VAD |
-      CHANGE_NICKNAME |
-      MANAGE_NICKNAMES |
-      MANAGE_ROLES |
-      MANAGE_WEBHOOKS |
-      MANAGE_EMOJIS,
+    KICK_MEMBERS |
+    BAN_MEMBERS |
+    ADMINISTRATOR |
+    MANAGE_CHANNELS |
+    MANAGE_GUILD |
+    ADD_REACTIONS |
+    VIEW_AUDIT_LOGS |
+    VOICE_PRIORITY_SPEAKER |
+    STREAM |
+    READ_MESSAGES |
+    SEND_MESSAGES |
+    SEND_TTS_MESSAGES |
+    MANAGE_MESSAGES |
+    EMBED_LINKS |
+    ATTACH_FILES |
+    READ_MESSAGE_HISTORY |
+    MENTION_EVERYONE |
+    EXTERNAL_EMOJIS |
+    VIEW_GUILD_ANALYTICS |
+    VOICE_CONNECT |
+    VOICE_SPEAK |
+    VOICE_MUTE_MEMBERS |
+    VOICE_DEAFEN_MEMBERS |
+    VOICE_MOVE_MEMBERS |
+    VOICE_USE_VAD |
+    CHANGE_NICKNAME |
+    MANAGE_NICKNAMES |
+    MANAGE_ROLES |
+    MANAGE_WEBHOOKS |
+    MANAGE_EMOJIS,
   }
 
   /**
