@@ -218,7 +218,7 @@ declare module pylon {
     [property: string]: Json;
   }
 
-  interface JsonArray extends Array<Json> {}
+  interface JsonArray extends Array<Json> { }
 
   type Json = string | number | boolean | null | JsonObject | JsonArray;
 

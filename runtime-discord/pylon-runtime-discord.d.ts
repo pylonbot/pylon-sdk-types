@@ -3511,6 +3511,10 @@ declare module discord {
        * A special message that appears in a channel when it begins following an announcements channel.
        */
       CHANNEL_FOLLOW_ADD = 12,
+      /**
+       * A default message that includes a reference to a message.
+       */
+      REPLY = 19,
     }
 
     /**
@@ -3727,6 +3731,16 @@ declare module discord {
        * If set, will attempt to upload entries as file attachments to the message.
        */
       attachments?: Array<IOutgoingMessageAttachment>;
+      /**
+       * When this is set, the message will attempt to become an inline reply of the provided message reference.
+       * 
+       * The message or snowflake set here must reference a message inside the channel being sent to, otherwise an error will be thrown.
+       * 
+       * You can configure wether the author of the message referenced here gets pinged by setting allowedMentions with repliedMessage set to false.
+       * 
+       * Setting this on a [[discord.Message.inlineReply]] call overrides it. Conversely, setting it to `null` suppresses it.
+       */
+      reply?: Message | Snowflake | Message.IMessageReference;
     }
 
     /**
@@ -3762,6 +3776,12 @@ declare module discord {
        * You may pass an array of user ids or user/guildMember objects to whitelist a set of users you'd like to restrict notifications to.
        */
       users?: true | Array<Snowflake | User | GuildMember>;
+      /**
+       * If set to true, this message will be allowed to ping the author of the referenced message for inline replies.
+       * 
+       * If this isn't set, this is inferred to be true.
+       */
+      reply?: boolean;
     }
 
     /**
@@ -3922,7 +3942,6 @@ declare module discord {
     reply(
       outgoingMessageOptions: Message.OutgoingMessageArgument<Message.OutgoingMessageOptions>
     ): Promise<Message>;
-
     /**
      * Attempts to send a simple text message to the channel this message was sent in.
      *
@@ -3933,7 +3952,6 @@ declare module discord {
      * @param content Content to use for the outgoing message.
      */
     reply(content: Message.OutgoingMessageArgument<string>): Promise<Message>;
-
     /**
      * Attempts to send an [[discord.Embed]] to the channel this message was sent in.
      *
@@ -3942,6 +3960,29 @@ declare module discord {
      * @param embed The embed object you'd like to send to the channel.
      */
     reply(embed: Message.OutgoingMessageArgument<Embed>): Promise<Message>;
+
+    /**
+     * Does the same thing as .reply, but adds an inline reply referencing this message.
+     * 
+     * If reply is set on the settings resolved by outgoingMessageOptions, then that will override the inline reply set by this function.
+     * 
+     * @param outgoingMessageOptions Outgoing message options.
+     */
+    inlineReply(
+      outgoingMessageOptions: Message.OutgoingMessageArgument<Message.OutgoingMessageOptions>
+    ): Promise<Message>;
+    /**
+     * Does the same thing as .reply, but adds an inline reply referencing this message.
+     * 
+     * @param content Content to use for the outgoing message.
+     */
+    inlineReply(content: Message.OutgoingMessageArgument<string>): Promise<Message>;
+    /**
+     * Does the same thing as .reply, but adds an inline reply referencing this message.
+     * 
+     * @param embed The embed object you'd like to send to the channel.
+     */
+    inlineReply(embed: Message.OutgoingMessageArgument<Embed>): Promise<Message>;
 
     /**
      * Attempts to permanently delete this message.
