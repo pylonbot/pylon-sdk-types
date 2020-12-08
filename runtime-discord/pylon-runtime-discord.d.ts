@@ -5322,6 +5322,54 @@ declare module discord {
     channelId: discord.Snowflake
   ): Promise<discord.GuildNewsChannel | null>;
 
+
+  /**
+   * Work-in-progress module for discord slash commands and future interactions
+   * No functionality is enabled within the runtime, yet.
+   */
+  namespace interactions {
+
+    const enum InteractionType {
+      PING = 1,
+      APPLICATION_COMMAND = 2,
+    }
+
+    class Interaction {
+      readonly id: discord.Snowflake;
+      readonly type: discord.interactions.InteractionType;
+    }
+
+    class CommandInteraction extends Interaction {
+      readonly commandId: discord.Snowflake;
+      readonly name: string;
+      readonly guildId: discord.Snowflake;
+      readonly channelId: discord.Snowflake;
+      readonly options: Array<ICommandInteractionOption>;
+      readonly member: any;
+    }
+
+    // todo: we probably don't need this here
+    const enum CommandInteractionOptionType {
+      SUB_COMMAND = 1,
+      SUB_COMMAND_GROUP = 2,
+      STRING = 3,
+      INTEGER = 4,
+      BOOLEAN = 5,
+      USER = 6,
+      CHANNEL = 7,
+      ROLE = 8,
+    }
+
+    // todo: these should be strongly typed by value
+    // since we know what types they are when they register them
+    interface ICommandInteractionOption {
+      readonly name: string;
+      readonly value?: any;
+      readonly options?: Array<ICommandInteractionOption>
+    }
+
+  }
+
   /**
    * The built-in Pylon command handler. Provides utilities for building a bot that handles commands.
    *
