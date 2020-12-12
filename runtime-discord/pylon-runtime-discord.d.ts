@@ -205,6 +205,17 @@ declare module discord {
     interface IGuildOptions {
       /**
        * Sets the name of the guild.
+       * #### Example
+       *
+       * ```ts
+       * commands.raw('servername', async(message)=>{
+       * let guild = await discord.getGuild();
+       * //Gives you a guild object you can get a lot of information from
+       * //and you can also modify it with .edit()
+       *
+       * await message.reply(`Guild name: ` + guild.name)
+       * })
+       * ```
        */
       name?: string;
       /**
@@ -251,6 +262,22 @@ declare module discord {
       icon?: string | null;
       /**
        * The id of a user to transfer this guild to. Typically, bots will not be the owner of a guild.
+       * #### Example
+       * ```ts
+       * commands.raw('owner', async (message) => {
+       * let guild = await discord.getGuild();
+       *
+       * let ownerid = guild.ownerId;
+       *
+       * await message.reply({
+       * content: `**Guild owner:** <@${ownerid}>`,
+       * allowedMentions: {}
+       * });
+       * //allowedMentions has the useful feature of not pinging the owner even though
+       * //mentioning them. This way users can click on the owner's profile but the
+       * //command doesn't ping the owner all the time
+       * });
+       *```
        */
       ownerId?: Snowflake;
       /**
@@ -606,6 +633,22 @@ declare module discord {
     readonly icon: string | null;
     /**
      * The user id that owns this guild.
+     * #### Example
+     * ```ts
+     * commands.raw('owner', async (message) => {
+     *  let guild = await discord.getGuild();
+     *
+     *  let ownerid = guild.ownerId;
+     *
+     *  await message.reply({
+     *    content: `**Guild owner:** <@${ownerid}>`,
+     *    allowedMentions: {}
+     *  });
+     *  //allowedMentions has the useful feature of not pinging the owner even though
+     *  //mentioning them. This way users can click on the owner's profile but the
+     *  //command doesn't ping the owner all the time
+     * });
+     *```
      */
     readonly ownerId: Snowflake;
     /**
@@ -629,7 +672,29 @@ declare module discord {
      */
     readonly banner: string | null;
     /**
-     * If not null, determines the channel in which receives guild member join and server boot announcements.
+     * If not null, determines the channel in which receives guild member join and server boost announcements.
+     * #### Example
+     * ```ts
+     * commands.raw('joinchannel', async (message) => {
+     * let guild = await discord.getGuild();
+     * try {
+     *    var joinchannel = await guild.getChannel(guild.systemChannelId);
+     *    //The joinchannel is where messages are displayed like: -> Kile joined the party
+     *  } catch (e) {
+     *    //In case getChannel throws an error (most likely that there is no channel found)
+     *    //The following will happen
+     *    return message.reply('No system join added');
+     *    //return is here to not continue with the rest of the command
+     *  }
+     *  await message.reply(
+     *    'Join channl name: ' +
+     *      joinchannel?.name +
+     *      '\nJoin channnel Id: ' +
+     *      joinchannel?.id
+     *  );
+     *  //Giving some info about the joinchannel
+     * });
+     *```
      */
     readonly systemChannelId: Snowflake | null;
     /**
@@ -638,6 +703,21 @@ declare module discord {
     readonly permissions?: number;
     /**
      * A list of [[discord.Guild.Feature]]s available to this guild.
+     * #### Example
+     * ```ts
+     * commands.raw('features', async (message) => {
+     *  let guild = await discord.getGuild();
+     *
+     *  await message.reply(
+     *    guild.features
+     *      .toString()
+     *      .replace(/,/g, '\n')
+     *      .replace(/_/g, ' ')
+     *  );
+     *  //Giving you a list of what features this servers has enabled, the .replace() stuff to make
+     *  //it prettier, try it out without them to see the difference
+     * });
+     *```
      */
     readonly features: Array<Guild.Feature>;
     /**
@@ -646,6 +726,16 @@ declare module discord {
     readonly mfaLevel: number;
     /**
      * The application id tied to this guild. Typically set on Discord guilds with commerce features enabled.
+     * #### Example
+     * ```ts
+     * commands.raw('applicationId', async(message)=>{
+     *  let guild = await discord.getGuild();
+
+     *  await message.reply(guild.applicationId ?? 'No application Id');
+     *  //The ?? lets Pylon reply an other thing if, in this case, guild.vanityUrlCode doesn't exist
+
+     * });
+     * ```
      */
     readonly applicationId: Snowflake | null;
     /**
@@ -672,6 +762,18 @@ declare module discord {
     readonly vanityUrlCode: string | null;
     /**
      * If set, a user-submitted description of the guild. Requires the [[discord.Guild.Feature.PUBLIC]] feature flag.
+     * #### Example
+     * ```ts
+     * commands.raw('vanity', async (message) => {
+     * let guild = await discord.getGuild();
+     *
+     * await message.reply(
+     *    guild.vanityUrlCode ??
+     *    "This server doesn't have a vanity URL yet (BOOST!!!)"
+     * );
+     * //The ?? lets Pylon reply an other thing if, in this case, guild.vanityUrlCode doesn't exist
+     * });
+     *```
      */
     readonly description: string | null;
     /**
@@ -684,6 +786,14 @@ declare module discord {
     readonly premiumSubscriptionCount: number;
     /**
      * The preferred locale of the guild.
+     * #### Example
+     * ```ts
+     * commands.raw('locale', async (message) => {
+     * let guild = await discord.getGuild();
+     *
+     * await message.reply(guild.preferredLocale ?? 'No preffered Locale');
+     * });
+     * ```
      */
     readonly preferredLocale: string;
 
@@ -870,6 +980,19 @@ declare module discord {
 
     /**
      * Fetches an array of [[discord.GuildBan]] objects that exist on the guild.
+     * ### Example
+     * ```ts
+     * commands.raw('bans', async (message) => {
+     * let guild = await discord.getGuild();
+
+     *  await message.reply(
+     *  'People banned from this guild: ' +
+     *    (await guild.getBans()).length.toString()
+     *  );
+
+     * //Checks the length of the array containing the banned people => The number of bans
+     * });
+     *```
      */
     getBans(): Promise<GuildBan[]>;
 
@@ -953,6 +1076,37 @@ declare module discord {
 
     /**
      * Fetches an array containing the emojis uploaded to this guild.
+     * #### Example
+     * ```ts
+     * var emojilist = [];
+     * commands.raw('emojis', async (message) => {
+     * //CAREFUL!! With many emojis this is a giant message that spams the chat. Make sure you restrict it
+
+     * let guild = await discord.getGuild();
+
+     * let emojis = await guild.getEmojis();
+
+     * for await (let emoji of emojis) {
+     *  emojilist.push(
+     *    `${emoji.name}: ${emoji.animated ? 'animated' : 'not animated'}`
+     *     //Creates a loop where it adds every emoji that exists to a list with the info if it is
+     *     //animated or not
+     *  );
+     * }
+     * await message.reply(
+     *  '**Guild emojis**:\n' +
+     *   emojilist
+     *   .toString()
+     *   .replace(/,/g, '\n')
+     *   .replace(/_/g, '_') ?? 'No emojis'
+     * );
+     * //Replies the list
+     * //I use replace for 1) aestetics 2) some emojis have _ in their name
+     * //and if discord sees two _s it will make them invisible and alter the text
+     * //If you however use \ before it, you tell discord to ignore that. This is a useful
+     * //fact for many other things where this happens :3
+     * });
+     * ```
      */
     getEmojis(): Promise<Emoji[]>;
 
