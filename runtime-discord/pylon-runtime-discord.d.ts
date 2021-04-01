@@ -554,6 +554,47 @@ declare module discord {
        */
       TIER_3 = 3,
     }
+
+    /**
+     * A bot's guild-based voice state can be updated with the following options.
+     */
+    interface ISetVoiceStateOptions {
+      /**
+       * This field determines the channel id for the current user's voice connection.
+       *
+       * If set to a valid channel id within the guild, the bot will connect to it.
+       * If a new voice session was created, a VOICE_SERVER_UPDATE event will be received with the voice server's connection details.
+       *
+       * If set to null, the bot user will disconnect it's voice session.
+       */
+      channelId: Snowflake | null;
+      /**
+       * Set to `true` if the bot user should be self-muted upon joining the channel.
+       *
+       * Muted means the bot user will not be able to broadcast audio.
+       *
+       * Default: `false`
+       */
+      selfMute?: boolean;
+      /**
+       * Set to `true` if the bot user should be self-deafened upon joining the channel.
+       *
+       * Deafened means the bot user will not receive any audio.
+       *
+       * Default: `false`
+       */
+      selfDeaf?: boolean;
+    }
+
+    /**
+     * Options for iterating over voice states in a guild.
+     */
+    interface IIterVoiceStatesOptions {
+      /**
+       * If supplied, voice states will only be returned if they match the channel id.
+       */
+      channelId?: Snowflake;
+    }
   }
 
   /**
@@ -987,9 +1028,44 @@ declare module discord {
     ): string | null;
 
     /**
-     * Disconnects any active voice sessions for the current bot user on this guild.
+     * Sets and overwrites the bot's voice state within the guild.
+     *
+     * Using the required `channelId` option, you may connect to a voice or disconnect from a voice channel.
+     * If you want to move channels, specify a new channel id.
+     *
+     * Disconnect the bot from it's voice session by setting `channelId` to `null`.
+     *
+     * This usually triggers a VOICE_SERVER_UPDATE and/or VOICE_STATE_UPDATE events.
+     * Information from these events can be used to externally orchestrate voice protocol sockets.
+     *
+     * @param options the new voice state data. overriding any previously-set data.
      */
-    voiceDisconnect(): Promise<void>;
+    setOwnVoiceState(options: discord.Guild.ISetVoiceStateOptions): Promise<void>;
+
+    /**
+     * A convenience method to get the bot's voice state for the guild.
+     *
+     * Returns null if the bot doesn't have a voice state set.
+     */
+    getOwnVoiceState(): Promise<discord.VoiceState | null>;
+
+    /**
+     * Get a member's voice state. Resolves as `null` if the member is not connected to a voice channel.
+     *
+     * @param userId the user to look up
+     */
+    getVoiceState(userId: discord.Snowflake): Promise<discord.VoiceState | null>;
+
+    /**
+     * Returns an async iterator over users connected to voice channels in this guild.
+     *
+     * You may optionally filter the results by channel, if a channelId is provided with the options object.
+     *
+     * @param options options for this query
+     */
+    iterVoiceStates(
+      options?: discord.Guild.IIterVoiceStatesOptions
+    ): AsyncIterableIterator<discord.VoiceState>;
   }
 
   /**
@@ -2098,7 +2174,8 @@ declare module discord {
       | GuildVoiceChannel
       | GuildCategory
       | GuildNewsChannel
-      | GuildStoreChannel;
+      | GuildStoreChannel
+      | GuildStageVoiceChannel;
 
     /**
      * Represents any channel type on Discord.
@@ -2190,6 +2267,14 @@ declare module discord {
        * Note: See [[discord.GuildStoreChannel]].
        */
       GUILD_STORE = 6,
+      /**
+       * A special guild voice channel for Community servers.
+       *
+       * In these channels, audience members can listen to users elected to the stage by moderators.
+       *
+       * Note: See [[discord.GuildStageVoiceChannel]].
+       */
+      GUILD_STAGE_VOICE = 13,
     }
   }
 
@@ -2397,14 +2482,15 @@ declare module discord {
      */
     readonly name: string;
     /**
-     * The type of this channel. See [[discord.Channel.AnyGuildChannel]] for a complete list of channel types.
+     * The type of this channel. See [[discord.Channel.AnyGuildChannel]] for a complete list of guild channel types.
      */
     readonly type:
       | Channel.Type.GUILD_CATEGORY
       | Channel.Type.GUILD_TEXT
       | Channel.Type.GUILD_NEWS
       | Channel.Type.GUILD_STORE
-      | Channel.Type.GUILD_VOICE;
+      | Channel.Type.GUILD_VOICE
+      | Channel.Type.GUILD_STAGE_VOICE;
 
     /**
      * Attempts to update the given options for this channel.
@@ -2604,6 +2690,54 @@ declare module discord {
      * If an error occurs, a [[discord.ApiError]] exception is thrown.
      */
     delete(): Promise<void>;
+  }
+
+  namespace GuildStageVoiceChannel {
+    interface IGuildStageVoiceChannelOptions extends GuildChannel.IGuildChannelOptions {}
+  }
+
+  /**
+   * A special [[discord.Guild]] voice channel for Community servers.
+   *
+   * In these channels, audience members can listen to users elected to the stage by moderators.
+   */
+  class GuildStageVoiceChannel extends GuildChannel {
+    /**
+     * The current topic set by Stage moderators for the session.
+     *
+     * May be changed by anyone with MANAGE_CHANNEL permissions.
+     */
+    readonly topic: string | null;
+
+    /**
+     * The bitrate of voice data for this channel.
+     *
+     * Stage Voice channels currently default to 40kbps (40000 bytes per second).
+     */
+    readonly bitrate: number;
+
+    /**
+     * Limits the number of users that can be active in the voice channel at once.
+     *
+     * Stage Voice channels currently default to 1000 maximum mebers.
+     */
+    readonly userLimit: number;
+
+    /**
+     * The type of this channel. Always [[Channel.Type.GUILD_STAGE_VOICE]].
+     */
+    readonly type: Channel.Type.GUILD_STAGE_VOICE;
+
+    /**
+     * Attempts to update the given options for this channel.
+     *
+     * If an error occurs, a [[discord.ApiError]] will be thrown.
+     *
+     * @param updateData The settings to update for this channel.
+     */
+    edit(
+      updateData: GuildStageVoiceChannel.IGuildStageVoiceChannelOptions
+    ): Promise<GuildStageVoiceChannel>;
 
     /**
      * Requests a voice session for this channel. Listen for [[discord.Event.VOICE_SERVER_UPDATE]] events for voice server connection information.
@@ -4383,6 +4517,28 @@ declare module discord {
     };
   }
 
+  namespace VoiceState {
+    /**
+     * The options for a voice state.
+     *
+     * These are currently used for Guild Stage Voice channels. Behavior is *subject to change* as the new channel type evolves.
+     */
+    interface IVoiceStateEditOptions {
+      /**
+       * Set if the user is suppressed.
+       */
+      suppress?: boolean;
+      /**
+       * Set's the voice state's request to speak timestamp.
+       *
+       * If set to null, the request is removed.
+       *
+       * Note: Only valid for Guild Stage Voice channels.
+       */
+      requestToSpeakTimestamp?: string | null;
+    }
+  }
+
   /**
    * A class representing a user's voice state.
    */
@@ -4435,7 +4591,20 @@ declare module discord {
      * `true` if the user is currently streaming to the channel using Go Live.
      */
     readonly selfStream: boolean;
-
+    /**
+     * `true` if the user's camera is enabled.
+     */
+    readonly selfVideo: boolean;
+    /**
+     * `true` if the user is muted by the current user.
+     */
+    readonly suppress: boolean;
+    /**
+     * The time at which the user requested to speak (used for GUILD_STAGE_VOICE channel hand-raising).
+     *
+     * Note: The timestamp is in ISO-8601 UTC format (`YYYY-MM-DDTHH:mm:ss`).
+     */
+    readonly requestToSpeakTimestamp: string | null;
     /**
      * Fetches data for the guild associated with this voice state.
      */
@@ -4444,6 +4613,10 @@ declare module discord {
      * If `channelId` is not null, will fetch the channel data associated with this voice state.
      */
     getChannel(): Promise<discord.GuildVoiceChannel | null>;
+    /**
+     * Updates a voice state with the options provided. Only valid for voice states in Guild Stage Voice channels.
+     */
+    edit(options: discord.VoiceState.IVoiceStateEditOptions): Promise<void>;
   }
 
   /**
@@ -7006,7 +7179,7 @@ declare module discord {
     MANAGE_ROLES = 1 << 28,
     MANAGE_WEBHOOKS = 1 << 29,
     MANAGE_EMOJIS = 1 << 30,
-
+    REQUEST_TO_SPEAK = 1 << 32,
     NONE = 0,
 
     /**
@@ -7042,7 +7215,8 @@ declare module discord {
       MANAGE_NICKNAMES |
       MANAGE_ROLES |
       MANAGE_WEBHOOKS |
-      MANAGE_EMOJIS,
+      MANAGE_EMOJIS |
+      REQUEST_TO_SPEAK,
   }
 
   /**
