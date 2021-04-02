@@ -244,11 +244,13 @@ declare module discord {
        */
       afkTimeout?: number;
       /**
-       * Sets a new guild icon. Must be Base64 encoded image data.
+       * Sets a new guild icon. Accepts image data in the format of JPEG, PNG, or GIF.
+       *
+       * If a string is passed, please pass a base64 encoded data URI.
        *
        * If null, the icon is removed.
        */
-      icon?: string | null;
+      icon?: ArrayBuffer | string | null;
       /**
        * The id of a user to transfer this guild to. Typically, bots will not be the owner of a guild.
        */
@@ -256,17 +258,23 @@ declare module discord {
       /**
        * Sets a new guild invite page background/splash image. Requires the [[discord.Guild.Feature.INVITE_SPLASH]] feature on the guild.
        *
+       * Accepts image data in the format of JPEG only.
+       *
+       * If a string is passed, please pass a base64 encoded data URI.
+       *
        * If null, the invite background splash image is removed.
        */
-      splash?: string | null;
+      splash?: ArrayBuffer | string | null;
       /**
        * Sets a new guild invite page background. Requires the [[discord.Guild.Feature.BANNER]] feature on the guild.
        *
-       * Must be Base64 encoded image data.
+       * Accepts image data in the format of JPEG only.
+       *
+       * If a string is passed, please pass a base64 encoded data URI.
        *
        * If null, the banner is removed.
        */
-      banner?: string | null;
+      banner?: ArrayBuffer | string | null;
       /**
        * Sets the id of the [[discord.GuildTextChannel]] to send welcome messages and server boost messages to.
        *
@@ -406,6 +414,12 @@ declare module discord {
        */
       PARTNERED = "PARTNERED",
       /**
+       * A feature flag set when the guild admins have set to a Community server.
+       *
+       * When this flag is enabled, the welcome screen, membership screening, discovery, and the ability to receive community updates are unlocked.
+       */
+      COMMUNITY = "COMMUNITY",
+      /**
        * A feature flag set if the guild is considered a public guild. Public guilds can set the following properties on a guild:
        * - [[discord.Guild.preferredLocale]]
        * - [[discord.Guild.description]]
@@ -435,6 +449,18 @@ declare module discord {
        * A feature flag that enables a banner ([[discord.Guild.banner]]) to be displayed over the channel list in your guild.
        */
       BANNER = "BANNER",
+      /**
+       * A feature flag set when the guild admins have enabled the guild welcome screen.
+       */
+      WELCOME_SCREEN_ENABLED = "WELCOME_SCREEN_ENABLED",
+      /**
+       * A feature flag set when the guild admins have enabled membership screening.
+       */
+      MEMBER_VERIFICATION_GATE_ENABLED = "MEMBER_VERIFICATION_GATE_ENABLED",
+      /**
+       * A feature flag set when the guild may be previewed before joining via membership screening or the server directory.
+       */
+      PREVIEW_ENABLED = "PREVIEW_ENABLED",
     }
 
     /**
@@ -556,7 +582,7 @@ declare module discord {
     }
 
     /**
-     * A bot's guild-based voice state can be updated with the following options.
+     * A bot's guild-based voice state can be updated with the following options. Used with [[discord.Guild.setOwnVoiceState]].
      */
     interface ISetVoiceStateOptions {
       /**
@@ -587,13 +613,79 @@ declare module discord {
     }
 
     /**
-     * Options for iterating over voice states in a guild.
+     * Options for iterating over voice states in a guild with [[discord.Guild.iterVoiceStates]].
      */
     interface IIterVoiceStatesOptions {
       /**
        * If supplied, voice states will only be returned if they match the channel id.
        */
       channelId?: Snowflake;
+    }
+
+    /**
+     * Options to specify during the creation of a guild emoji with [[discord.Guild.createEmoji]].
+     */
+    interface ICreateEmojiOptions {
+      /**
+       * The name of the emoji, can only contain alpha-numeric characters including dashes and underscores.
+       */
+      name: string;
+      /**
+       * The image data for this emoji, can be an ArrayBuffer containing JPEG, PNG, or GIF image data, or a "Data URI scheme" string (see https://discord.com/developers/docs/reference#image-data).
+       *
+       * The 'animated' flag will be interpreted by Discord based on the uploaded image data.
+       *
+       * Note: Emojis must be no more than 256kb.
+       */
+      image: ArrayBuffer | string;
+      /**
+       * An optional list of role ids that this emoji will be exclusive to.
+       */
+      roles?: Array<discord.Snowflake>;
+    }
+
+    /**
+     * Options to pass when requesting a guild prune preview with [[discord.Guild.previewPrune]].
+     */
+    interface IPreviewPruneOptions {
+      /**
+       * The maximum number of days a member must be inactive for them to be considered for pruning.
+       *
+       * Acceptable values are 1 thru 30, and the default is 7 days.
+       *
+       * For example, if you choose 30, members who were active within the past 30 days will not be considered for pruning.
+       */
+      days?: number;
+      /**
+       * A list of roles to be included in the pruning process. By default, members with roles are ignored.
+       * Specifying a role here will include members with only the roles specified for pruning.
+       */
+      includeRoles?: Array<discord.Snowflake>;
+    }
+
+    /**
+     * Options to pass when executing a guild prune operation with [[discord.Guild.beginPrune]].
+     */
+    interface IPruneOptions {
+      /**
+       * The maximum number of days a member must be inactive for them to be considered for pruning.
+       *
+       * Acceptable values are 1 thru 30, and the default is 7 days.
+       *
+       * For example, if you choose 30, members who were active within the past 30 days will not be considered for pruning.
+       */
+      days?: number;
+      /**
+       * If set to false, the guild prune action will be scheduled and the call will return immediately.
+       *
+       * If true (default), the call will wait for the completion of the prune operation and return the total number of users pruned.
+       */
+      computePruneCount?: boolean;
+      /**
+       * A list of roles to be included in the pruning process. By default, members with roles are ignored.
+       * Specifying a role here will include members with only the roles specified for pruning.
+       */
+      includeRoles?: Array<discord.Snowflake>;
     }
   }
 
@@ -997,6 +1089,15 @@ declare module discord {
     getEmoji(emojiId: Snowflake): Promise<Emoji | null>;
 
     /**
+     * Attempts to create a new emoji with the values provided. Returns the new emoji upon success.
+     *
+     * Note: Emojis may be a maximum size of 256kb.
+     *
+     * @param options The options to use when creating the new guild emoji.
+     */
+    createEmoji(options: discord.Guild.ICreateEmojiOptions): Promise<discord.Emoji>;
+
+    /**
      * Builds a URL for the guild's icon, if set.
      *
      * See [[discord.Guild.icon]] for more info.
@@ -1066,6 +1167,31 @@ declare module discord {
     iterVoiceStates(
       options?: discord.Guild.IIterVoiceStatesOptions
     ): AsyncIterableIterator<discord.VoiceState>;
+
+    /**
+     * Returns the number of users that **would be** removed/kicked from the guild in a prune operation.
+     *
+     * By default, prune will not remove users with roles. You can optionally include specific roles in your prune by providing the `includeRoles` option.
+     * Any inactive user that has a subset of the provided role(s) will be counted in the prune and users with additional roles will not.
+     *
+     * Note: This is a costly operation, and should not be run too frequently.
+     */
+    previewPrune(options?: discord.Guild.IPreviewPruneOptions): Promise<number>;
+
+    /**
+     * Begins a prune operation with the given settings.
+     * It is *highly recommend* to verify the number of users being pruned is accurate using [[discord.Guild.previewPrune]].
+     *
+     * By default, prune will not remove users with roles. You can optionally include specific roles in your prune by providing the includeRoles option.
+     * Any inactive user that has a subset of the provided role(s) will be counted in the prune and users with additional roles will not.
+     *
+     * If the `computePruneCount` option is set to true (default), the returned value will be the number of users pruned.
+     * In large guilds, it is recommended to set this to false as it may time out the operation on Discord's end.
+     *
+     * Note: This is a costly operation, and should not be run too frequently.
+     */
+    beginPrune(options?: discord.Guild.IPruneOptions): Promise<number>;
+    beginPrune(options: discord.Guild.IPruneOptions & { computePruneCount: false }): Promise<void>;
   }
 
   /**
@@ -3453,7 +3579,7 @@ declare module discord {
 
   namespace Emoji {
     /**
-     * A basic emoji discriptor.
+     * A basic emoji descriptor.
      *
      * Guild emojis contain an id and custom name.
      *
@@ -3548,6 +3674,22 @@ declare module discord {
      * A type union of all possible emoji types.
      */
     type AnyEmoji = Emoji.IGuildEmoji | Emoji.IUnicodeEmoji;
+
+    /**
+     * Valid options to pass when modifying an existing guild emoji.
+     */
+    interface IEditEmojiOptions {
+      /**
+       * If included, will update the name of this emoji. Emoji names must be alpha-numeric (including dashes and underscores).
+       */
+      name?: string;
+      /**
+       * If included, updates the role access list for this emoji.
+       *
+       * If set to null, the access list will be removed and the emoji will be available to everyone in the guild.
+       */
+      roles?: Array<Snowflake> | null;
+    }
   }
 
   /**
@@ -3573,7 +3715,7 @@ declare module discord {
     /**
      * If not empty, the roles in this array have access to the emoji.
      */
-    readonly roles: Snowflake[];
+    readonly roles: Array<Snowflake>;
     /**
      * The user who uploaded the emoji.
      */
@@ -3596,6 +3738,18 @@ declare module discord {
      * @returns A message-ready string representation of the emoji.
      */
     toMention(): string;
+
+    /**
+     * Deletes the emoji from this guild.
+     */
+    delete(): Promise<void>;
+
+    /**
+     * Edits the emoji's options. You can't change the emoji's image, but the name and role list may be updated.
+     *
+     * Returns the new emoji data on success.
+     */
+    edit(options: discord.Emoji.IEditEmojiOptions): Promise<Emoji>;
   }
 
   /* Message */
@@ -4130,28 +4284,31 @@ declare module discord {
      *
      * If an error occurred, a [[discord.ApiError]] exception is thrown.
      *
-     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     * @param emoji If passing a string, use a raw unicode emoji like ✅, or a custom emoji in the format of `name:id`.
      */
-    addReaction(emoji: string): Promise<void>;
+    addReaction(emoji: string | discord.Emoji.IEmoji): Promise<void>;
 
     /**
      * Deletes the bot user's own reaction to this message of the specified emoji.
      *
      * If an error occurred, a [[discord.ApiError]] exception is thrown.
      *
-     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     * @param emoji If passing a string, use a raw unicode emoji like ✅, or a custom emoji in the format of `name:id`.
      */
-    deleteOwnReaction(emoji: string): Promise<void>;
+    deleteOwnReaction(emoji: string | discord.Emoji.IEmoji): Promise<void>;
 
     /**
      * Deletes a user's reaction to the message.
      *
      * If an error occurred, a [[discord.ApiError]] exception is thrown.
      *
-     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     * @param emoji If passing a string, use a raw unicode emoji like ✅, or a custom emoji in the format of `name:id`.
      * @param user A user id or reference to a user object.
      */
-    deleteReaction(emoji: string, user: Snowflake | User): Promise<void>;
+    deleteReaction(
+      emoji: string | discord.Emoji.IEmoji,
+      user: discord.Snowflake | discord.User
+    ): Promise<void>;
 
     /**
      * Deletes all the reactions on this message.
@@ -4167,9 +4324,9 @@ declare module discord {
      *
      * If an error occurred, a [[discord.ApiError]] exception is thrown.
      *
-     * @param emoji A raw unicode emoji like ✅, or a custom emoji in the format of `name:id`
+     * @param emoji If passing a string, use a raw unicode emoji like ✅, or a custom emoji in the format of `name:id`.
      */
-    deleteAllReactionsForEmoji(emoji: string): Promise<void>;
+    deleteAllReactionsForEmoji(emoji: string | discord.Emoji.IEmoji): Promise<void>;
 
     /**
      * Attempts to edit a message. Messages may only be edited by their author.
@@ -4612,7 +4769,7 @@ declare module discord {
     /**
      * If `channelId` is not null, will fetch the channel data associated with this voice state.
      */
-    getChannel(): Promise<discord.GuildVoiceChannel | null>;
+    getChannel(): Promise<discord.GuildVoiceChannel | discord.GuildStageVoiceChannel | null>;
     /**
      * Updates a voice state with the options provided. Only valid for voice states in Guild Stage Voice channels.
      */
@@ -5465,6 +5622,15 @@ declare module discord {
   function getGuildVoiceChannel(
     channelId: discord.Snowflake
   ): Promise<discord.GuildVoiceChannel | null>;
+
+  /**
+   * Fetches a [[discord.GuildStageVoiceChannel]] for a given Discord channel id.
+   *
+   * If the channel exists, but is not a guild stage voice channel, function will return null.
+   */
+  function getGuildStageVoiceChannel(
+    channelId: discord.Snowflake
+  ): Promise<discord.GuildStageVoiceChannel | null>;
 
   /**
    * Fetches a [[discord.GuildCategory]] for a given Discord channel id.
