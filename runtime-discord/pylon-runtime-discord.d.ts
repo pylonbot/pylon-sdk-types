@@ -163,6 +163,10 @@ declare module discord {
      * Will be `true` if the user is a bot user.
      */
     readonly bot: boolean;
+    /**
+     * Bitflags representing the user's flags.
+     */
+    readonly publicFlags: number;
 
     /**
      * Used to return a URL to user's avatar image.
@@ -1765,6 +1769,16 @@ declare module discord {
        * If the user is in a voice channel and this property is specified, it moves the member to the specified channel, by id.
        */
       channelId?: Snowflake | null;
+      /**
+       * If specified, sets the user's pending status.
+       */
+      pending?: boolean;
+      /**
+       * If specified, the user will be muted (put in "timeout") until the specified date.
+       *
+       * The date should be in ISO8601 format. Setting to null will remove the user from timeout.
+       */
+      communicationDisabledUntil?: string | null;
     }
   }
 
@@ -1791,7 +1805,7 @@ declare module discord {
      */
     readonly roles: Array<Snowflake>;
     /**
-     * The date and time the member joined in ISO 8601 format (`YYYY-MM-DDTHH:mm:ss`).
+     * The date and time the member joined in ISO8601 format (`YYYY-MM-DDTHH:mm:ss`).
      */
     readonly joinedAt: string;
     /**
@@ -1808,7 +1822,17 @@ declare module discord {
      * Note: See [[GuildChannel.getMemberPermissions]] if you need channel-specific permissions.
      */
     readonly permissions: number;
-
+    /**
+     * The member's pending status. If true, the member has not accepted the
+     * guild's rules or passed member verification.
+     */
+    readonly pending: boolean;
+    /**
+     * The date and time (in ISO8601 format) at which the member will be unmuted (or put in "timeout").
+     *
+     * If the member is not muted, this will be `null`.
+     */
+    readonly communicationDisabledUntil: string | null;
     /**
      * Fetches an instance of the user for this guild member.
      *
@@ -3897,6 +3921,12 @@ declare module discord {
        * If the attachment is a media file, the height of the image or video.
        */
       readonly width?: number;
+      /**
+       * If the attachment is epehemral, this will be set to true.
+       *
+       * Ephemeral attachments are deleted 2 weeks after being sent.
+       */
+      readonly ephemeral?: boolean;
     }
 
     /**
@@ -3971,6 +4001,10 @@ declare module discord {
        * The contents of the file, in binary format.
        */
       data: ArrayBuffer;
+      /**
+       * An optional description of the file.
+       */
+      description?: string;
     }
 
     /**
@@ -4341,9 +4375,7 @@ declare module discord {
      * @param messageOptions New message options for this message.
      * @returns On success, the Promise resolves as the new message object.
      */
-    edit(
-      messageOptions: Pick<Message.OutgoingMessageOptions, "content" | "embed"> & { flags?: number }
-    ): Promise<Message>;
+    edit(messageOptions: Message.OutgoingMessageOptions & { flags?: number }): Promise<Message>;
 
     /**
      * Attempts to edit a message. Replaces the content with the new provided content.
@@ -4420,7 +4452,7 @@ declare module discord {
   /**
    * An object representing an invite on Discord.
    *
-   * Invites typically appear as links (ex: discord.gg/hC6Bbtj) where the code is a unique and random string of alpha-numeric characters.
+   * Invites typically appear as links (ex: discord.gg/6DbcNPz) where the code is a unique and random string of alpha-numeric characters.
    *
    * Since Group DMs may create invites, some properties on the invite object are nullable.
    */
@@ -5551,7 +5583,7 @@ declare module discord {
   /**
    * Fetches a [[discord.Invite]] object containing information about an invite on Discord.
    *
-   * @param code The invite's code (example: `hC6Bbtj` from https://discord.gg/hC6Bbtj)
+   * @param code The invite's code (example: `6DbcNPz` from https://discord.gg/6DbcNPz)
    */
   function getInvite(
     code: string,
@@ -5754,15 +5786,13 @@ declare module discord {
         /**
          * Responds with a message seen only by the invoker of the command.
          *
-         * As a limitation of the Discord API, you may only send string-based content.
-         *
          * Once sent, ephemeral replies may not be edited or deleted. As such, this function's return type is void.
          *
          * This is useful for instances where you don't need to announce the reply to all users in the channel.
          *
-         * @param response The response to send to the user.
+         * @param response A string or object with outgoing response data.
          */
-        respondEphemeral(response: string): Promise<void>;
+        respondEphemeral(response: string | IResponseMessageOptions): Promise<void>;
 
         /**
          * Edits the original response message, if sent.
@@ -5984,7 +6014,7 @@ declare module discord {
       /**
        * Options for an outgoing message response to a command invocation.
        *
-       * `content` is required unless embeds are specified.
+       * `content` is required unless embeds or attachments are specified.
        */
       interface IResponseMessageOptions {
         /**
@@ -6003,6 +6033,14 @@ declare module discord {
          * If true, the message will be spoken via text-to-speech audio on the client (if enabled).
          */
         tts?: boolean;
+        /**
+         * Attachments to include with this message.
+         */
+        attachments?: Array<discord.Message.IOutgoingMessageAttachment>;
+        /**
+         * (WIP) The components for this message.
+         */
+        components?: any;
       }
 
       interface IResponseMessageEditOptions {
@@ -6014,6 +6052,14 @@ declare module discord {
          * The embeds for this message.
          */
         embeds?: Array<discord.Embed>;
+        /**
+         * Attachments to include with this message.
+         */
+        attachments?: Array<discord.Message.IOutgoingMessageAttachment>;
+        /**
+         * (WIP) The components for this message.
+         */
+        components?: any;
       }
 
       type ResponseMessageOptions =
