@@ -5245,7 +5245,7 @@ declare module discord {
    */
   function on(
     event: Event.MESSAGE_CREATE | "MESSAGE_CREATE",
-    handler: (message: Message.AnyMessage) => Promise<unknown>
+    handler: (message: Message.AnyMessage) => unknown
   ): void;
 
   /**
@@ -5261,7 +5261,7 @@ declare module discord {
     handler: (
       message: Message.AnyMessage,
       oldMessage: Message.AnyMessage | null
-    ) => Promise<unknown>
+    ) => unknown
   ): void;
 
   /**
@@ -5276,7 +5276,7 @@ declare module discord {
     handler: (
       event: Event.IMessageDelete,
       oldMessage: Message.AnyMessage | null
-    ) => Promise<unknown>
+    ) => unknown
   ): void;
 
   /**
@@ -5288,7 +5288,7 @@ declare module discord {
    */
   function on(
     event: Event.MESSAGE_DELETE_BULK | "MESSAGE_DELETE_BULK",
-    handler: (event: Event.IMessageDeleteBulk) => Promise<unknown>
+    handler: (event: Event.IMessageDeleteBulk) => unknown
   ): void;
 
   /**
@@ -5298,7 +5298,7 @@ declare module discord {
    */
   function on(
     event: Event.MESSAGE_REACTION_ADD | "MESSAGE_REACTION_ADD",
-    handler: (event: Event.IMessageReactionAdd) => Promise<unknown>
+    handler: (event: Event.IMessageReactionAdd) => unknown
   ): void;
 
   /**
@@ -5308,7 +5308,7 @@ declare module discord {
    */
   function on(
     event: Event.MESSAGE_REACTION_REMOVE | "MESSAGE_REACTION_REMOVE",
-    handler: (event: Event.IMessageReactionRemove) => Promise<unknown>
+    handler: (event: Event.IMessageReactionRemove) => unknown
   ): void;
 
   /**
@@ -5318,7 +5318,7 @@ declare module discord {
    */
   function on(
     event: Event.MESSAGE_REACTION_REMOVE_ALL | "MESSAGE_REACTION_REMOVE_ALL",
-    handler: (event: Event.IMessageReactionRemoveAll) => Promise<unknown>
+    handler: (event: Event.IMessageReactionRemoveAll) => unknown
   ): void;
 
   /**
@@ -5328,7 +5328,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_CREATE | "GUILD_CREATE",
-    handler: (guild: Guild) => Promise<unknown>
+    handler: (guild: Guild) => unknown
   ): void;
 
   /**
@@ -5338,7 +5338,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_UPDATE | "GUILD_UPDATE",
-    handler: (guild: Guild, oldGuild: Guild) => Promise<unknown>
+    handler: (guild: Guild, oldGuild: Guild) => unknown
   ): void;
 
   /**
@@ -5348,7 +5348,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_MEMBER_ADD | "GUILD_MEMBER_ADD",
-    handler: (member: GuildMember) => Promise<unknown>
+    handler: (member: GuildMember) => unknown
   ): void;
 
   /**
@@ -5358,7 +5358,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_MEMBER_REMOVE | "GUILD_MEMBER_REMOVE",
-    handler: (member: Event.IGuildMemberRemove, oldMember: GuildMember) => Promise<unknown>
+    handler: (member: Event.IGuildMemberRemove, oldMember: GuildMember) => unknown
   ): void;
 
   /**
@@ -5372,7 +5372,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_MEMBER_UPDATE | "GUILD_MEMBER_UPDATE",
-    handler: (member: GuildMember, oldMember: GuildMember) => Promise<unknown>
+    handler: (member: GuildMember, oldMember: GuildMember) => unknown
   ): void;
 
   /**
@@ -5384,7 +5384,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_BAN_ADD | "GUILD_BAN_ADD",
-    handler: (guildBan: Omit<GuildBan, "reason">) => Promise<unknown>
+    handler: (guildBan: Omit<GuildBan, "reason">) => unknown
   ): void;
 
   /**
@@ -5396,7 +5396,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_BAN_REMOVE | "GUILD_BAN_REMOVE",
-    handler: (guildBan: Omit<GuildBan, "reason">) => Promise<unknown>
+    handler: (guildBan: Omit<GuildBan, "reason">) => unknown
   ): void;
 
   /**
@@ -5411,7 +5411,7 @@ declare module discord {
     handler: (
       event: Event.IGuildEmojisUpdate,
       oldEvent: Event.IGuildEmojisUpdate
-    ) => Promise<unknown>
+    ) => unknown
   ): void;
 
   /**
@@ -5421,7 +5421,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_INTEGRATIONS_UPDATE | "GUILD_INTEGRATIONS_UPDATE",
-    handler: (event: Event.IGuildIntegrationsUpdate) => Promise<unknown>
+    handler: (event: Event.IGuildIntegrationsUpdate) => unknown
   ): void;
   /**
    * Fired when a [[discord.Role]] is created.
@@ -5430,7 +5430,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_ROLE_CREATE | "GUILD_ROLE_CREATE",
-    handler: (event: Event.IGuildRoleCreate) => Promise<unknown>
+    handler: (event: Event.IGuildRoleCreate) => unknown
   ): void;
 
   /**
@@ -5440,7 +5440,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_ROLE_UPDATE | "GUILD_ROLE_UPDATE",
-    handler: (event: Event.IGuildRoleUpdate, oldRole: discord.Role) => Promise<unknown>
+    handler: (event: Event.IGuildRoleUpdate, oldRole: discord.Role) => unknown
   ): void;
 
   /**
@@ -5450,7 +5450,7 @@ declare module discord {
    */
   function on(
     event: Event.GUILD_ROLE_DELETE | "GUILD_ROLE_DELETE",
-    handler: (event: Event.IGuildRoleDelete, oldRole: discord.Role) => Promise<unknown>
+    handler: (event: Event.IGuildRoleDelete, oldRole: discord.Role) => unknown
   ): void;
 
   /**
@@ -5460,7 +5460,7 @@ declare module discord {
    */
   function on(
     event: Event.CHANNEL_CREATE | "CHANNEL_CREATE",
-    handler: (channel: Channel.AnyChannel) => Promise<unknown>
+    handler: (channel: Channel.AnyChannel) => unknown
   ): void;
 
   /**
@@ -5473,7 +5473,7 @@ declare module discord {
     handler: (
       channel: discord.Channel.AnyChannel,
       oldChannel: discord.Channel.AnyChannel
-    ) => Promise<unknown>
+    ) => unknown
   ): void;
 
   /**
@@ -5483,7 +5483,7 @@ declare module discord {
    */
   function on(
     event: Event.CHANNEL_DELETE | "CHANNEL_DELETE",
-    handler: (channel: discord.Channel.AnyChannel) => Promise<unknown>
+    handler: (channel: discord.Channel.AnyChannel) => unknown
   ): void;
 
   /**
@@ -5493,7 +5493,7 @@ declare module discord {
    */
   function on(
     event: Event.CHANNEL_PINS_UPDATE | "CHANNEL_PINS_UPDATE",
-    handler: (event: Event.IChannelPinsUpdate) => Promise<unknown>
+    handler: (event: Event.IChannelPinsUpdate) => unknown
   ): void;
 
   /**
@@ -5506,7 +5506,7 @@ declare module discord {
    */
   function on(
     event: Event.VOICE_STATE_UPDATE | "VOICE_STATE_UPDATE",
-    handler: (voiceState: VoiceState, oldVoiceState: VoiceState) => Promise<unknown>
+    handler: (voiceState: VoiceState, oldVoiceState: VoiceState) => unknown
   ): void;
 
   /**
@@ -5519,7 +5519,7 @@ declare module discord {
    */
   function on(
     event: Event.VOICE_SERVER_UPDATE | "VOICE_SERVER_UPDATE",
-    handler: (event: Event.IVoiceServerUpdate) => Promise<unknown>
+    handler: (event: Event.IVoiceServerUpdate) => unknown
   ): void;
 
   /**
@@ -5532,7 +5532,7 @@ declare module discord {
    */
   function on(
     event: Event.TYPING_START | "TYPING_START",
-    handler: (event: Event.ITypingStart) => Promise<unknown>
+    handler: (event: Event.ITypingStart) => unknown
   ): void;
 
   /**
@@ -5545,7 +5545,7 @@ declare module discord {
    */
   function on(
     event: Event.WEBHOOKS_UPDATE | "WEBHOOKS_UPDATE",
-    handler: (event: Event.IWebhooksUpdate) => Promise<unknown>
+    handler: (event: Event.IWebhooksUpdate) => unknown
   ): void;
 
   /**
@@ -5555,7 +5555,7 @@ declare module discord {
    */
   function on(
     event: Event.USER_UPDATE | "USER_UPDATE",
-    handler: (event: User) => Promise<unknown>
+    handler: (event: User) => unknown
   ): void;
 
   /**
